@@ -11,8 +11,8 @@ main {
   font-weight: bold; }
   .todo .status.not_started {
     color: red; }
-  .todo .status.inprogress {
-    color: yellow; }
+  .todo .status.in_progress {
+    color: goldenrod; }
   .todo .status.completed {
     color: green; }
 
