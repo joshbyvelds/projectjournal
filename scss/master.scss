@@ -1,4 +1,48 @@
-footer{
-    margin: 16px auto;
+header {
+    padding: 20px 0;
+    font-size: 40px;
+    text-transform: uppercase;
+    border-bottom: dotted 2px darkgray;
+}
+
+main {
+    padding-bottom: 60px;
+}
+
+.todo {
+
+    h2{
+
+    }
+
+    ul{
+
+    }
+
+    .status{
+        font-weight: bold;
+
+        &.not_started{
+            color: red;
+        }
+
+        &.inprogress{
+            color: yellow;
+        }
+
+        &.completed{
+            color: green;
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: lightgrey;
+    border-top: dotted 2px darkgray;
+    padding: 16px 10px;
     text-align: center;
 }
+

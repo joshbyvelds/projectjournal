@@ -1,5 +1,28 @@
+header {
+  padding: 20px 0;
+  font-size: 40px;
+  text-transform: uppercase;
+  border-bottom: dotted 2px darkgray; }
+
+main {
+  padding-bottom: 60px; }
+
+.todo .status {
+  font-weight: bold; }
+  .todo .status.not_started {
+    color: red; }
+  .todo .status.inprogress {
+    color: yellow; }
+  .todo .status.completed {
+    color: green; }
+
 footer {
-  margin: 16px auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: lightgrey;
+  border-top: dotted 2px darkgray;
+  padding: 16px 10px;
   text-align: center; }
 
 /*# sourceMappingURL=master.css.map */

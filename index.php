@@ -19,6 +19,6 @@ $loggedIn = false;
 // Twig vars go here. :)
 echo $twig->render('index.twig',
     [
-        'title' => 'Bookmarker!'
+        'title' => 'Project Journal'
     ]
 );
