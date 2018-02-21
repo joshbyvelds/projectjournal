@@ -1,0 +1,42 @@
+.projects {
+    .project {
+        padding: 40px 0;
+
+        &.odd {
+            background: #fff;
+        }
+
+        &.even {
+            //background: #ddd;
+        }
+
+        .image-col {
+            img {
+                transition: all 0.3s ease-out;
+                cursor: pointer;
+                &:hover {
+                    transform: rotate(3deg);
+                    box-shadow: 0 15px 15px 0 rgba(0,0,0,.24), 0 22px 50px 0 rgba(0,0,0,.19);
+                }
+            }
+        }
+
+        .title-col {
+            h3 {
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+        }
+
+        &.new{
+            .save-btn{
+                width: 100%;
+                font-size: 1.2rem;
+            }
+        }
+
+    }
+}

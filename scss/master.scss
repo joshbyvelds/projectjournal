@@ -1,36 +1,43 @@
 header {
-    padding: 20px 0;
+    padding: 20px 10px;
     font-size: 40px;
     text-transform: uppercase;
     border-bottom: dotted 2px darkgray;
+
+    h1{
+        max-width: 1125px;
+        margin: 0 auto;
+    }
 }
 
 main {
     padding-bottom: 60px;
 }
 
+@import "projects";
+
 .todo {
 
-    h2{
+    h2 {
 
     }
 
-    ul{
+    ul {
 
     }
 
-    .status{
+    .status {
         font-weight: bold;
 
-        &.not_started{
+        &.not_started {
             color: red;
         }
 
-        &.in_progress{
+        &.in_progress {
             color: goldenrod;
         }
 
-        &.completed{
+        &.completed {
             color: green;
         }
     }

@@ -7,16 +7,65 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="vendor/MDBootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/MDBootstrap/css/mdb.min.css">
+    <link rel="stylesheet" href="vendor/components-font-awesome/css/fa-regular.min.css">
+    <link rel="stylesheet" href="vendor/components-font-awesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="stylesheets/master.css">
 </head>
 <body>
 
-<header>Project Journal</header>
+<header><h1>Project Journal</h1></header>
 <main>
+    <div class="container projects">
+        <div class="row project new odd">
+            <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
+            <div class="col-sm-12 col-md-6 title-col">
+                <h3 contenteditable="true">New Project</h3>
+                <select name="" id="new_project_category">
+                    <option value="1">Fan Fiction Novel</option>
+                    <option value="2">3D Model</option>
+                    <option value="3">3D Game</option>
+                    <option value="4">HTML Game</option>
+                    <option value="5">Website</option>
+                </select>
+                <p contenteditable="true">description here...</p>
+                <button class="btn btn-primary save-btn"><i class="far fa-save"></i> Save</button>
+            </div>
+        </div>
+
+        <div class="row project even">
+            <div class="col-sm-12 col-md-6 title-col">
+                <h3>Project Title</h3>
+                <h4>Category</h4>
+                <h5>12:34:56 <i class="far fa-check-circle"></i></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum deserunt dicta doloribus error ex expedita explicabo illum labore minus, nam nihil, possimus quasi quidem rerum sunt suscipit velit vitae.</p>
+            </div>
+            <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
+        </div>
+
+        <div class="row project odd">
+            <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
+            <div class="col-sm-12 col-md-6 title-col">
+                <h3>Project Title</h3>
+                <h4>Category</h4>
+                <h5>6:45:12</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum deserunt dicta doloribus error ex expedita explicabo illum labore minus, nam nihil, possimus quasi quidem rerum sunt suscipit velit vitae.</p>
+            </div>
+        </div>
+
+        <div class="row project even">
+            <div class="col-sm-12 col-md-6 title-col">
+                <h3>Project Title</h3>
+                <h4>Category</h4>
+                <h5>1:03:12</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum deserunt dicta doloribus error ex expedita explicabo illum labore minus, nam nihil, possimus quasi quidem rerum sunt suscipit velit vitae.</p>
+            </div>
+            <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
+        </div>
+    </div>
     <div class="todo">
         <h2>TODO LIST:</h2>
         <ol>
-            <li>Create system to add projects [<span class="status not_started">Not Started</span>]</li>
+            <li>Create system to add projects [<span class="status in_progress">In Progress</span>]</li>
             <li>Create category system to group each project [<span class="status not_started">Not Started</span>]</li>
             <li>Make sure Each project must Include a title, category, progress image, and description [<span class="status not_started">Not Started</span>]</li>
             <li>Create system to add track time worked on project, start stop button with timer? [<span class="status not_started">Not Started</span>]</li>
