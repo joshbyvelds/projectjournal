@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }}</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="vendor/MDBootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/MDBootstrap/css/mdb.min.css">
     <link rel="stylesheet" href="vendor/components-font-awesome/css/fa-regular.min.css">
@@ -21,8 +21,8 @@
         <div class="row project new odd">
             <div class="col-sm-12 col-md-6 image-col"><img src="https://scontent.fxds1-1.fna.fbcdn.net/v/t1.0-9/17553625_1803361399689787_3680384734137178849_n.jpg?oh=83f48fa3ddcae0953722f269f3de9bc1&oe=5B083E60" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
             <div class="col-sm-12 col-md-6 title-col">
-                <h3 contenteditable="true">New Project</h3>
-                <select name="" id="new_project_category">
+                <h3 contenteditable="true" id="new_project_title">New Project</h3>
+                <select name="" id="new_project_category" id="new_project_category">
                     <option value="void">Select Category</option>
                     <option value="1">Fan Fiction Novel</option>
                     <option value="2">3D Model</option>
@@ -30,8 +30,8 @@
                     <option value="4">HTML Game</option>
                     <option value="5">Website</option>
                 </select>
-                <p contenteditable="true">description here...</p>
-                <button class="btn btn-primary save-btn"><i class="far fa-save"></i> Save</button>
+                <p contenteditable="true" id="new_project_description">description here...</p>
+                <button class="btn btn-primary save-btn" id="save_new_project_btn"><i class="far fa-save"></i> Save</button>
             </div>
         </div>
 
@@ -59,10 +59,28 @@
     </div>
     <div class="todo">
         <h2>TODO LIST:</h2>
+        {#[<span class="status not_started">Not Started</span>]#}
+        {#[<span class="status in_progress">In Progress</span>]#}
+        {#[<span class="status completed">Completed</span>]#}
         <ol>
-            <li>Create system to add projects [<span class="status in_progress">In Progress</span>]</li>
+            <li>
+                Create system to add projects [<span class="status in_progress">In Progress</span>]
+                <ul>
+                    <li>Create front end for projects [<span class="status completed">Completed</span>]</li>
+                    <li>Create new project UI [<span class="status in_progress">In Progress</span>]</li>
+                    <li>Create custom dropdown for category [<span class="status not_started">Not Started</span>]</li>
+                    <li>Create JS Class for project saving [<span class="status completed">Completed</span>]</li>
+                    <li>Create Validation method in class [<span class="status in_progress">In Progress</span>]</li>
+                    <li>Create save method in class [<span class="status not_started">Not Started</span>]</li>
+                </ul>
+            </li>
             <li>Create category system to group each project (filter, compare projects in same category) [<span class="status not_started">Not Started</span>]</li>
-            <li>Create system to add track time worked on project, start stop button with timer? [<span class="status not_started">Not Started</span>]</li>
+            <li>
+                Create system to add track time worked on project, start stop button with timer? [<span class="status not_started">Not Started</span>]
+                <ul>
+                    <li>Create Odometer effect for seconds increase [<span class="status not_started">Not Started</span></li>
+                </ul>
+            </li>
             <li>Create system to track project updates (Journal Entries) [<span class="status not_started">Not Started</span>]</li>
             <li>Create create timeline system/graph to show hours worked over a period of time [<span class="status not_started">Not Started</span>]</li>
             <li>Create graph to show all projects time worked over a period of time [<span class="status not_started">Not Started</span>]</li>
