@@ -24,10 +24,19 @@
         .title-col {
             h3 {
                 font-size: 3rem;
+
+                &.error{
+                    color: red;
+                    font-size: 2rem;
+                }
             }
 
             p {
                 font-size: 0.8rem;
+
+                &.error{
+                    color: red;
+                }
             }
         }
 
