@@ -5,6 +5,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "outDir": "../javascript/"
+    "outDir": "../javascript/",
+    "types" : ["jquery"]
   }
 }
