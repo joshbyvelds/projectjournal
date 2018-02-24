@@ -19,17 +19,20 @@
 <main>
     <div class="container projects">
         <div class="row project new odd">
-            <div class="col-sm-12 col-md-6 image-col"><img src="https://scontent.fxds1-1.fna.fbcdn.net/v/t1.0-9/17553625_1803361399689787_3680384734137178849_n.jpg?oh=83f48fa3ddcae0953722f269f3de9bc1&oe=5B083E60" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
+            <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
             <div class="col-sm-12 col-md-6 title-col">
                 <h3 contenteditable="true" id="new_project_title">New Project</h3>
-                <select name="" id="new_project_category" id="new_project_category">
-                    <option value="void">Select Category</option>
-                    <option value="1">Fan Fiction Novel</option>
-                    <option value="2">3D Model</option>
-                    <option value="3">3D Game</option>
-                    <option value="4">HTML Game</option>
-                    <option value="5">Website</option>
-                </select>
+                <div class="fake_dropdown" id="category_select">
+                    <h4 id="selected_category" class="selected" data-selected="test">Please select</h4>
+                    <div class="options">
+                        <h4 class="option">Website</h4>
+                        <h4 class="option">Web App</h4>
+                        <h4 class="option">Fan Fiction</h4>
+                        <h4 class="option">HTML Game</h4>
+                        <h4 class="option">3D Render</h4>
+                        <h4 class="option">Unreal Game</h4>
+                    </div>
+                </div>
                 <p contenteditable="true" id="new_project_description">description here...</p>
                 <button class="btn btn-primary save-btn" id="save_new_project_btn"><i class="far fa-save"></i> Save</button>
             </div>
@@ -67,11 +70,11 @@
                 Create system to add projects [<span class="status in_progress">In Progress</span>]
                 <ul>
                     <li>Create front end for projects [<span class="status completed">Completed</span>]</li>
-                    <li>Create new project UI [<span class="status in_progress">In Progress</span>]</li>
-                    <li>Create image for new project (?) [<span class="status not_started">Not Started</span>]</li>
-                    <li>Create custom dropdown for category [<span class="status not_started">Not Started</span>]</li>
+                    <li>Create new project UI [<span class="status completed">Completed</span>]</li>
+                    <li>Create image for new project (?) [<span class="status completed">Completed</span>]</li>
+                    <li>Create custom dropdown for category [<span class="status completed">Completed</span>]</li>
                     <li>Create JS Class for project saving [<span class="status completed">Completed</span>]</li>
-                    <li>Create Validation method in class [<span class="status in_progress">In Progress</span>]</li>
+                    <li>Create Validation method in class [<span class="status completed">Completed</span>]</li>
                     <li>Create save method in class [<span class="status not_started">Not Started</span>]</li>
                 </ul>
             </li>

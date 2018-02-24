@@ -4,6 +4,10 @@
 
         &.odd {
             background: #fff;
+
+            .image-col {
+                text-align: right;
+            }
         }
 
         &.even {
@@ -45,6 +49,46 @@
                 width: 100%;
                 font-size: 1.2rem;
             }
+
+            .fake_dropdown {
+                position: relative;
+
+                .open{
+                    .selected{
+                        cursor:default;
+                    }
+                }
+
+                .options {
+                    display: none;
+                    position: absolute;
+                    background: #ffffff;
+                    z-index: 100;
+                    border:solid 2px black;
+                    border-top: 0;
+                }
+
+                .selected{
+                    cursor:pointer;
+
+                    &.error{
+                        color: red;
+                    }
+                }
+
+                .option {
+                    padding: 5px 10px;
+                    margin: 0;
+                    border-bottom: solid 1px gray;
+                    transition: all 0.3s ease-out;
+                    cursor:pointer;
+
+                    &:hover{
+                        background: darkgray;
+                    }
+                }
+            }
+
         }
 
     }
