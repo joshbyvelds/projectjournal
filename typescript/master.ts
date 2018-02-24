@@ -39,10 +39,6 @@ class ProjectSaver {
         return isValid;
     }
 
-    private clearError(): void{
-
-    }
-
     private reset() {
 
     }
