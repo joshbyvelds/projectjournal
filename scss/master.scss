@@ -28,8 +28,12 @@ main {
 
     }
 
-    ul {
+    ol > li{
+        font-weight: bold;
+    }
 
+    ul {
+        font-weight: normal;
     }
 
     .status {

@@ -61,6 +61,10 @@ main {
       .projects .project.new .fake_dropdown .option:hover {
         background: darkgray; }
 
+.todo ol > li {
+  font-weight: bold; }
+.todo ul {
+  font-weight: normal; }
 .todo .status {
   font-weight: bold; }
   .todo .status.not_started {
