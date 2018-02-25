@@ -61,6 +61,11 @@ main {
       .projects .project.new .fake_dropdown .option:hover {
         background: darkgray; }
 
+.categories {
+  padding: 20px 0 0; }
+  .categories button {
+    border-radius: 10em; }
+
 .todo ol > li {
   font-weight: bold; }
 .todo ul {

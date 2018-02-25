@@ -17,6 +17,15 @@
 
 <header><h1><img src="/assets/images/header_logo.jpg" alt=""> Project Journal</h1></header>
 <main>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 categories">
+                {% for category in categories %}
+                    <button class="btn btn-outline-info">{{ category }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <div class="container projects">
         <div class="row project new odd">
             <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
@@ -25,12 +34,9 @@
                 <div class="fake_dropdown" id="category_select">
                     <h4 id="selected_category" class="selected" data-selected="test">Category</h4>
                     <div class="options">
-                        <h4 class="option">Website</h4>
-                        <h4 class="option">Web App</h4>
-                        <h4 class="option">Fan Fiction</h4>
-                        <h4 class="option">HTML Game</h4>
-                        <h4 class="option">3D Render</h4>
-                        <h4 class="option">Unreal Game</h4>
+                        {% for category in categories %}
+                            <h4 class="option">{{ category }}</h4>
+                        {% endfor %}
                     </div>
                 </div>
                 <p contenteditable="true" id="new_project_description">Project description goes here..</p>
@@ -39,7 +45,7 @@
         </div>
 
         {% for project in projects %}
-            <div class="row project {% if loop.index0 is odd %}odd{% else %}even{% endif %}">
+            <div class="row project {{ project.category }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}">
                 {% if loop.index0 is odd %}
                     <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
                     <div class="col-sm-12 col-md-6 title-col">
@@ -82,11 +88,11 @@
                 </ul>
             </li>
             <li>
-                Create category system to group each project (filter, compare projects in same category) [<span class="status not_started">Not Started</span>]
+                Create category system to group each project (filter, compare projects in same category) [<span class="status in_progress">In Progress</span>]
                 <ul>
-                    <li>Create category array in index.php, send it to page via twig var [<span class="status not_started">Not Started</span>]</li>
-                    <li>Add tags to top of project list using category array twig var [<span class="status not_started">Not Started</span>]</li>
-                    <li>update new project category list using category array twig var [<span class="status not_started">Not Started</span>]</li>
+                    <li>Create category array in index.php, send it to page via twig var [<span class="status completed">Completed</span>]</li>
+                    <li>Add tags to top of project list using category array twig var [<span class="status completed">Completed</span>]</li>
+                    <li>update new project category list using category array twig var [<span class="status completed">Completed</span>]</li>
                     <li>create js class to filter projects when category tag is selected [<span class="status not_started">Not Started</span>]</li>
                 </ul>
             </li>

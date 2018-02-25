@@ -4,6 +4,7 @@
 require_once("vendor/autoload.php");
 require_once("php/utilises.php");
 require_once("php/db.php");
+require_once("php/categories.php");
 
 // Setup Twig cuz it's you know Awesome..
 $loader = new \Twig_Loader_Filesystem(__DIR__.'/view');
@@ -63,5 +64,6 @@ echo $twig->render('index.twig',
     [
         'title' => 'Project Journal',
         'projects' => $projects,
+        'categories' => $categories,
     ]
 );
