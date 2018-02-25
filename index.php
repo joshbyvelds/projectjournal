@@ -15,10 +15,11 @@ function timeConvert ($seconds) {
     return sprintf('%02d:%02d:%02d', ((int)$t/3600),((int)$t/60%60), (int)$t%60);
 };
 
+$projects = [];
+
 // Check if projects table exists in DB
 if(!tableExists($dbh, "projects")){
     try {
-        $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
         $sql = "CREATE table projects(
         id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
         completed INT(1) NOT NULL,
@@ -36,7 +37,6 @@ if(!tableExists($dbh, "projects")){
         $sth = $dbh->prepare("SELECT * FROM projects");
         $sth->execute();
         $projects_array = $sth->fetchAll();
-        $projects = [];
 
         if(count($projects_array) > 0){
             foreach ($projects_array as $project){
