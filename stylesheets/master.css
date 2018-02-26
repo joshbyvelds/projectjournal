@@ -64,7 +64,9 @@ main {
 .categories {
   padding: 20px 0 0; }
   .categories button {
-    border-radius: 10em; }
+    border-radius: 10em;
+    padding-top: .7rem;
+    padding-bottom: .7rem; }
 
 .btn.aqua-gradient {
   background: -webkit-linear-gradient(50deg, #2096ff, #05ffa3) !important;
