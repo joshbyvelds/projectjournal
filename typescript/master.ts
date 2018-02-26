@@ -91,4 +91,24 @@ class ProjectSaver {
     }
 }
 
+class CategorySelector {
+    constructor() {
+        $(document).ready(() => {this.init();});
+    }
+
+    private init() {
+        $(".category-btn").off().on("click", (event) => {
+           const $btn = $(event.target);
+           if($btn.hasClass("blue-gradient")){
+               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+           }else{
+               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+               $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+           }
+
+        });
+    }
+}
+
 let projectSaver = new ProjectSaver();
+let categorySelector = new CategorySelector();

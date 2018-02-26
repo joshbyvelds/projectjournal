@@ -79,5 +79,25 @@ var ProjectSaver = (function () {
     };
     return ProjectSaver;
 }());
+var CategorySelector = (function () {
+    function CategorySelector() {
+        var _this = this;
+        $(document).ready(function () { _this.init(); });
+    }
+    CategorySelector.prototype.init = function () {
+        $(".category-btn").off().on("click", function (event) {
+            var $btn = $(event.target);
+            if ($btn.hasClass("blue-gradient")) {
+                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+            }
+            else {
+                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+                $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+            }
+        });
+    };
+    return CategorySelector;
+}());
 var projectSaver = new ProjectSaver();
+var categorySelector = new CategorySelector();
 //# sourceMappingURL=master.js.map

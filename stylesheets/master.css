@@ -66,6 +66,19 @@ main {
   .categories button {
     border-radius: 10em; }
 
+.btn.aqua-gradient {
+  background: -webkit-linear-gradient(50deg, #2096ff, #05ffa3) !important;
+  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
+.btn.blue-gradient {
+  border: 2px solid #fff;
+  background: -webkit-linear-gradient(50deg, #45cafc, #303f9f) !important;
+  background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
 .todo ol > li {
   font-weight: bold; }
 .todo ul {
