@@ -18,7 +18,7 @@ var ProjectSaver = (function () {
                 }
                 if (json_return.success) {
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' +
                             '                        <h4>' + _this.category.html() + '</h4>\n' +
                             '                        <h5>00:00:00</h5>\n' +
@@ -29,7 +29,7 @@ var ProjectSaver = (function () {
                     }
                     else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd' + _this.category.html().toLowerCase().replace(" ", "_") + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' +
                             '                        <h4>' + _this.category.html() + '</h4>\n' +
@@ -82,17 +82,24 @@ var ProjectSaver = (function () {
 var CategorySelector = (function () {
     function CategorySelector() {
         var _this = this;
+        this.selectedCategory = "";
         $(document).ready(function () { _this.init(); });
     }
     CategorySelector.prototype.init = function () {
+        var _this = this;
         $(".category-btn").off().on("click", function (event) {
             var $btn = $(event.target);
+            $(".project").not(".new").fadeOut();
             if ($btn.hasClass("blue-gradient")) {
+                _this.selectedCategory = "";
                 $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+                $(".project").fadeIn();
             }
             else {
+                _this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
                 $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
                 $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+                $("." + _this.selectedCategory).fadeIn();
             }
         });
     };

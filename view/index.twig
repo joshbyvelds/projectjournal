@@ -45,7 +45,7 @@
         </div>
 
         {% for project in projects %}
-            <div class="row project {{ project.category }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}">
+            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}">
                 {% if loop.index0 is odd %}
                     <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
                     <div class="col-sm-12 col-md-6 title-col">
@@ -93,7 +93,8 @@
                     <li>Create category array in index.php, send it to page via twig var [<span class="status completed">Completed</span>]</li>
                     <li>Add tags to top of project list using category array twig var [<span class="status completed">Completed</span>]</li>
                     <li>update new project category list using category array twig var [<span class="status completed">Completed</span>]</li>
-                    <li>create js class to filter projects when category tag is selected [<span class="status not_started">Not Started</span>]</li>
+                    <li>create js class to filter projects when category tag is selected [<span class="status completed">Completed</span>]</li>
+                    <li>reorder odd and even rows when categories are filtered ( switch position of img) [<span class="status not_started">Not Started</span>]</li>
                 </ul>
             </li>
             <li>Create system to edit a project's details [<span class="status not_started">Not Started</span>]</li>

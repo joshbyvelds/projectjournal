@@ -24,7 +24,7 @@ class ProjectSaver {
                 if(json_return.success) {
                     //create project in html
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' +
                             '                        <h4>' + this.category.html() + '</h4>\n' +
                             '                        <h5>00:00:00</h5>\n' +
@@ -34,7 +34,7 @@ class ProjectSaver {
                             '                ');
                     } else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' +
                             '                        <h4>' + this.category.html() + '</h4>\n' +
@@ -92,18 +92,26 @@ class ProjectSaver {
 }
 
 class CategorySelector {
+    selectedCategory: string;
+
     constructor() {
+        this.selectedCategory = "";
         $(document).ready(() => {this.init();});
     }
 
     private init() {
         $(".category-btn").off().on("click", (event) => {
            const $btn = $(event.target);
+            $(".project").not(".new").fadeOut();
            if($btn.hasClass("blue-gradient")){
+               this.selectedCategory = "";
                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+               $(".project").fadeIn();
            }else{
+               this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
                $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+               $("." + this.selectedCategory).fadeIn();
            }
 
         });
