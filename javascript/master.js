@@ -23,6 +23,10 @@ var ProjectSaver = (function () {
                             '                        <h4>' + _this.category.html() + '</h4>\n' +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
+                            '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
+                            '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
+                            '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div>\n' +
                             '                    <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div></div>\n' +
                             '                ');
@@ -35,6 +39,10 @@ var ProjectSaver = (function () {
                             '                        <h4>' + _this.category.html() + '</h4>\n' +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
+                            '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
+                            '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
+                            '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div></div>\n' +
                             '                ');
                     }
