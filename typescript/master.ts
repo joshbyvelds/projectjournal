@@ -102,18 +102,39 @@ class CategorySelector {
     private init() {
         $(".category-btn").off().on("click", (event) => {
            const $btn = $(event.target);
-            $(".project").not(".new").fadeOut();
+            $(".project").not(".new").fadeOut().removeClass("shown");
            if($btn.hasClass("blue-gradient")){
                this.selectedCategory = "";
                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
                $(".project").fadeIn();
+               this.resetOrder();
            }else{
                this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
                $btn.removeClass("btn-outline-info").addClass("blue-gradient");
-               $("." + this.selectedCategory).fadeIn();
+               $("." + this.selectedCategory).addClass("shown").fadeIn();
+               this.sortOrder();
            }
+        });
+    }
 
+    private sortOrder() {
+        $(".shown").each((index, element) => {
+            if(index % 2 === 0){
+                $(element).find('.image-col').appendTo(element);
+            }else{
+                $(element).find('.image-col').prependTo(element);
+            }
+        });
+    }
+
+    private resetOrder (){
+        $(".project").not(".new").each((index, element) => {
+            if(index % 2 === 0){
+                $(element).find('.image-col').appendTo(element);
+            }else{
+                $(element).find('.image-col').prependTo(element);
+            }
         });
     }
 }
