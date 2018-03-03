@@ -20,13 +20,14 @@ var ProjectSaver = (function () {
                     var category_dropdown = $('<div>').append($(".project_category").first().clone()).remove().html();
                     $(category_dropdown).find(".selected").html(_this.category.html());
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-save"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div>\n' +
                             '                    <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div></div>\n' +
@@ -34,7 +35,7 @@ var ProjectSaver = (function () {
                     }
                     else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd' + _this.category.html().toLowerCase().replace(" ", "_") + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
@@ -42,6 +43,7 @@ var ProjectSaver = (function () {
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-edit"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div></div>\n' +
                             '                ');

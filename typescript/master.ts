@@ -28,20 +28,21 @@ class ProjectSaver {
 
                     //create project in html
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="'+ json_return.lastId +'"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-save"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div>\n' +
                             '                    <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div></div>\n' +
                             '                ');
                     } else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
@@ -49,6 +50,7 @@ class ProjectSaver {
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-edit"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div></div>\n' +
                             '                ');

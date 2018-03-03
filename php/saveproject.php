@@ -53,6 +53,7 @@ try {
     $stmt->bindParam(2, $category);
     $stmt->bindParam(3, $description);
     $stmt->execute();
+    $json['lastId'] = $dbh->lastInsertId();
 }
 catch(PDOException $e) {
     echo $e->getMessage();//Remove or change message in production code
