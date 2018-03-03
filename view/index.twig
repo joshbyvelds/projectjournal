@@ -45,28 +45,44 @@
         </div>
 
         {% for project in projects %}
-            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}">
+            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-id="{{ project.id }}">
                 {% if loop.index0 is odd %}
                     <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
                     <div class="col-sm-12 col-md-6 title-col">
                         <h3>{{ project.title }}</h3>
-                        <h4>{{ project.category }}</h4>
+                        <div class="fake_dropdown project_category">
+                            <h4 class="selected" data-selected="test">{{ project.category }}</h4>
+                            <div class="options">
+                                {% for category in categories %}
+                                    <h4 class="option">{{ category }}</h4>
+                                {% endfor %}
+                            </div>
+                        </div>
                         <h5>{{ project.time }} {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
                         <p>{{ project.description }}</p>
                         <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
                         <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
                         <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
+                        <button class="btn btn-default edit-save-btn">Save <i class="far fa-save"></i></button>
                         <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
                     </div>
                 {% else %}
                     <div class="col-sm-12 col-md-6 title-col">
                         <h3>{{ project.title }}</h3>
-                        <h4>{{ project.category }}</h4>
+                        <div class="fake_dropdown project_category">
+                            <h4 class="selected" data-selected="test">{{ project.category }}</h4>
+                            <div class="options">
+                                {% for category in categories %}
+                                    <h4 class="option">{{ category }}</h4>
+                                {% endfor %}
+                            </div>
+                        </div>
                         <h5>{{ project.time }} {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
                         <p>{{ project.description }}</p>
                         <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
                         <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
                         <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
+                        <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
                         <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
                     </div>
                     <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>

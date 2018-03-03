@@ -19,6 +19,9 @@ main {
     background: #fff; }
     .projects .project.odd .image-col {
       text-align: right; }
+  .projects .project.new .save-btn {
+    width: 100%;
+    font-size: 1.2rem; }
   .projects .project .image-col img {
     transition: all 0.3s ease-out;
     cursor: pointer; }
@@ -34,31 +37,28 @@ main {
     font-size: 0.8rem; }
     .projects .project .title-col p.error {
       color: red; }
-  .projects .project.new .save-btn {
-    width: 100%;
-    font-size: 1.2rem; }
-  .projects .project.new .fake_dropdown {
+  .projects .project .fake_dropdown {
     position: relative; }
-    .projects .project.new .fake_dropdown .open .selected {
+    .projects .project .fake_dropdown .open .selected {
       cursor: default; }
-    .projects .project.new .fake_dropdown .options {
+    .projects .project .fake_dropdown .options {
       display: none;
       position: absolute;
       background: #ffffff;
       z-index: 100;
       border: solid 2px black;
       border-top: 0; }
-    .projects .project.new .fake_dropdown .selected {
+    .projects .project .fake_dropdown .selected {
       cursor: pointer; }
-      .projects .project.new .fake_dropdown .selected.error {
+      .projects .project .fake_dropdown .selected.error {
         color: red; }
-    .projects .project.new .fake_dropdown .option {
+    .projects .project .fake_dropdown .option {
       padding: 5px 10px;
       margin: 0;
       border-bottom: solid 1px gray;
       transition: all 0.3s ease-out;
       cursor: pointer; }
-      .projects .project.new .fake_dropdown .option:hover {
+      .projects .project .fake_dropdown .option:hover {
         background: darkgray; }
 
 .categories {

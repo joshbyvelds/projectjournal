@@ -1,8 +1,8 @@
 class ProjectSaver {
     savelock: boolean;
-    title: jQuery;
-    category: jQuery;
-    description: jQuery;
+    title: JQuery;
+    category: JQuery;
+    description: JQuery;
 
     constructor() {
         this.savelock = false;
@@ -22,11 +22,14 @@ class ProjectSaver {
                 }
 
                 if(json_return.success) {
+
+                    const category_dropdown: string = $('<div>').append($(".project_category").first().clone()).remove().html();
+                    $(category_dropdown).find(".selected").html(this.category.html());
+
                     //create project in html
                     if ($(".project").last().hasClass("odd")) {
                         $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 title-col">\n' +
-                            '                        <h3>' + this.title.html() + '</h3>\n' +
-                            '                        <h4>' + this.category.html() + '</h4>\n' +
+                            '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
@@ -40,8 +43,7 @@ class ProjectSaver {
                         $(".projects").append('' +
                             '                    <div class="row project odd' + this.category.html().toLowerCase().replace(" ","_") + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
-                            '                        <h3>' + this.title.html() + '</h3>\n' +
-                            '                        <h4>' + this.category.html() + '</h4>\n' +
+                            '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
                             '                        <p>' + this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
@@ -59,7 +61,7 @@ class ProjectSaver {
     }
 
     private validate(): boolean{
-        let isValid = true;
+        let isValid: boolean = true;
 
         if($.trim(this.title.html()) === "" || $.trim(this.title.html()) === "New Project" || $.trim(this.title.html()) === "Please give the new project a title."){
            this.title.addClass("error").html("Please give the new project a title.").one("focus", () =>{this.title.removeClass("error").html("");});
@@ -109,7 +111,7 @@ class CategorySelector {
 
     private init() {
         $(".category-btn").off().on("click", (event) => {
-           const $btn = $(event.target);
+           const $btn: JQuery = $(event.target);
             $(".project").not(".new").fadeOut().removeClass("shown");
            if($btn.hasClass("blue-gradient")){
                this.selectedCategory = "";
@@ -147,5 +149,30 @@ class CategorySelector {
     }
 }
 
+class ProjectEditor {
+    selectedProject: JQuery;
+
+    constructor() {
+        $(document).ready(() => {
+            this.init();
+        });
+    }
+
+    private resetEdit(){
+
+    }
+
+    private editProject(project: HTMLElement){
+        this.resetEdit();
+        this.selectedProject = $(project).parent().parent();
+
+    }
+
+    private init(){
+        $(".project .edit-save-btn").off().on('click', (e) => {this.editProject(e.target);})
+    }
+}
+
 let projectSaver = new ProjectSaver();
 let categorySelector = new CategorySelector();
+let projectEditor = new ProjectEditor();
