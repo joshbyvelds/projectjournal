@@ -49,6 +49,7 @@ var ProjectSaver = (function () {
                             '                ');
                     }
                     _this.reset();
+                    $(".projects").not(".new").find(".fake_dropdown").addClass("locked");
                 }
             });
         }
@@ -145,10 +146,16 @@ var ProjectEditor = (function () {
         });
     }
     ProjectEditor.prototype.resetEdit = function () {
+        $(".edit h3, .edit p").removeAttr("contenteditable");
+        $(".edit .fake_dropdown").addClass("locked");
+        $(".edit").removeClass("edit");
     };
     ProjectEditor.prototype.editProject = function (project) {
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
+    };
+    ProjectEditor.prototype.save = function () {
+        this.resetEdit();
     };
     ProjectEditor.prototype.init = function () {
         var _this = this;

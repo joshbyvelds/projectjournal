@@ -57,6 +57,7 @@ class ProjectSaver {
                     }
 
                     this.reset();
+                    $(".projects").not(".new").find(".fake_dropdown").addClass("locked");
                 }
             });
         }
@@ -161,13 +162,19 @@ class ProjectEditor {
     }
 
     private resetEdit(){
-
+        $(".edit h3, .edit p").removeAttr("contenteditable");
+        $(".edit .fake_dropdown").addClass("locked");
+        $(".edit").removeClass("edit");
     }
 
     private editProject(project: HTMLElement){
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
 
+    }
+
+    private save(){
+        this.resetEdit();
     }
 
     private init(){
