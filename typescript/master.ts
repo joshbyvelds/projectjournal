@@ -170,11 +170,22 @@ class ProjectEditor {
     private editProject(project: HTMLElement){
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
+        this.selectedProject.addClass("edit");
+        $(".edit h3, .edit p").attr("contenteditable");
+        $(".edit .fake_dropdown").removeClass("locked");
 
     }
 
     private save(){
-        this.resetEdit();
+        let titleL: string = $("#new_project_title").html();
+        let category: string = $("#selected_category").html();
+        let description: string = $("#new_project_description").html();
+
+        $.post("php/editproject", {}, function(json_return){
+            if(json_return.success === 1){
+                this.resetEdit();
+            }
+        });
     }
 
     private init(){

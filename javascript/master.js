@@ -153,9 +153,19 @@ var ProjectEditor = (function () {
     ProjectEditor.prototype.editProject = function (project) {
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
+        this.selectedProject.addClass("edit");
+        $(".edit h3, .edit p").attr("contenteditable");
+        $(".edit .fake_dropdown").removeClass("locked");
     };
     ProjectEditor.prototype.save = function () {
-        this.resetEdit();
+        var titleL = $("#new_project_title").html();
+        var category = $("#selected_category").html();
+        var description = $("#new_project_description").html();
+        $.post("php/editproject", {}, function (json_return) {
+            if (json_return.success === 1) {
+                this.resetEdit();
+            }
+        });
     };
     ProjectEditor.prototype.init = function () {
         var _this = this;
