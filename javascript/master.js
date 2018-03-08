@@ -171,12 +171,18 @@ var ProjectEditor = (function () {
         });
     };
     ProjectEditor.prototype.save = function () {
+        var _this = this;
         var title = this.selectedProject.find("h3").html();
         var category = this.selectedProject.find("h4.selected").html();
         var description = this.selectedProject.find("p").html();
-        $.post("php/editproject", {}, function (json_return) {
-            if (json_return.success === 1) {
-                this.resetEdit();
+        var id = this.selectedProject.data("id");
+        $.post("php/editproject", { 'id': id, 'title': title, 'category': category, 'description': description }, function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+                _this.resetEdit();
+            }
+            else {
+                console.error(json_return.error_message);
             }
         });
     };

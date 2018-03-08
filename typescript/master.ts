@@ -192,10 +192,14 @@ class ProjectEditor {
         let title: string = this.selectedProject.find("h3").html();
         let category: string = this.selectedProject.find("h4.selected").html();
         let description: string = this.selectedProject.find("p").html();
+        let id: string = this.selectedProject.data("id");
 
-        $.post("php/editproject", {}, function(json_return){
-            if(json_return.success === 1){
+        $.post("php/editproject", {'id':id, 'title':title, 'category':category, 'description':description}, (json_return) => {
+            json_return = JSON.parse(json_return);
+            if(json_return.success){
                 this.resetEdit();
+            }else{
+                console.error(json_return.error_message);
             }
         });
     }

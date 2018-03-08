@@ -56,8 +56,8 @@ try {
     $json['lastId'] = $dbh->lastInsertId();
 }
 catch(PDOException $e) {
-    echo $e->getMessage();//Remove or change message in production code
     $json['success'] = false;
+    $json['error_message'] = $e->getMessage();
 }
 
 echo json_encode($json);

@@ -8,13 +8,15 @@
 
 require_once('db.php');
 
+if(isset($_POST['id'])){
+    $id = $_POST['id'];
+}
+
 if(isset($_POST['title'])){
     $title = $_POST['title'];
-
 }
 if(isset($_POST['category'])){
     $category = $_POST['category'];
-
 }
 if(isset($_POST['description'])){
     $description = $_POST['description'];
@@ -23,6 +25,11 @@ if(isset($_POST['description'])){
 $json['error'] = false;
 $json['success'] = true;
 $json['error_message'] = '';
+
+if(empty($id)){
+    $json['error'] = true;
+    $json['error_message'] .= "Please select a project to update.\n";
+}
 
 if(empty($title)){
     $json['error'] = true;
@@ -48,16 +55,13 @@ if($json['error']){
 // Okay all errors handled GTG :)
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO projects (completed, title, category, description, time) VALUES (0, ?, ?, ?, 0)");
-    $stmt->bindParam(1, $title);
-    $stmt->bindParam(2, $category);
-    $stmt->bindParam(3, $description);
-    $stmt->execute();
-    $json['lastId'] = $dbh->lastInsertId();
+    $sql = "UPDATE projects SET title=?, category=?, description=? WHERE id=?";
+    $dbh->prepare($sql)->execute([$title, $category, $description, $id]);
+    $json['success'] = true;
 }
 catch(PDOException $e) {
-    echo $e->getMessage();//Remove or change message in production code
     $json['success'] = false;
+    $json['error_message'] = $e->getMessage();
 }
 
 echo json_encode($json);
