@@ -188,11 +188,38 @@ class ProjectEditor {
         });
     }
 
+    private validate(): boolean{
+        let isValid: boolean = true;
+        let title: JQuery = this.selectedProject.find("h3");
+        let category: JQuery = this.selectedProject.find("h4.selected");
+        let description: JQuery = this.selectedProject.find("p");
+
+        if($.trim(title.html()) === "" || $.trim(title.html()) === "Please give the project a title."){
+            title.addClass("error").html("Please give the project a title.").one("focus", () =>{title.removeClass("error").html("");});
+            isValid = false;
+        }
+
+        if($.trim(category.html()) === "Please select" || $.trim(category.html()) === "Category"){
+            category.addClass("error");
+            isValid = false;
+        }
+
+        if($.trim(description.html()) === "" || $.trim(description.html()) === "Project description goes here.." || $.trim(description.html()) === "Please give the project a description."){
+            description.addClass("error").html("Please give the project a description.").one("focus", () =>{description.removeClass("error").html("");});
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
     private save(){
         let title: string = this.selectedProject.find("h3").html();
         let category: string = this.selectedProject.find("h4.selected").html();
         let description: string = this.selectedProject.find("p").html();
         let id: string = this.selectedProject.data("id");
+
+        if(!this.validate())
+            return;
 
         $.post("php/editproject", {'id':id, 'title':title, 'category':category, 'description':description}, (json_return) => {
             json_return = JSON.parse(json_return);
