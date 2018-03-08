@@ -148,19 +148,32 @@ var ProjectEditor = (function () {
     ProjectEditor.prototype.resetEdit = function () {
         $(".edit h3, .edit p").removeAttr("contenteditable");
         $(".edit .fake_dropdown").addClass("locked");
+        $(".edit .edit-save-btn").hide();
+        $(".edit .edit-btn").show();
         $(".edit").removeClass("edit");
     };
     ProjectEditor.prototype.editProject = function (project) {
+        var _this = this;
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
         this.selectedProject.addClass("edit");
-        $(".edit h3, .edit p").attr("contenteditable");
+        $(".edit h3, .edit p").attr("contenteditable", "true");
         $(".edit .fake_dropdown").removeClass("locked");
+        $(".edit .fake_dropdown .selected").on("click", function () { _this.openDropdown(); });
+        $(".edit .edit-save-btn").show();
+        $(".edit .edit-btn").hide();
+    };
+    ProjectEditor.prototype.openDropdown = function () {
+        $(".edit .options").slideDown(500);
+        $(".edit .option").off().on('click', function () {
+            $(".edit .selected").html($(this).html()).removeClass("error");
+            $(".edit .options").slideUp(500);
+        });
     };
     ProjectEditor.prototype.save = function () {
-        var titleL = $("#new_project_title").html();
-        var category = $("#selected_category").html();
-        var description = $("#new_project_description").html();
+        var title = this.selectedProject.find("h3").html();
+        var category = this.selectedProject.find("h4.selected").html();
+        var description = this.selectedProject.find("p").html();
         $.post("php/editproject", {}, function (json_return) {
             if (json_return.success === 1) {
                 this.resetEdit();
@@ -169,7 +182,8 @@ var ProjectEditor = (function () {
     };
     ProjectEditor.prototype.init = function () {
         var _this = this;
-        $(".project .edit-save-btn").off().on('click', function (e) { _this.editProject(e.target); });
+        $(".project .edit-btn").off().on('click', function (e) { _this.editProject(e.target); });
+        $(".project .edit-save-btn").off().on('click', function (e) { _this.save(); });
     };
     return ProjectEditor;
 }());

@@ -164,6 +164,8 @@ class ProjectEditor {
     private resetEdit(){
         $(".edit h3, .edit p").removeAttr("contenteditable");
         $(".edit .fake_dropdown").addClass("locked");
+        $(".edit .edit-save-btn").hide();
+        $(".edit .edit-btn").show();
         $(".edit").removeClass("edit");
     }
 
@@ -171,15 +173,25 @@ class ProjectEditor {
         this.resetEdit();
         this.selectedProject = $(project).parent().parent();
         this.selectedProject.addClass("edit");
-        $(".edit h3, .edit p").attr("contenteditable");
+        $(".edit h3, .edit p").attr("contenteditable", "true");
         $(".edit .fake_dropdown").removeClass("locked");
+        $(".edit .fake_dropdown .selected").on("click", () => {this.openDropdown();})
+        $(".edit .edit-save-btn").show();
+        $(".edit .edit-btn").hide();
+    }
 
+    private openDropdown(){
+        $(".edit .options").slideDown(500);
+        $(".edit .option").off().on('click', function() {
+            $(".edit .selected").html($(this).html()).removeClass("error");
+            $(".edit .options").slideUp(500);
+        });
     }
 
     private save(){
-        let titleL: string = $("#new_project_title").html();
-        let category: string = $("#selected_category").html();
-        let description: string = $("#new_project_description").html();
+        let title: string = this.selectedProject.find("h3").html();
+        let category: string = this.selectedProject.find("h4.selected").html();
+        let description: string = this.selectedProject.find("p").html();
 
         $.post("php/editproject", {}, function(json_return){
             if(json_return.success === 1){
@@ -189,7 +201,8 @@ class ProjectEditor {
     }
 
     private init(){
-        $(".project .edit-save-btn").off().on('click', (e) => {this.editProject(e.target);})
+        $(".project .edit-btn").off().on('click', (e) => {this.editProject(e.target);})
+        $(".project .edit-save-btn").off().on('click', (e) => {this.save();})
     }
 }
 
