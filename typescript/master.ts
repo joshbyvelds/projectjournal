@@ -118,13 +118,13 @@ class CategorySelector {
             $(".project").not(".new").fadeOut().removeClass("shown");
            if($btn.hasClass("blue-gradient")){
                this.selectedCategory = "";
-               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient").removeClass("selected_category");
                $(".project").fadeIn();
                this.resetOrder();
            }else{
                this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
-               $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+               $btn.removeClass("btn-outline-info").addClass("blue-gradient selected_category");
                $("." + this.selectedCategory).addClass("shown").fadeIn();
                this.sortOrder();
            }
@@ -224,7 +224,13 @@ class ProjectEditor {
         $.post("php/editproject", {'id':id, 'title':title, 'category':category, 'description':description}, (json_return) => {
             json_return = JSON.parse(json_return);
             if(json_return.success){
+                if(this.selectedProject.hasClass("even")){
+                    this.selectedProject.attr("class", "row project even " + category.toLowerCase().replace(' ', '_'));
+                }else{
+                    this.selectedProject.attr("class", "row project odd " + category.toLowerCase().replace(' ', '_'));
+                }
                 this.resetEdit();
+                $(".category-btn.selected_category").removeClass("selected_category blue-gradient").trigger("click");
             }else{
                 console.error(json_return.error_message);
             }

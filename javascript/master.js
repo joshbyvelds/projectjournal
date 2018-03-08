@@ -103,14 +103,14 @@ var CategorySelector = (function () {
             $(".project").not(".new").fadeOut().removeClass("shown");
             if ($btn.hasClass("blue-gradient")) {
                 _this.selectedCategory = "";
-                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+                $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient").removeClass("selected_category");
                 $(".project").fadeIn();
                 _this.resetOrder();
             }
             else {
                 _this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
                 $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
-                $btn.removeClass("btn-outline-info").addClass("blue-gradient");
+                $btn.removeClass("btn-outline-info").addClass("blue-gradient selected_category");
                 $("." + _this.selectedCategory).addClass("shown").fadeIn();
                 _this.sortOrder();
             }
@@ -200,7 +200,14 @@ var ProjectEditor = (function () {
         $.post("php/editproject", { 'id': id, 'title': title, 'category': category, 'description': description }, function (json_return) {
             json_return = JSON.parse(json_return);
             if (json_return.success) {
+                if (_this.selectedProject.hasClass("even")) {
+                    _this.selectedProject.attr("class", "row project even " + category.toLowerCase().replace(' ', '_'));
+                }
+                else {
+                    _this.selectedProject.attr("class", "row project odd " + category.toLowerCase().replace(' ', '_'));
+                }
                 _this.resetEdit();
+                $(".category-btn.selected_category").removeClass("selected_category blue-gradient").trigger("click");
             }
             else {
                 console.error(json_return.error_message);
