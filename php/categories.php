@@ -12,5 +12,6 @@ $categories = [
     "Fan Fiction",
     "HTML Game",
     "3D Render",
+    "FL Studio Song",
     "Unreal Game",
 ];
