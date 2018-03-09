@@ -68,6 +68,30 @@ main {
     padding-top: .7rem;
     padding-bottom: .7rem; }
 
+.overlay_cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 100; }
+  .overlay_cover .overlay_box {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    background: white; }
+    .overlay_cover .overlay_box.delete {
+      width: 400px;
+      height: 240px;
+      margin-left: -200px;
+      margin-top: -120px; }
+    .overlay_cover .overlay_box .buttons {
+      text-align: center; }
+
 .btn.aqua-gradient {
   background: -webkit-linear-gradient(50deg, #2096ff, #05ffa3) !important;
   background: linear-gradient(40deg, #2096ff, #05ffa3) !important;

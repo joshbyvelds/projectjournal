@@ -35,14 +35,14 @@ class ProjectSaver {
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
-                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-save"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div>\n' +
                             '                    <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div></div>\n' +
                             '                ');
                     } else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5>00:00:00</h5>\n' +
@@ -50,7 +50,7 @@ class ProjectSaver {
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
                             '                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>' +
-                            '                        <button class="btn btn-primary edit-save-btn">Save <i class="far fa-edit"></i></button>' +
+                            '                        <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-edit"></i></button>' +
                             '                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>' +
                             '                    </div></div>\n' +
                             '                ');
@@ -58,6 +58,14 @@ class ProjectSaver {
 
                     this.reset();
                     $(".projects").not(".new").find(".fake_dropdown").addClass("locked");
+                    $(".project").not(".new").each((index, element) => {
+                        if(index % 2 === 0){
+                            $(element).find('.image-col').appendTo(element);
+                        }else{
+                            $(element).find('.image-col').prependTo(element);
+                        }
+                    });
+                    $(".category-btn.selected_category").removeClass("selected_category blue-gradient").trigger("click");
                 }
             });
         }
@@ -123,7 +131,7 @@ class CategorySelector {
                this.resetOrder();
            }else{
                this.selectedCategory = $btn.text().toLowerCase().replace(' ', '_');
-               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient");
+               $(".category-btn.blue-gradient").addClass("btn-outline-info").removeClass("blue-gradient").removeClass("selected_category");
                $btn.removeClass("btn-outline-info").addClass("blue-gradient selected_category");
                $("." + this.selectedCategory).addClass("shown").fadeIn();
                this.sortOrder();
@@ -243,6 +251,57 @@ class ProjectEditor {
     }
 }
 
+class ProjectDeleter {
+    selectedProject: JQuery;
+
+    constructor() {
+        $(document).ready(() => {
+            this.init();
+        });
+    }
+
+    private delete(){
+        let id: string = this.selectedProject.data("id");
+
+        $.post("php/deleteproject.php", {"project_id":id}, (json_return) => {
+            json_return = JSON.parse(json_return);
+            if(json_return.success){
+                this.selectedProject.remove();
+                this.cancel();
+                $(".project").not(".new").each((index, element) => {
+                    if(index % 2 === 0){
+                        $(element).find('.image-col').appendTo(element);
+                    }else{
+                        $(element).find('.image-col').prependTo(element);
+                    }
+                });
+                $(".category-btn.selected_category").removeClass("selected_category blue-gradient").trigger("click");
+            }else{
+                console.error(json_return.error_message)
+            }
+        });
+    }
+
+    private cancel(){
+        $("#overlay, #delete_warning_box").fadeOut();
+        $("#delete_confirm_btn").off();
+        $("#delete_cancel_btn").off();
+        this.selectedProject = null;
+    }
+
+    private deleteProject($project: HTMLElement){
+        this.selectedProject = $($project).parent().parent();
+        $("#overlay, #delete_warning_box").fadeIn();
+        $("#delete_confirm_btn").off().on("click", ()=> {this.delete();});
+        $("#delete_cancel_btn").off().on("click", ()=> {this.cancel();});
+    }
+
+    private init(){
+        $(".project .delete-btn").off().on('click', (e) => {this.deleteProject(e.target);})
+    }
+}
+
 let projectSaver = new ProjectSaver();
 let categorySelector = new CategorySelector();
 let projectEditor = new ProjectEditor();
+let projectDeleter = new ProjectDeleter();

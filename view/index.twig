@@ -90,6 +90,18 @@
             </div>
         {% endfor %}
     </div>
+    <div id="overlay" class="overlay_cover">
+        <div id="delete_warning_box" class="overlay_box delete">
+            <h2>Warning!</h2>
+            <h4>Are you sure you want to delete?</h4>
+            <h3>Project Tilte</h3>
+            <div class="buttons">
+                <button class="btn btn-danger" id="delete_confirm_btn">Delete</button>
+                <button class="btn btn-default" id="delete_cancel_btn">Cancel</button>
+            </div>
+
+        </div>
+    </div>
     <div class="todo">
         <h2>TODO LIST:</h2>
         {#[<span class="status not_started">Not Started</span>]#}

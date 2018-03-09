@@ -10,8 +10,8 @@ require_once('db.php');
 
 if(isset($_POST['title'])){
     $title = $_POST['title'];
-
 }
+
 if(isset($_POST['category'])){
     $category = $_POST['category'];
 
