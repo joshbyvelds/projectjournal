@@ -46,6 +46,7 @@ if(!tableExists($dbh, "projects")){
                 $projectObject['completed'] = $project['completed'];
                 $projectObject['title'] = $project['title'];
                 $projectObject['category'] = $project['category'];
+                $projectObject['seconds'] = $project['time'];
                 $projectObject['time'] = timeConvert($project['time']);
                 $projectObject['description'] = $project['description'];
                 $projects[] = $projectObject;

@@ -45,7 +45,7 @@
         </div>
 
         {% for project in projects %}
-            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-id="{{ project.id }}">
+            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-seconds="{{ project.seconds }}" data-id="{{ project.id }}">
                 {% if loop.index0 is odd %}
                     <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
                     <div class="col-sm-12 col-md-6 title-col">
@@ -136,9 +136,12 @@
             <li>Create system to edit a project's details [<span class="status completed">Completed</span>]</li>
             <li>Create system to delete a project with failsafe function [<span class="status completed">Completed</span>]</li>
             <li>
-                Create system to add track time worked on project, start stop button with timer? [<span class="status not_started">Not Started</span>]
+                Create system to add track time worked on project, start stop button with timer? [<span class="status in_progress">In Progress</span>]
                 <ul>
-                    <li>Create Odometer effect for seconds increase [<span class="status not_started">Not Started</span>]</li>
+                    <li>Create Odometer effect for seconds increase [<span class="status in_progress">In Progress</span>]</li>
+                    <li>Save new value to Database when updated in JS [<span class="status not_started">Not Started</span>]</li>
+                    <li>Save value to database when stop btn is pressed [<span class="status not_started">Not Started</span>]</li>
+                    <li>Stop current project timer when new project timer is started [<span class="status not_started">Not Started</span>]</li>
                 </ul>
             </li>
             <li>Create TODO system for each project [<span class="status not_started">Not Started</span>]</li>
@@ -157,6 +160,7 @@
 <script src="vendor/MDBootstrap/js/popper.min.js"></script>
 <script src="vendor/MDBootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/MDBootstrap/js/mdb.min.js"></script>
+<script src="javascript/odometer.min.js"></script>
 <script src="javascript/master.js"></script>
 </body>
 </html>

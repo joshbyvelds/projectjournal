@@ -301,7 +301,59 @@ class ProjectDeleter {
     }
 }
 
+class ProjectTimeTracker{
+    selectedProject: JQuery;
+    currentOdometer: Object;
+
+    constructor() {
+        $(document).ready(() => {
+            this.init();
+        });
+    }
+
+    start($startBtn: HTMLElement){
+        this.selectedProject = $($startBtn).parent().parent();
+        $(".current_odometer").removeClass("current_odometer");
+        this.selectedProject.find("h5").addClass("current_odometer");
+
+        let el = document.querySelector('.current_odometer');
+        this.currentOdometer = new Odometer({
+            el: el,
+            value: '000000', //this.secondsToHms( parseInt(this.selectedProject.data("seconds"))),
+
+            // Any option (other than auto and selector) can be passed in here
+            format: 'd:dd:dd',
+            theme: 'minimal'
+        });
+
+        let odimeterTimeout = setTimeout(()=> {
+            let seconds: string = (parseInt(this.selectedProject.data("seconds")) + 1).toString();
+            this.selectedProject.data("seconds", seconds);
+            this.currentOdometer.update(this.secondsToHms(3));
+        }, 1000);
+
+        this.selectedProject.find(".stop-btn").show();
+        this.selectedProject.find(".start-btn").hide();
+    }
+
+    secondsToHms(d:number) {
+        console.log(d);
+        let h = Math.floor(d / 3600);
+        let m = Math.floor(d % 3600 / 60);
+        let s = Math.floor(d % 3600 % 60);
+
+        console.log("HH:MM:SS = " + ('0' + h).slice(-2) +  ('0' + m).slice(-2) +  ('0' + s).slice(-2));
+
+        return ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2);
+    }
+
+    init(){
+        $(".start-btn").off().on('click', (e) => {this.start(e.target);})
+    }
+}
+
 let projectSaver = new ProjectSaver();
 let categorySelector = new CategorySelector();
 let projectEditor = new ProjectEditor();
 let projectDeleter = new ProjectDeleter();
+let projectTimeTracker = new ProjectTimeTracker();

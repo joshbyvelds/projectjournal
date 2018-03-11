@@ -279,8 +279,50 @@ var ProjectDeleter = (function () {
     };
     return ProjectDeleter;
 }());
+var ProjectTimeTracker = (function () {
+    function ProjectTimeTracker() {
+        var _this = this;
+        $(document).ready(function () {
+            _this.init();
+        });
+    }
+    ProjectTimeTracker.prototype.start = function ($startBtn) {
+        var _this = this;
+        this.selectedProject = $($startBtn).parent().parent();
+        $(".current_odometer").removeClass("current_odometer");
+        this.selectedProject.find("h5").addClass("current_odometer");
+        var el = document.querySelector('.current_odometer');
+        this.currentOdometer = new Odometer({
+            el: el,
+            value: '000000',
+            format: 'd:dd:dd',
+            theme: 'minimal'
+        });
+        var odimeterTimeout = setTimeout(function () {
+            var seconds = (parseInt(_this.selectedProject.data("seconds")) + 1).toString();
+            _this.selectedProject.data("seconds", seconds);
+            _this.currentOdometer.update(_this.secondsToHms(3));
+        }, 1000);
+        this.selectedProject.find(".stop-btn").show();
+        this.selectedProject.find(".start-btn").hide();
+    };
+    ProjectTimeTracker.prototype.secondsToHms = function (d) {
+        console.log(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+        console.log("HH:MM:SS = " + ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2));
+        return ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2);
+    };
+    ProjectTimeTracker.prototype.init = function () {
+        var _this = this;
+        $(".start-btn").off().on('click', function (e) { _this.start(e.target); });
+    };
+    return ProjectTimeTracker;
+}());
 var projectSaver = new ProjectSaver();
 var categorySelector = new CategorySelector();
 var projectEditor = new ProjectEditor();
 var projectDeleter = new ProjectDeleter();
+var projectTimeTracker = new ProjectTimeTracker();
 //# sourceMappingURL=master.js.map
