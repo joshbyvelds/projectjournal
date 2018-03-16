@@ -20,9 +20,9 @@ var ProjectSaver = (function () {
                     var category_dropdown = $('<div>').append($(".project_category").first().clone()).remove().html();
                     $(category_dropdown).find(".selected").html(_this.category.html());
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5>00:00:00</h5>\n' +
+                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span> </h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -35,10 +35,10 @@ var ProjectSaver = (function () {
                     }
                     else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5>00:00:00</h5>\n' +
+                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -294,14 +294,16 @@ var ProjectTimeTracker = (function () {
         var el = document.querySelector('.current_odometer');
         this.currentOdometer = new Odometer({
             el: el,
-            value: '000000',
-            format: 'd:dd:dd',
+            value: '0',
+            duration: 800,
+            format: 'ddd:dd:dd',
             theme: 'minimal'
         });
-        var odimeterTimeout = setTimeout(function () {
+        var odimeterTimeInterval = setInterval(function () {
             var seconds = (parseInt(_this.selectedProject.data("seconds")) + 1).toString();
+            var hms = _this.secondsToHms(50);
             _this.selectedProject.data("seconds", seconds);
-            _this.currentOdometer.update(_this.secondsToHms(3));
+            _this.currentOdometer.update(hms);
         }, 1000);
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();

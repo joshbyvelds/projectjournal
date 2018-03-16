@@ -28,9 +28,9 @@ class ProjectSaver {
 
                     //create project in html
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="'+ json_return.lastId +'"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="'+ json_return.lastId +'" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5>00:00:00</h5>\n' +
+                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span> </h5>\n' +
                             '                        <p>' + this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -42,10 +42,10 @@ class ProjectSaver {
                             '                ');
                     } else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="' + json_return.lastId + '"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd ' + this.category.html().toLowerCase().replace(" ","_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5>00:00:00</h5>\n' +
+                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></h5>\n' +
                             '                        <p>' + this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -319,17 +319,18 @@ class ProjectTimeTracker{
         let el = document.querySelector('.current_odometer');
         this.currentOdometer = new Odometer({
             el: el,
-            value: '000000', //this.secondsToHms( parseInt(this.selectedProject.data("seconds"))),
-
+            value: '0', //this.secondsToHms( parseInt(this.selectedProject.data("seconds"))),
+            duration: 800,
             // Any option (other than auto and selector) can be passed in here
-            format: 'd:dd:dd',
+            format: 'ddd:dd:dd',
             theme: 'minimal'
         });
 
-        let odimeterTimeout = setTimeout(()=> {
+        let odimeterTimeInterval:number = setInterval(()=> {
             let seconds: string = (parseInt(this.selectedProject.data("seconds")) + 1).toString();
+            let hms: string = this.secondsToHms(50);
             this.selectedProject.data("seconds", seconds);
-            this.currentOdometer.update(this.secondsToHms(3));
+            this.currentOdometer.update(hms);
         }, 1000);
 
         this.selectedProject.find(".stop-btn").show();

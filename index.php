@@ -27,7 +27,7 @@ if(!tableExists($dbh, "projects")){
         title VARCHAR( 50 ) NOT NULL, 
         category VARCHAR( 250 ) NOT NULL,
         description VARCHAR (5000) NOT NULL,
-        time INT( 11 ) NOT NUll);";
+        time VARCHAR ( 11 ) NOT NUll);";
         $dbh->exec($sql);
     }
     catch(PDOException $e) {
@@ -42,12 +42,14 @@ if(!tableExists($dbh, "projects")){
         if(count($projects_array) > 0){
             foreach ($projects_array as $project){
                 $projectObject = [];
+                $timeArray = explode('|', $project['time']);
                 $projectObject['id'] = $project['id'];
                 $projectObject['completed'] = $project['completed'];
                 $projectObject['title'] = $project['title'];
                 $projectObject['category'] = $project['category'];
-                $projectObject['seconds'] = $project['time'];
-                $projectObject['time'] = timeConvert($project['time']);
+                $projectObject['seconds'] = sprintf('%02d', $timeArray[2]);
+                $projectObject['minutes'] = sprintf('%02d', $timeArray[1]);
+                $projectObject['hours'] = sprintf('%02d', $timeArray[0]);
                 $projectObject['description'] = $project['description'];
                 $projects[] = $projectObject;
             }

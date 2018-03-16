@@ -46,12 +46,14 @@ if($json['error']){
 }
 
 // Okay all errors handled GTG :)
+$time = '0|0|0';
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO projects (completed, title, category, description, time) VALUES (0, ?, ?, ?, 0)");
+    $stmt = $dbh->prepare("INSERT INTO projects (completed, title, category, description, time) VALUES (0, ?, ?, ?, ?)");
     $stmt->bindParam(1, $title);
     $stmt->bindParam(2, $category);
     $stmt->bindParam(3, $description);
+    $stmt->bindParam(4, $time);
     $stmt->execute();
     $json['lastId'] = $dbh->lastInsertId();
 }
