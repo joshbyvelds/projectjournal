@@ -291,30 +291,56 @@ var ProjectTimeTracker = (function () {
         this.selectedProject = $($startBtn).parent().parent();
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
-        var el = document.querySelector('.current_odometer');
-        this.currentOdometer = new Odometer({
-            el: el,
-            value: '0',
+        this.seconds = this.selectedProject.data("seconds");
+        this.minutes = this.selectedProject.data("minutes");
+        this.hours = this.selectedProject.data("hours");
+        var hoursElement = document.querySelector('.current_odometer .hours');
+        this.hoursOdometer = new Odometer({
+            el: hoursElement,
+            value: this.hours,
             duration: 800,
-            format: 'ddd:dd:dd',
-            theme: 'minimal'
+            format: '',
+            theme: 'minimal',
+            numberLength: 2
         });
-        var odimeterTimeInterval = setInterval(function () {
-            var seconds = (parseInt(_this.selectedProject.data("seconds")) + 1).toString();
-            var hms = _this.secondsToHms(50);
-            _this.selectedProject.data("seconds", seconds);
-            _this.currentOdometer.update(hms);
+        var minutesElement = document.querySelector('.current_odometer .minutes');
+        this.minutesOdometer = new Odometer({
+            el: minutesElement,
+            value: this.minutes,
+            duration: 800,
+            format: '',
+            theme: 'minimal',
+            numberLength: 2
+        });
+        var secondsElement = document.querySelector('.current_odometer .seconds');
+        this.secondsOdometer = new Odometer({
+            el: secondsElement,
+            value: this.seconds,
+            duration: 800,
+            format: '',
+            theme: 'minimal',
+            numberLength: 2
+        });
+        this.timeInterval = setInterval(function () {
+            _this.seconds++;
+            if (_this.seconds > 59) {
+                _this.seconds = 0;
+                _this.minutes++;
+                _this.minutesOdometer.update(_this.minutes);
+                _this.selectedProject.data("minutes", _this.minutes);
+            }
+            if (_this.minutes > 59) {
+                _this.minutes = 0;
+                _this.hours++;
+                _this.hoursOdometer.update(_this.hours);
+                _this.selectedProject.data("hours", _this.hours);
+            }
+            _this.secondsOdometer.update(_this.seconds);
+            _this.selectedProject.data("seconds", _this.seconds);
+            console.log(_this.selectedProject);
         }, 1000);
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();
-    };
-    ProjectTimeTracker.prototype.secondsToHms = function (d) {
-        console.log(d);
-        var h = Math.floor(d / 3600);
-        var m = Math.floor(d % 3600 / 60);
-        var s = Math.floor(d % 3600 % 60);
-        console.log("HH:MM:SS = " + ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2));
-        return ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2);
     };
     ProjectTimeTracker.prototype.init = function () {
         var _this = this;

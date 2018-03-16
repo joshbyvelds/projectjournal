@@ -303,7 +303,13 @@ class ProjectDeleter {
 
 class ProjectTimeTracker{
     selectedProject: JQuery;
-    currentOdometer: Object;
+    hoursOdometer: Object;
+    minutesOdometer: Object;
+    secondsOdometer: Object;
+    hours:number;
+    minutes:number;
+    seconds:number;
+    timeInterval:number;
 
     constructor() {
         $(document).ready(() => {
@@ -316,38 +322,68 @@ class ProjectTimeTracker{
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
 
-        let el = document.querySelector('.current_odometer');
-        this.currentOdometer = new Odometer({
-            el: el,
-            value: '0', //this.secondsToHms( parseInt(this.selectedProject.data("seconds"))),
+        this.seconds = this.selectedProject.data("seconds");
+        this.minutes = this.selectedProject.data("minutes");
+        this.hours = this.selectedProject.data("hours");
+
+        let hoursElement:Element = document.querySelector('.current_odometer .hours');
+        this.hoursOdometer = new Odometer({
+            el: hoursElement,
+            value: this.hours,
             duration: 800,
             // Any option (other than auto and selector) can be passed in here
-            format: 'ddd:dd:dd',
-            theme: 'minimal'
+            format: '',
+            theme: 'minimal',
+            numberLength:2,
         });
 
-        let odimeterTimeInterval:number = setInterval(()=> {
-            let seconds: string = (parseInt(this.selectedProject.data("seconds")) + 1).toString();
-            let hms: string = this.secondsToHms(50);
-            this.selectedProject.data("seconds", seconds);
-            this.currentOdometer.update(hms);
-        }, 1000);
+        let minutesElement:Element = document.querySelector('.current_odometer .minutes');
+        this.minutesOdometer = new Odometer({
+            el: minutesElement,
+            value: this.minutes,
+            duration: 800,
+            // Any option (other than auto and selector) can be passed in here
+            format: '',
+            theme: 'minimal',
+            numberLength:2,
+        });
+
+        let secondsElement:Element = document.querySelector('.current_odometer .seconds');
+        this.secondsOdometer = new Odometer({
+            el: secondsElement,
+            value: this.seconds,
+            duration: 800,
+            // Any option (other than auto and selector) can be passed in here
+            format: '',
+            theme: 'minimal',
+            numberLength:2,
+        });
+
+        this.timeInterval = setInterval(() => {
+            this.seconds++;
+
+            if(this.seconds > 59){
+                this.seconds = 0;
+                this.minutes++;
+                this.minutesOdometer.update(this.minutes);
+                this.selectedProject.data("minutes", this.minutes);
+            }
+
+            if(this.minutes > 59){
+                this.minutes = 0;
+                this.hours++;
+                this.hoursOdometer.update(this.hours);
+                this.selectedProject.data("hours", this.hours);
+            }
+            this.secondsOdometer.update(this.seconds);
+            this.selectedProject.data("seconds", this.seconds);
+            console.log(this.selectedProject);
+
+        },1000);
 
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();
     }
-
-    secondsToHms(d:number) {
-        console.log(d);
-        let h = Math.floor(d / 3600);
-        let m = Math.floor(d % 3600 / 60);
-        let s = Math.floor(d % 3600 % 60);
-
-        console.log("HH:MM:SS = " + ('0' + h).slice(-2) +  ('0' + m).slice(-2) +  ('0' + s).slice(-2));
-
-        return ('0' + h).slice(-2) + ('0' + m).slice(-2) + ('0' + s).slice(-2);
-    }
-
     init(){
         $(".start-btn").off().on('click', (e) => {this.start(e.target);})
     }
