@@ -288,6 +288,7 @@ var ProjectTimeTracker = (function () {
     }
     ProjectTimeTracker.prototype.start = function ($startBtn) {
         var _this = this;
+        this.stop($startBtn);
         this.selectedProject = $($startBtn).parent().parent();
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
@@ -342,9 +343,24 @@ var ProjectTimeTracker = (function () {
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();
     };
+    ProjectTimeTracker.prototype.stop = function ($stopBtn) {
+        clearInterval(this.timeInterval);
+        if (this.selectedProject) {
+            this.selectedProject.find(".start-btn").show();
+            this.selectedProject.find(".stop-btn").hide();
+            $.post("php/savetime", {
+                "project": parseInt(this.selectedProject.data("id")),
+                "seconds": parseInt(this.selectedProject.data("seconds")),
+                "minutes": parseInt(this.selectedProject.data("minutes")),
+                "hours": parseInt(this.selectedProject.data("hours"))
+            }, function (json_return) {
+            });
+        }
+    };
     ProjectTimeTracker.prototype.init = function () {
         var _this = this;
         $(".start-btn").off().on('click', function (e) { _this.start(e.target); });
+        $(".stop-btn").off().on('click', function (e) { _this.stop(e.target); });
     };
     return ProjectTimeTracker;
 }());

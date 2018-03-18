@@ -318,6 +318,7 @@ class ProjectTimeTracker{
     }
 
     start($startBtn: HTMLElement){
+        this.stop($startBtn);
         this.selectedProject = $($startBtn).parent().parent();
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
@@ -384,8 +385,29 @@ class ProjectTimeTracker{
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();
     }
+
+    stop($stopBtn: HTMLElement){
+        clearInterval(this.timeInterval);
+        if(this.selectedProject){
+            this.selectedProject.find(".start-btn").show();
+            this.selectedProject.find(".stop-btn").hide();
+            $.post("php/savetime",
+            {
+                    "project": parseInt(this.selectedProject.data("id")),
+                    "seconds": parseInt(this.selectedProject.data("seconds")),
+                    "minutes": parseInt(this.selectedProject.data("minutes")),
+                    "hours": parseInt(this.selectedProject.data("hours"))
+                },
+        (json_return) => {
+
+                }
+            );
+        }
+    }
+
     init(){
-        $(".start-btn").off().on('click', (e) => {this.start(e.target);})
+        $(".start-btn").off().on('click', (e) => {this.start(e.target);});
+        $(".stop-btn").off().on('click', (e) => {this.stop(e.target);})
     }
 }
 
