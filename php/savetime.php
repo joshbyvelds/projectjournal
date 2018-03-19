@@ -12,8 +12,8 @@ $json['error_message'] = '';
 
 require_once('db.php');
 
-if(isset($_POST['id'])){
-    $id = $_POST['id'];
+if(isset($_POST['project'])){
+    $id = $_POST['project'];
 }
 
 if(isset($_POST['seconds'])){
@@ -28,31 +28,28 @@ if(isset($_POST['hours'])){
     $hours = $_POST['hours'];
 }
 
-if(empty($id)){
+if(empty($id) && (int)$id !== 0){
     $json['error'] = true;
     $json['error_message'] .= "Missing project id.\n";
 }
 
-if(empty($seconds)){
+if(empty($seconds) && (int)$seconds !== 0){
     $json['error'] = true;
     $json['error_message'] .= "Missing project seconds.\n";
 }
 
-if(empty($minutes)){
+if(empty($minutes) && (int)$minutes !== 0){
     $json['error'] = true;
     $json['error_message'] .= "Missing project minutes.\n";
 }
 
-if(empty($hours)){
+if(empty($hours) && (int)$hours !== 0){
     $json['error'] = true;
     $json['error_message'] .= "Missing project hours.\n";
 }
 
-$time = $hours + '|' + $minutes + '|' + $seconds;
-var_dump($hours);
-var_dump($minutes);
-var_dump($seconds);
-var_dump($time);
+$time = $hours . '|' . $minutes . '|' . $seconds;
+
 
 try {
     $stmt = $dbh->prepare("UPDATE projects SET time = ? WHERE id = ?");
@@ -64,3 +61,6 @@ catch(PDOException $e) {
     $json['success'] = false;
     $json['error_message'] = $e->getMessage();
 }
+
+echo json_encode($json);
+die();

@@ -329,6 +329,8 @@ var ProjectTimeTracker = (function () {
                 _this.minutes++;
                 _this.minutesOdometer.update(_this.minutes);
                 _this.selectedProject.data("minutes", _this.minutes);
+                _this.selectedProject.data("seconds", _this.seconds);
+                _this.saveTime();
             }
             if (_this.minutes > 59) {
                 _this.minutes = 0;
@@ -348,14 +350,20 @@ var ProjectTimeTracker = (function () {
         if (this.selectedProject) {
             this.selectedProject.find(".start-btn").show();
             this.selectedProject.find(".stop-btn").hide();
-            $.post("php/savetime", {
-                "project": parseInt(this.selectedProject.data("id")),
-                "seconds": parseInt(this.selectedProject.data("seconds")),
-                "minutes": parseInt(this.selectedProject.data("minutes")),
-                "hours": parseInt(this.selectedProject.data("hours"))
-            }, function (json_return) {
-            });
+            this.saveTime();
         }
+    };
+    ProjectTimeTracker.prototype.saveTime = function () {
+        $.post("php/savetime", {
+            "project": parseInt(this.selectedProject.data("id")),
+            "seconds": parseInt(this.selectedProject.data("seconds")),
+            "minutes": parseInt(this.selectedProject.data("minutes")),
+            "hours": parseInt(this.selectedProject.data("hours"))
+        }, function (json_return) {
+            if (json_return && json_return.error_message) {
+                console.error(json_return.error_message);
+            }
+        });
     };
     ProjectTimeTracker.prototype.init = function () {
         var _this = this;
