@@ -26,6 +26,29 @@
         </div>
     </div>
     {% endif %}
+
+    <div class="container todo_list">
+        <div class="row">
+            <div class="col-xs-12">
+                <form>
+                    <label for="new_task">New TODO Task</label><br>
+                    <input type="text"><br>
+                    <input type="hidden" name="project_id" value="{{ id }}">
+                    <input type="submit"><br>
+                </form>
+                <br><br>
+                <form>
+                    <label for="new_subtask">New TODO Subtask</label><br>
+                    <select name="subtask_" id="">
+                        <option value="">Select Task</option>
+                    </select><br>
+                    <input type="text"><br>
+                    <input type="hidden" name="project_id" value="{{ id }}">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer>
