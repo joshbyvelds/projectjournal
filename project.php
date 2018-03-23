@@ -10,8 +10,8 @@ $twig = new \Twig_Environment($loader);
 $error = false;
 $project = false;
 
-if(isset($_GET['id'])){
-    $project = $_GET['id'];
+if(isset($_GET['p'])){
+    $project = $_GET['p'];
 }else{
     $error = 'No project selected.';
 }
@@ -22,6 +22,6 @@ echo $twig->render('project.twig',
         'title' => 'Project Journal',
         'categories' => $categories,
         'error' => $error,
-        'id' => $project,
+        'project' => $project,
     ]
 );

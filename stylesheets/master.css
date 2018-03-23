@@ -173,6 +173,33 @@ main {
   -o-transform: translateY(0);
   transform: translateY(0); }
 
+.todo_list .list ol {
+  padding-left: 22px; }
+  .todo_list .list ol li {
+    width: 100%;
+    font-weight: bold; }
+    .todo_list .list ol li ul li {
+      font-weight: normal; }
+      .todo_list .list ol li ul li i {
+        cursor: pointer; }
+        .todo_list .list ol li ul li i.not_started {
+          color: red; }
+        .todo_list .list ol li ul li i.in_progress {
+          color: goldenrod; }
+        .todo_list .list ol li ul li i.completed {
+          color: green; }
+        .todo_list .list ol li ul li i:active {
+          transform: scale(0.8); }
+.todo_list .list .progress {
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  width: 100px;
+  font-weight: normal;
+  height: 12px;
+  font-size: 10px;
+  line-height: 13px; }
+
 .btn.aqua-gradient {
   background: -webkit-linear-gradient(50deg, #2096ff, #05ffa3) !important;
   background: linear-gradient(40deg, #2096ff, #05ffa3) !important;

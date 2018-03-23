@@ -47,7 +47,7 @@
         {% for project in projects %}
             <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-seconds="{{ project.seconds }}" data-minutes="{{ project.minutes}}" data-hours="{{ project.hours }}" data-id="{{ project.id }}">
                 {% if loop.index0 is odd %}
-                    <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
+                    <div class="col-sm-12 col-md-6 image-col"><a href="/project?p={{ project.id }}"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></a></div>
                     <div class="col-sm-12 col-md-6 title-col">
                         <h3>{{ project.title }}</h3>
                         <div class="fake_dropdown project_category locked">
@@ -85,7 +85,7 @@
                         <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
                         <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
                     </div>
-                    <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>
+                    <div class="col-sm-12 col-md-6 image-col"><a href="/project?p={{ project.id }}"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></a></div>
                 {% endif %}
             </div>
         {% endfor %}
