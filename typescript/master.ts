@@ -420,8 +420,37 @@ class ProjectTimeTracker{
     }
 }
 
+class taskSaver {
+
+    constructor() {
+        $(document).ready(() => {
+            this.init();
+        });
+    }
+
+    saveNewTask(){
+        let taskname = $("#new_task_name").val();
+
+        if(taskname.length === 0){
+            return;
+        }
+
+        //$.post()
+    }
+
+    saveNewSubTask(){
+
+    }
+
+    init(){
+        $("#new_task_button").off().on('click', function(){this.saveNewTask()});
+        $("#new_subtask_button").off().on('click', function(){this.saveNewSubTask()});
+    }
+}
+
 let projectSaver = new ProjectSaver();
 let categorySelector = new CategorySelector();
 let projectEditor = new ProjectEditor();
 let projectDeleter = new ProjectDeleter();
 let projectTimeTracker = new ProjectTimeTracker();
+let taskSaver = new taskSaver();

@@ -372,9 +372,31 @@ var ProjectTimeTracker = (function () {
     };
     return ProjectTimeTracker;
 }());
+var taskSaver = (function () {
+    function taskSaver() {
+        var _this = this;
+        $(document).ready(function () {
+            _this.init();
+        });
+    }
+    taskSaver.prototype.saveNewTask = function () {
+        var taskname = $("#new_task_name").val();
+        if (taskname.length === 0) {
+            return;
+        }
+    };
+    taskSaver.prototype.saveNewSubTask = function () {
+    };
+    taskSaver.prototype.init = function () {
+        $("#new_task_button").off().on('click', function () { this.saveNewTask(); });
+        $("#new_subtask_button").off().on('click', function () { this.saveNewSubTask(); });
+    };
+    return taskSaver;
+}());
 var projectSaver = new ProjectSaver();
 var categorySelector = new CategorySelector();
 var projectEditor = new ProjectEditor();
 var projectDeleter = new ProjectDeleter();
 var projectTimeTracker = new ProjectTimeTracker();
+var taskSaver = new taskSaver();
 //# sourceMappingURL=master.js.map
