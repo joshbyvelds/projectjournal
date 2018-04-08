@@ -430,16 +430,32 @@ class taskSaver {
 
     saveNewTask(){
         let taskname = $("#new_task_name").val();
+        let taskproject = $("#new_task_project").val();
 
         if(taskname.length === 0){
             return;
         }
 
-        //$.post()
+        if(taskproject.length === 0){
+            return;
+        }
+
+        $.post('php/savetask', {'project':taskproject, 'taskname':taskname}, (json_return) => {
+            json_return = JSON.parse(json_return);
+        });
     }
 
     saveNewSubTask(){
+        let id = $("#new_task_name").val();
+        let subtaskname = $("#new_task_name").val();
 
+        if(subtaskname.length === 0){
+            return;
+        }
+
+        $.post('php/savetask', {'id': id, 'subtaskname':subtaskname}, (json_return) => {
+            json_return = JSON.parse(json_return);
+        });
     }
 
     init(){
@@ -453,4 +469,4 @@ let categorySelector = new CategorySelector();
 let projectEditor = new ProjectEditor();
 let projectDeleter = new ProjectDeleter();
 let projectTimeTracker = new ProjectTimeTracker();
-let taskSaver = new taskSaver();
+let projectTaskSaver = new taskSaver();

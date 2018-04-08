@@ -381,11 +381,26 @@ var taskSaver = (function () {
     }
     taskSaver.prototype.saveNewTask = function () {
         var taskname = $("#new_task_name").val();
+        var taskproject = $("#new_task_project").val();
         if (taskname.length === 0) {
             return;
         }
+        if (taskproject.length === 0) {
+            return;
+        }
+        $.post('php/savetask', { 'project': taskproject, 'taskname': taskname }, function (json_return) {
+            json_return = JSON.parse(json_return);
+        });
     };
     taskSaver.prototype.saveNewSubTask = function () {
+        var id = $("#new_task_name").val();
+        var subtaskname = $("#new_task_name").val();
+        if (subtaskname.length === 0) {
+            return;
+        }
+        $.post('php/savetask', { 'id': id, 'subtaskname': subtaskname }, function (json_return) {
+            json_return = JSON.parse(json_return);
+        });
     };
     taskSaver.prototype.init = function () {
         $("#new_task_button").off().on('click', function () { this.saveNewTask(); });
@@ -398,5 +413,5 @@ var categorySelector = new CategorySelector();
 var projectEditor = new ProjectEditor();
 var projectDeleter = new ProjectDeleter();
 var projectTimeTracker = new ProjectTimeTracker();
-var taskSaver = new taskSaver();
+var projectTaskSaver = new taskSaver();
 //# sourceMappingURL=master.js.map

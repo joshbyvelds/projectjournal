@@ -29,14 +29,13 @@
         <div class="container todo_list">
             <div class="row new_task">
                 <div class="col-md-5">
-                    <p class="h4 text-center mb-4">New TODO Task</p>
-                    <div class="md-form">
-                        <i class="far fa-user prefix grey-text"></i>
-                        <input type="text" id="new_task_name" name="new_task_name" class="form-control">
+                    <p class="h4 mb-4">New TODO Task</p>
+                    <div class="form-group">
                         <label for="new_task_name">Task Name</label>
+                        <input type="text" id="new_task_name" name="new_task_name" class="form-control">
                     </div>
 
-                    <input type="hidden" name="project_id" value="{{ id }}">
+                    <input type="hidden" name="project_id" id="new_task_project" value="{{ id }}">
 
                     <div class="text-center mt-4">
                         <button class="btn btn-outline-secondary" type="button" id="new_task_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
@@ -44,17 +43,16 @@
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
-                    <p class="h4 text-center mb-4">New TODO Sub Task</p>
+                    <p class="h4 mb-4">New TODO Sub Task</p>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
+                        <label for="exampleFormControlSelect1">Select Task</label>
                         <select class="form-control" id="exampleFormControlSelect1">
                             <option selected disabled>Select a Task</option>
                         </select>
                     </div>
-                    <div class="md-form">
-                        <i class="far fa-user prefix grey-text"></i>
-                        <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
+                    <div class="form-group">
                         <label for="new_sub_task_name">Sub Task Name</label>
+                        <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
                     </div>
 
                     <input type="hidden" name="project_id" value="{{ id }}">
@@ -70,7 +68,7 @@
                     <h2>TODO LIST:</h2>
                     <ol>
                         <li>
-                            Project to Task <div class="progress">
+                            Project TODO Task <div class="progress">
                                 <div class="progress-bar" style="width:70%">70%</div>
                             </div>
                             <ul>
