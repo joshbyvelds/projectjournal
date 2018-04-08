@@ -20,6 +20,11 @@ $json['error'] = false;
 $json['success'] = true;
 $json['error_message'] = '';
 
+if(empty($project)){
+    $json['error'] = true;
+    $json['error_message'] .= "Missing Project ID for task.\n";
+}
+
 if(empty($taskname)){
     $json['error'] = true;
     $json['error_message'] .= "Please enter a new for your new task.\n";
