@@ -382,6 +382,8 @@ var taskSaver = (function () {
     taskSaver.prototype.saveNewTask = function () {
         var taskname = $("#new_task_name").val();
         var taskproject = $("#new_task_project").val();
+        console.log(taskname);
+        console.log(taskproject);
         if (taskname.length === 0) {
             return;
         }
@@ -403,8 +405,9 @@ var taskSaver = (function () {
         });
     };
     taskSaver.prototype.init = function () {
-        $("#new_task_button").off().on('click', function () { this.saveNewTask(); });
-        $("#new_subtask_button").off().on('click', function () { this.saveNewSubTask(); });
+        var _this = this;
+        $("#new_task_button").off().on('click', function () { _this.saveNewTask(); });
+        $("#new_subtask_button").off().on('click', function () { _this.saveNewSubTask(); });
     };
     return taskSaver;
 }());
