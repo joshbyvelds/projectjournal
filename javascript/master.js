@@ -382,8 +382,6 @@ var taskSaver = (function () {
     taskSaver.prototype.saveNewTask = function () {
         var taskname = $("#new_task_name").val();
         var taskproject = $("#new_task_project").val();
-        console.log(taskname);
-        console.log(taskproject);
         if (taskname.length === 0) {
             return;
         }
@@ -411,10 +409,22 @@ var taskSaver = (function () {
     };
     return taskSaver;
 }());
+var DetailsManager = (function () {
+    function DetailsManager() {
+        var _this = this;
+        $(document).ready(function () {
+            _this.init();
+        });
+    }
+    DetailsManager.prototype.init = function () {
+    };
+    return DetailsManager;
+}());
 var projectSaver = new ProjectSaver();
 var categorySelector = new CategorySelector();
 var projectEditor = new ProjectEditor();
 var projectDeleter = new ProjectDeleter();
 var projectTimeTracker = new ProjectTimeTracker();
 var projectTaskSaver = new taskSaver();
+var detailsManager = new DetailsManager();
 //# sourceMappingURL=master.js.map

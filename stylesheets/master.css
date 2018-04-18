@@ -173,6 +173,9 @@ main {
   -o-transform: translateY(0);
   transform: translateY(0); }
 
+.project_details_wrapper {
+  display: none; }
+
 .todo_list .list ol {
   padding-left: 22px; }
   .todo_list .list ol li {

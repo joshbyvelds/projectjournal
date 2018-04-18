@@ -17,72 +17,7 @@
 
 <header><h1><img src="/assets/images/header_logo.jpg" alt=""> Project Journal</h1></header>
 <main>
-    {% if error %}
-        <div class="container missing_project_error">
-            <div class="row">
-                <div class="col-xs-12">
-                    {{ error }}
-                </div>
-            </div>
-        </div>
-    {% else %}
-        <div class="container todo_list">
-            <div class="row new_task">
-                <div class="col-md-5">
-                    <p class="h4 mb-4">New TODO Task</p>
-                    <div class="form-group">
-                        <label for="new_task_name">Task Name</label>
-                        <input type="text" id="new_task_name" name="new_task_name" class="form-control">
-                    </div>
 
-                    <input type="hidden" name="project_id" id="new_task_project" value="{{ project }}">
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-outline-secondary" type="button" id="new_task_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-5">
-                    <p class="h4 mb-4">New TODO Sub Task</p>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Select Task</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected disabled>Select a Task</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="new_sub_task_name">Sub Task Name</label>
-                        <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
-                    </div>
-
-                    <input type="hidden" name="project_id" value="{{ id }}">
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-outline-secondary" type="button" id="new_subtask_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row list">
-                <div class="col-xs-12">
-                    <h2>TODO LIST:</h2>
-                    <ol>
-                        <li>
-                            Project TODO Task <div class="progress">
-                                <div class="progress-bar" style="width:70%">70%</div>
-                            </div>
-                            <ul>
-                                <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
-                                <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    {% endif %}
 </main>
 
 <footer>
