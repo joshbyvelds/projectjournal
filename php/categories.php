@@ -14,4 +14,6 @@ $categories = [
     "3D Render",
     "FL Studio Song",
     "Unreal Game",
+    "Photo Manipulation",
+    "Graphic Design"
 ];
