@@ -471,12 +471,48 @@ class DetailsManager {
         });
     }
 
-    init(){
+    init() {
+        $('.project_thumbnail').off().on('click', (e) => {this.open(e.target);});
+        $("#details_back_to_projects_btn").off().on('click', () => {this.close();});
+    }
 
+    open($thumbnail: HTMLElement) {
+        let id:number = parseInt($($thumbnail).data('id'));
+
+        $("#project_details").slideDown();
+        $("#projects_wrapper").slideUp();
+        window.scrollTo(0, 0);
+
+        $("#details_new_task_project_id").val(id);
+        $("#details_new_subtask_project_id").val(id);
+    }
+
+    close(){
+        $("#project_details").slideUp();
+        $("#projects_wrapper").slideDown();
+        window.scrollTo(0, 0);
     }
 }
 
+class AppManager {
 
+    constructor() {
+        $(document).ready(() => {
+            this.init();
+        });
+    }
+
+    headerClick(){
+        $("#project_details").slideUp();
+        $("#projects_wrapper").slideDown();
+    }
+
+    init() {
+        $('#site_header').off().on('click', () => {this.headerClick();})
+    }
+}
+
+let appManager = new AppManager();
 let projectSaver = new ProjectSaver();
 let categorySelector = new CategorySelector();
 let projectEditor = new ProjectEditor();

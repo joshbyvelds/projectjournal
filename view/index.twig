@@ -15,80 +15,82 @@
 </head>
 <body>
 
-<header><h1><img src="/assets/images/header_logo.jpg" alt=""> Project Journal</h1></header>
+<header id="site_header"><h1><img src="/assets/images/header_logo.jpg" alt=""> Project Journal</h1></header>
 <main>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 categories">
-                {% for category in categories %}
-                    <button class="btn btn-outline-info category-btn">{{ category }}</button>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <div class="container projects">
-        <div class="row project new odd">
-            <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
-            <div class="col-sm-12 col-md-6 title-col">
-                <h3 contenteditable="true" id="new_project_title">New Project</h3>
-                <div class="fake_dropdown" id="category_select">
-                    <h4 id="selected_category" class="selected" data-selected="test">Category</h4>
-                    <div class="options">
-                        {% for category in categories %}
-                            <h4 class="option">{{ category }}</h4>
-                        {% endfor %}
-                    </div>
+    <div id="projects_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 categories">
+                    {% for category in categories %}
+                        <button class="btn btn-outline-info category-btn">{{ category }}</button>
+                    {% endfor %}
                 </div>
-                <p contenteditable="true" id="new_project_description">Project description goes here..</p>
-                <button class="btn btn-primary save-btn" id="save_new_project_btn"><i class="far fa-save"></i> Save</button>
             </div>
         </div>
-
-        {% for project in projects %}
-            <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-seconds="{{ project.seconds }}" data-minutes="{{ project.minutes}}" data-hours="{{ project.hours }}" data-id="{{ project.id }}">
-                {% if loop.index0 is odd %}
-                    <div class="col-sm-12 col-md-6 image-col"><a href="/project?p={{ project.id }}"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></a></div>
-                    <div class="col-sm-12 col-md-6 title-col">
-                        <h3>{{ project.title }}</h3>
-                        <div class="fake_dropdown project_category locked">
-                            <h4 class="selected" data-selected="test">{{ project.category }}</h4>
-                            <div class="options">
-                                {% for category in categories %}
-                                    <h4 class="option">{{ category }}</h4>
-                                {% endfor %}
-                            </div>
+        <div class="container projects">
+            <div class="row project new odd">
+                <div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-2" alt="zoom"></div>
+                <div class="col-sm-12 col-md-6 title-col">
+                    <h3 contenteditable="true" id="new_project_title">New Project</h3>
+                    <div class="fake_dropdown" id="category_select">
+                        <h4 id="selected_category" class="selected" data-selected="test">Category</h4>
+                        <div class="options">
+                            {% for category in categories %}
+                                <h4 class="option">{{ category }}</h4>
+                            {% endfor %}
                         </div>
-                        <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
-                        <p>{{ project.description }}</p>
-                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
-                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
-                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
-                        <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
-                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
                     </div>
-                {% else %}
-                    <div class="col-sm-12 col-md-6 title-col">
-                        <h3>{{ project.title }}</h3>
-                        <div class="fake_dropdown project_category locked">
-                            <h4 class="selected" data-selected="test">{{ project.category }}</h4>
-                            <div class="options">
-                                {% for category in categories %}
-                                    <h4 class="option">{{ category }}</h4>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
-                        <p>{{ project.description }}</p>
-                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
-                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
-                        <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
-                        <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
-                        <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
-                    </div>
-                    <div class="col-sm-12 col-md-6 image-col"><a href="/project?p={{ project.id }}"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></a></div>
-                {% endif %}
+                    <p contenteditable="true" id="new_project_description">Project description goes here..</p>
+                    <button class="btn btn-primary save-btn" id="save_new_project_btn"><i class="far fa-save"></i> Save</button>
+                </div>
             </div>
-        {% endfor %}
+
+            {% for project in projects %}
+                <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-seconds="{{ project.seconds }}" data-minutes="{{ project.minutes}}" data-hours="{{ project.hours }}" data-id="{{ project.id }}">
+                    {% if loop.index0 is odd %}
+                        <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
+                        <div class="col-sm-12 col-md-6 title-col">
+                            <h3>{{ project.title }}</h3>
+                            <div class="fake_dropdown project_category locked">
+                                <h4 class="selected" data-selected="test">{{ project.category }}</h4>
+                                <div class="options">
+                                    {% for category in categories %}
+                                        <h4 class="option">{{ category }}</h4>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
+                            <p>{{ project.description }}</p>
+                            <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
+                            <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
+                            <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
+                            <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
+                            <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
+                        </div>
+                    {% else %}
+                        <div class="col-sm-12 col-md-6 title-col">
+                            <h3>{{ project.title }}</h3>
+                            <div class="fake_dropdown project_category locked">
+                                <h4 class="selected" data-selected="test">{{ project.category }}</h4>
+                                <div class="options">
+                                    {% for category in categories %}
+                                        <h4 class="option">{{ category }}</h4>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
+                            <p>{{ project.description }}</p>
+                            <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
+                            <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
+                            <button class="btn btn-default edit-btn">Edit <i class="far fa-edit"></i></button>
+                            <button class="btn btn-primary edit-save-btn" style="display:none;">Save <i class="far fa-save"></i></button>
+                            <button class="btn btn-danger delete-btn">Delete <i class="far fa-trash-alt"></i></button>
+                        </div>
+                        <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <div id="overlay" class="overlay_cover">
@@ -115,7 +117,7 @@
                         <input type="text" id="new_task_name" name="new_task_name" class="form-control">
                     </div>
 
-                    <input type="hidden" name="project_id" id="new_task_project" value="">
+                    <input type="hidden" name="project_id" id="details_new_task_project_id" value="">
 
                     <div class="text-center mt-4">
                         <button class="btn btn-outline-secondary" type="button" id="new_task_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
@@ -135,7 +137,7 @@
                         <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
                     </div>
 
-                    <input type="hidden" name="project_id" value="{{ id }}">
+                    <input type="hidden" name="project_id" id="details_new_subtask_project_id" value="">
 
                     <div class="text-center mt-4">
                         <button class="btn btn-outline-secondary" type="button" id="new_subtask_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
@@ -160,6 +162,12 @@
                         </li>
                     </ol>
                 </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row bottom_btns">
+                <button type="button" class="btn btn-primary" id="details_back_to_projects_btn">Back to Projects</button>
             </div>
         </div>
     </div>

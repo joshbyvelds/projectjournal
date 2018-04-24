@@ -417,9 +417,43 @@ var DetailsManager = (function () {
         });
     }
     DetailsManager.prototype.init = function () {
+        var _this = this;
+        $('.project_thumbnail').off().on('click', function (e) { _this.open(e.target); });
+        $("#details_back_to_projects_btn").off().on('click', function () { _this.close(); });
+    };
+    DetailsManager.prototype.open = function ($thumbnail) {
+        var id = parseInt($($thumbnail).data('id'));
+        $("#project_details").slideDown();
+        $("#projects_wrapper").slideUp();
+        window.scrollTo(0, 0);
+        $("#details_new_task_project_id").val(id);
+        $("#details_new_subtask_project_id").val(id);
+    };
+    DetailsManager.prototype.close = function () {
+        $("#project_details").slideUp();
+        $("#projects_wrapper").slideDown();
+        window.scrollTo(0, 0);
     };
     return DetailsManager;
 }());
+var AppManager = (function () {
+    function AppManager() {
+        var _this = this;
+        $(document).ready(function () {
+            _this.init();
+        });
+    }
+    AppManager.prototype.headerClick = function () {
+        $("#project_details").slideUp();
+        $("#projects_wrapper").slideDown();
+    };
+    AppManager.prototype.init = function () {
+        var _this = this;
+        $('#site_header').off().on('click', function () { _this.headerClick(); });
+    };
+    return AppManager;
+}());
+var appManager = new AppManager();
 var projectSaver = new ProjectSaver();
 var categorySelector = new CategorySelector();
 var projectEditor = new ProjectEditor();

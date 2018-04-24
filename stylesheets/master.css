@@ -221,6 +221,9 @@ main {
   -webkit-transition: .5s ease;
   transition: .5s ease; }
 
+.bottom_btns {
+  text-align: center; }
+
 .todo ol > li {
   font-weight: bold; }
 .todo ul {
