@@ -20,7 +20,7 @@
     <div id="projects_wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 categories">
+                <div class="col-12 categories">
                     {% for category in categories %}
                         <button class="btn btn-outline-info category-btn">{{ category }}</button>
                     {% endfor %}
@@ -108,7 +108,84 @@
 
     {# --- PROJECT DETAILS --- #}
     <div id="project_details" class="project_details_wrapper">
+        <div class="details_nav">
+            <button class="updates">updates</button>
+            <button class="todo">todo</button>
+            <button class="stats">stats</button>
+        </div>
+
+        <div class="container new_update">
+            <div class="row">
+                <div class="col-12">
+                    <h2>New Update:</h2>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="title">Update Name</label>
+                        <input type="text" id="update_title" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="title">Preview Image</label>
+                        <input type="file" class="form-control-file">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <textarea name="" id="update_textbox" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-outline-secondary" id="update_submit_btn">save update</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container updates">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
+                <div class="col-sm-12 col-md-6 title-col">
+                    <h3>Sample Update</h3>
+                    <h4>September 19<sup>th</sup>, 2018</h4>
+                    <h5><span class="hours">1</span>:<span class="minutes">23</span>:<span class="seconds">56</span></h5>
+                    <p>Sample Update description</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6 title-col">
+                    <h3>Sample Update</h3>
+                    <h4>April 23<sup>rd</sup>, 2018</h4>
+                    <h5><span class="hours">1</span>:<span class="minutes">23</span>:<span class="seconds">56</span></h5>
+                    <p>Sample Update description</p>
+
+                </div>
+                <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
+            </div>
+        </div>
+
         <div class="container todo_list">
+            <div class="row list">
+                <div class="col-12">
+                    <h2>TODO LIST:</h2>
+                    <ol>
+                        <li>
+                            Project TODO Task <div class="progress">
+                                <div class="progress-bar" style="width:70%">70%</div>
+                            </div>
+                            <ul>
+                                <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
+                                <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
+                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
+                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
             <div class="row new_task">
                 <div class="col-md-5">
                     <p class="h4 mb-4">New TODO Task</p>
@@ -145,24 +222,7 @@
                 </div>
             </div>
 
-            <div class="row list">
-                <div class="col-xs-12">
-                    <h2>TODO LIST:</h2>
-                    <ol>
-                        <li>
-                            Project TODO Task <div class="progress">
-                                <div class="progress-bar" style="width:70%">70%</div>
-                            </div>
-                            <ul>
-                                <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
-                                <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-            </div>
+
         </div>
 
         <div class="container">
