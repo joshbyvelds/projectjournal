@@ -420,14 +420,52 @@ var DetailsManager = (function () {
         var _this = this;
         $('.project_thumbnail').off().on('click', function (e) { _this.open(e.target); });
         $("#details_back_to_projects_btn").off().on('click', function () { _this.close(); });
+        $("#update_submit_btn").off().on('click', function () { _this.saveUpdate(); });
+    };
+    DetailsManager.prototype.saveUpdate = function () {
+        alert("Test");
+        var name = $.trim($("#update_title").val());
+        var details = $.trim($("#update_textbox").val());
+        var image = $.trim($("#update_image").val());
+        var error_list = $(".details_error ul").empty();
+        if (name.length === 0) {
+            error_list.append("<li>Please enter a title for this update.</li>");
+        }
+        if (details.length === 0) {
+            error_list.append("<li>Please enter a description for this update.</li>");
+        }
+        if (image.length === 0) {
+            error_list.append("<li>Please select a image for this update.</li>");
+        }
+        $("#project_id_hidden").val(this.id);
+        $.ajax({
+            url: "php/saveupdate.php",
+            type: 'POST',
+            data: new FormData($("#update_form")[0]),
+            processData: false,
+            contentType: false
+        }).done(function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+                $("#update_title").val("");
+                $("#update_textbox").val("");
+                $("#update_image").val("");
+                $(".details_error ul").empty();
+            }
+            else {
+                if (json_return.error) {
+                    $(".details_error ul").append("<li>" + json_return.error_message + "</li>");
+                }
+            }
+        });
     };
     DetailsManager.prototype.open = function ($thumbnail) {
-        var id = parseInt($($thumbnail).data('id'));
+        this.id = parseInt($($thumbnail).data('id'));
         $("#project_details").slideDown();
         $("#projects_wrapper").slideUp();
         window.scrollTo(0, 0);
-        $("#details_new_task_project_id").val(id);
-        $("#details_new_subtask_project_id").val(id);
+        $("#details_new_task_project_id").val(this.id);
+        $("#details_new_subtask_project_id").val(this.id);
     };
     DetailsManager.prototype.close = function () {
         $("#project_details").slideUp();

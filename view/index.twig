@@ -115,32 +115,43 @@
         </div>
 
         <div class="container new_update">
-            <div class="row">
-                <div class="col-12">
-                    <h2>New Update:</h2>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="form-group">
-                        <label for="title">Update Name</label>
-                        <input type="text" id="update_title" class="form-control">
+            <form id="update_form">
+                <input type="hidden" name="project" id="project_id_hidden">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>New Update:</h2>
                     </div>
-                </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="title">Update Title</label>
+                            <input type="text" name="title" id="update_title" class="form-control">
+                        </div>
+                    </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="form-group">
-                        <label for="title">Preview Image</label>
-                        <input type="file" class="form-control-file">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="title">Preview Image</label>
+                            <input type="file" name="update_image" class="form-control-file" id="update_image">
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="">Description</label>
-                        <textarea name="" id="update_textbox" class="form-control"></textarea>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="">Details</label>
+                            <textarea name="details" id="update_textbox" class="form-control"></textarea>
+                        </div>
                     </div>
-                    <button class="btn btn-outline-secondary" id="update_submit_btn">save update</button>
+
+                    <div class="col-12 details_error">
+                        <ul>
+                        </ul>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-secondary" id="update_submit_btn">save update</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
 
         <div class="container updates">
@@ -221,8 +232,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-
+        <div class="project_stats container">
+            <canvas id="lineChart"></canvas>
         </div>
 
         <div class="container">
@@ -302,5 +315,30 @@
 <script src="vendor/MDBootstrap/js/mdb.min.js"></script>
 <script src="javascript/odometer.min.js"></script>
 <script src="javascript/master.js"></script>
+
+<script>
+    var ctxL = document.getElementById("lineChart").getContext('2d');
+    var myLineChart = new Chart(ctxL, {
+        type: 'line',
+        data: {
+            labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+            datasets: [
+                {
+                    label: "Project Updates",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [10, 15, 1, 18, 23, 3, 7]
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
 </body>
 </html>

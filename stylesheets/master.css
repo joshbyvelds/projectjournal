@@ -181,6 +181,10 @@ main {
 .project_details_wrapper {
   display: none; }
 
+.details_error ul {
+  background: red;
+  color: white; }
+
 .todo_list .list ol {
   padding-left: 22px; }
   .todo_list .list ol li {
