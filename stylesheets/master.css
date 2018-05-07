@@ -181,6 +181,9 @@ main {
 .project_details_wrapper {
   display: none; }
 
+.updates sup {
+  font-size: 65%; }
+
 .details_error ul {
   background: red;
   color: white; }

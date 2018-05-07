@@ -7,7 +7,7 @@
  */
 
 require_once('db.php');
-require_once("utilises.php");
+
 
 if(isset($_POST['project'])){
     $project = $_POST['project'];
@@ -25,13 +25,17 @@ if(isset($_POST['image'])){
     $image = $_POST['image'];
 }
 
+if(isset($_POST['time'])){
+    $time = $_POST['time'];
+}
+
 $json['error'] = false;
 $json['success'] = true;
 $json['error_message'] = '';
 
 if(empty($project)){
     $json['error'] = true;
-    $json['error_message'] .= "Missing Project ID for task.\n";
+    $json['error_message'] .= "Missing Project ID for new update.\n";
 }
 
 if(empty($title)){
@@ -44,45 +48,38 @@ if(empty($details)){
     $json['error_message'] .= "Please enter a description for this update.\n";
 }
 
-$id = 0;
-
-if(!tableExists($dbh, "updates")){
-    try {
-        $sql = "CREATE table updates(
-        id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
-        project INT( 11 ) NOT NULL,
-        title VARCHAR( 50 ) NOT NULL, 
-        details VARCHAR (5000) NOT NULL,
-        image VARCHAR (100),
-        time DATETIME NOT NUll);";
-        $dbh->exec($sql);
-    }
-    catch(PDOException $e) {
-        $json['error'] = true;
-        $json['error_message'] = $e->getMessage();
-    }
+if(empty($time)){
+    $json['error'] = true;
+    $json['error_message'] .= "Project time counter missing.\n";
 }
 
+$id = 0;
+
 try {
-    $update_id = 0;
+    $update_id = 1;
     $sth = $dbh->prepare("SELECT id FROM updates WHERE project = ? ORDER BY id DESC LIMIT 1");
     $sth->bindParam(1, $project);
     $sth->execute();
-    $projects_array = $sth->fetchAll();
+    $updates_array = $sth->fetchAll();
 
-    $time = date("Y-m-d H:i:s");
+    if(count($updates_array) > 0){
+        $update_id = (int)$updates_array[0]['id'] + 1;
+    }
+
+    $date = date("Y-m-d H:i:s");
 
     $image = pathinfo($_FILES['update_image']['name']);
     $ext = $image['extension']; // get the extension of the file
     $newname = "project_". $project ."_". $update_id .".".$ext;
 
 
-    $stmt = $dbh->prepare("INSERT INTO updates (project, title, details, image, time) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $dbh->prepare("INSERT INTO updates (project, title, details, image, date, time) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $project);
     $stmt->bindParam(2, $title);
     $stmt->bindParam(3, $details);
     $stmt->bindParam(4, $newname);
-    $stmt->bindParam(5, $time);
+    $stmt->bindParam(5, $date);
+    $stmt->bindParam(6, $time);
     $stmt->execute();
 
     $target = '../assets/images/updates/'.$newname;

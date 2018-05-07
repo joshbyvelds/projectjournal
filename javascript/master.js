@@ -22,7 +22,7 @@ var ProjectSaver = (function () {
                     if ($(".project").last().hasClass("odd")) {
                         $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span> </h5>\n' +
+                            '                        <h5 id="time_' + json_return.lastId + '"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span> </h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -38,7 +38,7 @@ var ProjectSaver = (function () {
                             '                    <div class="row project odd ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
-                            '                        <h5><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></h5>\n' +
+                            '                        <h5 id="time_' + json_return.lastId + '"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
                             '                        <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>' +
                             '                        <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>' +
@@ -422,7 +422,32 @@ var DetailsManager = (function () {
         $("#details_back_to_projects_btn").off().on('click', function () { _this.close(); });
         $("#update_submit_btn").off().on('click', function () { _this.saveUpdate(); });
     };
+    DetailsManager.prototype.getUpdates = function () {
+        $("#project_updates").empty();
+        $.post("php/getupdates.php", { project: this.id }, function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+                var count_1 = 0;
+                console.log(json_return.updates);
+                json_return.updates.forEach(function (e) {
+                    if (count_1 % 2 === 0) {
+                        $("#project_updates").append('<div class="row"><div class="col-sm-12 col-md-6 image-col"><img src="assets/images/updates/' + e.image + '" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom"></div> <div class="col-sm-12 col-md-6 title-col"><h3>' + e.title + '</h3><h4>' + e.date.replace() + '</h4><h5>' + e.time + '</h5><p>' + e.details + '</p></div></div>');
+                    }
+                    else {
+                        $("#project_updates").append('<div class="row"><div class="col-sm-12 col-md-6 title-col"><h3>' + e.title + '</h3><h4>' + e.date + '</h4><h5>' + e.time + '</h5><p>' + e.details + '</p></div><div class="col-sm-12 col-md-6 image-col"><img src="assets/images/updates/' + e.image + '" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom"></div>');
+                    }
+                    count_1++;
+                });
+            }
+            else {
+                if (json_return.error) {
+                    alert(json_return.error_message);
+                }
+            }
+        });
+    };
     DetailsManager.prototype.saveUpdate = function () {
+        var _this = this;
         alert("Test");
         var name = $.trim($("#update_title").val());
         var details = $.trim($("#update_textbox").val());
@@ -438,6 +463,7 @@ var DetailsManager = (function () {
             error_list.append("<li>Please select a image for this update.</li>");
         }
         $("#project_id_hidden").val(this.id);
+        $("#project_time_hidden").val($('#time_' + this.id).find(".hours").text() + "|" + $('#time_' + this.id).find(".minutes").text() + "|" + $('#time_' + this.id).find(".seconds").text());
         $.ajax({
             url: "php/saveupdate.php",
             type: 'POST',
@@ -451,6 +477,7 @@ var DetailsManager = (function () {
                 $("#update_textbox").val("");
                 $("#update_image").val("");
                 $(".details_error ul").empty();
+                _this.getUpdates();
             }
             else {
                 if (json_return.error) {
@@ -466,6 +493,7 @@ var DetailsManager = (function () {
         window.scrollTo(0, 0);
         $("#details_new_task_project_id").val(this.id);
         $("#details_new_subtask_project_id").val(this.id);
+        this.getUpdates();
     };
     DetailsManager.prototype.close = function () {
         $("#project_details").slideUp();

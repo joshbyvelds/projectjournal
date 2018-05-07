@@ -59,7 +59,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
+                            <h5 id="time_{{ project.id }}"><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
                             <p>{{ project.description }}</p>
                             <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
                             <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
@@ -78,7 +78,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            <h5><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
+                            <h5 id="time_{{ project.id }}"><span class="hours">{{ project.hours }}</span>:<span class="minutes">{{ project.minutes }}</span>:<span class="seconds">{{ project.seconds }}</span> {% if project.completed == 1 %}<i class="far fa-check-circle"></i>{% endif %}</h5>
                             <p>{{ project.description }}</p>
                             <button class="btn btn-success start-btn">Start <i class="far fa-play-circle"></i></button>
                             <button class="btn btn-secondary stop-btn" style="display:none;">Stop <i class="far fa-pause-circle"></i></button>
@@ -117,6 +117,7 @@
         <div class="container new_update">
             <form id="update_form">
                 <input type="hidden" name="project" id="project_id_hidden">
+                <input type="hidden" name="time" id="project_time_hidden">
                 <div class="row">
                     <div class="col-12">
                         <h2>New Update:</h2>
@@ -154,27 +155,7 @@
             </form>
         </div>
 
-        <div class="container updates">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
-                <div class="col-sm-12 col-md-6 title-col">
-                    <h3>Sample Update</h3>
-                    <h4>September 19<sup>th</sup>, 2018</h4>
-                    <h5><span class="hours">1</span>:<span class="minutes">23</span>:<span class="seconds">56</span></h5>
-                    <p>Sample Update description</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6 title-col">
-                    <h3>Sample Update</h3>
-                    <h4>April 23<sup>rd</sup>, 2018</h4>
-                    <h5><span class="hours">1</span>:<span class="minutes">23</span>:<span class="seconds">56</span></h5>
-                    <p>Sample Update description</p>
-
-                </div>
-                <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
-            </div>
+        <div class="container updates" id="project_updates">
         </div>
 
         <div class="container todo_list">
