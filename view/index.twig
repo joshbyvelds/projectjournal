@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="vendor/components-font-awesome/css/fa-regular.min.css">
     <link rel="stylesheet" href="vendor/components-font-awesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="stylesheets/master.css">
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 
@@ -46,7 +47,7 @@
             </div>
 
             {% for project in projects %}
-                <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-seconds="{{ project.seconds }}" data-minutes="{{ project.minutes}}" data-hours="{{ project.hours }}" data-id="{{ project.id }}">
+                <div class="row project {{ project.category|lower|replace({' ':'_'}) }} {% if loop.index0 is odd %}odd{% else %}even{% endif %}" data-category="{{ project.category }}" data-seconds="{{ project.seconds }}" data-minutes="{{ project.minutes}}" data-hours="{{ project.hours }}" data-id="{{ project.id }}">
                     {% if loop.index0 is odd %}
                         <div class="col-sm-12 col-md-6 image-col"><img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom" data-id="{{ project.id }}"></div>
                         <div class="col-sm-12 col-md-6 title-col">
@@ -107,6 +108,7 @@
     </div>
 
     {% include "project.twig" %}
+    {% include "global_stats.twig" with {categories:categories} %}
 
     <div class="todo">
         <h2>TODO LIST:</h2>
@@ -205,7 +207,6 @@
     Created in 2018 with Typescript, jQuery, MDBootstrap, Twig & lots of <3
 </footer>
 
-<script src="vendor/jquery/dist/jquery.min.js"></script>
 <script src="vendor/MDBootstrap/js/popper.min.js"></script>
 <script src="vendor/MDBootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/MDBootstrap/js/mdb.min.js"></script>

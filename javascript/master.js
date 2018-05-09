@@ -20,7 +20,7 @@ var ProjectSaver = (function () {
                     var category_dropdown = $('<div>').append($(".project_category").first().clone()).remove().html();
                     $(category_dropdown).find(".selected").html(_this.category.html());
                     if ($(".project").last().hasClass("odd")) {
-                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 title-col">\n' +
+                        $(".projects").append('<div class="row project even ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-category="' + _this.category.html() + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5 id="time_' + json_return.lastId + '"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span> </h5>\n' +
                             '                        <p>' + _this.description.html() + '</p>\n' +
@@ -35,7 +35,7 @@ var ProjectSaver = (function () {
                     }
                     else {
                         $(".projects").append('' +
-                            '                    <div class="row project odd ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
+                            '                    <div class="row project odd ' + _this.category.html().toLowerCase().replace(" ", "_") + '" data-id="' + json_return.lastId + '" data-category="' + _this.category.html() + '" data-seconds="0" data-minutes="0" data-hours="0"><div class="col-sm-12 col-md-6 image-col"><img src="/assets/images/new_project.jpg" class="img-fluid img-thumbnail z-depth-3" alt="zoom"></div>\n' +
                             '<div class="col-sm-12 col-md-6 title-col">\n' +
                             '                        <h3>' + _this.title.html() + '</h3>\n' + category_dropdown +
                             '                        <h5 id="time_' + json_return.lastId + '"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></h5>\n' +
@@ -487,8 +487,8 @@ var DetailsManager = (function () {
         });
     };
     DetailsManager.prototype.generateStats = function () {
-        $("#projectStatsContainer").append("<h2>Project Updates Per Month</h2><canvas id=\"projectUpdatesChartCanvas\"></canvas>");
-        $("#projectStatsContainer").append("<h2>Project Hours Per Month</h2><canvas id=\"projectHoursChartCanvas\"></canvas>");
+        $("#projectStatsContainer").append("<h3>Project Updates Per Month</h3><canvas id=\"projectUpdatesChartCanvas\"></canvas>");
+        $("#projectStatsContainer").append("<h3>Project Hours Per Month</h3><canvas id=\"projectHoursChartCanvas\"></canvas>");
         var projectUpdatesContext = document.getElementById("projectUpdatesChartCanvas").getContext('2d');
         var projectUpdatesChart = new Chart(projectUpdatesContext, {
             type: 'line',
