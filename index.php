@@ -27,6 +27,7 @@ if(!tableExists($dbh, "projects")){
         title VARCHAR( 50 ) NOT NULL, 
         category VARCHAR( 250 ) NOT NULL,
         description VARCHAR (5000) NOT NULL,
+        image VARCHAR (100),
         time VARCHAR ( 11 ) NOT NUll);";
         $dbh->exec($sql);
     }
@@ -51,6 +52,7 @@ if(!tableExists($dbh, "projects")){
                 $projectObject['minutes'] = sprintf('%02d', $timeArray[1]);
                 $projectObject['hours'] = sprintf('%02d', $timeArray[0]);
                 $projectObject['description'] = $project['description'];
+                $projectObject['image'] = $project['image'];
                 $projects[] = $projectObject;
             }
         }

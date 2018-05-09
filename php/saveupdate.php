@@ -107,6 +107,11 @@ try {
 
     move_uploaded_file( $_FILES['update_image']['tmp_name'], $target);
 
+    $stmt = $dbh->prepare("UPDATE projects SET image = ? WHERE id = ?");
+    $stmt->bindParam(1, $newname);
+    $stmt->bindParam(2, $project);
+    $stmt->execute();
+
 } catch (PDOException $e) {
     $json['error'] = true;
     $json['error_message'] = $e->getMessage();
