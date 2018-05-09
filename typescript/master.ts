@@ -429,8 +429,8 @@ class taskSaver {
     }
 
     saveNewTask(){
+        let taskproject = $("#details_new_task_project_id").val();
         let taskname = $("#new_task_name").val();
-        let taskproject = $("#new_task_project").val();
 
         if(taskname.length === 0){
             return;
@@ -446,14 +446,16 @@ class taskSaver {
     }
 
     saveNewSubTask(){
-        let id = $("#new_task_name").val();
-        let subtaskname = $("#new_task_name").val();
+        let taskproject = $("#details_new_subtask_project_id").val();
+        let taskid = $("#subtask_task_id").val();
+        let subtaskname = $("#new_sub_task_name").val();
+
 
         if(subtaskname.length === 0){
             return;
         }
 
-        $.post('php/savetask', {'id': id, 'subtaskname':subtaskname}, (json_return) => {
+        $.post('php/savetask', {'project':taskproject, 'taskid': taskid, 'subtaskname':subtaskname}, (json_return) => {
             json_return = JSON.parse(json_return);
         });
     }
@@ -504,7 +506,6 @@ class DetailsManager {
     }
 
     saveUpdate() {
-        alert("Test");
         let name:string = $.trim($("#update_title").val());
         let details:string = $.trim($("#update_textbox").val());
         let image:string = $.trim($("#update_image").val());
@@ -535,6 +536,29 @@ class DetailsManager {
             }else{
                 if(json_return.error) {
                     $(".details_error ul").append("<li>" + json_return.error_message + "</li>");
+                }
+            }
+        });
+    }
+
+    getTasks() {
+        $.post("php/gettasks.php", {'project': this.id}, (json_return) => {
+            json_return = JSON.parse(json_return);
+            if(json_return.success){
+                if(json_return.tasks){
+                    json_return.tasks.forEach(function(task){
+                        var tasks_complete = 0;
+                        var total_subtasks = task.subtasks.length;
+                        var precent_complete = tasksComplete/ totalTasks;
+                        var subtasks_html = "";
+
+                        task.subtasks.forEach(function(subtask){
+                            subtasks_html = "<li></li>";
+                        });
+
+                        $("#project_todo_list").append(task.title + "<div class=\"progress\"><div class=\"progress-bar\" style=\"width:"+ percent_complete +"%\">"+ percent_complete +"%</div></div><ul>"+ subtasks_html +"</ul>");
+
+                    });
                 }
             }
         });
@@ -601,6 +625,7 @@ class DetailsManager {
         $("#details_new_subtask_project_id").val(this.id);
 
         this.getUpdates();
+        this.getTasks();
         this.generateStats();
     }
 

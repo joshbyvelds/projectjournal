@@ -55,11 +55,9 @@
         <div class="row list">
             <div class="col-12">
                 <h1>Project TODO List</h1>
-                <ol>
+                <ol id="project_todo_list">
                     <li>
-                        Project TODO Task <div class="progress">
-                            <div class="progress-bar" style="width:70%">70%</div>
-                        </div>
+                        Project TODO Task <div class="progress"><div class="progress-bar" style="width:70%">70%</div></div>
                         <ul>
                             <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
                             <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
@@ -90,7 +88,7 @@
                 <p class="h4 mb-4">New TODO Sub Task</p>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Select Task</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="subtask_task_id">
                         <option selected disabled>Select a Task</option>
                     </select>
                 </div>

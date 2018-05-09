@@ -380,8 +380,8 @@ var taskSaver = (function () {
         });
     }
     taskSaver.prototype.saveNewTask = function () {
+        var taskproject = $("#details_new_task_project_id").val();
         var taskname = $("#new_task_name").val();
-        var taskproject = $("#new_task_project").val();
         if (taskname.length === 0) {
             return;
         }
@@ -393,12 +393,13 @@ var taskSaver = (function () {
         });
     };
     taskSaver.prototype.saveNewSubTask = function () {
-        var id = $("#new_task_name").val();
-        var subtaskname = $("#new_task_name").val();
+        var taskproject = $("#details_new_subtask_project_id").val();
+        var taskid = $("#subtask_task_id").val();
+        var subtaskname = $("#new_sub_task_name").val();
         if (subtaskname.length === 0) {
             return;
         }
-        $.post('php/savetask', { 'id': id, 'subtaskname': subtaskname }, function (json_return) {
+        $.post('php/savetask', { 'project': taskproject, 'taskid': taskid, 'subtaskname': subtaskname }, function (json_return) {
             json_return = JSON.parse(json_return);
         });
     };
@@ -448,7 +449,6 @@ var DetailsManager = (function () {
     };
     DetailsManager.prototype.saveUpdate = function () {
         var _this = this;
-        alert("Test");
         var name = $.trim($("#update_title").val());
         var details = $.trim($("#update_textbox").val());
         var image = $.trim($("#update_image").val());
@@ -482,6 +482,25 @@ var DetailsManager = (function () {
             else {
                 if (json_return.error) {
                     $(".details_error ul").append("<li>" + json_return.error_message + "</li>");
+                }
+            }
+        });
+    };
+    DetailsManager.prototype.getTasks = function () {
+        $.post("php/gettasks.php", { 'project': this.id }, function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+                if (json_return.tasks) {
+                    json_return.tasks.forEach(function (task) {
+                        var tasks_complete = 0;
+                        var total_subtasks = task.subtasks.length;
+                        var precent_complete = tasksComplete / totalTasks;
+                        var subtasks_html = "";
+                        task.subtasks.forEach(function (subtask) {
+                            subtasks_html = "<li></li>";
+                        });
+                        $("#project_todo_list").append(task.title + "<div class=\"progress\"><div class=\"progress-bar\" style=\"width:" + percent_complete + "%\">" + percent_complete + "%</div></div><ul>" + subtasks_html + "</ul>");
+                    });
                 }
             }
         });
@@ -542,6 +561,7 @@ var DetailsManager = (function () {
         $("#details_new_task_project_id").val(this.id);
         $("#details_new_subtask_project_id").val(this.id);
         this.getUpdates();
+        this.getTasks();
         this.generateStats();
     };
     DetailsManager.prototype.close = function () {
