@@ -110,96 +110,100 @@
     {% include "project.twig" %}
     {% include "global_stats.twig" with {categories:categories} %}
 
-    <div class="todo">
-        <h2>TODO LIST:</h2>
-        {#[<span class="status not_started">Not Started</span>]#}
-        {#[<span class="status in_progress">In Progress</span>]#}
-        {#[<span class="status completed">Completed</span>]#}
-        <ol>
-            <li>
-                Create system to add projects [<span class="status completed">Completed</span>]
-                <ul>
-                    <li>Create front end for projects [<span class="status completed">Completed</span>]</li>
-                    <li>Create new project UI [<span class="status completed">Completed</span>]</li>
-                    <li>Create image for new project (?) [<span class="status completed">Completed</span>]</li>
-                    <li>Create custom dropdown for category [<span class="status completed">Completed</span>]</li>
-                    <li>Create JS Class for project saving [<span class="status completed">Completed</span>]</li>
-                    <li>Create Validation method in class [<span class="status completed">Completed</span>]</li>
-                    <li>Create save method (post) in class [<span class="status completed">Completed</span>]</li>
-                    <li>Create validation method in php [<span class="status completed">Completed</span>]</li>
-                    <li>Create save to DB method in php [<span class="status completed">Completed</span>]</li>
-                    <li>Create reset method in class to reset new project form [<span class="status completed">Completed</span>]</li>
-                </ul>
-            </li>
-            <li>
-                Create category system to group each project (filter, compare projects in same category) [<span class="status completed">Completed</span>]
-                <ul>
-                    <li>Create category array in index.php, send it to page via twig var [<span class="status completed">Completed</span>]</li>
-                    <li>Add tags to top of project list using category array twig var [<span class="status completed">Completed</span>]</li>
-                    <li>update new project category list using category array twig var [<span class="status completed">Completed</span>]</li>
-                    <li>create js class to filter projects when category tag is selected [<span class="status completed">Completed</span>]</li>
-                    <li>reorder odd and even rows when categories are filtered ( switch position of img) [<span class="status completed">Completed</span>]</li>
-                </ul>
-            </li>
-            <li>Create system to edit a project's details [<span class="status completed">Completed</span>]</li>
-            <li>Create system to delete a project with failsafe function [<span class="status completed">Completed</span>]</li>
-            <li>
-                Create system to add track time worked on project, start stop button with timer? [<span class="status completed">Completed</span>]
-                <ul>
-                    <li>Create Odometer effect for seconds increase [<span class="status completed">Completed</span>]</li>
-                    <li>Save new value to Database when updated in JS [<span class="status completed">Completed</span>]</li>
-                    <li>Save value to database when stop btn is pressed [<span class="status completed">Completed</span>]</li>
-                    <li>Stop current project timer when new project timer is started [<span class="status completed">Completed</span>]</li>
-                </ul>
-            </li>
-            <li>
-                Create system to track project updates (Journal Entries) [<span class="status completed">Completed</span>]
-                <ul>
-                    <li>Create form for submitting new updates [<span class="status completed">Completed</span>]</li>
-                    <li>Create Javascript class to check and submit new entry form [<span class="status completed">Completed</span>]</li>
-                    <li>Create PHP file to save entry to database [<span class="status completed">Completed</span>]</li>
-                    <li>Create PHP file to retrieve entries from database [<span class="status completed">Completed</span>]</li>
-                    <li>Create Javascript function to retrieve stored entries and append them to list. [<span class="status completed">Completed</span>]</li>
-                </ul>
-            </li>
-            <li>Create TODO system for each project [<span class="status in_progress">In Progress</span>]
-                <ul>
-                    <li>Create form/inputs for task/subtask [<span class="status in_progress">In Progress</span>]</li>
-                    <li>Create system to store tasks/subtasks into DB</li>
-                    <li>create progress bar for each task that tracks how many subtasks remain</li>
-                    <li>Create a check system to set each tasks status</li>
-                    <li>create delete system to delete tasks and subtasks</li>
-                </ul>
-            </li>
-            <li>Create create timeline system/graph to show number of updates over a period of time for a project [<span class="status not_started">Not Started</span>]
-                <ul>
-                    <li>collect each months total for graph</li>
-                    <li>plot out each months hours for a year in graph</li>
-                </ul>
-            </li>
-            <li>Create create timeline system/graph to show hours worked over a period of time for a project [<span class="status not_started">Not Started</span>]
-                <ul>
-                    <li>Store every time you start/stop a projects timer. add current month as a column</li>
-                    <li>collect each months total for graph</li>
-                    <li>plot out each months hours for a year in graph</li>
-                </ul>
-            </li>
-            <li>Create graph to show time worked over a period of time for a project [<span class="status not_started">Not Started</span>]
-                <ul>
-                    <li>Collect hours from all projects in startstop DB table</li>
-                    <li>collect each months total for graph</li>
-                    <li>plot out each months hours for a year in graph</li>
-                </ul>
-            </li>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 todo">
+                <h1>TODO List:</h1>
+                {#[<span class="status not_started">Not Started</span>]#}
+                {#[<span class="status in_progress">In Progress</span>]#}
+                {#[<span class="status completed">Completed</span>]#}
+                <ol>
+                    <li>
+                        Create system to add projects [<span class="status completed">Completed</span>]
+                        <ul>
+                            <li>Create front end for projects [<span class="status completed">Completed</span>]</li>
+                            <li>Create new project UI [<span class="status completed">Completed</span>]</li>
+                            <li>Create image for new project (?) [<span class="status completed">Completed</span>]</li>
+                            <li>Create custom dropdown for category [<span class="status completed">Completed</span>]</li>
+                            <li>Create JS Class for project saving [<span class="status completed">Completed</span>]</li>
+                            <li>Create Validation method in class [<span class="status completed">Completed</span>]</li>
+                            <li>Create save method (post) in class [<span class="status completed">Completed</span>]</li>
+                            <li>Create validation method in php [<span class="status completed">Completed</span>]</li>
+                            <li>Create save to DB method in php [<span class="status completed">Completed</span>]</li>
+                            <li>Create reset method in class to reset new project form [<span class="status completed">Completed</span>]</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Create category system to group each project (filter, compare projects in same category) [<span class="status completed">Completed</span>]
+                        <ul>
+                            <li>Create category array in index.php, send it to page via twig var [<span class="status completed">Completed</span>]</li>
+                            <li>Add tags to top of project list using category array twig var [<span class="status completed">Completed</span>]</li>
+                            <li>update new project category list using category array twig var [<span class="status completed">Completed</span>]</li>
+                            <li>create js class to filter projects when category tag is selected [<span class="status completed">Completed</span>]</li>
+                            <li>reorder odd and even rows when categories are filtered ( switch position of img) [<span class="status completed">Completed</span>]</li>
+                        </ul>
+                    </li>
+                    <li>Create system to edit a project's details [<span class="status completed">Completed</span>]</li>
+                    <li>Create system to delete a project with failsafe function [<span class="status completed">Completed</span>]</li>
+                    <li>
+                        Create system to add track time worked on project, start stop button with timer? [<span class="status completed">Completed</span>]
+                        <ul>
+                            <li>Create Odometer effect for seconds increase [<span class="status completed">Completed</span>]</li>
+                            <li>Save new value to Database when updated in JS [<span class="status completed">Completed</span>]</li>
+                            <li>Save value to database when stop btn is pressed [<span class="status completed">Completed</span>]</li>
+                            <li>Stop current project timer when new project timer is started [<span class="status completed">Completed</span>]</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Create system to track project updates (Journal Entries) [<span class="status completed">Completed</span>]
+                        <ul>
+                            <li>Create form for submitting new updates [<span class="status completed">Completed</span>]</li>
+                            <li>Create Javascript class to check and submit new entry form [<span class="status completed">Completed</span>]</li>
+                            <li>Create PHP file to save entry to database [<span class="status completed">Completed</span>]</li>
+                            <li>Create PHP file to retrieve entries from database [<span class="status completed">Completed</span>]</li>
+                            <li>Create Javascript function to retrieve stored entries and append them to list. [<span class="status completed">Completed</span>]</li>
+                        </ul>
+                    </li>
+                    <li>Create TODO system for each project [<span class="status in_progress">In Progress</span>]
+                        <ul>
+                            <li>Create form/inputs for task/subtask [<span class="status in_progress">In Progress</span>]</li>
+                            <li>Create system to store tasks/subtasks into DB</li>
+                            <li>create progress bar for each task that tracks how many subtasks remain</li>
+                            <li>Create a check system to set each tasks status</li>
+                            <li>create delete system to delete tasks and subtasks</li>
+                        </ul>
+                    </li>
+                    <li>Create create timeline system/graph to show number of updates over a period of time for a project [<span class="status not_started">Not Started</span>]
+                        <ul>
+                            <li>collect each months total for graph</li>
+                            <li>plot out each months hours for a year in graph</li>
+                        </ul>
+                    </li>
+                    <li>Create create timeline system/graph to show hours worked over a period of time for a project [<span class="status not_started">Not Started</span>]
+                        <ul>
+                            <li>Store every time you start/stop a projects timer. add current month as a column</li>
+                            <li>collect each months total for graph</li>
+                            <li>plot out each months hours for a year in graph</li>
+                        </ul>
+                    </li>
+                    <li>Create graph to show time worked over a period of time for a project [<span class="status not_started">Not Started</span>]
+                        <ul>
+                            <li>Collect hours from all projects in startstop DB table</li>
+                            <li>collect each months total for graph</li>
+                            <li>plot out each months hours for a year in graph</li>
+                        </ul>
+                    </li>
 
-            <li>Create graph to show all projects time worked over a period of time [<span class="status not_started">Not Started</span>]
-                <ul>
-                    <li>Collect hours from all projects in startstop DB table</li>
-                    <li>collect each months total for graph</li>
-                    <li>plot out each months hours for a year in graph</li>
-                </ul>
-            </li>
-        </ol>
+                    <li>Create graph to show all projects time worked over a period of time [<span class="status not_started">Not Started</span>]
+                        <ul>
+                            <li>Collect hours from all projects in startstop DB table</li>
+                            <li>collect each months total for graph</li>
+                            <li>plot out each months hours for a year in graph</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
 </main>
 

@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container" id="global_stats">
     <div class="row">
         <div class="col-12">
+            <h1>Global Stats</h1>
             <canvas id="barChart"></canvas>
         </div>
     </div>
@@ -34,7 +35,7 @@
             data: {
                 labels: categories,
                 datasets: [{
-                    label: '# of Projects per category',
+                    label: '# of Projects Per Category',
                     data: projectCategoryTotals,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
