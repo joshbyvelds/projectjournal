@@ -1,34 +1,119 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ title }}</title>
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="vendor/MDBootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/MDBootstrap/css/mdb.min.css">
-    <link rel="stylesheet" href="vendor/components-font-awesome/css/fa-regular.min.css">
-    <link rel="stylesheet" href="vendor/components-font-awesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="stylesheets/master.css">
-</head>
-<body>
+{# --- PROJECT DETAILS --- #}
+<div id="project_details" class="project_details_wrapper">
+    <div class="details_nav">
+        <button class="updates">updates</button>
+        <button class="todo">todo</button>
+        <button class="stats">stats</button>
+    </div>
 
-<header><h1><img src="/assets/images/header_logo.jpg" alt=""> Project Journal</h1></header>
-<main>
+    <div class="container new_update">
+        <form id="update_form">
+            <input type="hidden" name="project" id="project_id_hidden">
+            <input type="hidden" name="time" id="project_time_hidden">
+            <div class="row">
+                <div class="col-12">
+                    <h2>New Update:</h2>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="title">Update Title</label>
+                        <input type="text" name="title" id="update_title" class="form-control">
+                    </div>
+                </div>
 
-</main>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="title">Preview Image</label>
+                        <input type="file" name="update_image" class="form-control-file" id="update_image">
+                    </div>
+                </div>
 
-<footer>
-    Created in 2018 with Typescript, jQuery, MDBootstrap, Twig & lots of <3
-</footer>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Details</label>
+                        <textarea name="details" id="update_textbox" class="form-control"></textarea>
+                    </div>
+                </div>
 
-<script src="vendor/jquery/dist/jquery.min.js"></script>
-<script src="vendor/MDBootstrap/js/popper.min.js"></script>
-<script src="vendor/MDBootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/MDBootstrap/js/mdb.min.js"></script>
-<script src="javascript/odometer.min.js"></script>
-<script src="javascript/master.js"></script>
-</body>
-</html>
+                <div class="col-12 details_error">
+                    <ul>
+                    </ul>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-outline-secondary" id="update_submit_btn">save update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container updates" id="project_updates">
+    </div>
+
+    <div class="container todo_list">
+        <div class="row list">
+            <div class="col-12">
+                <h2>TODO LIST:</h2>
+                <ol>
+                    <li>
+                        Project TODO Task <div class="progress">
+                            <div class="progress-bar" style="width:70%">70%</div>
+                        </div>
+                        <ul>
+                            <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
+                            <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
+                            <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
+                            <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row new_task">
+            <div class="col-md-5">
+                <p class="h4 mb-4">New TODO Task</p>
+                <div class="form-group">
+                    <label for="new_task_name">Task Name</label>
+                    <input type="text" id="new_task_name" name="new_task_name" class="form-control">
+                </div>
+
+                <input type="hidden" name="project_id" id="details_new_task_project_id" value="">
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-secondary" type="button" id="new_task_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <p class="h4 mb-4">New TODO Sub Task</p>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Task</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option selected disabled>Select a Task</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="new_sub_task_name">Sub Task Name</label>
+                    <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
+                </div>
+
+                <input type="hidden" name="project_id" id="details_new_subtask_project_id" value="">
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-secondary" type="button" id="new_subtask_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project_stats container" id="projectStatsContainer">
+        {# Use JS to create canvas elements #}
+    </div>
+
+    <div class="container">
+        <div class="row bottom_btns">
+            <button type="button" class="btn btn-primary" id="details_back_to_projects_btn">Back to Projects</button>
+        </div>
+    </div>
+</div>

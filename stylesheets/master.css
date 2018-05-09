@@ -188,6 +188,9 @@ main {
   padding-bottom: 40px;
   border-bottom: dotted #eee 1px; }
 
+.project_stats h2 {
+  padding-top: 80px; }
+
 .details_error ul {
   background: red;
   color: white; }

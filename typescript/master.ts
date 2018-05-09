@@ -540,6 +540,56 @@ class DetailsManager {
         });
     }
 
+    generateStats() {
+        $("#projectStatsContainer").append("<h2>Project Updates Per Month</h2><canvas id=\"projectUpdatesChartCanvas\"></canvas>");
+        $("#projectStatsContainer").append("<h2>Project Hours Per Month</h2><canvas id=\"projectHoursChartCanvas\"></canvas>");
+        let projectUpdatesContext = document.getElementById("projectUpdatesChartCanvas").getContext('2d');
+        let projectUpdatesChart = new Chart(projectUpdatesContext, {
+            type: 'line',
+            data: {
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                datasets: [
+                    {
+                        label: "Project Updates",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [10, 15, 1, 18, 23, 3, 7]
+                    },
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        let projectHoursContext = document.getElementById("projectHoursChartCanvas").getContext('2d');
+        let projectHoursChart = new Chart(projectHoursContext, {
+            type: 'line',
+            data: {
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                datasets: [
+                    {
+                        label: "Project Hours",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [10, 15, 1, 18, 23, 3, 7]
+                    },
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    }
+
     open($thumbnail: HTMLElement) {
         this.id = parseInt($($thumbnail).data('id'));
 
@@ -551,6 +601,7 @@ class DetailsManager {
         $("#details_new_subtask_project_id").val(this.id);
 
         this.getUpdates();
+        this.generateStats();
     }
 
     close(){

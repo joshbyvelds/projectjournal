@@ -106,126 +106,7 @@
         </div>
     </div>
 
-    {# --- PROJECT DETAILS --- #}
-    <div id="project_details" class="project_details_wrapper">
-        <div class="details_nav">
-            <button class="updates">updates</button>
-            <button class="todo">todo</button>
-            <button class="stats">stats</button>
-        </div>
-
-        <div class="container new_update">
-            <form id="update_form">
-                <input type="hidden" name="project" id="project_id_hidden">
-                <input type="hidden" name="time" id="project_time_hidden">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>New Update:</h2>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="title">Update Title</label>
-                            <input type="text" name="title" id="update_title" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="title">Preview Image</label>
-                            <input type="file" name="update_image" class="form-control-file" id="update_image">
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="">Details</label>
-                            <textarea name="details" id="update_textbox" class="form-control"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12 details_error">
-                        <ul>
-                        </ul>
-                    </div>
-
-                    <div class="col-12">
-                        <button type="button" class="btn btn-outline-secondary" id="update_submit_btn">save update</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="container updates" id="project_updates">
-        </div>
-
-        <div class="container todo_list">
-            <div class="row list">
-                <div class="col-12">
-                    <h2>TODO LIST:</h2>
-                    <ol>
-                        <li>
-                            Project TODO Task <div class="progress">
-                                <div class="progress-bar" style="width:70%">70%</div>
-                            </div>
-                            <ul>
-                                <li>Project Task Subtask <i class="far fa-check-circle completed"></i></li>
-                                <li>Project Task Subtask <i class="far fa-play-circle in_progress"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                                <li>Project Task Subtask <i class="far fa-times-circle not_started"></i></li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="row new_task">
-                <div class="col-md-5">
-                    <p class="h4 mb-4">New TODO Task</p>
-                    <div class="form-group">
-                        <label for="new_task_name">Task Name</label>
-                        <input type="text" id="new_task_name" name="new_task_name" class="form-control">
-                    </div>
-
-                    <input type="hidden" name="project_id" id="details_new_task_project_id" value="">
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-outline-secondary" type="button" id="new_task_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-5">
-                    <p class="h4 mb-4">New TODO Sub Task</p>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Select Task</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected disabled>Select a Task</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="new_sub_task_name">Sub Task Name</label>
-                        <input type="text" id="new_sub_task_name" name="new_sub_task_name" class="form-control">
-                    </div>
-
-                    <input type="hidden" name="project_id" id="details_new_subtask_project_id" value="">
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-outline-secondary" type="button" id="new_subtask_button">Send<i class="fa fa-paper-plane-o ml-2"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="project_stats container">
-            <canvas id="lineChart"></canvas>
-        </div>
-
-        <div class="container">
-            <div class="row bottom_btns">
-                <button type="button" class="btn btn-primary" id="details_back_to_projects_btn">Back to Projects</button>
-            </div>
-        </div>
-    </div>
-
+    {% include "project.twig" %}
 
     <div class="todo">
         <h2>TODO LIST:</h2>
@@ -269,6 +150,16 @@
                     <li>Stop current project timer when new project timer is started [<span class="status completed">Completed</span>]</li>
                 </ul>
             </li>
+            <li>
+                Create system to track project updates (Journal Entries) [<span class="status completed">Completed</span>]
+                <ul>
+                    <li>Create form for submitting new updates [<span class="status completed">Completed</span>]</li>
+                    <li>Create Javascript class to check and submit new entry form [<span class="status completed">Completed</span>]</li>
+                    <li>Create PHP file to save entry to database [<span class="status completed">Completed</span>]</li>
+                    <li>Create PHP file to retrieve entries from database [<span class="status completed">Completed</span>]</li>
+                    <li>Create Javascript function to retrieve stored entries and append them to list. [<span class="status completed">Completed</span>]</li>
+                </ul>
+            </li>
             <li>Create TODO system for each project [<span class="status in_progress">In Progress</span>]
                 <ul>
                     <li>Create form/inputs for task/subtask [<span class="status in_progress">In Progress</span>]</li>
@@ -277,11 +168,35 @@
                     <li>Create a check system to set each tasks status</li>
                     <li>create delete system to delete tasks and subtasks</li>
                 </ul>
-
             </li>
-            <li>Create system to track project updates (Journal Entries) [<span class="status not_started">Not Started</span>]</li>
-            <li>Create create timeline system/graph to show hours worked over a period of time [<span class="status not_started">Not Started</span>]</li>
-            <li>Create graph to show all projects time worked over a period of time [<span class="status not_started">Not Started</span>]</li>
+            <li>Create create timeline system/graph to show number of updates over a period of time for a project [<span class="status not_started">Not Started</span>]
+                <ul>
+                    <li>collect each months total for graph</li>
+                    <li>plot out each months hours for a year in graph</li>
+                </ul>
+            </li>
+            <li>Create create timeline system/graph to show hours worked over a period of time for a project [<span class="status not_started">Not Started</span>]
+                <ul>
+                    <li>Store every time you start/stop a projects timer. add current month as a column</li>
+                    <li>collect each months total for graph</li>
+                    <li>plot out each months hours for a year in graph</li>
+                </ul>
+            </li>
+            <li>Create graph to show time worked over a period of time for a project [<span class="status not_started">Not Started</span>]
+                <ul>
+                    <li>Collect hours from all projects in startstop DB table</li>
+                    <li>collect each months total for graph</li>
+                    <li>plot out each months hours for a year in graph</li>
+                </ul>
+            </li>
+
+            <li>Create graph to show all projects time worked over a period of time [<span class="status not_started">Not Started</span>]
+                <ul>
+                    <li>Collect hours from all projects in startstop DB table</li>
+                    <li>collect each months total for graph</li>
+                    <li>plot out each months hours for a year in graph</li>
+                </ul>
+            </li>
         </ol>
     </div>
 </main>
@@ -297,29 +212,5 @@
 <script src="javascript/odometer.min.js"></script>
 <script src="javascript/master.js"></script>
 
-<script>
-    var ctxL = document.getElementById("lineChart").getContext('2d');
-    var myLineChart = new Chart(ctxL, {
-        type: 'line',
-        data: {
-            labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
-            datasets: [
-                {
-                    label: "Project Updates",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [10, 15, 1, 18, 23, 3, 7]
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
-</script>
 </body>
 </html>
