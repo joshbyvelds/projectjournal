@@ -551,6 +551,8 @@ class DetailsManager {
                         var percent_complete;
                         var subtasks_html = "";
 
+                        $("#project_todo_list").empty();
+                        $("#subtask_task_id option").not(".default").remove();
                         $("#subtask_task_id").append("<option value=\"" + task.id + "\">"+ task.title +"</option>");
 
                         task.subtasks.forEach(function(subtask){
@@ -567,11 +569,15 @@ class DetailsManager {
                                     icon = "<i class=\"far fa-check-circle completed\"></i>";
                                     break;
                             }
-                            subtasks_html += "<li>" + subtask.title + " " + icon + "</li>";
+                            subtasks_html += "<li class=\"subtask\" data-id=\"" + subtask.id + "\">" + subtask.title + " " + icon + "</li>";
                         });
 
-                        percent_complete = (subtasks_complete / total_subtasks) * 100;
-                        $("#project_todo_list").append("<li>" + task.title + " <div class=\"progress\"><div class=\"progress-bar\" style=\"width:"+ percent_complete +"%\">"+ percent_complete +"%</div></div><ul>"+ subtasks_html +"</ul></li>");
+                        percent_complete = (total_subtasks === 0) ? 0 : (subtasks_complete / total_subtasks) * 100;
+                        $("#project_todo_list").append("<li class=\"task\">" + task.title + " <div class=\"progress\"><div class=\"progress-bar\" style=\"width:"+ percent_complete +"%\">"+ percent_complete +"%</div></div><ul>"+ subtasks_html +"</ul></li>");
+                    });
+
+                    $(".subtask i").off().on("click", function(){
+
                     });
                 }
             }
