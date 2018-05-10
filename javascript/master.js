@@ -399,7 +399,7 @@ var taskSaver = (function () {
         if (subtaskname.length === 0) {
             return;
         }
-        $.post('php/savetask', { 'project': taskproject, 'taskid': taskid, 'subtaskname': subtaskname }, function (json_return) {
+        $.post('php/savesubtask.php', { 'project': taskproject, 'task': taskid, 'subtask': subtaskname }, function (json_return) {
             json_return = JSON.parse(json_return);
         });
     };
@@ -429,7 +429,6 @@ var DetailsManager = (function () {
             json_return = JSON.parse(json_return);
             if (json_return.success) {
                 var count_1 = 0;
-                console.log(json_return.updates);
                 json_return.updates.forEach(function (e) {
                     if (count_1 % 2 === 0) {
                         $("#project_updates").append('<div class="row"><div class="col-sm-12 col-md-6 image-col"><img src="assets/images/updates/' + e.image + '" class="img-fluid img-thumbnail z-depth-3 project_thumbnail" alt="zoom"></div> <div class="col-sm-12 col-md-6 title-col"><h3>' + e.title + '</h3><h4>' + e.date.replace() + '</h4><h5>' + e.time + '</h5><p>' + e.details + '</p></div></div>');
@@ -492,14 +491,29 @@ var DetailsManager = (function () {
             if (json_return.success) {
                 if (json_return.tasks) {
                     json_return.tasks.forEach(function (task) {
-                        var tasks_complete = 0;
+                        var subtasks_complete = 0;
                         var total_subtasks = task.subtasks.length;
-                        var precent_complete = tasksComplete / totalTasks;
+                        var percent_complete;
                         var subtasks_html = "";
+                        $("#subtask_task_id").append("<option value=\"" + task.id + "\">" + task.title + "</option>");
                         task.subtasks.forEach(function (subtask) {
-                            subtasks_html = "<li></li>";
+                            var icon;
+                            switch (parseInt(subtask.status)) {
+                                case (0):
+                                    icon = "<i class=\"far fa-times-circle not_started\"></i>";
+                                    break;
+                                case (1):
+                                    icon = "<i class=\"far fa-play-circle in_progress\"></i>";
+                                    break;
+                                case (2):
+                                    subtasks_complete += 1;
+                                    icon = "<i class=\"far fa-check-circle completed\"></i>";
+                                    break;
+                            }
+                            subtasks_html += "<li>" + subtask.title + " " + icon + "</li>";
                         });
-                        $("#project_todo_list").append(task.title + "<div class=\"progress\"><div class=\"progress-bar\" style=\"width:" + percent_complete + "%\">" + percent_complete + "%</div></div><ul>" + subtasks_html + "</ul>");
+                        percent_complete = (subtasks_complete / total_subtasks) * 100;
+                        $("#project_todo_list").append("<li>" + task.title + " <div class=\"progress\"><div class=\"progress-bar\" style=\"width:" + percent_complete + "%\">" + percent_complete + "%</div></div><ul>" + subtasks_html + "</ul></li>");
                     });
                 }
             }

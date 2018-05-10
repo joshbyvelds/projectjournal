@@ -8,24 +8,33 @@
 
 require_once('db.php');
 
+if(isset($_POST['project'])){
+    $project = $_POST['project'];
+}
+
 if(isset($_POST['task'])){
     $task = $_POST['task'];
 }
 
-if(isset($_POST['subtaskname'])){
-    $subtaskname = $_POST['subtaskname'];
+if(isset($_POST['subtask'])){
+    $subtask = $_POST['subtask'];
 }
 
 $json['error'] = false;
 $json['success'] = true;
 $json['error_message'] = '';
 
+if(empty($project)){
+    $json['error'] = true;
+    $json['error_message'] .= "Missing Project ID for task.\n";
+}
+
 if(empty($task)){
     $json['error'] = true;
     $json['error_message'] .= "Please select a task.\n";
 }
 
-if(empty($subtaskname)){
+if(empty($subtask)){
     $json['error'] = true;
     $json['error_message'] .= "Please enter a name new for your new subtask.\n";
 }
@@ -39,9 +48,10 @@ if($json['error']){
 // Okay all errors handled GTG :)
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO tasks (task, title, completed) VALUES (?, ?, 0)");
-    $stmt->bindParam(1, $task);
-    $stmt->bindParam(2, $subtaskname);
+    $stmt = $dbh->prepare("INSERT INTO subtasks (project, task, title, status) VALUES (?, ?, ?, 0)");
+    $stmt->bindParam(1, $project);
+    $stmt->bindParam(2, $task);
+    $stmt->bindParam(3, $subtask);
     $stmt->execute();
     $json['lastId'] = $dbh->lastInsertId();
 }
