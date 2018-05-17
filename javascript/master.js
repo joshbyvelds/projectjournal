@@ -288,7 +288,7 @@ var ProjectTimeTracker = (function () {
     }
     ProjectTimeTracker.prototype.start = function ($startBtn) {
         var _this = this;
-        this.stop($startBtn);
+        this.stop($startBtn, false);
         this.selectedProject = $($startBtn).parent().parent();
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
@@ -330,7 +330,7 @@ var ProjectTimeTracker = (function () {
                 _this.minutesOdometer.update(_this.minutes);
                 _this.selectedProject.data("minutes", _this.minutes);
                 _this.selectedProject.data("seconds", _this.seconds);
-                _this.saveTime();
+                _this.saveTime(false);
             }
             if (_this.minutes > 59) {
                 _this.minutes = 0;
@@ -340,25 +340,26 @@ var ProjectTimeTracker = (function () {
             }
             _this.secondsOdometer.update(_this.seconds);
             _this.selectedProject.data("seconds", _this.seconds);
-            console.log(_this.selectedProject);
         }, 1000);
         this.selectedProject.find(".stop-btn").show();
         this.selectedProject.find(".start-btn").hide();
     };
-    ProjectTimeTracker.prototype.stop = function ($stopBtn) {
+    ProjectTimeTracker.prototype.stop = function ($stopBtn, stop) {
         clearInterval(this.timeInterval);
         if (this.selectedProject) {
             this.selectedProject.find(".start-btn").show();
             this.selectedProject.find(".stop-btn").hide();
-            this.saveTime();
+            this.saveTime(stop);
         }
     };
-    ProjectTimeTracker.prototype.saveTime = function () {
+    ProjectTimeTracker.prototype.saveTime = function (stop) {
+        ;
         $.post("php/savetime", {
             "project": parseInt(this.selectedProject.data("id")),
             "seconds": parseInt(this.selectedProject.data("seconds")),
             "minutes": parseInt(this.selectedProject.data("minutes")),
-            "hours": parseInt(this.selectedProject.data("hours"))
+            "hours": parseInt(this.selectedProject.data("hours")),
+            "stop": stop
         }, function (json_return) {
             if (json_return && json_return.error_message) {
                 console.error(json_return.error_message);
@@ -368,7 +369,7 @@ var ProjectTimeTracker = (function () {
     ProjectTimeTracker.prototype.init = function () {
         var _this = this;
         $(".start-btn").off().on('click', function (e) { _this.start(e.target); });
-        $(".stop-btn").off().on('click', function (e) { _this.stop(e.target); });
+        $(".stop-btn").off().on('click', function (e) { _this.stop(e.target, true); });
     };
     return ProjectTimeTracker;
 }());
@@ -543,7 +544,7 @@ var DetailsManager = (function () {
         var projectUpdatesChart = new Chart(projectUpdatesContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Updates",
@@ -553,7 +554,7 @@ var DetailsManager = (function () {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 18, 7, 5, 9, 12]
                     },
                 ]
             },
@@ -565,7 +566,7 @@ var DetailsManager = (function () {
         var projectHoursChart = new Chart(projectHoursContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Hours",
@@ -575,7 +576,7 @@ var DetailsManager = (function () {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 19, 4, 10, 12, 3]
                     },
                 ]
             },

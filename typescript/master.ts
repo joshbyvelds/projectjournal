@@ -318,7 +318,7 @@ class ProjectTimeTracker{
     }
 
     start($startBtn: HTMLElement){
-        this.stop($startBtn);
+        this.stop($startBtn, false);
         this.selectedProject = $($startBtn).parent().parent();
         $(".current_odometer").removeClass("current_odometer");
         this.selectedProject.find("h5").addClass("current_odometer");
@@ -369,7 +369,7 @@ class ProjectTimeTracker{
                 this.minutesOdometer.update(this.minutes);
                 this.selectedProject.data("minutes", this.minutes);
                 this.selectedProject.data("seconds", this.seconds);
-                this.saveTime();
+                this.saveTime(false);
             }
 
             if(this.minutes > 59){
@@ -381,7 +381,6 @@ class ProjectTimeTracker{
 
             this.secondsOdometer.update(this.seconds);
             this.selectedProject.data("seconds", this.seconds);
-            console.log(this.selectedProject);
 
         },1000);
 
@@ -389,22 +388,23 @@ class ProjectTimeTracker{
         this.selectedProject.find(".start-btn").hide();
     }
 
-    stop($stopBtn: HTMLElement){
+    stop($stopBtn: HTMLElement, stop){
         clearInterval(this.timeInterval);
         if(this.selectedProject){
             this.selectedProject.find(".start-btn").show();
             this.selectedProject.find(".stop-btn").hide();
-            this.saveTime();
+            this.saveTime(stop);
         }
     }
 
-    saveTime(){
+    saveTime(stop){;
         $.post("php/savetime",
             {
                 "project": parseInt(this.selectedProject.data("id")),
                 "seconds": parseInt(this.selectedProject.data("seconds")),
                 "minutes": parseInt(this.selectedProject.data("minutes")),
-                "hours": parseInt(this.selectedProject.data("hours"))
+                "hours": parseInt(this.selectedProject.data("hours")),
+                "stop": stop,
             },
             (json_return) => {
                 if(json_return && json_return.error_message){
@@ -416,7 +416,7 @@ class ProjectTimeTracker{
 
     init(){
         $(".start-btn").off().on('click', (e) => {this.start(e.target);});
-        $(".stop-btn").off().on('click', (e) => {this.stop(e.target);})
+        $(".stop-btn").off().on('click', (e) => {this.stop(e.target, true);})
     }
 }
 
@@ -602,7 +602,7 @@ class DetailsManager {
         let projectUpdatesChart = new Chart(projectUpdatesContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Updates",
@@ -612,7 +612,7 @@ class DetailsManager {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 18, 7, 5, 9, 12]
                     },
                 ]
             },
@@ -625,7 +625,7 @@ class DetailsManager {
         let projectHoursChart = new Chart(projectHoursContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Hours",
@@ -635,7 +635,7 @@ class DetailsManager {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 19, 4, 10, 12, 3]
                     },
                 ]
             },
