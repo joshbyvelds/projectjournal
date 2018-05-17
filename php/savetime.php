@@ -49,12 +49,18 @@ if(empty($hours) && (int)$hours !== 0){
 }
 
 $time = $hours . '|' . $minutes . '|' . $seconds;
-
+$date = date("Y-m-d H:i:s");
 
 try {
     $stmt = $dbh->prepare("UPDATE projects SET time = ? WHERE id = ?");
     $stmt->bindParam(1, $time);
     $stmt->bindParam(2, $id);
+    $stmt->execute();
+
+    $stmt = $dbh->prepare("INSERT into startstop (project, time, date) VALUES (?, ?, ?)");
+    $stmt->bindParam(1, $id);
+    $stmt->bindParam(2, $time);
+    $stmt->bindParam(3, $date);
     $stmt->execute();
 }
 catch(PDOException $e) {

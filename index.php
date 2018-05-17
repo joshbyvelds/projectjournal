@@ -34,33 +34,48 @@ if(!tableExists($dbh, "projects")){
     catch(PDOException $e) {
         echo $e->getMessage();//Remove or change message in production code
     }
-}else{
-    try{
-        $sth = $dbh->prepare("SELECT * FROM projects");
-        $sth->execute();
-        $projects_array = $sth->fetchAll();
+}
 
-        if(count($projects_array) > 0){
-            foreach ($projects_array as $project){
-                $projectObject = [];
-                $timeArray = explode('|', $project['time']);
-                $projectObject['id'] = $project['id'];
-                $projectObject['completed'] = $project['completed'];
-                $projectObject['title'] = $project['title'];
-                $projectObject['category'] = $project['category'];
-                $projectObject['seconds'] = sprintf('%02d', $timeArray[2]);
-                $projectObject['minutes'] = sprintf('%02d', $timeArray[1]);
-                $projectObject['hours'] = sprintf('%02d', $timeArray[0]);
-                $projectObject['description'] = $project['description'];
-                $projectObject['image'] = $project['image'];
-                $projects[] = $projectObject;
-            }
-        }
+if(!tableExists($dbh, "startstop")){
+    try {
+        $sql = "CREATE table startstop(
+        id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
+        project INT(11) NOT NULL,
+        time VARCHAR ( 11 ) NOT NUll,
+        date DATETIME NOT NUll);";
+        $dbh->exec($sql);
     }
     catch(PDOException $e) {
-        echo $e->getMessage();
+        echo $e->getMessage();//Remove or change message in production code
     }
 }
+
+try{
+    $sth = $dbh->prepare("SELECT * FROM projects");
+    $sth->execute();
+    $projects_array = $sth->fetchAll();
+
+    if(count($projects_array) > 0){
+        foreach ($projects_array as $project){
+            $projectObject = [];
+            $timeArray = explode('|', $project['time']);
+            $projectObject['id'] = $project['id'];
+            $projectObject['completed'] = $project['completed'];
+            $projectObject['title'] = $project['title'];
+            $projectObject['category'] = $project['category'];
+            $projectObject['seconds'] = sprintf('%02d', $timeArray[2]);
+            $projectObject['minutes'] = sprintf('%02d', $timeArray[1]);
+            $projectObject['hours'] = sprintf('%02d', $timeArray[0]);
+            $projectObject['description'] = $project['description'];
+            $projectObject['image'] = $project['image'];
+            $projects[] = $projectObject;
+        }
+    }
+}
+catch(PDOException $e) {
+    echo $e->getMessage();
+}
+
 
 // Finally lets render our templates..
 

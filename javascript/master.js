@@ -543,7 +543,7 @@ var DetailsManager = (function () {
         var projectUpdatesChart = new Chart(projectUpdatesContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Updates",
@@ -553,7 +553,7 @@ var DetailsManager = (function () {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 18, 7, 5, 9, 12]
                     },
                 ]
             },
@@ -565,7 +565,7 @@ var DetailsManager = (function () {
         var projectHoursChart = new Chart(projectHoursContext, {
             type: 'line',
             data: {
-                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018"],
+                labels: ["Jan 2018", "Feb 2018", "Mar 2018", "Apr 2018", "May 2018", "June 2018", "July 2018", "Aug 2018", "Sept 2018", "Oct 2018", "Nov 2018", "Dec 2018"],
                 datasets: [
                     {
                         label: "Project Hours",
@@ -575,7 +575,7 @@ var DetailsManager = (function () {
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",
                         pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [10, 15, 1, 18, 23, 3, 7]
+                        data: [10, 15, 1, 18, 23, 3, 7, 19, 4, 10, 12, 3]
                     },
                 ]
             },
