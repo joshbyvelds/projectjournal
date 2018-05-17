@@ -486,6 +486,7 @@ var DetailsManager = (function () {
         });
     };
     DetailsManager.prototype.getTasks = function () {
+        var _this = this;
         $.post("php/gettasks.php", { 'project': this.id }, function (json_return) {
             json_return = JSON.parse(json_return);
             if (json_return.success) {
@@ -512,14 +513,26 @@ var DetailsManager = (function () {
                                     icon = "<i class=\"far fa-check-circle completed\"></i>";
                                     break;
                             }
-                            subtasks_html += "<li class=\"subtask\" data-id=\"" + subtask.id + "\">" + subtask.title + " " + icon + "</li>";
+                            subtasks_html += "<li class=\"subtask\" data-id=\"" + subtask.id + "\" data-status=\"" + subtask.status + "\">" + subtask.title + " " + icon + "</li>";
                         });
                         percent_complete = (total_subtasks === 0) ? 0 : (subtasks_complete / total_subtasks) * 100;
                         $("#project_todo_list").append("<li class=\"task\">" + task.title + " <div class=\"progress\"><div class=\"progress-bar\" style=\"width:" + percent_complete + "%\">" + percent_complete + "%</div></div><ul>" + subtasks_html + "</ul></li>");
                     });
-                    $(".subtask i").off().on("click", function () {
+                    $(".subtask i").off().on("click", function (event) {
+                        _this.updateSubTaskStatus($(event.currentTarget).parent().data("id"), $(event.currentTarget).parent().data("status"));
                     });
                 }
+            }
+        });
+    };
+    DetailsManager.prototype.updateSubTaskStatus = function (id, status) {
+        var _this = this;
+        var $task;
+        var icon;
+        $.post("php/updateSubTaskStatus.php", { 'id': id, status: status }, function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+                _this.getTasks();
             }
         });
     };
