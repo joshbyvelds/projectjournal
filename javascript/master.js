@@ -538,6 +538,11 @@ var DetailsManager = (function () {
         });
     };
     DetailsManager.prototype.generateStats = function () {
+        $.post("php/getprojectstats.php", { 'id': id }, function (json_return) {
+            json_return = JSON.parse(json_return);
+            if (json_return.success) {
+            }
+        });
         $("#projectStatsContainer").append("<h3>Project Updates Per Month</h3><canvas id=\"projectUpdatesChartCanvas\"></canvas>");
         $("#projectStatsContainer").append("<h3>Project Hours Per Month</h3><canvas id=\"projectHoursChartCanvas\"></canvas>");
         var projectUpdatesContext = document.getElementById("projectUpdatesChartCanvas").getContext('2d');
@@ -594,7 +599,6 @@ var DetailsManager = (function () {
         $("#details_new_subtask_project_id").val(this.id);
         this.getUpdates();
         this.getTasks();
-        this.generateStats();
     };
     DetailsManager.prototype.close = function () {
         $("#project_details").slideUp();

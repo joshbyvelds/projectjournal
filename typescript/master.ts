@@ -596,6 +596,15 @@ class DetailsManager {
     }
 
     generateStats() {
+
+        /* Hiding this for now since it's not finished */
+        $.post("php/getprojectstats.php", {'id':id}, (json_return) => {
+            json_return = JSON.parse(json_return);
+            if(json_return.success){
+
+            }
+        });
+
         $("#projectStatsContainer").append("<h3>Project Updates Per Month</h3><canvas id=\"projectUpdatesChartCanvas\"></canvas>");
         $("#projectStatsContainer").append("<h3>Project Hours Per Month</h3><canvas id=\"projectHoursChartCanvas\"></canvas>");
         let projectUpdatesContext = document.getElementById("projectUpdatesChartCanvas").getContext('2d');
@@ -657,7 +666,7 @@ class DetailsManager {
 
         this.getUpdates();
         this.getTasks();
-        this.generateStats();
+        //this.generateStats();
     }
 
     close(){
