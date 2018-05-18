@@ -545,14 +545,14 @@ class DetailsManager {
             json_return = JSON.parse(json_return);
             if(json_return.success){
                 if(json_return.tasks){
+                    $("#project_todo_list").empty();
+                    $("#subtask_task_id option").not(".default").remove();
+
                     json_return.tasks.forEach(function(task){
                         var subtasks_complete = 0;
                         var total_subtasks = task.subtasks.length;
                         var percent_complete;
                         var subtasks_html = "";
-
-                        $("#project_todo_list").empty();
-                        $("#subtask_task_id option").not(".default").remove();
                         $("#subtask_task_id").append("<option value=\"" + task.id + "\">"+ task.title +"</option>");
 
                         task.subtasks.forEach(function(subtask){
