@@ -22,7 +22,7 @@ if(!tableExists($dbh, "tasks")){
         $sql = "CREATE table tasks(
         id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
         project INT( 11 ) NOT NULL,
-        title VARCHAR( 50 ) NOT NULL);";
+        title VARCHAR( 150 ) NOT NULL);";
         $dbh->exec($sql);
     }
     catch(PDOException $e) {
@@ -37,7 +37,7 @@ if(!tableExists($dbh, "subtasks")){
         id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
         project INT( 11 ) NOT NULL,
         task INT( 11 ) NOT NULL,
-        title VARCHAR( 50 ) NOT NULL,
+        title VARCHAR( 150 ) NOT NULL,
         status INT(4) NOT NULL);";
         $dbh->exec($sql);
     }
