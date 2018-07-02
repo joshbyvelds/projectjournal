@@ -66,6 +66,7 @@ try {
         $update_id = (int)$updates_array[0]['id'] + 1;
     }
 
+    date_default_timezone_set('America/Toronto');
     $date = date("Y-m-d H:i:s");
 
     $image = pathinfo($_FILES['update_image']['name']);

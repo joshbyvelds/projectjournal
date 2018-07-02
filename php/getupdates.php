@@ -42,7 +42,7 @@ try{
     $sth->execute();
     $projects_array = $sth->fetchAll();
 
-    date_default_timezone_set('EST');
+    date_default_timezone_set('America/Toronto');
 
     $updates = [];
 
