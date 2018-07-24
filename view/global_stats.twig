@@ -3,6 +3,7 @@
         <div class="col-12">
             <h1>Global Stats</h1>
             <canvas id="barChart"></canvas>
+            <canvas id="barChartUpdates"></canvas>
         </div>
     </div>
 </div>
@@ -10,6 +11,8 @@
 
 <script>
     $(document).ready(function(){
+
+        // --- Categories Bar Chart --- //
         var categories = [
             {% for category in categories %}
             "{{ category }}",
@@ -66,5 +69,67 @@
                 }
             }
         });
+
+
+        // --- Updates Bar Chart --- //
+        var updates = [
+            {% for updateDate in updates %}
+            new Date("{{ updateDate.date }}"),
+            {% endfor %}
+        ];
+
+        var current_date = new Date();
+        var current_month = current_date.getMonth();
+        var current_year = current_date.getFullYear();
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var labels = [];
+        var label_dates = [];
+        var update_values = [];
+
+
+        for(var i = 12; i > 0; i--){
+            labels.push(months[current_month] + " " + current_year);
+            label_dates.push({'month':current_month, 'year':current_year});
+            update_values.push(0);
+            current_month--;
+
+            if(current_month < 0 ){current_month = 11; current_year--;}
+        };
+
+
+
+        for(var b = 0; b < label_dates.length; b++){
+            for(var a = 0; a < updates.length; a++){
+                //console.log(updates[a].getMonth() === label_dates[b].month && updates[a].getFullYear() === label_dates[b].year);
+                console.log(updates[a].getMonth() + " | " + label_dates[b].month +  " | " + updates[a].getFullYear() + " | " + label_dates[b].year);
+                if(updates[a].getMonth() === label_dates[b].month && updates[a].getFullYear() === label_dates[b].year){
+                    update_values[b]++;
+                }
+            }
+        }
+
+        var ctxL = document.getElementById("barChartUpdates").getContext('2d');
+        var myLineChart = new Chart(ctxL, {
+            type: 'line',
+            data: {
+                labels: labels.reverse(),
+                datasets: [
+                    {
+                        label: "Updates per Month ( All Projects )",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: update_values.reverse()
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
     });
 </script>

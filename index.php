@@ -17,6 +17,7 @@ function timeConvert ($seconds) {
 };
 
 $projects = [];
+$updateStats = [];
 
 // Check if projects table exists in DB
 if(!tableExists($dbh, "projects")){
@@ -71,11 +72,21 @@ try{
             $projects[] = $projectObject;
         }
     }
+
+
+
 }
 catch(PDOException $e) {
     echo $e->getMessage();
 }
 
+if(tableExists($dbh, "updates")){
+    $sth = $dbh->prepare("SELECT date FROM updates ORDER BY date DESC");
+    $sth->execute();
+    $updateStats = $sth->fetchAll();
+}
+
+var_dump($updateStats);
 
 // Finally lets render our templates..
 
@@ -85,5 +96,6 @@ echo $twig->render('index.twig',
         'title' => 'Project Journal',
         'projects' => $projects,
         'categories' => $categories,
+        'updates' => $updateStats,
     ]
 );
