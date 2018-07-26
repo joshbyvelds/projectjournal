@@ -86,8 +86,6 @@ if(tableExists($dbh, "updates")){
     $updateStats = $sth->fetchAll();
 }
 
-var_dump($updateStats);
-
 // Finally lets render our templates..
 
 // Twig vars go here. :)
