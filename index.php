@@ -29,6 +29,7 @@ if(!tableExists($dbh, "projects")){
         category VARCHAR( 250 ) NOT NULL,
         description VARCHAR (5000) NOT NULL,
         image VARCHAR (100),
+        laststarted DATETIME NOT NULL,
         time VARCHAR ( 11 ) NOT NUll);";
         $dbh->exec($sql);
     }
@@ -52,7 +53,7 @@ if(!tableExists($dbh, "startstop")){
 }
 
 try{
-    $sth = $dbh->prepare("SELECT * FROM projects");
+    $sth = $dbh->prepare("SELECT * FROM projects ORDER BY laststarted DESC");
     $sth->execute();
     $projects_array = $sth->fetchAll();
 

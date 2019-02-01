@@ -13,7 +13,7 @@ $categories = [
     "HTML Game",
     "3D Render",
     "FL Studio Song",
-    "Unreal Game",
+    "Godot Game",
     "Photo Manipulation",
     "Graphic Design"
 ];

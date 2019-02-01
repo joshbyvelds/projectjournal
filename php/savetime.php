@@ -56,9 +56,10 @@ $time = $hours . '|' . $minutes . '|' . $seconds;
 $date = date("Y-m-d H:i:s");
 
 try {
-    $stmt = $dbh->prepare("UPDATE projects SET time = ? WHERE id = ?");
+    $stmt = $dbh->prepare("UPDATE projects SET time = ?, laststarted = ? WHERE id = ?");
     $stmt->bindParam(1, $time);
-    $stmt->bindParam(2, $id);
+    $stmt->bindParam(2, $date);
+    $stmt->bindParam(3, $id);
     $stmt->execute();
 
     if($stop === "true"){
