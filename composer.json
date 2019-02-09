@@ -1,0 +1,26 @@
+{
+  "name": "joshbyvelds/project-journal",
+  "description": "A simple testing template for new PHP applications",
+  "type": "project",
+
+  "require": {
+    "phpspec/nyan-formatters": "^2.0",
+    "behat/mink-extension": "^2.3",
+    "behat/mink-goutte-driver": "^1.2",
+    "behat/mink-selenium2-driver": "dev-master",
+    "integratedexperts/behat-screenshot": "^0.7.2"
+  },
+
+  "autoload": {
+    "psr-0": {
+      "ProjectJournal": "production/php"
+    }
+  },
+
+  "authors": [
+    {
+      "name": "Josh Byvelds",
+      "email": "joshbyvelds@users.noreply.github.com"
+    }
+  ]
+}
