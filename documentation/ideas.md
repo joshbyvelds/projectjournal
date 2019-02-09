@@ -4,3 +4,6 @@
 
 It is getting very annoying to have to stop the timer every time i want to start/complete a task on the TODO list.
 
+##### Make sure to show a message when you save a update
+
+Right now it does nothing and i have no idea if it even saved properly.
