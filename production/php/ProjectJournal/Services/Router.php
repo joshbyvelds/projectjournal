@@ -4,7 +4,6 @@ namespace ProjectJournal\Services;
 
 class Router
 {
-
     private $routes;
 
     // TODO:: Delete constructor this if not used later..
@@ -23,6 +22,6 @@ class Router
     {
         $action = trim($action, "/");
         $callback = $this->routes[$action];
-        echo call_user_func($callback);
+        return call_user_func($callback);
     }
 }
