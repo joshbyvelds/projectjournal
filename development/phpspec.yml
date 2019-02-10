@@ -2,4 +2,4 @@ suites:
   #...
   default:
     namespace: ProjectJournal
-    src_path: production/php
+    src_path: ../production/php
