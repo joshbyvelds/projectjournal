@@ -1,0 +1,5 @@
+suites:
+  #...
+  default:
+    namespace: ProjectJournal
+    src_path: production/php
