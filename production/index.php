@@ -11,19 +11,23 @@ $twig = new \Twig_Environment($loader);
 $router = new ProjectJournal\Services\Router();
 $current_route_URI = $_SERVER['REQUEST_URI'];
 
-// TODO:: Move routes to config folder..
-$router->route('/', function(){
-    return ['file' => 'index', 'variables' => []];
-});
+try{
+    // TODO:: Move routes to config folder..
+    $router->route('/', function(){
+        return ['file' => 'index', 'variables' => []];
+    });
 
-$router->route('/projects', function(){
-    return ['file' => 'projects', 'variables' => []];
-});
+    $router->route('/projects', function(){
+        return ['file' => 'projects', 'variables' => []];
+    });
 
-////TODO:: check if route is in the config folder.. if not, throw 404..
-//http_response_code(404);
-//echo $twig->render('404.twig');
-//die();
+    ////TODO:: check if route is in the config folder.. if not, throw 404..
+    //http_response_code(404);
+    //echo $twig->render('404.twig');
+    //die();
 
-$route = $router->dispatch($current_route_URI);
-echo $twig->render($route['file'] . '.twig');
+    $route = $router->dispatch($current_route_URI);
+    echo $twig->render($route['file'] . '.twig');
+} catch(\Exception $e){
+    echo $e->getMessage();
+}
