@@ -7,9 +7,9 @@ class Router
     private $routes;
 
     // TODO:: Delete constructor this if not used later..
-    public function __construct($routes)
+    public function __construct()
     {
-        $this->routes = $routes;
+
     }
 
     public function route($action, $callback)
@@ -19,14 +19,14 @@ class Router
     }
 
     public function dumpRoutes(){
-        //var_dump($this->routes);
+        var_dump($this->routes);
     }
 
     public function dispatch($action)
     {
         $action = trim($action, "/");
 
-        $this->dumpRoutes();
+        //$this->dumpRoutes();
 
         if(!isset($routes[$action])){
             throw new \Exception('Router is trying to dispatch a route that does not exist. Route:' . $action);
