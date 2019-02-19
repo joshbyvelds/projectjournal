@@ -11,6 +11,7 @@ $categories = [
     "Web App",
     "Fan Fiction",
     "HTML Game",
+    "Vector Drawing",
     "3D Render",
     "FL Studio Song",
     "Godot Game",
