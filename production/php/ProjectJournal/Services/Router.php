@@ -7,9 +7,12 @@ class Router
     private $routes;
 
     // TODO:: Delete constructor this if not used later..
-    public function __construct()
+    public function __construct(array $configRoutes)
     {
-
+        // loop though config to add in routes..
+        foreach($configRoutes as $routeName => $configRoute){
+            $this->route($configRoute['action'], ['file' => 'index', 'variables' => []]);
+        }
     }
 
     public function route($action, $callback)
@@ -18,18 +21,12 @@ class Router
         $this->routes[$action] = $callback;
     }
 
-    public function dumpRoutes(){
-        var_dump($this->routes);
-    }
-
     public function dispatch($action)
     {
         $action = trim($action, "/");
 
-        //$this->dumpRoutes();
-
-        if(!isset($routes[$action])){
-            throw new \Exception('Router is trying to dispatch a route that does not exist. Route:' . $action);
+        if(!isset($this->routes[$action])){
+            throw new \Exception('Router is trying to dispatch a route that does not exist.');
         }
 
         $callback = $this->routes[$action];
@@ -38,6 +35,6 @@ class Router
             throw new \Exception('Router is trying to dispatch a empty callback. Make sure the route has a action.');
         }
 
-        return call_user_func($callback);
+        return $callback;
     }
 }

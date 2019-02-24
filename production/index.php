@@ -8,18 +8,15 @@ $loader = new \Twig_Loader_Filesystem(__DIR__.'/views');
 $twig = new \Twig_Environment($loader);
 
 // Setup Controller..
-$router = new ProjectJournal\Services\Router();
+$config = new \ProjectJournal\Config\Config();
+$router = new ProjectJournal\Services\Router($config->getRoutes());
 $current_route_URI = $_SERVER['REQUEST_URI'];
+
 
 try{
     // TODO:: Move routes to config folder..
-    $router->route('/', function(){
-        return ['file' => 'index', 'variables' => []];
-    });
-
-    $router->route('/projects', function(){
-        return ['file' => 'projects', 'variables' => []];
-    });
+    $router->route('/', ['file' => 'index', 'variables' => []]);
+    $router->route('/projects', ['file' => 'projects', 'variables' => []]);
 
     ////TODO:: check if route is in the config folder.. if not, throw 404..
     //http_response_code(404);
