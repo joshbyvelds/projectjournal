@@ -58,3 +58,4 @@ fabric.properties
 .idea/vcs.xml
 bin/
 vendor/
+composer.lock
