@@ -39,7 +39,8 @@ class RouterSpec extends ObjectBehavior
         $this->shouldThrow(new \Exception("Router is trying to dispatch a route that does not have action."))->duringDispatch('noaction');
     }
 
-    function its_dispatch_function_should_return_closer_object(){
-        $this->dispatch('/')->shouldBeArray();
+    function its_dispatch_function_should_call_a_controller_action()
+    {
+
     }
 }

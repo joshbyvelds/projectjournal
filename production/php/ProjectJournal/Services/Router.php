@@ -14,37 +14,40 @@ class Router
         }
     }
 
+    /*
+     * Add a new route to the class
+     */
     public function route($url, $details)
     {
         $url = trim($url, "/");
         $this->routes[$url] = $details;
     }
 
-    public function dispatch($action)
+    /*
+     * Process the route request to a controller / action.
+     */
+    public function dispatch($url)
     {
-        $action = trim($action, "/");
+        $url = trim($url, "/");
+        $route = (isset($this->routes[$url])) ? $this->routes[$url] : NULL;
 
-       // var_dump($this->routes[$action]);
-
-        if(!isset($this->routes[$action])){
+        if(empty($route)){
             throw new \Exception('Router is trying to dispatch a route that does not exist.');
         }
 
-        if(empty($this->routes[$action]['controller'])){
+        $controller = $this->routes[$url]['controller'];
+        $action = $this->routes[$url]['action'];
+
+        if(empty($controller)){
             throw new \Exception('Router is trying to dispatch a route that does not have a controller.');
         }
 
-        if(empty($this->routes[$action]['action'])){
+        if(empty($action)){
             throw new \Exception('Router is trying to dispatch a route that does not have action.');
         }
 
-
-        $callback = $this->routes[$action];
-
-        if(empty($callback)){
-            throw new \Exception('Router is trying to dispatch a empty callback. Make sure the route has a action.');
-        }
-
-        return $callback;
+        // $class = '\ProjectJournal\Controller\Index';
+        // $action = '';
+        // $class->$action();
     }
 }
