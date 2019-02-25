@@ -14,9 +14,6 @@ $current_route_URI = $_SERVER['REQUEST_URI'];
 
 
 try{
-    // TODO:: Move routes to config folder..
-    $router->route('/', ['file' => 'index', 'variables' => []]);
-    $router->route('/projects', ['file' => 'projects', 'variables' => []]);
 
     ////TODO:: check if route is in the config folder.. if not, throw 404..
     //http_response_code(404);
@@ -24,7 +21,7 @@ try{
     //die();
 
     $route = $router->dispatch($current_route_URI);
-    echo $twig->render($route['file'] . '.twig');
+    //echo $twig->render($route['file'] . '.twig');
 } catch(\Exception $e){
     echo $e->getMessage();
 }

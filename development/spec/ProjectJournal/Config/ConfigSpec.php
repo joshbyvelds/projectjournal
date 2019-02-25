@@ -8,6 +8,13 @@ use Prophecy\Argument;
 
 class ConfigSpec extends ObjectBehavior
 {
+
+
+    function let()
+    {
+
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(Config::class);

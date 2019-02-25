@@ -13,9 +13,9 @@ return [
     ],
     */
 
-    'home' => [
-        'action' => '/',
-        'file' => 'index',
+    '/' => [
+        'controller' => 'index',
+        'action' => 'index',
         'details' => [
             'id' => [
                 'filter' => 'filterName',
