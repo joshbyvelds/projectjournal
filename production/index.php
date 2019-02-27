@@ -21,7 +21,7 @@ try{
     //die();
 
     $route = $router->dispatch($current_route_URI);
-    //echo $twig->render($route['file'] . '.twig');
+    echo $twig->render($route['file'] . '.twig');
 } catch(\Exception $e){
     echo $e->getMessage();
 }

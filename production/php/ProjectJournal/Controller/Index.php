@@ -6,6 +6,6 @@ class Index
 {
     public function indexAction()
     {
-        // TODO: write logic here
+        return ['file' => 'index', 'variables' => []];
     }
 }

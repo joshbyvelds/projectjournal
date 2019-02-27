@@ -46,8 +46,11 @@ class Router
             throw new \Exception('Router is trying to dispatch a route that does not have action.');
         }
 
-        // $class = '\ProjectJournal\Controller\Index';
-        // $action = '';
-        // $class->$action();
+        $details = (isset($this->routes[$url]['details'])) ? $this->routes[$url]['details'] : NULL;
+
+        $class = '\ProjectJournal\Controller\Index';
+        $action = 'indexAction';
+        $classInstance = new $class();
+        return $classInstance->$action($details);
     }
 }
