@@ -31,5 +31,6 @@ try{
     }
 
 } catch(\Exception $e){
-    echo $e->getMessage();
+    http_response_code(404);
+    echo $twig->render('404.twig', ['message' => $e->getMessage()]);
 }
