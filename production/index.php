@@ -21,7 +21,15 @@ try{
     //die();
 
     $route = $router->dispatch($current_route_URI);
-    echo $twig->render($route['file'] . '.twig');
+
+    if(empty($route['type'])){
+        throw new \Exception('Action result does not have a type.');
+    }
+
+    if($route['type'] === 'twig'){
+        echo $twig->render($route['file'] . '.twig');
+    }
+
 } catch(\Exception $e){
     echo $e->getMessage();
 }

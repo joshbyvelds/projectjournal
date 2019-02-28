@@ -6,6 +6,6 @@ class Index
 {
     public function indexAction()
     {
-        return ['file' => 'index', 'variables' => []];
+        return ['type' => 'twig', 'file' => 'index', 'variables' => []];
     }
 }
