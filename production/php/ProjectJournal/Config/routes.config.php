@@ -22,6 +22,12 @@ return [
             ],
         ],
     ],
+
+    '/install' => [
+        'controller' => 'installer',
+        'action' => 'index',
+        'details' => [],
+    ],
 ]
 
 ?>

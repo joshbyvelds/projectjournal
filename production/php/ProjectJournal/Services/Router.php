@@ -48,9 +48,9 @@ class Router
 
         $details = (isset($this->routes[$url]['details'])) ? $this->routes[$url]['details'] : NULL;
 
-        $class = '\ProjectJournal\Controller\Index';
-        $action = 'indexAction';
+        $class = '\ProjectJournal\Controller\\' . $controller;
+        $actionFunction =  $action . 'Action';
         $classInstance = new $class();
-        return $classInstance->$action($details);
+        return $classInstance->$actionFunction($details);
     }
 }

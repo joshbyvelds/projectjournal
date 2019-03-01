@@ -8,6 +8,6 @@ class Installer
 {
     public function indexAction()
     {
-        return new TwigArray('installer', []);
+        return new TwigArray('install', []);
     }
 }

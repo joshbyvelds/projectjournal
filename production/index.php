@@ -20,6 +20,13 @@ try{
     //echo $twig->render('404.twig');
     //die();
 
+    // Check if app is installed..
+    if(!file_exists ( 'php/ProjectJournal/Config/Database.php' )) {
+        $route = $router->dispatch("/install");
+        echo $twig->render($route->getFile() . '.twig');
+        exit();
+    }
+
     $route = $router->dispatch($current_route_URI);
 
     if(empty($route['type'])){
@@ -27,7 +34,7 @@ try{
     }
 
     if($route['type'] === 'twig'){
-        echo $twig->render($route['file'] . '.twig');
+        echo $twig->render($route->getFile() . '.twig');
     }
 
 } catch(\Exception $e){
