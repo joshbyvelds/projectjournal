@@ -4,10 +4,10 @@ namespace ProjectJournal\Controller;
 
 use ProjectJournal\Modal\TwigArray;
 
-class Index
+class Installer
 {
     public function indexAction()
     {
-        return new TwigArray('index', []);
+        return new TwigArray('installer', []);
     }
 }
