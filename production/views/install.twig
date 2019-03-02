@@ -1,8 +1,38 @@
-<h2>Project Journal Installer</h2>
-<form>
-    <label for="database_name">Database Name:</label>
-    <input type="text" name="database_name">
-    <br />
+{% extends "layout.twig" %}
 
-    <button type="button">Install</button>
-</form>
+{% block title %}Project Journal - Installer{% endblock %}
+
+{% block page %}
+    <h2>Project Journal Installer</h2>
+    <form>
+        <label for="database_name">Database Name:</label>
+        <input type="text" name="database_name">
+        <br />
+
+        <label for="database_user">Database User:</label>
+        <input type="text" name="database_user">
+        <br />
+
+        <label for="database_pass">Database Password:</label>
+        <input type="password" name="database_password">
+        <br />
+
+        <label for="create_database">Create Database:</label>
+        <input type="checkbox">
+        <br />
+
+        <label for="create_database">Create Database User:</label>
+        <input type="checkbox">
+        <br />
+
+        <label for="admin_username">Admin Username:</label>
+        <input type="text" name="admin_username">
+        <br />
+
+        <label for="admin_password">Admin Password:</label>
+        <input type="password" name="admin_password">
+        <br />
+
+        <button type="button">Install</button>
+    </form>
+{% endblock %}
