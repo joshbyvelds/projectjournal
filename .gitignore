@@ -59,3 +59,4 @@ fabric.properties
 bin/
 vendor/
 composer.lock
+production/node_modules

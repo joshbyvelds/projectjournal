@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "../../production/",        // path to output directory
+    "outDir": "../../production/javascript",        // path to output directory
     "sourceMap": true,          // allow sourcemap support
     "strictNullChecks": true,   // enable strict null checks as a best practice
-    "module": "es6",            // specify module code generation
+    "module": "amd",            // specify module code generation
     "target": "es5"            // specify ECMAScript target version
   },
 
