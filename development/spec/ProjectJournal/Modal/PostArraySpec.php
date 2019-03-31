@@ -22,8 +22,13 @@ class PostArraySpec extends ObjectBehavior
         $this->getType()->shouldBeString();
     }
 
-    function its_get_postdata_function_should_return_array_if_encode_is_false()
+    function its_get_postdata_function_should_return_array()
     {
-        $this->getPostdata(false)->shouldBeArray();
+        $this->getPostdata()->shouldBeArray();
+    }
+
+    function its_get_encoded_postdata_function_should_return_string()
+    {
+        $this->getEncodedPostdata()->shouldBeString();
     }
 }

@@ -38,7 +38,7 @@ try{
     }
 
     if($route->getType()=== 'post'){
-        echo $route->getPostData(true);
+        echo $route->getEncodedPostData();
     }
 
 } catch(\Exception $e){

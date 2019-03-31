@@ -15,6 +15,7 @@ class Installer
     public function submitAction()
     {
         $response = [];
+        $db_name = $_POST["db_name"];
         return new PostArray($response);
     }
 }

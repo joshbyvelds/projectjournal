@@ -19,12 +19,13 @@ class PostArray
         return $this->type;
     }
 
-    public function getPostData(bool $encode): array
+    public function getPostData(): array
     {
-        if($encode){
-            return json_encode($this->postdata);
-        }
-
         return $this->postdata;
+    }
+
+    public function getEncodedPostData(): string
+    {
+        return json_encode($this->postdata);
     }
 }
