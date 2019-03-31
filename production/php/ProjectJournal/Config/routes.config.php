@@ -28,6 +28,12 @@ return [
         'action' => 'index',
         'details' => [],
     ],
+
+    '/installsubmit' => [
+        'controller' => 'installer',
+        'action' => 'submit',
+        'details' => [],
+    ],
 ]
 
 ?>

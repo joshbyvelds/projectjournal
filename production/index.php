@@ -20,21 +20,25 @@ try{
     //echo $twig->render('404.twig');
     //die();
 
+    $route = $router->dispatch($current_route_URI);
+
+    if(empty($route->getType())){
+        throw new \Exception('Action result does not have a type.');
+    }
+
     // Check if app is installed..
-    if(!file_exists ( 'php/ProjectJournal/Config/Database.php' )) {
+    if($route->getType() === 'twig' && !file_exists ( 'php/ProjectJournal/Config/Database.php' )) {
         $route = $router->dispatch("/install");
         echo $twig->render($route->getFile() . '.twig');
         exit();
     }
 
-    $route = $router->dispatch($current_route_URI);
-
-    if(empty($route['type'])){
-        throw new \Exception('Action result does not have a type.');
+    if($route->getType() === 'twig'){
+        echo $twig->render($route->getFile() . '.twig');
     }
 
-    if($route['type'] === 'twig'){
-        echo $twig->render($route->getFile() . '.twig');
+    if($route->getType()=== 'post'){
+        echo $route->getPostData(true);
     }
 
 } catch(\Exception $e){

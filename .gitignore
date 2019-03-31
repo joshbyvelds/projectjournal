@@ -60,3 +60,4 @@ bin/
 vendor/
 composer.lock
 production/node_modules
+development/typescript/node_modules
