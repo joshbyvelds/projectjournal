@@ -1,5 +1,8 @@
 <?php
 
+use Doctrine\ORM\Tools\Setup;
+
+
 require_once '../vendor/autoload.php';
 require_once 'php/ProjectJournal/Services/Router.php';
 
@@ -12,6 +15,9 @@ $config = new \ProjectJournal\Config\Config();
 $router = new ProjectJournal\Services\Router($config->getRoutes());
 $current_route_URI = $_SERVER['REQUEST_URI'];
 
+// Setup Doctrine..
+$isDevMode = true;
+$doctrineConfig = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/php/ProjectJournal/Entity"), $isDevMode);
 
 try{
 
@@ -22,16 +28,18 @@ try{
 
     $route = $router->dispatch($current_route_URI);
 
+    // Check for a bad route..
     if(empty($route->getType())){
         throw new \Exception('Action result does not have a type.');
     }
 
     // Check if app is installed..
-    if($route->getType() === 'twig' && !file_exists ( 'php/ProjectJournal/Config/Database.php' )) {
+    if($route->getType() === 'twig' && !file_exists ( 'php/ProjectJournal/Config/database.config.php' )) {
         $route = $router->dispatch("/install");
         echo $twig->render($route->getFile() . '.twig');
         exit();
     }
+
 
     if($route->getType() === 'twig'){
         echo $twig->render($route->getFile() . '.twig');

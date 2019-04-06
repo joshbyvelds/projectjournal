@@ -12,6 +12,7 @@ export class Installer {
     }
 
     private submitInstallForm() {
+        var db_host: JQuery = $("input[name='database_host']");
         var db_name: JQuery = $("input[name='database_name']");
         var db_user: JQuery = $("input[name='database_user']");
         var db_pass: JQuery = $("input[name='database_password']");
@@ -19,6 +20,7 @@ export class Installer {
         var admin_user: JQuery = $("input[name='admin_username']");
         var admin_pass: JQuery = $("input[name='admin_password']");
 
+        var db_host_value = Installer.trim(db_host.val());
         var db_name_value = Installer.trim(db_name.val());
         var db_user_value = Installer.trim(db_user.val());
         var db_pass_value = Installer.trim(db_pass.val());
@@ -27,6 +29,10 @@ export class Installer {
 
         // Clear errors then validate form..
         Installer.clearErrors();
+
+        if(db_host_value.length === 0) {
+            Installer.generateError(db_host, "Please enter the name of the host you will be using.");
+        }
 
         if(db_name_value.length === 0) {
             Installer.generateError(db_name, "Please enter the name of the database you will be using.");
@@ -50,6 +56,7 @@ export class Installer {
 
         // Submit to Database..
         let db_form_values = {
+            "db_host":db_host_value,
             "db_name":db_name_value,
             "db_user":db_user_value,
             "db_pass":db_pass_value,

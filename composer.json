@@ -9,7 +9,8 @@
     "behat/mink-goutte-driver": "^1.2",
     "behat/mink-selenium2-driver": "dev-master",
     "integratedexperts/behat-screenshot": "^0.7.2",
-    "twig/twig": "^2.0"
+    "twig/twig": "^2.0",
+    "doctrine/orm": "^2.6.2"
   },
 
   "autoload": {
