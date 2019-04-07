@@ -1,4 +1,7 @@
-test {
-    test: 0;
-}
+@import "_nav";
+@import "_main";
 
+body {
+    padding: 0;
+    margin: 0;
+}
