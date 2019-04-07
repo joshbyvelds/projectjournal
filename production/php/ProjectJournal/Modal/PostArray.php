@@ -2,8 +2,6 @@
 
 namespace ProjectJournal\Modal;
 
-use phpDocumentor\Reflection\Types\Boolean;
-
 class PostArray
 {
     private $type = 'post';

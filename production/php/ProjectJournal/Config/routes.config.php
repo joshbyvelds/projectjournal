@@ -14,7 +14,7 @@ return [
     */
 
     '/' => [
-        'controller' => 'index',
+        'controller' => 'main',
         'action' => 'index',
         'details' => [
             'id' => [

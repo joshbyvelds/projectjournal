@@ -14,11 +14,6 @@ $current_route_URI = $_SERVER['REQUEST_URI'];
 
 try{
 
-    ////TODO:: check if route is in the config folder.. if not, throw 404..
-    //http_response_code(404);
-    //echo $twig->render('404.twig');
-    //die();
-
     $route = $router->dispatch($current_route_URI);
 
     // Check for a bad route..
