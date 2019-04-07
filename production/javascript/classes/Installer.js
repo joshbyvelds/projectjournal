@@ -77,4 +77,4 @@ define(["require", "exports", "jquery"], function (require, exports, $) {
     }());
     exports.Installer = Installer;
 });
-//# sourceMappingURL=Installer.js.map
+//# sourceMappingURL=installer.js.map

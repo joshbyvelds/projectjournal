@@ -1,0 +1,19 @@
+{% extends "layout.twig" %}
+
+{% block title %}Project Journal - Login{% endblock %}
+
+{% block page %}
+    <h2>Project Journal Installer</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" name="username" />
+        <br />
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" />
+        <br />
+
+        <div class="error" id="login_php_error" style="display: none;"></div>
+        <button type="button" id="loginSubmit">Submit</button>
+    </form>
+{% endblock %}

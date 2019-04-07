@@ -6,7 +6,8 @@ use PDO;
 use Exception;
 use ProjectJournal\Modal\TwigArray;
 use ProjectJournal\Modal\PostArray;
-use Doctrine\ORM\EntityManager;
+use ProjectJournal\Services\DoctrineService;
+use ProjectJournal\Entity\User;
 
 class Installer
 {
@@ -18,8 +19,7 @@ class Installer
     public function submitAction()
     {
         $response = [];
-
-        //$response['success'] = 1;
+        $response['success'] = 1;
 
         try {
 
@@ -117,15 +117,21 @@ class Installer
             $admin_role = 2;
             $admin_password_hashed = password_hash($admin_pass, PASSWORD_DEFAULT);
 
-            $stmt = $db->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
-            $stmt->bindParam(1, $admin_user);
-            $stmt->bindParam(2, $admin_password_hashed);
-            $stmt->bindParam(3, $admin_role);
-            $stmt->execute();
+            unset($db);
+            $ds = new DoctrineService();
+
+            $user = new User();
+            $user->setUsername($admin_user);
+            $user->setPassword($admin_password_hashed);
+            $user->setRole($admin_role);
+
+            $ds->getEntityManager()->persist($user);
+            $ds->getEntityManager()->flush();
 
 
             return new PostArray($response);
         } catch(\Exception $e) {
+            $response['success'] = 0;
             $response['error'] = $e->getMessage();
             return new PostArray($response);
         }

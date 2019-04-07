@@ -1,6 +1,7 @@
-define(["require", "exports", "./classes/Installer"], function (require, exports, Installer_1) {
+define(["require", "exports", "./classes/installer", "./classes/userlogin"], function (require, exports, installer_1, userlogin_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var installer = new Installer_1.Installer();
+    var installer = new installer_1.Installer();
+    var userlogin = new userlogin_1.UserLogin();
 });
 //# sourceMappingURL=master.js.map

@@ -34,6 +34,18 @@ return [
         'action' => 'submit',
         'details' => [],
     ],
+
+    '/login' => [
+        'controller' => 'login',
+        'action' => 'index',
+        'details' => [],
+    ],
+
+    '/loginsubmit' => [
+        'controller' => 'login',
+        'action' => 'submit',
+        'details' => [],
+    ],
 ]
 
 ?>

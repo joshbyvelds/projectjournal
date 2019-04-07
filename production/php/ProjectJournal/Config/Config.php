@@ -9,11 +9,10 @@ class Config
 
     public function __construct()
     {
-        $this->routes = include_once "routes.config.php";
+        $this->routes = include "routes.config.php";
         $this->database = 0;
-
-        if(file_exists ( 'database.config.php' )) {
-            $this->database = include_once "database.config.php";
+        if(file_exists ( __DIR__ . '/database.config.php' )) {
+            $this->database = include "database.config.php";
         }
     }
 
@@ -24,6 +23,6 @@ class Config
 
     public function getDatabase()
     {
-
+        return $this->database;
     }
 }
