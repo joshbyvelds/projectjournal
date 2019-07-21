@@ -1,0 +1,54 @@
+.grid {
+
+}
+
+.grid_item {
+    display: inline-block;
+    width: 300px;
+    padding: 10px;
+    border: solid 1px black;
+
+    &.selected {
+
+    }
+
+    .top, .bottom{
+        position: relative;
+    }
+
+    .project_thumbnail {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background: #060;
+        border-radius: 50%;
+        vertical-align: top;
+    }
+
+    .top_text {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .name {
+
+    }
+
+    .time_spent {
+
+    }
+
+    .last_updated {
+
+    }
+
+    .category_icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        background: #f00;
+        border-radius: 50%;
+    }
+}

@@ -1,5 +1,11 @@
-@import "_nav";
 @import "_main";
+@import "_header";
+@import "_grid";
+@import "_project_info";
+@import "_todo";
+@import "_updates";
+@import "_project_stats";
+@import "_footer";
 
 body {
     padding: 0;

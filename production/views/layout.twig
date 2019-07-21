@@ -7,12 +7,13 @@
     {% endblock %}
 </head>
 <body>
+<header>{% block header %}{% endblock %}</header>
 <main id="content" role="main">{% block page %}{% endblock %}</main>
-<div id="footer">
+<footer id="footer">
     {% block footer %}
         &copy; Copyright 2019 by <a href="//byveldsmultimedia.com">Byvelds Multimedia</a>.
     {% endblock %}
-</div>
+</footer>
 
 <script data-main="javascript/app" src="javascript/require.js"></script>
 </body>
