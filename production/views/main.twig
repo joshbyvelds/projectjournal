@@ -22,22 +22,18 @@
 
 {% block page %}
     {# Project Grid #}
-    Sort By: <input type="text" id="sort" />
+    Sort By:
+    <select>
+        <option value="created">Created</option>
+        <option value="updated">Last Updated</option>
+        <option value="name">Name</option>
+        <option value="cat">Category</option>
+        <option value="created">Completed</option>
+    </select>
+    <br />
 
     <div class="grid">
-        <div class="grid_item">
-            <div class="top">
-                <div class="project_thumbnail"></div>
-                <div class="top_text">
-                    <div class="name">Project Name</div>
-                    <div class="time_spent">12:34:56</div>
-                </div>
-            </div>
-            <div class="bottom">
-                <div class="last_updated">November 23rd, 2019</div>
-                <div class="category_icon"></div>
-            </div>
-        </div>
+        {% for i in 1..15 %}{% include "partials/item.twig" %}{% endfor %}
     </div>
 
     {# Infomation Panel #}
