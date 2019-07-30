@@ -26,7 +26,8 @@
         display: inline-block;
         width: 60px;
         height: 60px;
-        background: #060;
+        background: url("images/updates/sample.webp") 50% 50% no-repeat;
+        background-size: cover;
         border-radius: 50%;
         vertical-align: top;
     }
@@ -37,15 +38,19 @@
     }
 
     .name {
-
+        font-size: 18px;
+        font-weight: 500;
     }
 
     .time_spent {
-
+        font-size: 14px;
+        text-align: center;
+        font-weight: 300;
     }
 
     .last_updated {
-
+        font-size: 12px;
+        font-weight: 100;
     }
 
     .category_icon {
@@ -54,7 +59,8 @@
         right: 0;
         width: 30px;
         height: 30px;
-        background: #f00;
+        background: url("images/categories/webapp.webp");
+        background-size: cover;
         border-radius: 50%;
     }
 }
