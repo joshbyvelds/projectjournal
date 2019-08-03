@@ -1,5 +1,6 @@
 @import "_fonts";
 @import "_reset";
+@import "_utilities";
 @import "_main";
 @import "_header";
 @import "_grid";
@@ -15,13 +16,14 @@ body {
 }
 
 .wrapper {
-    max-width:1550px;
+    max-width:1440px;
     margin: 165px auto 0;
 }
 
 main{
     padding: 10px 20px;
 }
+
 
 @import "themes/_light";
 

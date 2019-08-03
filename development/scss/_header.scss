@@ -1,8 +1,62 @@
 header{
-    padding: 10px;
+    padding: 15px 25px 10px;
+    background: #ffffff;
 
-    .logo {
-        width: 40px;
-        height: 40px;
+    .header_logo {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url("images/header_logo.webp");
+        background-size: contain;
+        vertical-align: top;
+    }
+
+    .searchbar{
+        width: 235px;
+        height: 27px;
+        padding-left: 31px;
+        margin-left: 20px;
+        border: solid 1px #D7D7D7;
+        border-radius: 20px;
+        font-size: 13px;
+
+        &:focus{
+            border-color: #28bf7e;
+            outline: 0;
+            transition: all 300ms ease-out;
+        }
+    }
+
+    .menu_item{
+        padding-top: 10px;
+        padding-left: 25px;
+        font-size: 10px;
+        font-weight: 700;
+        color: #6F7070;
+
+        &.active {
+            color: #28bf7e;
+            transition: all 300ms ease-out;
+        }
+    }
+
+    .user {
+        width:150px;
+
+        .username{
+            padding-top: 10px;
+            padding-right: 20px;
+            color: #686868;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .profile_image{
+            width: 32px;
+            height: 32px;
+            background: url("images/users/sample.webp") 50% 50% no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
     }
 }
