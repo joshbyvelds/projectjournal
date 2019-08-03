@@ -1,0 +1,34 @@
+.login_logo{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: url("images/header_logo.webp");
+    transition: all 300ms ease-out;
+
+    &.user{
+        border-radius: 50%;
+        border: solid 5px white;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+    }
+}
+
+.form{
+    max-width: 300px;
+    margin: 20px auto 0;
+
+    input{
+        width: 300px;
+        height: 27px;
+        padding-left: 31px;
+        margin-bottom: 10px;
+        border: solid 1px #D7D7D7;
+        border-radius: 20px;
+        font-size: 13px;
+
+        &:focus{
+            border-color: #28bf7e;
+            outline: 0;
+            transition: all 300ms ease-out;
+        }
+    }
+}

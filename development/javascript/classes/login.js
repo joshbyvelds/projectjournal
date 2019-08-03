@@ -1,6 +1,6 @@
-import * as $ from 'jquery';
+// UserLogin Class..
 
-export class UserLogin {
+class UserLogin {
 
     constructor() {
         console.log("Run UserLogin");
@@ -12,8 +12,8 @@ export class UserLogin {
     }
 
     private submitLoginForm() {
-        var admin_user: JQuery = $("input[name='username']");
-        var admin_pass: JQuery = $("input[name='password']");
+        var admin_user = $("input[name='username']");
+        var admin_pass = $("input[name='password']");
         var admin_user_value = UserLogin.trim(admin_user.val());
         var admin_pass_value = UserLogin.trim(admin_pass.val());
 
