@@ -62,3 +62,5 @@ composer.lock
 production/node_modules
 development/typescript/node_modules
 fonts/
+
+development/bower_components
