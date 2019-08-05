@@ -1,0 +1,15 @@
+{
+  "name": "project_journal",
+  "version": "1.0.0",
+  "description": "a project manager to keep track of your projects progress",
+  "main": "index.php",
+  "repository": "https://github.com/joshbyvelds/projectjournal.git",
+  "author": "Josh Byvelds <joshbyvelds@users.noreply.github.com>",
+  "license": "GNU General Public License v3.0",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "ladda": "1.0.0",
+    "velocity-animate": "^1.5.2"
+  }
+}
