@@ -1,12 +1,15 @@
 default:
+  autoload:
+    '': "%paths.base%/development/behat_tests/bootstrap"
   suites:
     default:
+      paths:    [ "%paths.base%/development/behat_tests" ]
       contexts:
         - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
         - FeatureContext
   extensions:
     IntegratedExperts\BehatScreenshotExtension:
-      dir: "%paths.base%/features/screenshots"
+      dir: "%paths.base%/development/behat_tests/screenshots"
       fail: true
       purge: false
 
