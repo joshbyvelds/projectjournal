@@ -5,7 +5,6 @@ use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
 use Assetic\Asset\GlobAsset;
 use Assetic\AssetManager;
-use Assetic\Filter\JSMinFilter;
 
 require_once '../vendor/autoload.php';
 require_once 'php/ProjectJournal/Services/Router.php';
@@ -17,8 +16,8 @@ $js = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/bower_components/ladda/dist/spin.min.js'),
     new FileAsset(__DIR__.'/../development/bower_components/ladda/dist/ladda.jquery.min.js'),
     new FileAsset(__DIR__.'/../development/bower_components/velocity/velocity.min.js'),
-    new FileAsset(__DIR__.'/../development/bower_components/velocity/velocity.ui.js'),
-    // new GlobAsset( __DIR__.'/../development/javascript/classes/*'),
+    new FileAsset(__DIR__.'/../development/bower_components/velocity/velocity.ui.min.js'),
+    new GlobAsset( __DIR__.'/../development/javascript/classes/*'),
     new FileAsset(__DIR__.'/../development/javascript/master.js'),
 ));
 
