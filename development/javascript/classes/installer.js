@@ -1,8 +1,6 @@
 // Installer Class..
 
 function Installer() {
-    setupEvents();
-
     var setupEvents = function() {
         $("#installSubmit").on('click', submitInstallForm);
     };
@@ -83,4 +81,7 @@ function Installer() {
     this.generateError = function($field, message) {
         $field.addClass("error").after("<div class=\"error\">" + message + "</div>");
     };
+
+    setupEvents();
+    console.log("Run Installer");
 }

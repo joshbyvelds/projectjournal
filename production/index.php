@@ -11,9 +11,15 @@ require_once 'php/ProjectJournal/Services/Router.php';
 
 // Run Assetic
 
+$css = new AssetCollection(array(
+    new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/ladda.min.css'),
+    new FileAsset(__DIR__.'/../development/scss/compiled/master.css'),
+));
+
 $js = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/jquery/dist/jquery.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/spin.min.js'),
+    new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/ladda.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/ladda.jquery.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.ui.min.js'),
@@ -21,12 +27,19 @@ $js = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/javascript/master.js'),
 ));
 
-$js->setTargetPath('master.js');
-$am = new AssetManager();
-$am->set('basejs', $js);
+$css->setTargetPath('master.css');
+$css_am = new AssetManager();
+$css_am->set('basecss', $css);
 
-$writer = new AssetWriter('javascript/');
-$writer->writeManagerAssets($am);
+$js->setTargetPath('master.js');
+$js_am = new AssetManager();
+$js_am->set('basejs', $js);
+
+$js_writer = new AssetWriter('javascript/');
+$js_writer->writeManagerAssets($js_am);
+
+$css_writer = new AssetWriter('.');
+$css_writer->writeManagerAssets($css_am);
 
 // Setup Twig..
 $loader = new \Twig_Loader_Filesystem(__DIR__.'/views');

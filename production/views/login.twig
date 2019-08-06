@@ -4,17 +4,19 @@
 
 {% block page %}
     <h2>Project Journal Login</h2>
-    <div class="login_logo"></div>
-    <form id="loginForm" class="form">
-        {#<label for="username">Username:</label>#}
-        <input type="text" name="username" placeholder="Username" />
-        <br />
+    <div id="loginShakeWrapper">
+        <div class="login_logo"></div>
+        <form id="loginForm" class="form">
+            {#<label for="username">Username:</label>#}
+            <input type="text" name="username" placeholder="Username" />
+            <br />
 
-        {#<label for="password">Password:</label>#}
-        <input type="password" name="password" placeholder="Password" />
-        <br />
+            {#<label for="password">Password:</label>#}
+            <input type="password" name="password" placeholder="Password" />
+            <br />
 
-        <div class="error" id="login_php_error" style="display: none;"></div>
-        <button type="button" id="loginSubmit">Submit</button>
-    </form>
+            <div class="error" id="login_php_error" style="display: none;"></div>
+            <button type="button" id="loginSubmit">Submit</button>
+        </form>
+    </div>
 {% endblock %}
