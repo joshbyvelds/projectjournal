@@ -11,5 +11,8 @@
     "jquery": "^3.4.1",
     "ladda": "1.0.0",
     "velocity-animate": "^1.5.2"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.1"
   }
 }

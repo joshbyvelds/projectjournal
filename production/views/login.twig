@@ -3,20 +3,19 @@
 {% block title %}Project Journal - Login{% endblock %}
 
 {% block page %}
-    <h2>Project Journal Login</h2>
     <div id="loginShakeWrapper">
-        <div class="login_logo"></div>
+        <div class="login_logo ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000"><div class="cover"><div class="ladda-label"></div></div></div>
         <form id="loginForm" class="form">
-            {#<label for="username">Username:</label>#}
-            <input type="text" name="username" placeholder="Username" />
-            <br />
+            <div class="input_wrapper icon user">
+                <input type="text" name="username" placeholder="Username" />
+            </div>
 
-            {#<label for="password">Password:</label>#}
-            <input type="password" name="password" placeholder="Password" />
-            <br />
+            <div class="input_wrapper icon pass">
+                <input type="password" name="password" placeholder="Password" />
+            </div>
 
             <div class="error" id="login_php_error" style="display: none;"></div>
-            <button type="button" id="loginSubmit">Submit</button>
+            <button type="button" class="main_btn" id="loginSubmit">Submit</button>
         </form>
     </div>
 {% endblock %}

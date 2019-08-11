@@ -1,15 +1,12 @@
+/*
+    Project Journal - Master SCSS
+    Author: J.Byvelds
+    Copyleft 2019
+ */
+
 @import "_fonts";
 @import "_reset";
-@import "_utilities";
-@import "_login";
-@import "_main";
-@import "_header";
-@import "_grid";
-@import "_project_info";
-@import "_todo";
-@import "_updates";
-@import "_project_stats";
-@import "_footer";
+
 
 body {
     padding: 0;
@@ -25,6 +22,16 @@ main{
     padding: 10px 20px;
 }
 
+@import "_utilities";
+@import "_login";
+@import "_main";
+@import "_header";
+@import "_grid";
+@import "_project_info";
+@import "_todo";
+@import "_updates";
+@import "_project_stats";
+@import "_footer";
 
 @import "themes/_light";
 
