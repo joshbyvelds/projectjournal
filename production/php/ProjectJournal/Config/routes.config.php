@@ -41,6 +41,12 @@ return [
         'details' => [],
     ],
 
+    '/logout' => [
+        'controller' => 'login',
+        'action' => 'logout',
+        'details' => [],
+    ],
+
     '/loginsubmit' => [
         'controller' => 'login',
         'action' => 'submit',
