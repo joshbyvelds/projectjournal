@@ -63,4 +63,7 @@ production/node_modules
 production/javascript/master.js
 fonts/
 
+production/images/users
+production/images/updates
+
 development/yarn_components

@@ -18,7 +18,7 @@ function UserLogin() {
         error = false;
         var admin_user = $("input[name='username']");
         var admin_pass = $("input[name='password']");
-        var admin_user_value = trim(admin_user.val());
+        var admin_user_value = trim(admin_user.val()).toLowerCase();
         var admin_pass_value = trim(admin_pass.val());
 
         if(admin_user_value.length === 0) {
@@ -44,16 +44,17 @@ function UserLogin() {
             return;
         }
 
+
         $.post("/loginsubmit", db_form_values, function(json_return){
             json_return = JSON.parse(json_return);
             if(json_return && json_return.success === 1){
-                $("#loginForm .input_wrapper").velocity("transition.bounceUpOut", {duration:1500, stagger:100, complete: function(){
-                    $('.login_logo .cover').removeClass("on");
-                    $('.login_logo').css({"background-image": "url('images/users/"+ admin_user_value +".webp')", "background-size": "cover"});
-                    laddaLogo.stop();
-                    setTimeout(function(){window.location.reload();}, 2000);
+                $('.login_logo .cover').removeClass("on");
+                $('.login_logo').css({"background-image": "url('images/users/"+ admin_user_value +".webp')", "background-size": "cover"});
+                laddaLogo.stop();
+                $('.login_logo').velocity("callout.tada");
+                $(".success-ani-ele").velocity("transition.bounceUpOut", {duration:1500, stagger:100, complete: function(){
+                    setTimeout(function(){window.location.reload();}, 1500);
                 }});
-
             }else{
                 $("#login_php_error").html(json_return.error).show();
                 $("#loginShakeWrapper").velocity("callout.shake", 500);
@@ -71,6 +72,7 @@ function UserLogin() {
     };
 
     var clearErrors = function() {
+        $("#login_php_error").html("");
         $("#loginForm .error_message").not("#login_php_error").remove();
     };
 
