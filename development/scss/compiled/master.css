@@ -196,19 +196,19 @@ main {
 .form .input_wrapper {
   position: relative;
   margin: 0 auto 10px;
+  color: #C0C2C2;
 }
 .form .input_wrapper.user::before {
   position: absolute;
-  top: 50%;
+  top: 7px;
   left: 10px;
-  transform: translateY(-50%);
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "";
 }
 .form .input_wrapper.pass::before {
   position: absolute;
-  top: 50%;
+  top: 15px;
   left: 10px;
   transform: translateY(-50%);
   font-family: "Font Awesome 5 Free";
@@ -222,6 +222,7 @@ main {
   border: solid 1px #D7D7D7;
   border-radius: 20px;
   font-size: 13px;
+  color: #C0C2C2;
 }
 .form input:focus {
   border-color: #28bf7e;
@@ -233,6 +234,9 @@ main {
 }
 .form .error_message {
   display: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: red;
 }
 
 header {

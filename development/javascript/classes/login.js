@@ -45,8 +45,9 @@ function UserLogin() {
         }
 
         $.post("/loginsubmit", db_form_values, function(json_return){
+            json_return = JSON.parse(json_return);
             if(json_return && json_return.success === 1){
-                $("#loginForm input").velocity("transition.bounceUpOut", {duration:1500, stagger:100, complete: function(){
+                $("#loginForm .input_wrapper").velocity("transition.bounceUpOut", {duration:1500, stagger:100, complete: function(){
                     $('.login_logo .cover').removeClass("on");
                     $('.login_logo').css({"background-image": "url('images/users/"+ admin_user_value +".webp')", "background-size": "cover"});
                     laddaLogo.stop();
@@ -54,10 +55,11 @@ function UserLogin() {
                 }});
 
             }else{
-                $("#install_php_error").html(json_return.error);
+                $("#login_php_error").html(json_return.error).show();
                 $("#loginShakeWrapper").velocity("callout.shake", 500);
                 $('.login_logo').removeClass("user");
-                laddaLogo.start();
+                $('.login_logo .cover').removeClass("on");
+                laddaLogo.stop();
             }
         });
     };
@@ -84,6 +86,6 @@ function UserLogin() {
     };
 
     setupEvents();
-    console.log("Run UserLogin v15");
+    console.log("Run UserLogin v17");
 }
 

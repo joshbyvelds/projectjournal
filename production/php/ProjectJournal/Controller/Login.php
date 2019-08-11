@@ -47,8 +47,11 @@ class Login
                     $_SESSION['user_id'] = $user->getId();
                 }else{
                     $json['error'] = true;
-                    throw new Exception('username and password do not match. Try again.');
+                    throw new Exception('Username and password do not match. Try again.');
                 }
+            }else{
+                $json['error'] = true;
+                throw new Exception('Username and password do not match. Try again.');
             }
 
             return new PostArray($response);
