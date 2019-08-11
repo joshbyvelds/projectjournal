@@ -10,11 +10,6 @@ use ProjectJournal\Services\DoctrineService;
 
 class Login
 {
-    public function indexAction()
-    {
-        return new TwigArray('login', []);
-    }
-
     public function logoutAction()
     {
         session_start();
@@ -24,6 +19,11 @@ class Login
         setcookie(session_name(),'',0,'/');
         session_regenerate_id(true);
         header('Location: ' . "/");
+    }
+
+    public function indexAction()
+    {
+        return new TwigArray('login', []);
     }
 
     public function submitAction()

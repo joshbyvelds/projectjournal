@@ -70,8 +70,10 @@ try{
     }
 
     // Check if a user is logged in..
-    session_start();
-    //session_destroy();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
     if($route->getType() === 'twig' && !isset($_SESSION['username'])){
         $route = $router->dispatch("/login");
         echo $twig->render($route->getFile() . '.twig');
