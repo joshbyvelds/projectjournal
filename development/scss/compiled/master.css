@@ -252,15 +252,28 @@ header .header_logo {
   vertical-align: top;
 }
 header .searchbar {
+  position: relative;
+  color: #C0C2C2;
+}
+header .searchbar::before {
+  position: absolute;
+  top: 10px;
+  left: 33px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "";
+  font-size: 12px;
+}
+header .searchbar input {
   width: 235px;
   height: 27px;
   padding-left: 31px;
   margin-left: 20px;
   border: solid 1px #D7D7D7;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 12px;
 }
-header .searchbar:focus {
+header .searchbar input:focus {
   border-color: #28bf7e;
   outline: 0;
   transition: all 300ms ease-out;

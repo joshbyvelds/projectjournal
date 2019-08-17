@@ -7,7 +7,9 @@
         {# Left Side #}
         <div class="half left ib">
             <div class="header_logo"></div>
-            <input type="text" id="search" class="ib searchbar" placeholder="Search through projects" />
+            <div class="input_wrapper searchbar">
+                <input type="text" id="search" class="ib" placeholder="Search through projects" />
+            </div>
         </div><!--
 
      --><div class="half right ib">
@@ -28,17 +30,19 @@
 {% endblock %}
 
 {% block page %}
-    {# Project Grid #}
-    Sort By:
-    <select>
-        <option value="created">Created</option>
-        <option value="updated">Last Updated</option>
-        <option value="name">Name</option>
-        <option value="cat">Category</option>
-        <option value="created">Completed</option>
-    </select>
-    <br />
+    {# Sort Wrapper #}
+    <div class="sorting_selector">
+        Sort By:
+        <select>
+            <option value="created">Created</option>
+            <option value="updated">Last Updated</option>
+            <option value="name">Name</option>
+            <option value="cat">Category</option>
+            <option value="created">Completed</option>
+        </select>
+    </div>
 
+    {# Project Grid #}
     <div class="grid">
         {% for i in 1..15 %}{% include "partials/item.twig" %}{% endfor %}
     </div>
