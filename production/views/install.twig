@@ -3,39 +3,39 @@
 {% block title %}Project Journal - Installer{% endblock %}
 
 {% block page %}
-    <h2>Project Journal Installer</h2>
-    <form id="installerForm">
-        <label for="database_host">Database Host:</label>
-        <input type="text" name="database_host">
-        <br />
+    <div class="login_logo ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000"><div class="cover"><div class="ladda-label"></div></div></div>
+    <form id="installerForm" class="form">
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_host" placeholder="Database Host">
+        </div>
 
-        <label for="database_name">Database Name:</label>
-        <input type="text" name="database_name">
-        {# Error Example #}
-        {#<div class="error"></div>#}
-        <br />
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_name" placeholder="Database Name">
+        </div>
 
-        <label for="database_user">Database User:</label>
-        <input type="text" name="database_user">
-        <br />
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_user" placeholder="Database User">
+        </div>
 
-        <label for="database_pass">Database Password:</label>
-        <input type="password" name="database_password">
-        <br />
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="password" name="database_password" placeholder="Database Password">
+        </div>
 
-        <label for="create_database">Create Database:</label>
-        <input type="checkbox" name="create_database">
-        <br />
+        <div class="input_wrapper success-ani-ele">
+            <label for="create_database">Create Database:</label>
+            <input type="checkbox" name="create_database" placeholder="Create Database">
+        </div>
 
-        <label for="admin_username">Admin Username:</label>
-        <input type="text" name="admin_username">
-        <br />
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="admin_username" placeholder="Admin Username">
+        </div>
 
-        <label for="admin_password">Admin Password:</label>
-        <input type="password" name="admin_password">
-        <br />
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="password" name="admin_password" placeholder="Admin Password">
+        </div>
+
         <div class="error" id="install_php_error" style="display: none;"></div>
 
-        <button type="button" id="installSubmit">Install</button>
+        <button type="button" class="main_btn" id="installSubmit">Install</button>
     </form>
 {% endblock %}

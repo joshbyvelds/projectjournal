@@ -9,10 +9,20 @@
 .grid_item {
     display: inline-block;
     width: 240px;
+    height: 114px;
     padding: 10px;
     margin: 6px;
-    border: solid 1px black;
+    //border: solid 1px black;
     border-radius: 4px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.25);
+    //transition: all 0.5s ease-out;
+
+    //&:hover{
+    //    transform: scale(1.125);
+    //    background: #fff;
+    //    box-shadow: 0 0 14px rgba(0,0,0,0.5);
+    //    z-index: 300;
+    //}
 
     &.selected {
 
@@ -22,10 +32,16 @@
         position: relative;
     }
 
+    .top{
+        height: 70px;
+        padding-left: 9px;
+        padding-top: 7px;
+    }
+
     .project_thumbnail {
         display: inline-block;
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         background: url("images/updates/sample.webp") 50% 50% no-repeat;
         background-size: cover;
         border-radius: 50%;
@@ -34,31 +50,50 @@
 
     .top_text {
         display: inline-block;
+        padding-left: 9px;
         vertical-align: top;
     }
 
     .name {
-        font-size: 18px;
+        height: 26px;
+        padding-top: 3px;
+        color: #343434;
+        font-size: 14px;
         font-weight: 500;
     }
 
     .time_spent {
-        font-size: 14px;
-        text-align: center;
-        font-weight: 300;
+        color: #8C8C8C;
+        font-size: 11px;
+        font-weight: 400;
+    }
+
+    .bottom{
+        padding-left: 8px;
     }
 
     .last_updated {
-        font-size: 12px;
-        font-weight: 100;
+        color: #8C8C8C;
+        font-size: 11px;
+        font-weight: 300;
+
+        i{
+            margin-right: 5px;
+        }
+
+        sup {
+            font-size: 68%;
+            position: relative;
+            top: -4px;
+        }
     }
 
     .category_icon {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 30px;
-        height: 30px;
+        top: -6px;
+        right: 5px;
+        width: 27px;
+        height: 27px;
         background: url("images/categories/webapp.webp");
         background-size: cover;
         border-radius: 50%;

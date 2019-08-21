@@ -1,0 +1,23 @@
+main {
+    background: #ffffff;
+}
+
+.sorting_selector{
+    padding-top: 23px;
+    height: 58px;
+    padding-left: 7px;
+    color: #B8B8B8;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    select{
+        height: 28px;
+        padding-left: 9px;
+        padding-right: 12px;
+        margin-left: 7px;
+        border: solid 1px #D7D7D7;
+        border-radius: 20px;
+        font-size: 11px;
+    }
+}

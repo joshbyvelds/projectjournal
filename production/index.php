@@ -81,7 +81,7 @@ try{
     };
 
     if($route->getType() === 'twig'){
-        echo $twig->render($route->getFile() . '.twig');
+        echo $twig->render($route->getFile() . '.twig', $route->getVariables());
     }
 
     if($route->getType()=== 'post'){

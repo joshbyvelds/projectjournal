@@ -119,14 +119,35 @@ table {
   border-spacing: 0;
 }
 
+html, body {
+  min-height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
+  margin-bottom: -200px;
+}
+body:before {
+  position: absolute;
+  top: -200px;
+  left: 59%;
+  content: " ";
+  width: 400px;
+  height: calc(100% + 400px);
+  margin-bottom: -240px;
+  background: #28BE7F;
+  transform: translateX(-50%) rotate(30deg);
+  transform-origin: center center;
+  z-index: 10;
+  overflow: hidden;
 }
 
 .wrapper {
+  position: relative;
   max-width: 1440px;
   margin: 165px auto 0;
+  z-index: 20;
 }
 
 main {
@@ -197,6 +218,7 @@ main {
   position: relative;
   margin: 0 auto 10px;
   color: #C0C2C2;
+  text-align: left;
 }
 .form .input_wrapper.user::before {
   position: absolute;
@@ -215,7 +237,7 @@ main {
   font-weight: 900;
   content: "";
 }
-.form input {
+.form input[type=text], .form input[type=password] {
   width: 300px;
   height: 27px;
   padding-left: 31px;
@@ -224,7 +246,7 @@ main {
   font-size: 13px;
   color: #C0C2C2;
 }
-.form input:focus {
+.form input[type=text]:focus, .form input[type=password]:focus {
   border-color: #28bf7e;
   outline: 0;
   transition: all 300ms ease-out;
@@ -237,6 +259,29 @@ main {
   padding-top: 5px;
   padding-bottom: 5px;
   color: red;
+}
+
+main {
+  background: #ffffff;
+}
+
+.sorting_selector {
+  padding-top: 23px;
+  height: 58px;
+  padding-left: 7px;
+  color: #B8B8B8;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.sorting_selector select {
+  height: 28px;
+  padding-left: 9px;
+  padding-right: 12px;
+  margin-left: 7px;
+  border: solid 1px #D7D7D7;
+  border-radius: 20px;
+  font-size: 11px;
 }
 
 header {
@@ -317,18 +362,24 @@ header .user .profile_image {
 .grid_item {
   display: inline-block;
   width: 240px;
+  height: 114px;
   padding: 10px;
   margin: 6px;
-  border: solid 1px black;
   border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 }
 .grid_item .top, .grid_item .bottom {
   position: relative;
 }
+.grid_item .top {
+  height: 70px;
+  padding-left: 9px;
+  padding-top: 7px;
+}
 .grid_item .project_thumbnail {
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background: url("images/updates/sample.webp") 50% 50% no-repeat;
   background-size: cover;
   border-radius: 50%;
@@ -336,27 +387,43 @@ header .user .profile_image {
 }
 .grid_item .top_text {
   display: inline-block;
+  padding-left: 9px;
   vertical-align: top;
 }
 .grid_item .name {
-  font-size: 18px;
+  height: 26px;
+  padding-top: 3px;
+  color: #343434;
+  font-size: 14px;
   font-weight: 500;
 }
 .grid_item .time_spent {
-  font-size: 14px;
-  text-align: center;
-  font-weight: 300;
+  color: #8C8C8C;
+  font-size: 11px;
+  font-weight: 400;
+}
+.grid_item .bottom {
+  padding-left: 8px;
 }
 .grid_item .last_updated {
-  font-size: 12px;
-  font-weight: 100;
+  color: #8C8C8C;
+  font-size: 11px;
+  font-weight: 300;
+}
+.grid_item .last_updated i {
+  margin-right: 5px;
+}
+.grid_item .last_updated sup {
+  font-size: 68%;
+  position: relative;
+  top: -4px;
 }
 .grid_item .category_icon {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
+  top: -6px;
+  right: 5px;
+  width: 27px;
+  height: 27px;
   background: url("images/categories/webapp.webp");
   background-size: cover;
   border-radius: 50%;

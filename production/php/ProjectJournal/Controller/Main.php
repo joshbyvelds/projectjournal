@@ -8,6 +8,11 @@ class Main
 {
     public function indexAction()
     {
-        return new TwigArray('main', []);
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $username = $_SESSION['username'];
+        return new TwigArray('main', ['username' => $username]);
     }
 }

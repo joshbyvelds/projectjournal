@@ -22,8 +22,8 @@
 
             {# User Profile #}
             <div class="ib user" id="header_user">
-                <div class="ib username">User Name</div>
-                <div class="ib profile_image"></div>
+                <div class="ib username">{{ username }}</div>
+                <div class="ib profile_image" style="background-image:url(images/users/benshamrock.webp)"></div>
             </div>
         </div>
     </header>
@@ -32,7 +32,7 @@
 {% block page %}
     {# Sort Wrapper #}
     <div class="sorting_selector">
-        Sort By:
+        Sort By
         <select>
             <option value="created">Created</option>
             <option value="updated">Last Updated</option>
