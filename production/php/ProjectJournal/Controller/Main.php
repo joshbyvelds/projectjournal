@@ -12,7 +12,7 @@ class Main
             session_start();
         }
 
-        $username = $_SESSION['username'];
+        $username = (isset($_SESSION['username'])) ? $_SESSION['username'] : "";
         return new TwigArray('main', ['username' => $username]);
     }
 }
