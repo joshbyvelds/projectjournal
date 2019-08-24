@@ -1,6 +1,9 @@
 header{
+    position: relative;
     padding: 15px 25px 10px;
     background: #ffffff;
+    box-shadow: 0 1px 8px -7px rgba(50, 50, 50, 0.8);
+    z-index: 30;
 
     .header_logo {
         display: inline-block;

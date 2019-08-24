@@ -1,8 +1,15 @@
 .grid {
     display: inline-block;
     width: calc(100% - 373px);
+    max-height: 504px;
     padding-right: 15px;
     vertical-align: top;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0px;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
 }
 
 

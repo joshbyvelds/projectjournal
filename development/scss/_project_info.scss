@@ -1,9 +1,19 @@
 .info_panel{
+    position: relative;
+    top: -45px;
     display: inline-block;
     width: 360px;
+    height:504px;
+    padding-top: 43px;
     padding-left: 25px;
     vertical-align: top;
     border-left: solid 1px #bbb;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0px;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
 
     .thumbnail{
         position: relative;
@@ -14,7 +24,7 @@
         border: solid 3px white;
         background: #999;
         border-radius: 50%;
-        box-shadow: 0 0 7px rgba(0,0,0,0.5);
+        box-shadow: 0 0 7px rgba(60, 60, 60, 0.25);
     }
 
     .project_name{
