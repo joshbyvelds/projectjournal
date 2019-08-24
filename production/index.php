@@ -15,6 +15,7 @@ $css = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/ladda.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/regular.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/solid.min.css'),
+    new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/brands.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/fontawesome.min.css'),
     new FileAsset(__DIR__.'/../development/scss/compiled/master.css'),
 ));
