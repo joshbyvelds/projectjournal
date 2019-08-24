@@ -2,20 +2,32 @@
 <html class="{% block htmlclass %}{% endblock %}">
 <head>
     {% block head %}
-        <link rel="stylesheet" href="master.css" />
+        <link rel="stylesheet" href="master.css"/>
         <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
 <body class="theme_light">
-        <div class="wrapper">
-                {% block header %}{% endblock %}
-                <main id="content" role="main">{% block page %}{% endblock %}</main>
-        </div>
-        <footer id="footer">
-            {% block footer %}
-                    &copy; Copyright 2019 by <a href="//byveldsmultimedia.com">Byvelds Multimedia</a>.
-            {% endblock %}
-        </footer>
-        <script data-main="javascript/app" src="javascript/master.js"></script>
+<div class="wrapper">
+    {% block header %}{% endblock %}
+    <main id="content" role="main">{% block page %}{% endblock %}</main>
+
+    <footer id="footer">
+        {% block footer %}
+            <ul>
+                <li><a href="#">Link here</a></li>
+                <li><a href="#">Link here</a></li>
+                <li><a href="#">Link here</a></li>
+                <li><a href="#">Link here</a></li>
+                <li><a href="#">Link here</a></li>
+            </ul>
+            <p>
+                &copy; Copyright 2019 by <a href="//byveldsmultimedia.com">Byvelds Multimedia</a>.
+            </p>
+        {% endblock %}
+    </footer>
+</div>
+
+
+<script data-main="javascript/app" src="javascript/master.js"></script>
 </body>
 </html>

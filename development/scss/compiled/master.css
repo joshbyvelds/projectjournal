@@ -470,6 +470,35 @@ header .user .profile_image {
   text-align: center;
 }
 
+footer {
+  position: relative;
+  padding: 20px;
+  border-top: solid 1px #bbb;
+  background: #ffffff;
+  text-align: center;
+  z-index: 20;
+}
+footer li {
+  display: inline-block;
+  margin-right: 10px;
+}
+footer li:after {
+  content: "|";
+  padding-left: 10px;
+}
+footer li:last-of-type:after {
+  content: "";
+}
+footer p {
+  padding-top: 20px;
+}
+footer p a {
+  margin: 0;
+}
+footer p a:after {
+  content: "";
+}
+
 body.theme_light {
   font-family: "Open Sans";
   font-weight: 100;
