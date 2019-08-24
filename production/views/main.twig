@@ -40,6 +40,14 @@
             <option value="cat">Category</option>
             <option value="created">Completed</option>
         </select>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        Filter Category
+        <select>
+            <option value="0">All</option>
+            <option value="1">Web Apps</option>
+        </select>
     </div>
 
     {# Project Grid #}
@@ -49,15 +57,15 @@
 
     {# Infomation Panel #}
     <div class="info_panel">
-        <div class="thumbnail"></div>
+        <div class="thumbnail"style="background:url(images/updates/sample.webp); background-size: cover;"></div>
         <div class="project_name">Project Name</div>
         <div class="time_spent">12:34:56</div>
         <div class="last_updated">November 23rd, 2019</div>
 
         <div class="action_buttons">
-            <button class="start">[ICON] Start</button>
-            <button class="edit">[ICON] Edit</button>
-            <button class="delete">[ICON] Delete</button>
+            <button class="start button"><i class="far fa-play-circle"></i> Start</button>
+            <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
+            <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
         </div>
 
         <div class="project_decription">

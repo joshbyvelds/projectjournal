@@ -264,6 +264,7 @@ main {
 
 main {
   background: #ffffff;
+  margin-bottom: -56px;
 }
 
 .sorting_selector {
@@ -379,6 +380,13 @@ header .user .profile_image {
   margin: 6px;
   border-radius: 4px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease-out;
+}
+.grid_item:hover {
+  transform: scale(1.125);
+  background: #fff;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+  z-index: 300;
 }
 .grid_item .top, .grid_item .bottom {
   position: relative;
@@ -446,7 +454,7 @@ header .user .profile_image {
   top: -45px;
   display: inline-block;
   width: 360px;
-  height: 504px;
+  height: 554px;
   padding-top: 43px;
   padding-left: 25px;
   vertical-align: top;
@@ -467,6 +475,7 @@ header .user .profile_image {
   margin: 0 auto;
   border: solid 3px white;
   background: #999;
+  background-size: cover;
   border-radius: 50%;
   box-shadow: 0 0 7px rgba(60, 60, 60, 0.25);
 }
@@ -491,6 +500,35 @@ header .user .profile_image {
   font-weight: 600;
   text-align: center;
 }
+.info_panel .action_buttons {
+  padding-bottom: 27px;
+  text-align: center;
+}
+.info_panel .button {
+  width: 142px;
+  height: 35px;
+  border: 0;
+  margin: 0 2px 8px;
+  background: #28BE7F;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+  border-radius: 28px;
+  line-height: 37px;
+}
+.info_panel .project_decription {
+  padding-top: 17px;
+  padding-left: 6px;
+  padding-bottom: 31px;
+  border-top: solid 1px #bbb;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 19px;
+}
+.info_panel .todo_list {
+  padding-top: 16px;
+  border-top: solid 1px #bbb;
+}
 
 footer {
   position: relative;
@@ -498,6 +536,7 @@ footer {
   border-top: solid 1px #bbb;
   background: #ffffff;
   text-align: center;
+  font-weight: 300;
   z-index: 20;
 }
 footer li {
@@ -510,6 +549,12 @@ footer li:after {
 }
 footer li:last-of-type:after {
   content: "";
+}
+footer a {
+  color: #000;
+}
+footer a:hover {
+  color: #28bf7e;
 }
 footer p {
   padding-top: 20px;

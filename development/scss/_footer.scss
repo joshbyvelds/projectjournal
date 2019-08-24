@@ -4,6 +4,7 @@ footer{
     border-top: solid 1px #bbb;
     background: #ffffff;
     text-align: center;
+    font-weight: 300;
     z-index: 20;
 
     li{
@@ -19,6 +20,14 @@ footer{
             &:after{
                 content: "";
             }
+        }
+    }
+
+    a{
+        color: #000;
+
+        &:hover {
+            color: #28bf7e;
         }
     }
 
