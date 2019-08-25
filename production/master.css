@@ -525,12 +525,14 @@ header .user .profile_image {
   position: relative;
   top: -11px;
   height: 22px;
+  color: #919191;
   font-size: 16px;
   font-weight: 500;
   text-align: center;
 }
 .info_panel .last_updated {
   height: 33px;
+  color: #919191;
   font-size: 12px;
   font-weight: 600;
   text-align: center;
@@ -554,15 +556,49 @@ header .user .profile_image {
 .info_panel .project_decription {
   padding-top: 17px;
   padding-left: 6px;
-  padding-bottom: 31px;
+  padding-bottom: 14px;
   border-top: solid 1px #bbb;
+  color: #5D5D5D;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 19px;
 }
-.info_panel .todo_list {
-  padding-top: 16px;
+.info_panel .section {
+  padding-top: 12px;
   border-top: solid 1px #bbb;
+  padding-left: 6px;
+}
+.info_panel .title {
+  color: #8F8F8F;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.info_panel .open_close_btn {
+  border: 0;
+  background: none;
+  color: #8F8F8F;
+}
+.info_panel .open_close_btn:hover {
+  color: #28bf7e;
+}
+.info_panel .todo_list .subtask {
+  color: #707070;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 17px;
+}
+.info_panel .todo_list .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 7px;
+  padding-top: 1px;
+  background: #28bf7e;
+  color: white;
+  font-size: 8px;
+  text-align: center;
+  border-radius: 20px;
 }
 
 footer {
