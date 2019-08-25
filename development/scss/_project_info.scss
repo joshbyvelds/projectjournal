@@ -87,6 +87,12 @@
         padding-top: 12px;
         border-top: solid 1px #bbb;
         padding-left: 6px;
+
+        &.closed{
+            .inside{
+                display: none;
+            }
+        }
     }
 
     .title {

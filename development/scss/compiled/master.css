@@ -538,6 +538,9 @@ header .user .profile_image {
   border-top: solid 1px #bbb;
   padding-left: 6px;
 }
+.info_panel .section.closed .inside {
+  display: none;
+}
 .info_panel .title {
   color: #8F8F8F;
   font-size: 11px;
