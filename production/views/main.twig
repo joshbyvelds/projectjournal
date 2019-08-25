@@ -14,10 +14,8 @@
 
      --><div class="half right ib">
             <ul class="ib">
-                <li class="ib menu_item active">Support [Icon]</li>
-                <li class="ib menu_item">Support [Icon]</li>
-                <li class="ib menu_item">Support [Icon]</li>
-                <li class="ib menu_item">Support [Icon]</li>
+                <li class="ib menu_item active">Add [Icon]</li>
+                <li class="ib menu_item">Stats [Icon]</li>
             </ul>
 
             {# User Profile #}
@@ -30,60 +28,62 @@
 {% endblock %}
 
 {% block page %}
-    {# Sort Wrapper #}
-    <div class="sorting_selector">
-        Sort By
-        <select>
-            <option value="created">Created</option>
-            <option value="updated">Last Updated</option>
-            <option value="name">Name</option>
-            <option value="cat">Category</option>
-            <option value="created">Completed</option>
-        </select>
+    <div class="main_inside_wrapper">
+        {# Sort Wrapper #}
+        <div class="sorting_selector">
+            Sort By
+            <select>
+                <option value="created">Created</option>
+                <option value="updated">Last Updated</option>
+                <option value="name">Name</option>
+                <option value="cat">Category</option>
+                <option value="created">Completed</option>
+            </select>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
 
-        Filter Category
-        <select>
-            <option value="0">All</option>
-            <option value="1">Web Apps</option>
-        </select>
-    </div>
-
-    {# Project Grid #}
-    <div class="grid">
-        {% for i in 1..32 %}{% include "partials/item.twig" %}{% endfor %}
-    </div>
-
-    {# Infomation Panel #}
-    <div class="info_panel">
-        <div class="thumbnail"style="background:url(images/updates/sample.webp); background-size: cover;"></div>
-        <div class="project_name">Project Name</div>
-        <div class="time_spent">12:34:56</div>
-        <div class="last_updated">November 23rd, 2019</div>
-
-        <div class="action_buttons">
-            <button class="start button"><i class="far fa-play-circle"></i> Start</button>
-            <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
-            <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
+            Filter Category
+            <select>
+                <option value="0">All</option>
+                <option value="1">Web Apps</option>
+            </select>
         </div>
 
-        <div class="project_decription">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint.
+        {# Project Grid #}
+        <div class="grid">
+            {# Temp just for front-end-design #}
+            {% include "partials/item_active.twig" %}
+            {% for i in 1..31 %}{% include "partials/item.twig" %}{% endfor %}
         </div>
 
-        <div class="todo_list">
-            <div class="title">Todo List <button id="todo_open_close">[ICON]</button></div>
+        {# Infomation Panel #}
+        <div class="info_panel">
+            <div class="thumbnail"style="background:url(images/updates/sample.webp); background-size: cover;"></div>
+            <div class="project_name">Project Name</div>
+            <div class="time_spent">12:34:56</div>
+            <div class="last_updated">November 23rd, 2019</div>
+
+            <div class="action_buttons">
+                <button class="start button"><i class="far fa-play-circle"></i> Start</button>
+                <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
+                {#<button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>#}
+            </div>
+
+            <div class="project_decription">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint.
+            </div>
+
+            <div class="todo_list">
+                <div class="title">Todo List <button id="todo_open_close">[ICON]</button></div>
+            </div>
+
+            <div class="updates">
+                <div class="title">Updates <button id="todo_open_close">[ICON]</button></div>
+            </div>
+
+            <div class="stats">
+                <div class="title">Stats <button id="todo_open_close">[ICON]</button></div>
+            </div>
         </div>
-
-        <div class="updates">
-            <div class="title">Updates <button id="todo_open_close">[ICON]</button></div>
-        </div>
-
-        <div class="stats">
-            <div class="title">Stats <button id="todo_open_close">[ICON]</button></div>
-        </div>
-
-
     </div>
 {% endblock %}

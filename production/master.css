@@ -183,6 +183,7 @@ body:before {
 
 main {
   padding: 10px 20px;
+  background: #ffffff;
 }
 
 .ib {
@@ -292,8 +293,7 @@ main {
   color: red;
 }
 
-main {
-  background: #ffffff;
+.main_inside_wrapper {
   margin-bottom: -56px;
 }
 
@@ -418,6 +418,11 @@ header .user .profile_image {
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
   z-index: 300;
 }
+.grid_item.selected {
+  width: 238px;
+  height: 115px;
+  border: solid 1px #28bf7e;
+}
 .grid_item .top, .grid_item .bottom {
   position: relative;
 }
@@ -525,7 +530,7 @@ header .user .profile_image {
   text-align: center;
 }
 .info_panel .last_updated {
-  height: 31px;
+  height: 33px;
   font-size: 12px;
   font-weight: 600;
   text-align: center;

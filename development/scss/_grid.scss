@@ -31,7 +31,9 @@
     }
 
     &.selected {
-
+        width: 238px;
+        height: 115px;
+        border: solid 1px #28bf7e;
     }
 
     .top, .bottom{
