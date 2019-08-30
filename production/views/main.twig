@@ -15,6 +15,7 @@
      --><div class="half right ib">
             <ul class="ib">
                 <li class="ib menu_item active">Add [Icon]</li>
+                <li class="ib menu_item">Timeline [Icon]</li>
                 <li class="ib menu_item">Stats [Icon]</li>
             </ul>
 
@@ -74,22 +75,42 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
             </div>
 
-            <div class="section todo_list">
-                <div class="title">Todo List <button class="open_close_btn" id="todo_open_close"><i class="fas fa-folder-open"></i></button></div>
+            <div class="section closed todo_list">
+                <div class="title">Todo List <button class="open_close_btn" id="todo_open_close"><i class="fas fa-folder"></i></button></div>
                 <div class="inside">
                     <div class="task">
-                        Task Name
-                        <div class="subtask">
-                            <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                        </div>
-
+                        <ol>
+                            <li>
+                                <div class="taskname">01.Task Name</div>
+                                <div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div><!--
+                                --><div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div><!--
+                                --><div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div><!--
+                                --><div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div><!--
+                                --><div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div><!--
+                                --><div class="subtask">
+                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
 
-            <div class="section closed updates">
-                <div class="title">Updates <button class="open_close_btn" id="updates_open_close"><i class="fas fa-folder"></i></button></div>
-                <div class="inside"></div>
+            <div class="section updates">
+                <div class="title">Updates <button class="open_close_btn" id="updates_open_close"><i class="fas fa-folder-open"></i></button></div>
+                <div class="inside">
+                    <img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt="">
+                </div>
             </div>
 
             <div class="section closed stats">
@@ -98,4 +119,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(".updates img").on("click", function(){alert("Open Modal with journal entry information here.")});
+    </script>
 {% endblock %}
+
