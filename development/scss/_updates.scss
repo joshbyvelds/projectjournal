@@ -1,0 +1,19 @@
+.update{
+    .inside{
+        position: relative;
+    }
+
+    .next{
+        position: absolute;
+        top: 50%;
+        right: -70px;
+        transform: translateY(-50%);
+    }
+
+    .prev{
+        position: absolute;
+        top: 50%;
+        left: -70px;
+        transform: translateY(-50%);
+    }
+}
