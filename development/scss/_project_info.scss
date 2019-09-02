@@ -5,6 +5,7 @@
     width: 360px;
     height: 554px;
     padding-top: 43px;
+    padding-bottom: 30px;
     padding-left: 25px;
     vertical-align: top;
     border-left: solid 1px #bbb;
@@ -154,6 +155,19 @@
                 border-color: #28bf7e;
                 border-radius: 6px;
             }
+        }
+    }
+
+    .stats{
+        h4{
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 300;
+        }
+
+        span{
+            font-size: 15px;
+            font-weight: 500;
         }
     }
 }
