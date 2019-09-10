@@ -48,6 +48,16 @@
                 <option value="0">All</option>
                 <option value="1">Web Apps</option>
             </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Filter Stage
+            <select>
+                <option value="0">All</option>
+                <option value="1">Idea</option>
+                <option value="1">Work in Progress</option>
+                <option value="1">Complete</option>
+            </select>
         </div>
 
         {# Project Grid #}
@@ -149,6 +159,29 @@
                 <h2>Are you sure you want to delete <strong id="delete_check_name">[Project Name]</strong></h2>
                 <button class="main_btn" id="delete_check_yes">Yes</button>
                 <button class="main_btn" id="delete_check_no">no</button>
+            </div>
+        </div>
+
+        <div class="overlay_panel add">
+            <div class="inside">
+                <h2>Create Project</h2>
+                <div class="form">
+                <div class="input_wrapper icon user success-ani-ele">
+                    <input type="text" name="add_title" placeholder="Project Title" />
+                </div>
+
+                <div class="input_wrapper icon user success-ani-ele">
+                    <select name="" id="">
+                        <option value="1">Web Apps</option>
+                    </select>
+                </div>
+
+                <div class="input_wrapper success-ani-ele">
+                    <textarea name="add_description" id=""></textarea>
+                </div>
+
+                <div class="error error_message" id="add_php_error"></div>
+                <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
             </div>
         </div>
     </div>
