@@ -48,7 +48,7 @@
 }
 @font-face {
   font-family: "Open Sans";
-  src: url("fonts/Open Sans/bold.woff") format("woff");
+  src: url("fonts/Open Sans/bold_italic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }
@@ -645,6 +645,25 @@ header .user .profile_image {
   top: 50%;
   left: -70px;
   transform: translateY(-50%);
+}
+
+.delete_check {
+  text-align: center;
+}
+.delete_check h1 {
+  padding-bottom: 20px;
+  font-size: 60px;
+  font-weight: 900;
+}
+.delete_check h2 {
+  padding-bottom: 30px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.delete_check button {
+  min-width: 200px;
+  margin: 0 10px;
+  text-transform: uppercase;
 }
 
 footer {
