@@ -14,9 +14,9 @@
 
      --><div class="half right ib">
             <ul class="ib">
-                <li class="ib menu_item active">Add [Icon]</li>
-                <li class="ib menu_item">Timeline [Icon]</li>
-                <li class="ib menu_item">Stats [Icon]</li>
+                <li class="ib menu_item active">Add <i class="fas fa-plus-square"></i></li>
+                <li class="ib menu_item">Timeline <i class="fas fa-stream"></i></li>
+                <li class="ib menu_item">Stats <i class="fas fa-poll"></i></li>
             </ul>
 
             {# User Profile #}
@@ -76,8 +76,9 @@
 
             <div class="action_buttons">
                 <button class="start button"><i class="far fa-play-circle"></i> Start</button>
+                <button class="update button"><i class="fas fa-pen-alt"></i> Update</button>
                 <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
-                {#<button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>#}
+                <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
             </div>
 
             <div class="project_decription">
@@ -162,26 +163,61 @@
             </div>
         </div>
 
-        <div class="overlay_panel add">
+        <div class="overlay_panel add off">
             <div class="inside">
                 <h2>Create Project</h2>
                 <div class="form">
-                <div class="input_wrapper icon user success-ani-ele">
-                    <input type="text" name="add_title" placeholder="Project Title" />
-                </div>
+                    <div class="input_wrapper icon user success-ani-ele">
+                        <input type="text" name="add_title" placeholder="Project Title" />
+                    </div>
 
-                <div class="input_wrapper icon user success-ani-ele">
-                    <select name="" id="">
-                        <option value="1">Web Apps</option>
-                    </select>
-                </div>
+                    <div class="input_wrapper icon user success-ani-ele">
+                        <select name="" id="">
+                            <option value="1">Web Apps</option>
+                        </select>
+                    </div>
 
-                <div class="input_wrapper success-ani-ele">
-                    <textarea name="add_description" id=""></textarea>
-                </div>
+                    <div class="input_wrapper success-ani-ele">
+                        <textarea name="add_description" id=""></textarea>
+                    </div>
 
-                <div class="error error_message" id="add_php_error"></div>
-                <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
+                    <div class="error error_message" id="add_php_error"></div>
+                    <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        {# Project Updates Panel #}
+        {# Global Stats Panel  #}
+        {# Timeline Panel  #}
+        <div class="overlay_panel timeline">
+            <div class="inside">
+                <div class="gantt">
+                    <span class="d-1"></span>
+                    <span class="d-2"></span>
+                    <span class="d-3"></span>
+                    <span class="d-4"></span>
+                    <span class="d-5"></span>
+                    <span class="d-6"></span>
+
+                    <h3 class="h-sun">sun</h3>
+                    <h3 class="h-mon">mon</h3>
+                    <h3 class="h-tue">tue</h3>
+                    <h3 class="h-wed">wed</h3>
+                    <h3 class="h-thu">thu</h3>
+                    <h3 class="h-fri">fri</h3>
+                    <h3 class="h-sat">sat</h3>
+
+                    <div class="t-1" style="grid-column: sun-morning / mon-night;">Take the badger for a walk</div>
+                    <div class="t-2" style="grid-column: mon-morning / sat-night;">Manufacture some cheese</div>
+                    <div class="t-3" style="grid-column: sun-morning / tue-midday;">Prepare talk on foot hygiene</div>
+                    <div class="t-4" style="grid-column: tue-midday / wed-night;">Sleep</div>
+                    <div class="t-5" style="grid-column: mon-morning / wed-midday;">Photograph breakfast</div>
+                    <div class="t-6" style="grid-column: mon-night / fri-morning;">Paint the inside of the refrigerator</div>
+                    <div class="t-7" style="grid-column: wed-midday /sat-night;">Sail to Madagascar</div>
+                    <div class="t-8" style="grid-column: wed-midday / thu-midday;">Sleep</div>
+                    <div class="t-9" style="grid-column: thu-midday / sat-night;">Plan the following week’s tasks</div>
+                </div>
             </div>
         </div>
     </div>
