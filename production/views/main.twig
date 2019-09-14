@@ -187,43 +187,92 @@
             </div>
         </div>
 
-        {# Project Updates Panel #}
-        {# Global Stats Panel  #}
+        <div class="overlay_panel settings off">
+            <div class="inside">
+
+            </div>
+        </div>
+
         {# Timeline Panel  #}
         <div class="overlay_panel timeline">
             <div class="inside">
-                <div class="gantt">
-                    <span class="d-1"></span>
-                    <span class="d-2"></span>
-                    <span class="d-3"></span>
-                    <span class="d-4"></span>
-                    <span class="d-5"></span>
-                    <span class="d-6"></span>
-
-                    <h3 class="h-sun">sun</h3>
-                    <h3 class="h-mon">mon</h3>
-                    <h3 class="h-tue">tue</h3>
-                    <h3 class="h-wed">wed</h3>
-                    <h3 class="h-thu">thu</h3>
-                    <h3 class="h-fri">fri</h3>
-                    <h3 class="h-sat">sat</h3>
-
-                    <div class="t-1" style="grid-column: sun-morning / mon-night;">Take the badger for a walk</div>
-                    <div class="t-2" style="grid-column: mon-morning / sat-night;">Manufacture some cheese</div>
-                    <div class="t-3" style="grid-column: sun-morning / tue-midday;">Prepare talk on foot hygiene</div>
-                    <div class="t-4" style="grid-column: tue-midday / wed-night;">Sleep</div>
-                    <div class="t-5" style="grid-column: mon-morning / wed-midday;">Photograph breakfast</div>
-                    <div class="t-6" style="grid-column: mon-night / fri-morning;">Paint the inside of the refrigerator</div>
-                    <div class="t-7" style="grid-column: wed-midday /sat-night;">Sail to Madagascar</div>
-                    <div class="t-8" style="grid-column: wed-midday / thu-midday;">Sleep</div>
-                    <div class="t-9" style="grid-column: thu-midday / sat-night;">Plan the following week’s tasks</div>
+                <div class="chart-wrapper">
+                    <ul class="chart-values">
+                        <li>sun</li>
+                        <li>mon</li>
+                        <li>tue</li>
+                        <li>wed</li>
+                        <li>thu</li>
+                        <li>fri</li>
+                        <li>sat</li>
+                    </ul>
+                    <ul class="chart-bars">
+                        <li data-duration="tue-wed" data-color="#b03532">Task</li>
+                        <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
+                        ...
+                    </ul>
                 </div>
             </div>
         </div>
+
+        {# Project Updates Panel #}
+        {# Global Stats Panel  #}
+
     </div>
 
     <script>
         $(".updates img").on("click", function(){alert("Open Modal with journal entry information here.")});
+    </script>
+
+    <script>
+        window.addEventListener("load", createChart);
+        window.addEventListener("resize", createChart);
+
+        function createChart(e) {
+            // 1
+            const days = document.querySelectorAll(".chart-values li");
+            const tasks = document.querySelectorAll(".chart-bars li");
+            // 2
+            const daysArray = [...days];
+            // 3
+            tasks.forEach(el => {
+                // 1
+                const duration = el.dataset.duration.split("-");
+                // 2
+                const startDay = duration[0];
+                const endDay = duration[1];
+                let left = 0,
+                    width = 0;
+
+                // 3
+                if (startDay.endsWith("½")) {
+                    const filteredArray = daysArray.filter(day => day.textContent == startDay.slice(0, -1));
+                    left = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth / 2;
+                } else {
+                    const filteredArray = daysArray.filter(day => day.textContent == startDay);
+                    left = filteredArray[0].offsetLeft;
+                }
+
+                // 4
+                if (endDay.endsWith("½")) {
+                    const filteredArray = daysArray.filter(day => day.textContent == endDay.slice(0, -1));
+                    width = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth / 2 - left;
+                } else {
+                    const filteredArray = daysArray.filter(day => day.textContent == endDay);
+                    width = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth - left;
+                }
+
+                el.style.left = `${left}px`;
+                el.style.width = `${width}px`;
+                // 4
+                if (e.type == "load") {
+                    // 2
+                    el.style.backgroundColor = el.dataset.color;
+                    // 3
+                    el.style.opacity = 1;
+                }
+            });
+        }
     </script>
 {% endblock %}
 
