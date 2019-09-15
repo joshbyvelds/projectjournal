@@ -21,8 +21,13 @@
 
             {# User Profile #}
             <div class="ib user" id="header_user">
-                <div class="ib username">{{ username }}</div>
+                <div class="ib username">{{ username }} &nbsp;<i class="fas fa-chevron-down"></i></div>
                 <div class="ib profile_image" style="background-image:url(images/users/{{ username }}.webp)"></div>
+
+                <div class="dropdown">
+                    <a href="">Settings</a>
+                    <a href="/logout">Logout</a>
+                </div>
             </div>
         </div>
     </header>
@@ -137,7 +142,7 @@
         </div>
     </div>
 
-    <div class="overlay">
+    <div class="overlay off">
         {# Journal Updates Panel #}
         <div class="overlay_panel update off">
             <div class="inside">
@@ -392,5 +397,16 @@
         }
 
     </script>
+
+    <div style="font-family:'Helvetica Neue Cyr'; font-size: 32px;">
+        <div style="font-weight:100">Thin</div>
+        <div style="font-weight:200">Ultra Light</div>
+        <div style="font-weight:300">Light</div>
+        <div style="font-weight:400">Roman</div>
+        <div style="font-weight:500">Medium</div>
+        <div style="font-weight:700">Bold</div>
+        <div style="font-weight:800">Heavy</div>
+        <div style="font-weight:900">Black</div>
+    </div>
 {% endblock %}
 

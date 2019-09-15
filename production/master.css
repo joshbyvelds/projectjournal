@@ -12,17 +12,17 @@
  * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:auto;src:url(../webfonts/fa-regular-400.eot);src:url(../webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-regular-400.woff2) format("woff2"),url(../webfonts/fa-regular-400.woff) format("woff"),url(../webfonts/fa-regular-400.ttf) format("truetype"),url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")}.far{font-family:"Font Awesome 5 Free";font-weight:400}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:auto;src:url(fonts/fa-regular-400.eot);src:url(fonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(fonts/fa-regular-400.woff2) format("woff2"),url(fonts/fa-regular-400.woff) format("woff"),url(fonts/fa-regular-400.ttf) format("truetype"),url(fonts/fa-regular-400.svg#fontawesome) format("svg")}.far{font-family:"Font Awesome 5 Free";font-weight:400}
 /*!
  * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:auto;src:url(../webfonts/fa-solid-900.eot);src:url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-solid-900.woff2) format("woff2"),url(../webfonts/fa-solid-900.woff) format("woff"),url(../webfonts/fa-solid-900.ttf) format("truetype"),url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")}.fa,.fas{font-family:"Font Awesome 5 Free";font-weight:900}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:auto;src:url(fonts/fa-solid-900.eot);src:url(fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(fonts/fa-solid-900.woff2) format("woff2"),url(fonts/fa-solid-900.woff) format("woff"),url(fonts/fa-solid-900.ttf) format("truetype"),url(fonts/fa-solid-900.svg#fontawesome) format("svg")}.fa,.fas{font-family:"Font Awesome 5 Free";font-weight:900}
 /*!
  * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:normal;font-display:auto;src:url(../webfonts/fa-brands-400.eot);src:url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-brands-400.woff2) format("woff2"),url(../webfonts/fa-brands-400.woff) format("woff"),url(../webfonts/fa-brands-400.ttf) format("truetype"),url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands"}
+@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:normal;font-display:auto;src:url(fonts/fa-brands-400.eot);src:url(fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(fonts/fa-brands-400.woff2) format("woff2"),url(fonts/fa-brands-400.woff) format("woff"),url(fonts/fa-brands-400.ttf) format("truetype"),url(fonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands"}
 /*!
  * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -35,6 +35,102 @@
     Author: J.Byvelds
     Copyleft 2019
  */
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/thin_italic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/ultra_light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/ultra_light_italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/light_italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/roman.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/medium_italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/bold_italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/heavy.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/heavy_italic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue Cyr";
+  src: url("fonts/Helvetica Neve Cyr/black_italic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
 @font-face {
   font-family: "Open Sans";
   src: url("fonts/Open Sans/light.woff") format("woff");
@@ -400,10 +496,17 @@ header .menu_item {
   font-size: 10px;
   font-weight: 700;
   color: #6F7070;
+  vertical-align: middle;
 }
 header .menu_item.active {
   color: #28bf7e;
   transition: all 300ms ease-out;
+}
+header .menu_item i {
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 20px;
+  vertical-align: middle;
 }
 header .user {
   width: 150px;
@@ -892,7 +995,7 @@ footer p a:after {
 }
 
 body.theme_light {
-  font-family: "Open Sans";
+  font-family: "Helvetica Neue Cyr";
   font-weight: 100;
   background: #f5f5f5;
 }
