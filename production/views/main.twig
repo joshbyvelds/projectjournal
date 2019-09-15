@@ -138,6 +138,7 @@
     </div>
 
     <div class="overlay">
+        {# Journal Updates Panel #}
         <div class="overlay_panel update off">
             <div class="inside">
                 <button class="prev"><i class="fa fa-arrow-circle-left"></i></button>
@@ -154,6 +155,7 @@
             </div>
         </div>
 
+        {# Delete Check Panel #}
         <div class="overlay_panel delete_check off">
             <div class="inside">
                 <h1>Warning!</h1>
@@ -163,6 +165,7 @@
             </div>
         </div>
 
+        {# Add Project Panel #}
         <div class="overlay_panel add off">
             <div class="inside">
                 <h2>Create Project</h2>
@@ -187,6 +190,35 @@
             </div>
         </div>
 
+        {# Global Stats Panel #}
+        <div class="overlay_panel global_stats off">
+            <div class="inside">
+                <h2>Global Stats</h2>
+
+                <h3>Number of Projects per Category</h3>
+                <h3>Hours Worked Per Category</h3>
+                <h3>Project Updates Per Month</h3>
+                <h3>Hours Worked on Projects Per Month</h3>
+                <h3>Hours Works on Projects Last Month</h3>
+                <h3>Hours Works on Projects This Month</h3>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        {# Project Stats Panel #}
+        <div class="overlay_panel project_stats off">
+            <div class="inside">
+                <h2>Project Stats</h2>
+
+                <h3>Updates Per Month</h3>
+                <h3>Hours Worked on Project Per Month</h3>
+                <h3>Hours Works on Project Last Month(days)</h3>
+                <h3>Hours Works on Project This Month(days)</h3>
+                <canvas id="myChartStats"></canvas>
+            </div>
+        </div>
+
+        {# Settings Panel #}
         <div class="overlay_panel settings off">
             <div class="inside">
 
@@ -194,7 +226,7 @@
         </div>
 
         {# Timeline Panel  #}
-        <div class="overlay_panel timeline">
+        <div class="overlay_panel timeline off">
             <div class="inside">
                 <div class="chart-wrapper">
                     <ul class="chart-values">
@@ -215,15 +247,73 @@
             </div>
         </div>
 
-        {# Project Updates Panel #}
-        {# Global Stats Panel  #}
+        {# Edit Project Panel #}
+        <div class="overlay_panel edit_project off">
+            <div class="inside">
+                <h2>Edit Project</h2>
+                <div class="form">
+                    <div class="input_wrapper icon user success-ani-ele">
+                        <input type="text" name="edit_title" placeholder="Project Title" />
+                    </div>
+
+                    <div class="input_wrapper icon user success-ani-ele">
+                        <select name="" id="">
+                            <option value="1">Web Apps</option>
+                        </select>
+                    </div>
+
+                    <div class="input_wrapper success-ani-ele">
+                        <textarea name="edit_description" id=""></textarea>
+                    </div>
+
+                    <div class="error error_message" id="edit_php_error"></div>
+                    <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        {# Add Journal Update #}
+        <div class="overlay_panel add_update">
+            <div class="inside">
+                <h2>Write Project Update</h2>
+                <div class="form">
+                    Update Type:<br />
+                    Image: <input type="radio" name="update_type" value="image">
+                    Audio: <input type="radio" name="update_type" value="audio">
+                    Word Count: <input type="radio" name="update_type" value="word_count">
+                    
+                    {# if image or Audio #}
+                    <input type="file"><br />
+                    
+                    {# if word count #}
+                    Pages: <input type="number" name="pages" placeholder="0"><br />
+                    Words: <input type="number" name="words" placeholder="0"><br />
+                    Characters: <input type="number" name="characters" placeholder="0"><br />
+                    Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
+
+                    <div class="input_wrapper icon user success-ani-ele">
+                        <input type="text" name="update_title" placeholder="Update Title" />
+                    </div>
+
+                    <div class="input_wrapper success-ani-ele">
+                        <textarea name="update_description" id=""></textarea>
+                    </div>
+
+                    <div class="error error_message" id="update_php_error"></div>
+                    <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 
     <script>
-        $(".updates img").on("click", function(){alert("Open Modal with journal entry information here.")});
+        window.addEventListener("load", function(){
+            $(".updates img").on("click", function(){alert("Open Modal with journal entry information here.")});
+        });
     </script>
 
+    {# TIMELINE SCRIPT #}
     <script>
         window.addEventListener("load", createChart);
         window.addEventListener("resize", createChart);
@@ -273,6 +363,34 @@
                 }
             });
         }
+    </script>
+
+    {# STATS SCRIPT #}
+    <script>
+        window.addEventListener("load", createStatsChart);
+
+        function createStatsChart() {
+            var ctx = document.getElementById('myChartStats').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+        }
+
     </script>
 {% endblock %}
 

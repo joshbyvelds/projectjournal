@@ -17,6 +17,7 @@ $css = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/solid.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/brands.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/fontawesome.min.css'),
+    new FileAsset(__DIR__.'/../development/yarn_components/chart.js/dist/Chart.min.css'),
     new FileAsset(__DIR__.'/../development/scss/compiled/master.css'),
 ));
 
@@ -27,6 +28,7 @@ $js = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/ladda/dist/ladda.jquery.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.ui.min.js'),
+    new FileAsset(__DIR__.'/../development/yarn_components/chart.js/dist/Chart.min.js'),
     new GlobAsset( __DIR__.'/../development/javascript/classes/*'),
     new FileAsset(__DIR__.'/../development/javascript/master.js'),
 ));
