@@ -23,6 +23,16 @@ return [
         ],
     ],
 
+    '/main-style' => [
+        'controller' => 'main',
+        'action' => 'style',
+        'details' => [
+            'id' => [
+                'filter' => 'filterName',
+            ],
+        ],
+    ],
+
     '/install' => [
         'controller' => 'installer',
         'action' => 'index',
