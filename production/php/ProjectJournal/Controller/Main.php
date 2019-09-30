@@ -15,4 +15,14 @@ class Main
         $username = (isset($_SESSION['username'])) ? $_SESSION['username'] : "";
         return new TwigArray('main', ['username' => $username]);
     }
+
+    public function styleAction()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $username = (isset($_SESSION['username'])) ? $_SESSION['username'] : "";
+        return new TwigArray('main_style', ['username' => $username]);
+    }
 }

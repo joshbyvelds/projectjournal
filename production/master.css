@@ -432,7 +432,7 @@ main {
 .sorting_selector {
   padding-top: 23px;
   height: 58px;
-  padding-left: 7px;
+  padding-left: 6px;
   color: #B8B8B8;
   font-size: 10px;
   font-weight: 700;
@@ -442,7 +442,7 @@ main {
   height: 28px;
   padding-left: 9px;
   padding-right: 12px;
-  margin-left: 7px;
+  margin-left: 5px;
   border: solid 1px #D7D7D7;
   border-radius: 20px;
   font-size: 11px;
@@ -483,7 +483,9 @@ header .searchbar input {
   margin-left: 20px;
   border: solid 1px #D7D7D7;
   border-radius: 20px;
+  font-weight: 500;
   font-size: 12px;
+  font-family: "Helvetica Neue Cyr";
 }
 header .searchbar input:focus {
   border-color: #28bf7e;
@@ -491,9 +493,9 @@ header .searchbar input:focus {
   transition: all 300ms ease-out;
 }
 header .menu_item {
-  padding-top: 10px;
-  padding-left: 25px;
-  font-size: 10px;
+  padding-top: 4px;
+  padding-left: 26px;
+  font-size: 11px;
   font-weight: 700;
   color: #6F7070;
   vertical-align: middle;
@@ -504,19 +506,24 @@ header .menu_item.active {
 }
 header .menu_item i {
   display: inline-block;
-  padding-left: 10px;
-  font-size: 20px;
+  padding-left: 6px;
+  font-size: 21px;
   vertical-align: middle;
 }
 header .user {
-  width: 150px;
+  width: 151px;
 }
 header .user .username {
   padding-top: 10px;
-  padding-right: 20px;
+  padding-right: 4px;
   color: #686868;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
+}
+header .user .username i {
+  font-size: 8px;
+  position: relative;
+  top: -2px;
 }
 header .user .profile_image {
   width: 32px;
@@ -550,12 +557,14 @@ header .user .profile_image {
   border-radius: 4px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   transition: all 0.5s ease-out;
-}
-.grid_item:hover {
-  transform: scale(1.125);
-  background: #fff;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
-  z-index: 300;
+  /*
+  &:hover{
+      transform: scale(1.125);
+      background: #fff;
+      box-shadow: 0 0 14px rgba(0,0,0,0.5);
+      z-index: 300;
+  }
+  */
 }
 .grid_item.selected {
   width: 238px;
@@ -589,12 +598,12 @@ header .user .profile_image {
   padding-top: 3px;
   color: #343434;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .grid_item .time_spent {
   color: #8C8C8C;
-  font-size: 11px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 500;
 }
 .grid_item .bottom {
   padding-left: 8px;
@@ -658,15 +667,16 @@ header .user .profile_image {
   position: relative;
   top: -21px;
   text-align: center;
-  font-size: 23px;
-  font-weight: 800;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 .info_panel .time_spent {
   position: relative;
-  top: -11px;
+  top: -9px;
   height: 22px;
   color: #919191;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
 }
@@ -674,7 +684,7 @@ header .user .profile_image {
   height: 33px;
   color: #919191;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
 }
 .info_panel .action_buttons {
@@ -699,8 +709,8 @@ header .user .profile_image {
   padding-bottom: 14px;
   border-top: solid 1px #bbb;
   color: #5D5D5D;
-  font-size: 11px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 19px;
 }
 .info_panel .section {
@@ -733,6 +743,7 @@ header .user .profile_image {
 .info_panel .todo_list .subtask {
   display: inline-block;
   width: 50%;
+  padding-bottom: 9px;
   color: #707070;
   font-size: 11px;
   font-weight: 400;
