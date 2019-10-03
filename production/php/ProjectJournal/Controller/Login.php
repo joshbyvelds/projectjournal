@@ -23,7 +23,7 @@ class Login
 
     public function indexAction()
     {
-        return new TwigArray('login', []);
+        return new TwigArray('login');
     }
 
     public function submitAction()

@@ -13,7 +13,7 @@ class Installer
 {
     public function indexAction()
     {
-        return new TwigArray('install', []);
+        return new TwigArray('install');
     }
 
     public function submitAction()
