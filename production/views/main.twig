@@ -21,10 +21,10 @@
 
             {# User Profile #}
             <div class="ib user" id="header_user">
-                <div class="ib username">{{ username }} &nbsp;<i class="fas fa-chevron-down"></i></div>
+                <div class="ib username" id="username">{{ username }} &nbsp;<i class="fas fa-chevron-down"></i></div>
                 <div class="ib profile_image" style="background-image:url(images/users/{{ username }}.webp)"></div>
 
-                <div class="dropdown off">
+                <div class="dropdown" id="header_username_dropdown">
                     <a href="">Settings</a>
                     <a href="/logout">Logout</a>
                 </div>
@@ -87,7 +87,6 @@
             </div>
 
             <div class="project_decription">
-
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
             </div>
 
@@ -349,6 +348,14 @@
         </div>
 
     </div>
+
+    <script>
+        window.addEventListener("load", function(){
+            $("#username").on("click", function(){
+                $("#header_username_dropdown").slideToggle();
+            });
+        });
+    </script>
 
     <script>
         window.addEventListener("load", function(){

@@ -71,6 +71,7 @@ header{
     }
 
     .user {
+        position: relative;
         width:151px;
 
         .username{
@@ -79,6 +80,7 @@ header{
             color: #686868;
             font-size: 11px;
             font-weight: 700;
+            cursor:pointer;
 
             i {
                 font-size: 8px;
@@ -93,6 +95,27 @@ header{
             background: url("images/users/sample.webp") 50% 50% no-repeat;
             background-size: cover;
             border-radius: 50%;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 43px;
+            right: -24px;
+            width: 170px;
+            background-color: white;
+            box-shadow: 0 4px 7px -6px rgba(0, 0, 0, 0.5);
+
+            a{
+                display: block;
+                padding: 5px 0;
+                padding-right: 20px;
+                border-bottom: solid #CCC 1px;
+                color: #000;
+                font-size: 13px;
+                font-weight: 400;
+                text-decoration: none;
+            }
         }
     }
 }
