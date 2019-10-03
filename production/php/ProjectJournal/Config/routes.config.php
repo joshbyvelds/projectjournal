@@ -23,16 +23,6 @@ return [
         ],
     ],
 
-    '/main-style' => [
-        'controller' => 'main',
-        'action' => 'style',
-        'details' => [
-            'id' => [
-                'filter' => 'filterName',
-            ],
-        ],
-    ],
-
     '/install' => [
         'controller' => 'installer',
         'action' => 'index',
@@ -60,6 +50,12 @@ return [
     '/loginsubmit' => [
         'controller' => 'login',
         'action' => 'submit',
+        'details' => [],
+    ],
+
+    '/jasmine' => [
+        'controller' => 'jasmine',
+        'action' => 'index',
         'details' => [],
     ],
 ]

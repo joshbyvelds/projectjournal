@@ -18,6 +18,7 @@ $css = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/brands.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/@fortawesome/fontawesome-free/css/fontawesome.min.css'),
     new FileAsset(__DIR__.'/../development/yarn_components/chart.js/dist/Chart.min.css'),
+    new FileAsset(__DIR__.'/../development/yarn_components/jasmine-core/lib/jasmine-core/jasmine.css'),
     new FileAsset(__DIR__.'/../development/scss/compiled/master.css'),
 ));
 
@@ -29,8 +30,15 @@ $js = new AssetCollection(array(
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/velocity-animate/velocity.ui.min.js'),
     new FileAsset(__DIR__.'/../development/yarn_components/chart.js/dist/Chart.min.js'),
+    new FileAsset(__DIR__.'/../development/javascript/jquery.ext.js'),
     new GlobAsset( __DIR__.'/../development/javascript/classes/*'),
     new FileAsset(__DIR__.'/../development/javascript/master.js'),
+));
+
+$jasmine = new AssetCollection(array(
+    new FileAsset(__DIR__.'/../development/yarn_components/jasmine-core/lib/jasmine-core/jasmine.js'),
+    new FileAsset(__DIR__.'/../development/yarn_components/jasmine-core/lib/jasmine-core/jasmine-html.js'),
+    new FileAsset(__DIR__.'/../development/yarn_components/jasmine-core/lib/jasmine-core/boot.js'),
 ));
 
 $css->setTargetPath('master.css');
@@ -41,8 +49,15 @@ $js->setTargetPath('master.js');
 $js_am = new AssetManager();
 $js_am->set('basejs', $js);
 
+$jasmine->setTargetPath('jasmine.js');
+$jasmine_am = new AssetManager();
+$jasmine_am->set('basejasmine', $jasmine);
+
 $js_writer = new AssetWriter('javascript/');
 $js_writer->writeManagerAssets($js_am);
+
+$jasmine_writer = new AssetWriter('javascript/');
+$jasmine_writer->writeManagerAssets($jasmine_am);
 
 $css_writer = new AssetWriter('.');
 $css_writer->writeManagerAssets($css_am);
