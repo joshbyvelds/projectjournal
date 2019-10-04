@@ -23,9 +23,7 @@
         myReporter = {
             jasmineDone: function(result) {
                 setTimeout(function(){
-                    var $jasmine_results = $(".jasmine_html-reporter").clone();
-                    $("#jasmine_wrapper").append($jasmine_results);
-                    $(".jasmine_html-reporter")[1].remove();
+                    $(".jasmine_html-reporter").detach().appendTo("#jasmine_wrapper");
                     $(".jasmine_html-reporter").fadeIn(500);
                 }, 50)
             }
