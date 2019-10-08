@@ -68,4 +68,6 @@ production/images/updates
 
 development/yarn_components
 
+development/behat_tests/screenshots/*
+
 behat.cmd
