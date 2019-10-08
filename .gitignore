@@ -67,3 +67,5 @@ production/images/users
 production/images/updates
 
 development/yarn_components
+
+behat.cmd
