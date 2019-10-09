@@ -34,6 +34,24 @@ class FeatureContext extends MinkContext implements Context
     }
 
     /**
+     * Check an element for a specific string
+     *
+     * @Then I should see the text in :selector is :text
+     */
+    public function iSeeSelectorHasText($selector, $text)
+    {
+        $elementText = $this->getSession()->getPage()->find('css', $selector)->getText();
+
+        if ($elementText !== $text) {
+            throw new \Exception(sprintf('Selector does not contain: "%s". It\'s text is "%s"', $text, $elementText));
+        }
+
+        if (null === $elementText) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate CSS Selector: "%s"', $selector));
+        }
+    }
+
+    /**
      * @When I wait for :text to appear
      * @Then I should see :text appear
      * @param $text

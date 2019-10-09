@@ -1,6 +1,7 @@
 // Installer Class..
 
 function Installer() {
+    var error = false;
     var setupEvents = function() {
         $("#installSubmit").on('click', submitInstallForm);
     };
@@ -59,29 +60,34 @@ function Installer() {
             "admin_pass": admin_pass_value
         };
 
+        if(error)
+            return;
+
         $.post("/installsubmit", db_form_values, function(json_return){
+            json_return = JSON.parse(json_return);
+            console.log(json_return);
             if(json_return && json_return.success === 1) {
-                window.location.reload();
+                window.location.replace("/login")
             } else {
-                $("#install_php_error").html(json_return.error);
+                $("#install_php_error").show().html(json_return.error);
             }
         });
     };
 
-    this.trim = function (val) {
+    var trim = function (val) {
         if (val !== undefined) {
             return val.toString();
         }
     };
 
-    this.clearErrors = function() {
+    var clearErrors = function() {
         $("#installerForm .error").not("#install_php_error").remove();
     };
 
-    this.generateError = function($field, message) {
+    var generateError = function($field, message) {
+        error = true;
         $field.addClass("error").after("<div class=\"error\">" + message + "</div>");
     };
 
     setupEvents();
-    console.log("Run Installer");
 }

@@ -55,20 +55,6 @@ class Installer
             $admin_user = $_POST["admin_user"];
             $admin_pass = $_POST["admin_pass"];
 
-            /*
-            var_dump($db_host);
-            var_dump($db_name);
-            var_dump($db_user);
-            var_dump($db_pass);
-            var_dump($admin_user);
-            var_dump($admin_pass);
-            */
-
-            // Create Database config file..
-            $filename = 'php/ProjectJournal/Config/database.config.php';
-            $content = "<?php\n\nreturn [\n    'dbname' => '" . $db_name . "',\n    'user' => '" . $db_user . "',\n    'password' => '" . $db_pass . "',\n    'host' => '" . $db_host . "',\n    'driver' => 'pdo_mysql'\n];";
-            $handle = file_put_contents($filename, $content);
-
             // Create Database if selected
 
             if ($_POST['create_db']) {
@@ -111,6 +97,11 @@ class Installer
              time VARCHAR( 11 ) NOT NULL);";
             $db->exec($sql);
 
+            // Create Database config file..
+            $filename = 'php/ProjectJournal/Config/database.config.php';
+            $content = "<?php\n\nreturn [\n    'dbname' => '" . $db_name . "',\n    'user' => '" . $db_user . "',\n    'password' => '" . $db_pass . "',\n    'host' => '" . $db_host . "',\n    'driver' => 'pdo_mysql'\n];";
+            $handle = file_put_contents($filename, $content);
+
 
             // Create 'Admin' User..
 
@@ -127,7 +118,6 @@ class Installer
 
             $ds->getEntityManager()->persist($user);
             $ds->getEntityManager()->flush();
-
 
             return new PostArray($response);
         } catch(\Exception $e) {

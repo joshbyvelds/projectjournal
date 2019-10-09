@@ -4,10 +4,8 @@ Feature: Behat Mink Setup Test
   C:\Java Jars>java -jar selenium-server-standalone-3.141.59.jar
 
   @javascript
-  Scenario: Search for a word that exists
+  Scenario: Test Behat and Mink are working on browser..
     Given I am on "/"
-    When I wait for "Samsung Galaxy S II" to appear
-    When I fill in "searchTerm" with "Samsung"
-    And I press "search_submit"
-    Then I should see "Samsung Galaxy S II"
+    Then I should see a "body" element
+    And I should see "Copyright 2019" appear
 
