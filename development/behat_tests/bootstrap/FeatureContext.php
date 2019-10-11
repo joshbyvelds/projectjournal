@@ -24,6 +24,21 @@ class FeatureContext extends MinkContext implements Context
     }
 
     /**
+     * @Then /^I reset the database config$/
+     */
+    public function resetDBConfig()
+    {
+        $db = new PDO("mysql:dbname=project_journal_behat;host=localhost", "behat", "behat");
+        $db->exec("DROP DATABASE `project_journal_behat`;");
+
+        if(unlink(getCWD() . "/production/php/ProjectJournal/Config/database.config.php")) {
+            copy(getCWD() . "/production/php/ProjectJournal/Config/database.config.php.bck", getCWD() . "/production/php/ProjectJournal/Config/database.config.php");
+            unlink(getCWD() . "/production/php/ProjectJournal/Config/database.config.php.bck");
+        }
+
+    }
+
+    /**
      * @When /^I wait (\d*) seconds?$/
      */
     public function iWait($sec)
