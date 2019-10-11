@@ -5,6 +5,7 @@ Feature: Behat Mink Setup Test
 
   @javascript
   Scenario: Test Behat and Mink are working on browser..
+    When I start running behat tests
     Given I am on "/"
     Then I should see a "body" element
     And I should see "Copyright 2019" appear

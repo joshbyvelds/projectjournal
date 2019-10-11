@@ -24,6 +24,17 @@ class FeatureContext extends MinkContext implements Context
     }
 
     /**
+     * @When /^I start running behat tests$/
+     */
+    public function startBehatTests(){
+        $files = glob(getCWD() . '/development/behat_tests/screenshots/*'); // get all file names
+        foreach($files as $file){ // iterate files
+            if(is_file($file))
+                unlink($file); // delete file
+        }
+    }
+
+    /**
      * @Then /^I reset the database config$/
      */
     public function resetDBConfig()
@@ -46,6 +57,63 @@ class FeatureContext extends MinkContext implements Context
         for ($i = 0; $i < $sec; $i++) {
             sleep(1);
         }
+    }
+
+    /**
+     * @When I wait for ajax to finish
+     */
+    public function iWaitForAjax()
+    {
+        return $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+    }
+
+    /**
+     * @When I wait for slow animations to finish
+     */
+    public function iWaitForSlowAnimationsToFinish()
+    {
+        $contiguousInvocations = 0;
+        $this->spin(function ($context) use (&$contiguousInvocations) {
+            /** @var MinkContext $context */
+            if (!$context->getSession()->getPage()->find('css', '.velocity-animating')) {
+                $contiguousInvocations++;
+            }
+
+            return $contiguousInvocations > 5;
+        });
+    }
+
+    /**
+     * @When I wait for ladda animation to complete
+     */
+    public function iWaitForLaddaAnimationsToFinish()
+    {
+        $contiguousInvocations = 0;
+        $this->uspin(function ($context) use (&$contiguousInvocations) {
+            /** @var MinkContext $context */
+
+            if (!$context->getSession()->getPage()->find('css', '.ladda-button')->hasAttribute("data-loading")) {
+                $contiguousInvocations++;
+            }
+
+            return $contiguousInvocations > 5;
+        });
+    }
+
+    /**
+     * @When I wait for animations to finish
+     */
+    public function iWaitForAnimationsToFinish()
+    {
+        $contiguousInvocations = 0;
+        $this->uspin(function ($context) use (&$contiguousInvocations) {
+            /** @var MinkContext $context */
+            if (!$context->getSession()->getPage()->find('css', '.velocity-animating')) {
+                $contiguousInvocations++;
+            }
+
+            return $contiguousInvocations > 5;
+        });
     }
 
     /**
@@ -102,6 +170,25 @@ class FeatureContext extends MinkContext implements Context
         throw new Exception(
             "Timeout thrown by " . $backtrace[1]['class'] . "::" . $backtrace[1]['function'] . "()\n" .
             $backtrace[1]['file'] . ", line " . $backtrace[1]['line']
+        );
+    }
+
+    public function uSpin($lambda, $waitCycles = 250)
+    {
+        for ($i = 0; $i < $waitCycles; $i++) {
+            try {
+                if ($lambda($this)) {
+                    return true;
+                }
+            } catch (Exception $e) {
+            }
+            usleep(50000);
+        }
+        $backtrace = debug_backtrace();
+
+        throw new Exception(
+            "Timeout thrown by " . $backtrace[1]['class'] . "::" . $backtrace[1]['function'] . "()\n" .
+            ", type " . $backtrace[1]['type']
         );
     }
 }

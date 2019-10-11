@@ -63,6 +63,7 @@ production/node_modules
 production/javascript/master.js
 fonts/
 
+database.config.php
 production/images/users
 production/images/updates
 
@@ -71,3 +72,4 @@ development/yarn_components
 development/behat_tests/screenshots/*
 
 behat.cmd
+
