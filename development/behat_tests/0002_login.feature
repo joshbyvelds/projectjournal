@@ -2,7 +2,7 @@ Feature: Login Page / Form
 
   @javascript
   Scenario: Check for Empty Field Errors
-    Given I am on "/login"
+    Given I am on "/"
     And I press "loginSubmit"
     Then I wait for ladda animation to complete
     Then I wait for animations to finish
@@ -47,4 +47,5 @@ Feature: Login Page / Form
     And I press "loginSubmit"
     Then I wait for ladda animation to complete
     Then I wait for animations to finish
+    Then I wait 1 seconds
     Then I should be on "/"

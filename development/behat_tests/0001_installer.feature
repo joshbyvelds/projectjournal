@@ -1,6 +1,11 @@
 Feature: DB and App Installer
 
   @javascript
+  Scenario: Logout of current site
+    Given I am on "/logout"
+    Then I wait 1 seconds
+
+  @javascript
   Scenario: Check for Empty Field Errors
     Given I am on "/"
     And I press "installSubmit"
@@ -22,5 +27,3 @@ Feature: DB and App Installer
     When I fill in "admin_username" with "behat"
     When I fill in "admin_password" with "behatpassword"
     And I press "installSubmit"
-    And I wait 3 seconds
-    Then I should be on "/login"
