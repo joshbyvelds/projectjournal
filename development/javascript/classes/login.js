@@ -5,7 +5,9 @@ function UserLogin() {
     var laddaLogo;
     var setupEvents = function() {
         $("#loginSubmit").on('click', submitLoginForm);
-        laddaLogo = Ladda.create( document.querySelector( '.login_logo' ) );
+        if(document.querySelector( '.login_logo' ) != null) {
+            laddaLogo = Ladda.create(document.querySelector('.login_logo'));
+        }
     };
 
     var loadLaddaAnimation = function(){
