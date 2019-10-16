@@ -8,3 +8,8 @@ $.fn.toggleAttr = function(attr, val) {
     }
     return this;
 };
+
+$.fn.clearStyle = function() {
+    $(this).attr("style", "");
+    return this;
+};

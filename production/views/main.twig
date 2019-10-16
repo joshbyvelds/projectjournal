@@ -14,9 +14,9 @@
 
      --><div class="half right ib">
             <ul class="ib header_nav">
-                <li class="ib menu_item add">Add <i class="fas fa-plus-square"></i></li>
-                <li class="ib menu_item timeline">Timeline <i class="fas fa-stream"></i></li>
-                <li class="ib menu_item stats">Stats <i class="fas fa-poll"></i></li>
+                <li class="ib menu_item add modalBtn" data-modal="add">Add <i class="fas fa-plus-square"></i></li>
+                <li class="ib menu_item timeline modalBtn" data-modal="timeline">Timeline <i class="fas fa-stream"></i></li>
+                <li class="ib menu_item stats modalBtn" data-modal="stats">Stats <i class="fas fa-poll"></i></li>
             </ul>
 
             {# User Profile #}
@@ -146,207 +146,227 @@
         </div>
     </div>
 
-    <div class="overlay off">
-        {# Journal Updates Panel #}
-        <div class="overlay_panel update off">
-            <div class="inside">
-                <button class="prev"><i class="fa fa-arrow-circle-left"></i></button>
-                <button class="next"><i class="fa fa-arrow-circle-right"></i></button>
-                <h2>Journal Update Title</h2>
-                <h3>September 3rd, 2019 - 10:18 PM</h3>
-                <h3>3:21:00</h3>
+    <div class="overlay off" id="overlay">
+        <div class="panel_wrapper">
+            {# Journal Updates Panel #}
+            <div class="overlay_panel update off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <button class="prev"><i class="fa fa-arrow-circle-left"></i></button>
+                    <button class="next"><i class="fa fa-arrow-circle-right"></i></button>
+                    <h2>Journal Update Title</h2>
+                    <h3>September 3rd, 2019 - 10:18 PM</h3>
+                    <h3>3:21:00</h3>
 
-                <img src="images/updates/sample.webp" alt="">
+                    <img src="images/updates/sample.webp" alt="">
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti dicta dolorem dolores esse exercitationem fuga nihil! Ab at autem beatae dolorem error eum labore minus, nostrum omnis quam, quod.
-                </p>
-            </div>
-        </div>
-
-        {# Delete Check Panel #}
-        <div class="overlay_panel delete_check off">
-            <div class="inside">
-                <h1>Warning!</h1>
-                <h2>Are you sure you want to delete <strong id="delete_check_name">[Project Name]</strong></h2>
-                <button class="main_btn" id="delete_check_yes">Yes</button>
-                <button class="main_btn" id="delete_check_no">no</button>
-            </div>
-        </div>
-
-        {# Add Project Panel #}
-        <div class="overlay_panel add off">
-            <div class="inside">
-                <h2>Create Project</h2>
-                <div class="form">
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <input type="text" name="add_title" placeholder="Project Title" />
-                    </div>
-
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <select name="" id="">
-                            <option value="1">Web Apps</option>
-                        </select>
-                    </div>
-
-                    <div class="input_wrapper success-ani-ele">
-                        <textarea name="add_description" id=""></textarea>
-                    </div>
-
-                    <div class="error error_message" id="add_php_error"></div>
-                    <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti dicta dolorem dolores esse exercitationem fuga nihil! Ab at autem beatae dolorem error eum labore minus, nostrum omnis quam, quod.
+                    </p>
+                    <button class="modalclosebtn close_bottom">Close</button>
                 </div>
             </div>
-        </div>
 
-        {# Global Stats Panel #}
-        <div class="overlay_panel global_stats off">
-            <div class="inside">
-                <h2>Global Stats</h2>
-
-                <h3>Number of Projects per Category</h3>
-                <h3>Hours Worked Per Category</h3>
-                <h3>Project Updates Per Month</h3>
-                <h3>Hours Worked on Projects Per Month</h3>
-                <h3>Hours Works on Projects Last Month</h3>
-                <h3>Hours Works on Projects This Month</h3>
-                <canvas id="myChart"></canvas>
-            </div>
-        </div>
-
-        {# Project Stats Panel #}
-        <div class="overlay_panel project_stats off">
-            <div class="inside">
-                <h2>Project Stats</h2>
-
-                <h3>Updates Per Month</h3>
-                <h3>Hours Worked on Project Per Month</h3>
-                <h3>Hours Works on Project Last Month(days)</h3>
-                <h3>Hours Works on Project This Month(days)</h3>
-                <canvas id="myChartStats"></canvas>
-            </div>
-        </div>
-
-        {# Settings Panel #}
-        <div class="overlay_panel settings off">
-            <div class="inside">
-
-            </div>
-        </div>
-
-        {# Timeline Panel  #}
-        <div class="overlay_panel timeline off">
-            <div class="inside">
-                <div class="chart-wrapper">
-                    <ul class="chart-values">
-                        <li>sun</li>
-                        <li>mon</li>
-                        <li>tue</li>
-                        <li>wed</li>
-                        <li>thu</li>
-                        <li>fri</li>
-                        <li>sat</li>
-                    </ul>
-                    <ul class="chart-bars">
-                        <li data-duration="tue-wed" data-color="#b03532">Task</li>
-                        <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
-                        ...
-                    </ul>
+            {# Delete Check Panel #}
+            <div class="overlay_panel delete_check off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h1>Warning!</h1>
+                    <h2>Are you sure you want to delete <strong id="delete_check_name">[Project Name]</strong></h2>
+                    <button class="main_btn" id="delete_check_yes">Yes</button>
+                    <button class="main_btn" id="delete_check_no">no</button>
+                    <button class="modalclosebtn close_bottom">Close</button>
                 </div>
             </div>
-        </div>
 
-        {# Edit Project Panel #}
-        <div class="overlay_panel edit_project off">
-            <div class="inside">
-                <h2>Edit Project</h2>
-                <div class="form">
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <input type="text" name="edit_title" placeholder="Project Title" />
+            {# Add Project Panel #}
+            <div class="overlay_panel add off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Create New Project</h2>
+                    <div class="form">
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <input type="text" name="add_title" placeholder="Project Title" />
+                        </div>
+
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <select name="" id="">
+                                <option value="1">Web Apps</option>
+                            </select>
+                        </div>
+
+                        <div class="input_wrapper success-ani-ele">
+                            <textarea name="add_description" id=""></textarea>
+                        </div>
+
+                        <div class="error error_message" id="add_php_error"></div>
+                        <button type="button" class="main_btn success-ani-ele" id="submitNewProject">Submit</button>
+                        <button class="modalclosebtn close_bottom">Close</button>
                     </div>
-
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <select name="" id="">
-                            <option value="1">Web Apps</option>
-                        </select>
-                    </div>
-
-                    <div class="input_wrapper success-ani-ele">
-                        <textarea name="edit_description" id=""></textarea>
-                    </div>
-
-                    <div class="error error_message" id="edit_php_error"></div>
-                    <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
                 </div>
             </div>
-        </div>
 
-        {# Add Journal Update #}
-        <div class="overlay_panel add_update">
-            <div class="inside">
-                <h2>Write Project Update</h2>
-                <div class="form">
-                    Update Type:<br />
-                    Image: <input type="radio" name="update_type" value="image">
-                    Audio: <input type="radio" name="update_type" value="audio">
-                    Word Count: <input type="radio" name="update_type" value="word_count">
+            {# Global Stats Panel #}
+            <div class="overlay_panel global_stats off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Global Stats</h2>
 
-                    {# if image or Audio #}
-                    <input type="file"><br />
-
-                    {# if word count #}
-                    Pages: <input type="number" name="pages" placeholder="0"><br />
-                    Words: <input type="number" name="words" placeholder="0"><br />
-                    Characters: <input type="number" name="characters" placeholder="0"><br />
-                    Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
-
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <input type="text" name="update_title" placeholder="Update Title" />
-                    </div>
-
-                    <div class="input_wrapper success-ani-ele">
-                        <textarea name="update_description" id=""></textarea>
-                    </div>
-
-                    <div class="error error_message" id="update_php_error"></div>
-                    <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+                    <h3>Number of Projects per Category</h3>
+                    <h3>Hours Worked Per Category</h3>
+                    <h3>Project Updates Per Month</h3>
+                    <h3>Hours Worked on Projects Per Month</h3>
+                    <h3>Hours Works on Projects Last Month</h3>
+                    <h3>Hours Works on Projects This Month</h3>
+                    <canvas id="myChart"></canvas>
+                    <button class="modalclosebtn close_bottom">Close</button>
                 </div>
             </div>
-        </div>
 
-        {# Add Task Update #}
-        <div class="overlay_panel add_update">
-            <div class="inside">
-                <h2>Write Project Update</h2>
-                <div class="form">
-                    Update Type:<br />
-                    Image: <input type="radio" name="update_type" value="image">
-                    Audio: <input type="radio" name="update_type" value="audio">
-                    Word Count: <input type="radio" name="update_type" value="word_count">
+            {# Project Stats Panel #}
+            <div class="overlay_panel project_stats off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Project Stats</h2>
 
-                    {# if image or Audio #}
-                    <input type="file"><br />
-
-                    {# if word count #}
-                    Pages: <input type="number" name="pages" placeholder="0"><br />
-                    Words: <input type="number" name="words" placeholder="0"><br />
-                    Characters: <input type="number" name="characters" placeholder="0"><br />
-                    Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
-
-                    <div class="input_wrapper icon user success-ani-ele">
-                        <input type="text" name="update_title" placeholder="Update Title" />
-                    </div>
-
-                    <div class="input_wrapper success-ani-ele">
-                        <textarea name="update_description" id=""></textarea>
-                    </div>
-
-                    <div class="error error_message" id="update_php_error"></div>
-                    <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+                    <h3>Updates Per Month</h3>
+                    <h3>Hours Worked on Project Per Month</h3>
+                    <h3>Hours Works on Project Last Month(days)</h3>
+                    <h3>Hours Works on Project This Month(days)</h3>
+                    <canvas id="myChartStats"></canvas>
+                    <button class="modalclosebtn close_bottom">Close</button>
                 </div>
             </div>
-        </div>
 
+            {# Settings Panel #}
+            <div class="overlay_panel settings off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <button class="modalclosebtn close_bottom">Close</button>
+                </div>
+            </div>
+
+            {# Timeline Panel  #}
+            <div class="overlay_panel timeline off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <div class="chart-wrapper">
+                        <ul class="chart-values">
+                            <li>sun</li>
+                            <li>mon</li>
+                            <li>tue</li>
+                            <li>wed</li>
+                            <li>thu</li>
+                            <li>fri</li>
+                            <li>sat</li>
+                        </ul>
+                        <ul class="chart-bars">
+                            <li data-duration="tue-wed" data-color="#b03532">Task</li>
+                            <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
+                            ...
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {# Edit Project Panel #}
+            <div class="overlay_panel edit_project off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Edit Project</h2>
+                    <div class="form">
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <input type="text" name="edit_title" placeholder="Project Title" />
+                        </div>
+
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <select name="" id="">
+                                <option value="1">Web Apps</option>
+                            </select>
+                        </div>
+
+                        <div class="input_wrapper success-ani-ele">
+                            <textarea name="edit_description" id=""></textarea>
+                        </div>
+
+                        <div class="error error_message" id="edit_php_error"></div>
+                        <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
+                        <button class="modalclosebtn close_bottom">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            {# Add Journal Update #}
+            <div class="overlay_panel add_update off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Write Project Update</h2>
+                    <div class="form">
+                        Update Type:<br />
+                        Image: <input type="radio" name="update_type" value="image">
+                        Audio: <input type="radio" name="update_type" value="audio">
+                        Word Count: <input type="radio" name="update_type" value="word_count">
+
+                        {# if image or Audio #}
+                        <input type="file"><br />
+
+                        {# if word count #}
+                        Pages: <input type="number" name="pages" placeholder="0"><br />
+                        Words: <input type="number" name="words" placeholder="0"><br />
+                        Characters: <input type="number" name="characters" placeholder="0"><br />
+                        Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
+
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <input type="text" name="update_title" placeholder="Update Title" />
+                        </div>
+
+                        <div class="input_wrapper success-ani-ele">
+                            <textarea name="update_description" id=""></textarea>
+                        </div>
+
+                        <div class="error error_message" id="update_php_error"></div>
+                        <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+                        <button class="modalclosebtn close_bottom">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            {# Add Task Update #}
+            <div class="overlay_panel add_task off">
+                <div class="inside">
+                    <i class="modalclosebtn close_x fas fa-window-close"></i>
+                    <h2>Write Project Update</h2>
+                    <div class="form">
+                        Update Type:<br />
+                        Image: <input type="radio" name="update_type" value="image">
+                        Audio: <input type="radio" name="update_type" value="audio">
+                        Word Count: <input type="radio" name="update_type" value="word_count">
+
+                        {# if image or Audio #}
+                        <input type="file"><br />
+
+                        {# if word count #}
+                        Pages: <input type="number" name="pages" placeholder="0"><br />
+                        Words: <input type="number" name="words" placeholder="0"><br />
+                        Characters: <input type="number" name="characters" placeholder="0"><br />
+                        Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
+
+                        <div class="input_wrapper icon user success-ani-ele">
+                            <input type="text" name="update_title" placeholder="Update Title" />
+                        </div>
+
+                        <div class="input_wrapper success-ani-ele">
+                            <textarea name="update_description" id=""></textarea>
+                        </div>
+
+                        <div class="error error_message" id="update_php_error"></div>
+                        <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+                        <button class="modalclosebtn close_bottom">Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>

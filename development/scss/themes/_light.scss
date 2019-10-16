@@ -8,7 +8,23 @@ body.theme_light{
     .main_btn{
         height: 40px;
         border: 0;
-        background: #28BE7F;
+        background: $primary_color;
+        color: #fff;
+        font-size: 21px;
+        font-weight: 300;
+        border-radius: 28px;
+    }
+
+    .close_x{
+        &:hover{
+            color: $primary_color;
+        }
+    }
+
+    .close_bottom{
+        height: 40px;
+        border: 0;
+        background: #AAA;
         color: #fff;
         font-size: 21px;
         font-weight: 300;
