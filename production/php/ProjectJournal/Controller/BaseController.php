@@ -12,6 +12,7 @@ class BaseController
 
             foreach ($keys as $key){
                 if (isset($_POST[$key])){
+                    //TODO:: Clean data before returning..
                     $post[$key] = $_POST[$key];
                 }else{
                     throw new Exception($key . ' post variable not set.');
