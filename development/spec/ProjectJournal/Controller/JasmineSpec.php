@@ -2,23 +2,18 @@
 
 namespace spec\ProjectJournal\Controller;
 
-use ProjectJournal\Controller\Main;
+use ProjectJournal\Controller\Jasmine;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class MainSpec extends ObjectBehavior
+class JasmineSpec extends ObjectBehavior
 {
-
     function it_is_initializable()
     {
-        $this->shouldHaveType(Main::class);
+        $this->shouldHaveType(Jasmine::class);
     }
 
     function its_index_action_function_should_return_twig_array(){
         $this->indexAction()->shouldBeAnInstanceOf('ProjectJournal\Modal\TwigArray');
-    }
-
-    function its_add_project_action_function_should_return_post_array(){
-        $this->addProjectAction()->shouldBeAnInstanceOf('ProjectJournal\Modal\PostArray');
     }
 }

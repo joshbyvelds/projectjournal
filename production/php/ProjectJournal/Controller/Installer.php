@@ -8,8 +8,9 @@ use ProjectJournal\Modal\TwigArray;
 use ProjectJournal\Modal\PostArray;
 use ProjectJournal\Services\DoctrineService;
 use ProjectJournal\Entity\User;
+use ProjectJournal\Controller\BaseController;
 
-class Installer
+class Installer extends BaseController
 {
     public function indexAction()
     {

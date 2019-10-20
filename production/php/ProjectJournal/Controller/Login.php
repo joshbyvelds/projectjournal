@@ -6,9 +6,9 @@ use Exception;
 use ProjectJournal\Modal\TwigArray;
 use ProjectJournal\Modal\PostArray;
 use ProjectJournal\Services\DoctrineService;
+use ProjectJournal\Controller\BaseController;
 
-
-class Login
+class Login extends BaseController
 {
     public function logoutAction()
     {

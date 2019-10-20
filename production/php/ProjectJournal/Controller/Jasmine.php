@@ -3,8 +3,9 @@
 namespace ProjectJournal\Controller;
 
 use ProjectJournal\Modal\TwigArray;
+use ProjectJournal\Controller\BaseController;
 
-class Jasmine
+class Jasmine extends BaseController
 {
     public function indexAction()
     {
