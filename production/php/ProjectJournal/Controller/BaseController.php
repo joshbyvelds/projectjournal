@@ -20,7 +20,7 @@ class BaseController
 
             return $post;
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['message' => $e->getMessage()];
         }
     }
 }

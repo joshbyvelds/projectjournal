@@ -19,8 +19,8 @@ class BaseControllerSpec extends ObjectBehavior
         $_POST = array();
         $testvar = 'test';
         //$this->shouldThrow(Exception::class)->during('getPostVariables', array(['test']));
-        $this->getPostVariables([$testvar])->shouldBeString();
-        $this->getPostVariables([$testvar])->shouldEqual($testvar . " post variable not set.");
+        $this->getPostVariables([$testvar])->shouldBeArray();
+        $this->getPostVariables([$testvar])->shouldHaveKeyWithValue('message','test post variable not set.');
     }
 
     function its_post_function_should_return_a_array()
