@@ -16,7 +16,7 @@
             <ul class="ib header_nav">
                 <li class="ib menu_item add modalBtn" data-modal="add">Add <i class="fas fa-plus-square"></i></li>
                 <li class="ib menu_item timeline modalBtn" data-modal="timeline">Timeline <i class="fas fa-stream"></i></li>
-                <li class="ib menu_item stats modalBtn" data-modal="stats">Stats <i class="fas fa-poll"></i></li>
+                <li class="ib menu_item stats modalBtn" data-modal="global_stats">Stats <i class="fas fa-poll"></i></li>
             </ul>
 
             {# User Profile #}
@@ -60,16 +60,16 @@
             <select>
                 <option value="0">All</option>
                 <option value="1">Idea</option>
-                <option value="1">Work in Progress</option>
-                <option value="1">Complete</option>
+                <option value="2">Work in Progress</option>
+                <option value="3">Complete</option>
             </select>
         </div>
 
         {# Project Grid #}
-        <div class="grid">
-            {# Temp just for front-end-design #}
-            {% include "partials/item_active.twig" %}
-            {% for i in 1..31 %}{% include "partials/item.twig" %}{% endfor %}
+        <div class="grid" id="project_grid">
+            {#
+            {% for i in 1..32 %}{% include "partials/item.twig" %}{% endfor %}
+            #}
         </div>
 
         {# Infomation Panel #}
@@ -184,25 +184,32 @@
                 <div class="inside">
                     <i class="modalclosebtn close_x fas fa-window-close"></i>
                     <h2>Create New Project</h2>
-                    <div class="form">
+                    <div class="form" id="add_project_form">
                         <div class="input_wrapper icon user success-ani-ele">
-                            <input type="text" name="add_title" placeholder="Project Title" />
+                            <input type="text" name="add_project_title" placeholder="Project Title" />
                         </div>
 
                         <div class="input_wrapper icon user success-ani-ele">
-                            <select name="" id="">
+                            <select name="add_project_category" id="">
+
+                                <option value="" selected disabled hidden>Category</option>
                                 <option value="1">Web Apps</option>
                             </select>
                         </div>
 
                         <div class="input_wrapper success-ani-ele">
-                            <textarea name="add_description" id=""></textarea>
+                            <textarea name="add_project_description" id=""></textarea>
                         </div>
 
-                        <div class="error error_message" id="add_php_error"></div>
-                        <button type="button" class="main_btn success-ani-ele" id="submitNewProject">Submit</button>
-                        <button class="modalclosebtn close_bottom">Close</button>
+                        <div class="error error_message" id="add_project_php_error"></div>
+                        <button type="button" class="main_btn success-ani-ele ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000" id="submitNewProject">Submit</button>
                     </div>
+
+                    <div class="success_panel" id="add_project_success_panel">
+                        <h1>Project Added :)</h1>
+                    </div>
+
+                    <button class="modalclosebtn close_bottom">Close</button>
                 </div>
             </div>
 

@@ -323,32 +323,6 @@ main {
   display: inline-block;
 }
 
-.login_logo {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin: 0 auto;
-  background: url("images/header_logo.webp");
-  transition: all 300ms ease-out;
-}
-.login_logo.user {
-  border-radius: 50%;
-  border: solid 5px white;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-}
-.login_logo .cover {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.4);
-}
-.login_logo .cover.on {
-  display: block;
-}
-
 .form {
   max-width: 340px;
   margin: 20px auto 0;
@@ -405,6 +379,32 @@ main {
   padding-top: 5px;
   padding-bottom: 5px;
   color: red;
+}
+
+.login_logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  background: url("images/header_logo.webp");
+  transition: all 300ms ease-out;
+}
+.login_logo.user {
+  border-radius: 50%;
+  border: solid 5px white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+.login_logo .cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+}
+.login_logo .cover.on {
+  display: block;
 }
 
 .main_inside_wrapper {

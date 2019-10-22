@@ -26,7 +26,8 @@ class MainSpec extends ObjectBehavior
 
     function its_add_project_action_function_should_return_object_with_error_property_if_title_post_variable_is_missing()
     {
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'title post variable not set.');
     }
@@ -37,7 +38,8 @@ class MainSpec extends ObjectBehavior
         //$this->getPostVariables(['title'])->willReturn(['title' => 'title',])->shouldBeCalled();
         $_POST['title'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'category post variable not set.');
     }
@@ -50,7 +52,8 @@ class MainSpec extends ObjectBehavior
         $_POST['title'] = "test";
         $_POST['category'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'description post variable not set.');
     }
@@ -60,7 +63,8 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "";
         $_POST['description'] = "";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'Please create a title for this new project');
     }
@@ -70,7 +74,8 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "";
         $_POST['description'] = "";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'Please select a category for this new project');
     }
@@ -80,7 +85,8 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
+        $postArray = $postArray->getPostData();
         $postArray->shouldHaveKeyWithValue('success', '0');
         $postArray->shouldHaveKeyWithValue('message', 'Please write a description for this new project');
     }
@@ -97,7 +103,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $this->addProjectAction()->shouldBeAnInstanceOf('ProjectJournal\Modal\PostArray');
+        $this->addProjectAction(true)->shouldBeAnInstanceOf('ProjectJournal\Modal\PostArray');
     }
 
     function its_add_project_action_function_should_return_object_with_success_property()
@@ -113,7 +119,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
         $postArray = $postArray->getPostData();
         $postArray->shouldHaveKey('success');
     }
@@ -131,7 +137,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
         $postArray = $postArray->getPostData();
         $postArray->shouldHaveKey('id');
     }
@@ -149,7 +155,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
         $postArray = $postArray->getPostData();
         $postArray->shouldHaveKey('title');
     }
@@ -167,7 +173,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
         $postArray = $postArray->getPostData();
         $postArray->shouldHaveKey('date');
     }
@@ -184,7 +190,7 @@ class MainSpec extends ObjectBehavior
         $_POST['category'] = "test";
         $_POST['description'] = "test";
 
-        $postArray = $this->addProjectAction();
+        $postArray = $this->addProjectAction(true);
         $postArray = $postArray->getPostData();
         $postArray->shouldHaveKey('time_spent');
     }

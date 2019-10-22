@@ -9,6 +9,9 @@ use Assetic\AssetManager;
 require_once '../vendor/autoload.php';
 require_once 'php/ProjectJournal/Services/Router.php';
 
+// Timezone settings
+date_default_timezone_set ( 'America/Toronto' );
+
 // Run Assetic
 
 $css = new AssetCollection(array(

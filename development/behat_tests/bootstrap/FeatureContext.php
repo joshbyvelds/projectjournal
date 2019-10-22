@@ -49,6 +49,38 @@ class FeatureContext extends MinkContext implements Context
 
     }
 
+    /** Click on the element with the provided selector
+     *
+     * @Then I click on the :selector element
+     */
+    public function iClickOnTheElementSelector($selector)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        $element->click();
+    }
+
+    /**
+     * @Given I am not logged in
+     */
+    public function iAmNotLoggedIn()
+    {
+        $this->getSession()->restart();
+    }
+
+    /**
+     * @Given I am logged in
+     */
+    public function iAmLoggedInAsAUserWithPassword()
+    {
+        $this->getSession()->setCookie('behat', true);
+        $this->visitPath("/");
+    }
+
     /**
      * @When /^I wait (\d*) seconds?$/
      */

@@ -3,6 +3,7 @@
 namespace ProjectJournal\Controller;
 
 use PDO;
+use ProjectJournal\Entity\Project;
 use ProjectJournal\Modal\PostArray;
 use ProjectJournal\Modal\TwigArray;
 use ProjectJournal\Controller\BaseController;
@@ -25,7 +26,7 @@ class Main extends BaseController
         return new TwigArray('main', ['username' => $username]);
     }
 
-    public function addProjectAction(){
+    public function addProjectAction($phpspec = false){
         $project = [];
 
         try {
@@ -55,21 +56,41 @@ class Main extends BaseController
             }
 
             $date = new \DateTime();
+            $id = 0;
 
-            //$d = new DoctrineService();
+            if(!$phpspec){
+                $ds = new DoctrineService();
 
-            $project['success'] = 1;
-            $project['id'] = '1';
+                $project = new Project();
+                $project->setTitle($post['title']);
+                $project->setCategory($post['category']);
+                $project->setDescription($post['description']);
+                $project->setImage("project_not_started.webp");
+                $project->setDatestarted($date);
+                $project->setLaststarted($date);
+                $project->setTime(0);
+                $project->setStatus(1);
+
+                $ds->getEntityManager()->persist($project);
+                $ds->getEntityManager()->flush();
+
+                $id = $project->getId();
+            }
+
+            $project = [];
+            $project['success'] = '1';
+            $project['id'] = $id;
             $project['title'] = $post['title'];
             $project['description'] = $post['description'];
             $project['category'] = $post['category'];
-            $project['date'] = $date;
+            $project['date'] = date_format($date,"F j\<\s\u\p\>S\<\/\s\u\p\>\, Y");
             $project['time_spent'] = 0;
+            $project['status'] = 1;
 
             return new PostArray($project);
 
         } catch(\Exception $e) {
-            return ['success' => '0', 'message' => $e->getMessage()];
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
         }
     }
 }

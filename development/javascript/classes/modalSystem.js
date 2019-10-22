@@ -17,7 +17,9 @@ function ModalSystem(){
             swapModal(modal);
         }else{
             open = true;
-            $("#overlay").velocity("fadeIn", {duration:1000, complete: function(){
+            $(".overlay_panel .success_panel").hide();
+            $(".overlay_panel .form").show();
+            $("#overlay").velocity("fadeIn", {duration:400, complete: function(){
                     $(".overlay_panel." + modal).removeClass("off").velocity("transition.bounceDownIn",{duration: 1000, complete:function(){
                             currentModal = modal;
                         }
@@ -40,7 +42,7 @@ function ModalSystem(){
     };
 
     this.closeOverlay = function(){
-        $("#overlay").velocity("fadeOut", {duration:1000, complete: function(){
+        $("#overlay").velocity("fadeOut", {duration:400, complete: function(){
                 CLASS.closeAllPanels();
                 open = false;
                 currentModal = false;
