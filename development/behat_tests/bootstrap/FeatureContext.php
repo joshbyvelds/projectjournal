@@ -46,7 +46,46 @@ class FeatureContext extends MinkContext implements Context
             copy(getCWD() . "/production/php/ProjectJournal/Config/database.config.php.bck", getCWD() . "/production/php/ProjectJournal/Config/database.config.php");
             unlink(getCWD() . "/production/php/ProjectJournal/Config/database.config.php.bck");
         }
+    }
 
+    /** Look for attribute in selector
+     *
+     * @Then :selector element should have an :attr attribute
+     */
+    public function elementHasAttribute($selector, $attr)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        if (!$element->hasAttribute($attr)) {
+            throw new \InvalidArgumentException(sprintf('"%s" does not have a "%s"', $selector, $attr));
+        }
+    }
+
+    /** Look for attribute in selector and see it has certain value
+     *
+     * @Then :selector element should have an :attr attribute with :value value
+     */
+    public function elementHasAttributeWithValue($selector, $attr, $value)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        if (!$element->hasAttribute($attr)) {
+            throw new \InvalidArgumentException(sprintf('"%s" does not have a "%s"', $selector, $attr));
+        }
+
+        $act_value = $element->getAttribute($attr);
+
+        if ($act_value !== $value) {
+            throw new \InvalidArgumentException(sprintf('"%s" in "%s" does not equal "%s". it current equals "%s"', $selector, $attr, $value, $act_value));
+        }
     }
 
     /** Click on the element with the provided selector
