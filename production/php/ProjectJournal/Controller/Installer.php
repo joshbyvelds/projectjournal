@@ -82,6 +82,7 @@ class Installer extends BaseController
              category VARCHAR( 250 ) NOT NULL,
              description VARCHAR( 5000 ) NOT NULL,
              image VARCHAR( 250 ) NOT NULL,
+             datestarted DATETIME NOT NULL,
              laststarted DATETIME NOT NULL,
              time VARCHAR( 11 ) NOT NULL,
              status INT( 2 ) NOT NULL);";
