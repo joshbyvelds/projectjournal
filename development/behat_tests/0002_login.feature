@@ -1,6 +1,6 @@
 Feature: Login Page / Form
 
-  @javascript
+  @javascript @login
   Scenario: Check for Empty Field Errors
     Given I am on "/"
     And I press "loginSubmit"
@@ -9,7 +9,7 @@ Feature: Login Page / Form
     Then I should see "Please enter the username for account."
     Then I should see "Please enter the password for your account."
 
-  @javascript
+  @javascript @login
   Scenario: Login to site with incorrect username
     Given I am on "/"
     When I fill in "username" with "wrongusername"
@@ -19,7 +19,7 @@ Feature: Login Page / Form
     Then I wait for animations to finish
     Then I should see "Username and password do not match. Try again."
 
-  @javascript
+  @javascript @login
   Scenario: Login to site with incorrect password
     Given I am on "/"
     When I fill in "username" with "behat"
@@ -29,7 +29,7 @@ Feature: Login Page / Form
     Then I wait for animations to finish
     Then I should see "Username and password do not match. Try again."
 
-  @javascript
+  @javascript @login
   Scenario: Login to site with incorrect username & password
     Given I am on "/"
     When I fill in "username" with "wrongusername"
@@ -39,7 +39,7 @@ Feature: Login Page / Form
     Then I wait for animations to finish
     Then I should see "Username and password do not match. Try again."
 
-  @javascript
+  @javascript @login @needed
   Scenario: Login to site with correct username and password
     Given I am on "/"
     When I fill in "username" with "behat"
@@ -47,5 +47,3 @@ Feature: Login Page / Form
     And I press "loginSubmit"
     Then I wait for ladda animation to complete
     Then I wait for animations to finish
-    Then I wait 1 seconds
-    Then I should be on "/"

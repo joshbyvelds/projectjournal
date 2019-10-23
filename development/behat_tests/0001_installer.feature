@@ -1,11 +1,11 @@
 Feature: DB and App Installer
 
-  @javascript
+  @javascript @installer @needed
   Scenario: Logout of current site
     Given I am on "/logout"
     Then I wait 1 seconds
 
-  @javascript
+  @javascript @installer
   Scenario: Check for Empty Field Errors
     Given I am on "/"
     And I press "installSubmit"
@@ -16,8 +16,8 @@ Feature: DB and App Installer
     Then I should see "Please create a user name for the admin account."
     Then I should see "Please create a password for the admin account."
 
-  @javascript
-  Scenario: Check for Empty Field Errors
+  @javascript @installer @needed
+  Scenario: Install App by Filling Form
     Given I am on "/"
     When I fill in "database_host" with "localhost"
     When I fill in "database_name" with "project_journal_behat"
