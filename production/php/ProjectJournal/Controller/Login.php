@@ -18,6 +18,18 @@ class Login extends BaseController
         session_write_close();
         setcookie(session_name(),'',0,'/');
         session_regenerate_id(true);
+
+        // unset cookies
+        if (isset($_SERVER['HTTP_COOKIE'])) {
+            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+            foreach($cookies as $cookie) {
+                $parts = explode('=', $cookie);
+                $name = trim($parts[0]);
+                setcookie($name, '', time()-1000);
+                setcookie($name, '', time()-1000, '/');
+            }
+        }
+
         header('Location: ' . "/");
     }
 

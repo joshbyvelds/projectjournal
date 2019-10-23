@@ -1,13 +1,13 @@
 <div class="grid_item">
     <div class="top">
-        <div class="project_thumbnail"></div>
+        <div class="project_thumbnail" style='background-image: url("images/updates/{{ image }}");'></div>
         <div class="top_text">
-            <div class="name">Project Name</div>
-            <div class="time_spent"><i class="far fa-clock"></i> <span>12:34:56</span></div>
+            <div class="name">{{ title }}</div>
+            <div class="time_spent"><i class="far fa-clock"></i> <span>{{ time }}</span></div>
         </div>
     </div>
     <div class="bottom">
-        <div class="last_updated"><i class="fas fa-calendar-alt"></i> November 23<sup>rd</sup>, 2019</div>
-        <div class="category_icon"></div>
+        <div class="last_updated"><i class="fas fa-calendar-alt"></i> {{ date|raw }}</div>
+        <div class="category_icon category_{{ category }}"></div>
     </div>
 </div>

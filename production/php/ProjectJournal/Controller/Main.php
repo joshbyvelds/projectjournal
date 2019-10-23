@@ -23,8 +23,38 @@ class Main extends BaseController
         }
 
         $username = (isset($_SESSION['username'])) ? $_SESSION['username'] : "";
-        return new TwigArray('main', ['username' => $username]);
+        $projects = [];
+
+        // Get projects from DB
+        if(isset($_SESSION['username'])) {
+            $ds = new DoctrineService();
+            $project_repo = $ds->getEntityManager()->getRepository(Project::class);
+            $projects = $project_repo->findAll();
+
+            foreach ($projects as $project) {
+                $project->setLaststarted(date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"));
+                $project->setTime($this->convertTimeSpent($project->getTime()));
+            }
+        }
+
+        return new TwigArray('main', ['username' => $username, 'projects' => $projects]);
     }
+
+    private function convertTimeSpent($seconds_left)
+    {
+        $hours = floor($seconds_left / (60 * 60));
+        $seconds_left = $seconds_left % (60 * 60);
+
+        $minutes = floor($seconds_left / 60);
+        $seconds_left = $seconds_left % 60;
+
+        $hours = ($hours <= 9) ? "0" . $hours : $hours;
+        $minutes = ($minutes <= 9) ? "0" . $minutes : $minutes;
+        $seconds = ($seconds_left <= 9) ? "0" . $seconds_left : $seconds_left;
+
+        return $hours . ":" . $minutes . ":" . $seconds;
+    }
+
 
     public function addProjectAction($phpspec = false){
         $project = [];
