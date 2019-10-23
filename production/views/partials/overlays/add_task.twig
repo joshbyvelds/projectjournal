@@ -1,0 +1,33 @@
+<div class="overlay_panel add_task off">
+    <div class="inside">
+        <i class="modalclosebtn close_x fas fa-window-close"></i>
+        <h2>Write Project Update</h2>
+        <div class="form">
+            Update Type:<br />
+            Image: <input type="radio" name="update_type" value="image">
+            Audio: <input type="radio" name="update_type" value="audio">
+            Word Count: <input type="radio" name="update_type" value="word_count">
+
+            {# if image or Audio #}
+            <input type="file"><br />
+
+            {# if word count #}
+            Pages: <input type="number" name="pages" placeholder="0"><br />
+            Words: <input type="number" name="words" placeholder="0"><br />
+            Characters: <input type="number" name="characters" placeholder="0"><br />
+            Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
+
+            <div class="input_wrapper icon user success-ani-ele">
+                <input type="text" name="update_title" placeholder="Update Title" />
+            </div>
+
+            <div class="input_wrapper success-ani-ele">
+                <textarea name="update_description" id=""></textarea>
+            </div>
+
+            <div class="error error_message" id="update_php_error"></div>
+            <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
+            <button class="modalclosebtn close_bottom">Close</button>
+        </div>
+    </div>
+</div>

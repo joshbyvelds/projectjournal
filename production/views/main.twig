@@ -25,7 +25,7 @@
                 <div class="ib profile_image" style="background-image:url(images/users/{{ username }}.webp)"></div>
 
                 <div class="dropdown" id="header_username_dropdown">
-                    <a href="">Settings</a>
+                    <a href="#" class="modalBtn" data-modal="settings">Settings</a>
                     <a href="/logout">Logout</a>
                 </div>
             </div>
@@ -90,288 +90,49 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
             </div>
 
-            <div class="section closed todo_list">
-                <div class="title">Todo List <button class="open_close_btn" id="todo_open_close"><i class="fas fa-folder"></i></button></div>
-                <div class="action_buttons">
-                    <button class="button">Add</button>
-                    <button class="button">Edit</button>
-                    <button class="button">Delete</button>
-                </div>
-                <div class="inside">
-                    <div class="task">
-                        <ol>
-                            <li>
-                                <div class="taskname">01.Task Name</div>
-                                <div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div><!--
-                                --><div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div><!--
-                                --><div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div><!--
-                                --><div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div><!--
-                                --><div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div><!--
-                                --><div class="subtask">
-                                    <div class="icon"><i class="fas fa-check"></i></div> Sub Task Name
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+            {# TO-DO List #}
+            {% include "partials/infomation_panel_sections/todo_list.twig" %}
 
-            <div class="section closed updates">
-                <div class="title">Updates <button class="open_close_btn" id="updates_open_close"><i class="fas fa-folder-open"></i></button></div>
-                <div class="inside">
-                    <img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt=""><img src="images/updates/sample.webp" alt="">
-                </div>
-            </div>
+            {# Updates #}
+            {% include "partials/infomation_panel_sections/updates.twig" %}
 
-            <div class="section stats">
-                <div class="title">Stats <button class="open_close_btn" id="stats_open_close"><i class="fas fa-folder"></i></button></div>
-                <div class="inside closed">
-                    <h4># of Updates:</h4> <span>0</span><br />
-                    <h4># of Updates This Month:</h4><span>0</span><br />
-                    <h4># of Completed Tasks:</h4> <span>0</span><br />
-                    <h4># of Completed Subtasks:</h4> <span>0</span><br />
-                    <h4># of Subtasks Completed this Month:</h4> <span>0</span><br />
-                </div>
-            </div>
+            {# Stats #}
+            {% include "partials/infomation_panel_sections/stats.twig" %}
         </div>
     </div>
 
     <div class="overlay off" id="overlay">
         <div class="panel_wrapper">
-            {# Journal Updates Panel #}
-            <div class="overlay_panel update off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <button class="prev"><i class="fa fa-arrow-circle-left"></i></button>
-                    <button class="next"><i class="fa fa-arrow-circle-right"></i></button>
-                    <h2>Journal Update Title</h2>
-                    <h3>September 3rd, 2019 - 10:18 PM</h3>
-                    <h3>3:21:00</h3>
-
-                    <img src="images/updates/sample.webp" alt="">
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti dicta dolorem dolores esse exercitationem fuga nihil! Ab at autem beatae dolorem error eum labore minus, nostrum omnis quam, quod.
-                    </p>
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
-
-            {# Delete Check Panel #}
-            <div class="overlay_panel delete_check off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h1>Warning!</h1>
-                    <h2>Are you sure you want to delete <strong id="delete_check_name">[Project Name]</strong></h2>
-                    <button class="main_btn" id="delete_check_yes">Yes</button>
-                    <button class="main_btn" id="delete_check_no">no</button>
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
 
             {# Add Project Panel #}
-            <div class="overlay_panel add off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Create New Project</h2>
-                    <div class="form" id="add_project_form">
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <input type="text" name="add_project_title" placeholder="Project Title" />
-                        </div>
-
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <select name="add_project_category" id="">
-
-                                <option value="" selected disabled hidden>Category</option>
-                                <option value="1">Web Apps</option>
-                            </select>
-                        </div>
-
-                        <div class="input_wrapper success-ani-ele">
-                            <textarea name="add_project_description" id=""></textarea>
-                        </div>
-
-                        <div class="error error_message" id="add_project_php_error"></div>
-                        <button type="button" class="main_btn success-ani-ele ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000" id="submitNewProject">Submit</button>
-                    </div>
-
-                    <div class="success_panel" id="add_project_success_panel">
-                        <h1>Project Added :)</h1>
-                    </div>
-
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
-
-            {# Global Stats Panel #}
-            <div class="overlay_panel global_stats off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Global Stats</h2>
-
-                    <h3>Number of Projects per Category</h3>
-                    <h3>Hours Worked Per Category</h3>
-                    <h3>Project Updates Per Month</h3>
-                    <h3>Hours Worked on Projects Per Month</h3>
-                    <h3>Hours Works on Projects Last Month</h3>
-                    <h3>Hours Works on Projects This Month</h3>
-                    <canvas id="myChart"></canvas>
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
-
-            {# Project Stats Panel #}
-            <div class="overlay_panel project_stats off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Project Stats</h2>
-
-                    <h3>Updates Per Month</h3>
-                    <h3>Hours Worked on Project Per Month</h3>
-                    <h3>Hours Works on Project Last Month(days)</h3>
-                    <h3>Hours Works on Project This Month(days)</h3>
-                    <canvas id="myChartStats"></canvas>
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
-
-            {# Settings Panel #}
-            <div class="overlay_panel settings off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <button class="modalclosebtn close_bottom">Close</button>
-                </div>
-            </div>
-
-            {# Timeline Panel  #}
-            <div class="overlay_panel timeline off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <div class="chart-wrapper">
-                        <ul class="chart-values">
-                            <li>sun</li>
-                            <li>mon</li>
-                            <li>tue</li>
-                            <li>wed</li>
-                            <li>thu</li>
-                            <li>fri</li>
-                            <li>sat</li>
-                        </ul>
-                        <ul class="chart-bars">
-                            <li data-duration="tue-wed" data-color="#b03532">Task</li>
-                            <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
-                            ...
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {% include "partials/overlays/add_project.twig" %}
 
             {# Edit Project Panel #}
-            <div class="overlay_panel edit_project off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Edit Project</h2>
-                    <div class="form">
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <input type="text" name="edit_title" placeholder="Project Title" />
-                        </div>
+            {% include "partials/overlays/edit_project.twig" %}
 
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <select name="" id="">
-                                <option value="1">Web Apps</option>
-                            </select>
-                        </div>
-
-                        <div class="input_wrapper success-ani-ele">
-                            <textarea name="edit_description" id=""></textarea>
-                        </div>
-
-                        <div class="error error_message" id="edit_php_error"></div>
-                        <button type="button" class="main_btn success-ani-ele" id="loginSubmit">Submit</button>
-                        <button class="modalclosebtn close_bottom">Close</button>
-                    </div>
-                </div>
-            </div>
+            {# Journal Updates Panel #}
+            {% include "partials/overlays/journal_updates.twig" %}
 
             {# Add Journal Update #}
-            <div class="overlay_panel add_update off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Write Project Update</h2>
-                    <div class="form">
-                        Update Type:<br />
-                        Image: <input type="radio" name="update_type" value="image">
-                        Audio: <input type="radio" name="update_type" value="audio">
-                        Word Count: <input type="radio" name="update_type" value="word_count">
+            {% include "partials/overlays/add_journal_update.twig" %}
 
-                        {# if image or Audio #}
-                        <input type="file"><br />
+            {# Delete Check Panel #}
+            {% include "partials/overlays/delete_check.twig" %}
 
-                        {# if word count #}
-                        Pages: <input type="number" name="pages" placeholder="0"><br />
-                        Words: <input type="number" name="words" placeholder="0"><br />
-                        Characters: <input type="number" name="characters" placeholder="0"><br />
-                        Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
+            {# Add Task Panel #}
+            {% include "partials/overlays/add_task.twig" %}
 
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <input type="text" name="update_title" placeholder="Update Title" />
-                        </div>
+            {# Timeline Panel  #}
+            {% include "partials/overlays/timeline.twig" %}
 
-                        <div class="input_wrapper success-ani-ele">
-                            <textarea name="update_description" id=""></textarea>
-                        </div>
+            {# Global Stats Panel #}
+            {% include "partials/overlays/global_stats.twig" %}
 
-                        <div class="error error_message" id="update_php_error"></div>
-                        <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
-                        <button class="modalclosebtn close_bottom">Close</button>
-                    </div>
-                </div>
-            </div>
+            {# Project Stats Panel #}
+            {% include "partials/overlays/project_stats.twig" %}
 
-            {# Add Task Update #}
-            <div class="overlay_panel add_task off">
-                <div class="inside">
-                    <i class="modalclosebtn close_x fas fa-window-close"></i>
-                    <h2>Write Project Update</h2>
-                    <div class="form">
-                        Update Type:<br />
-                        Image: <input type="radio" name="update_type" value="image">
-                        Audio: <input type="radio" name="update_type" value="audio">
-                        Word Count: <input type="radio" name="update_type" value="word_count">
-
-                        {# if image or Audio #}
-                        <input type="file"><br />
-
-                        {# if word count #}
-                        Pages: <input type="number" name="pages" placeholder="0"><br />
-                        Words: <input type="number" name="words" placeholder="0"><br />
-                        Characters: <input type="number" name="characters" placeholder="0"><br />
-                        Characters Excluding Spaces: <input type="number" name="Characters_excluding_spaces" placeholder="0"><br />
-
-                        <div class="input_wrapper icon user success-ani-ele">
-                            <input type="text" name="update_title" placeholder="Update Title" />
-                        </div>
-
-                        <div class="input_wrapper success-ani-ele">
-                            <textarea name="update_description" id=""></textarea>
-                        </div>
-
-                        <div class="error error_message" id="update_php_error"></div>
-                        <button type="button" class="main_btn success-ani-ele" id="updateSubmit">Submit</button>
-                        <button class="modalclosebtn close_bottom">Close</button>
-                    </div>
-                </div>
-            </div>
+            {# Settings Panel #}
+            {% include "partials/overlays/settings.twig" %}
 
         </div>
     </div>
