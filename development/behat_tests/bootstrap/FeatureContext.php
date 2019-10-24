@@ -88,6 +88,23 @@ class FeatureContext extends MinkContext implements Context
         }
     }
 
+    /** See if a element has a certain class..
+     *
+     * @Then the :selector element should have the class :class
+     */
+    public function elementHasClass($selector, $class)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        if (!$element->hasClass($class)) {
+            throw new \InvalidArgumentException(sprintf('"%s" does not have the class "%s"', $selector, $class));
+        }
+    }
+
     /** Click on the element with the provided selector
      *
      * @Then I click on the :selector element

@@ -68,7 +68,7 @@
         {# Project Grid #}
         <div class="grid" id="project_grid">
             {% for project in projects %}<!--
-                -->{% include "partials/item.twig" with {title:project.title, date:project.laststarted, category:project.category, image:project.image, time:project.time} %}<!--
+                -->{% include "partials/item.twig" with {id:project.id, title:project.title, date:project.laststarted, category:project.category, image:project.image, time:project.time} %}<!--
          -->{% endfor %}
         </div>
 

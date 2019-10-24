@@ -29,7 +29,7 @@ class Main extends BaseController
         if(isset($_SESSION['username'])) {
             $ds = new DoctrineService();
             $project_repo = $ds->getEntityManager()->getRepository(Project::class);
-            $projects = $project_repo->findAll();
+            $projects = $project_repo->findBy([], ['datestarted' => 'ASC']);
 
             foreach ($projects as $project) {
                 $project->setLaststarted(date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"));

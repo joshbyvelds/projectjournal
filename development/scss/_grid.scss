@@ -18,10 +18,12 @@
     width: 240px;
     height: 114px;
     padding: 10px;
+    border: solid 2px #fff;
     margin: 6px;
     border-radius: 4px;
     box-shadow: 0 0 3px rgba(0,0,0,0.25);
     transition: all 0.5s ease-out;
+    cursor: pointer;
 
     /*
     &:hover{
@@ -32,11 +34,12 @@
     }
     */
 
+    &:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
 
     &.selected {
-        width: 238px;
-        height: 115px;
-        border: solid 1px #28bf7e;
+        border-color: #28bf7e;
     }
 
     .top, .bottom{

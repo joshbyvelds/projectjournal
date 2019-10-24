@@ -17,6 +17,7 @@ function trim(val) {
 function init(){
     modal_system.setupEventListeners();
     newprojectform.setupEventListeners();
+    grid.setupEventListeners();
 }
 
 $(document).ready(init);

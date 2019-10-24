@@ -1,4 +1,6 @@
 function ProjectGrid(){
+    var CLASS = this;
+
     this.resetFilters = function(){
         console.log("TODO:: Reset filters so we can see the new item..")
     };
@@ -44,5 +46,15 @@ function ProjectGrid(){
         seconds = (seconds_left <= 9) ? "0" + seconds_left : seconds_left;
 
         return hours + ":" + minutes + ":" + seconds;
+    };
+
+    this.openProject = function($project) {
+        var project_id = $project.data("id");
+        $(".grid_item").removeClass("selected");
+        $project.addClass("selected");
+    };
+
+    this.setupEventListeners = function() {
+        $(".grid_item").off().on('click', function(){CLASS.openProject($(this));});
     };
 }
