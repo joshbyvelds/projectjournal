@@ -25,5 +25,8 @@
       "name": "Josh Byvelds",
       "email": "joshbyvelds@users.noreply.github.com"
     }
-  ]
+  ],
+  "require-dev": {
+    "friends-of-phpspec/phpspec-code-coverage": "^4.3"
+  }
 }
