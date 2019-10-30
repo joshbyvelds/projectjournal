@@ -55,6 +55,41 @@ class Main extends BaseController
         return $hours . ":" . $minutes . ":" . $seconds;
     }
 
+    public function getProjectsAction()
+    {
+        $sort = 'id';
+        $dir = 'ASC';
+
+        if (isset($this->getPostVariables(['sort'])['sort'])) {
+            $sort = $this->getPostVariables(['sort'])['sort'];
+        }
+
+        if (isset($this->getPostVariables(['dir'])['dir'])) {
+            $dir = $this->getPostVariables(['dir'])['dir'];
+        }
+
+        $ds = new DoctrineService();
+        $project_repo = $ds->getEntityManager()->getRepository(Project::class);
+        $projects = $project_repo->findBy([], [$sort => $dir]);
+        $projects_array = [];
+
+        foreach ($projects as $project) {
+            $projects_array[] = [
+                'id' => $project->getId(),
+                'title' => $project->getTitle(),
+                'category' => $project->getCategory(),
+                'description' => $project->getDescription(),
+                'image' => $project->getImage(),
+                'datestarted' => $project->getDateStarted(),
+                'laststarted' => date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"),
+                'time' => $this->convertTimeSpent($project->getTime()),
+                'status' => $project->getStatus(),
+            ];
+        }
+
+        return new PostArray($projects_array);
+    }
+
 
     public function addProjectAction($phpspec = false){
         $project = [];
@@ -113,8 +148,8 @@ class Main extends BaseController
             $project['title'] = $post['title'];
             $project['description'] = $post['description'];
             $project['category'] = $post['category'];
-            $project['date'] = date_format($date,"F j\<\s\u\p\>S\<\/\s\u\p\>\, Y");
-            $project['time_spent'] = 0;
+            $project['laststarted'] = date_format($date,"F j\<\s\u\p\>S\<\/\s\u\p\>\, Y");
+            $project['time'] = 0;
             $project['status'] = 1;
 
             return new PostArray($project);

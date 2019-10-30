@@ -90,8 +90,6 @@ try{
         exit();
     }
 
-
-
     // Check if a user is logged in..
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -111,7 +109,7 @@ try{
         echo $twig->render($route->getFile() . '.twig', $route->getVariables());
     }
 
-    if($route->getType()=== 'post'){
+    if($route->getType() === 'post'){
         echo $route->getEncodedPostData();
     }
 

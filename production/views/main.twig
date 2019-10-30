@@ -38,23 +38,23 @@
         {# Sort Wrapper #}
         <div class="sorting_selector">
             Sort By
-            <select>
-                <option value="created">Created ⇩</option>
-                <option value="created">Created ⇧</option>
-                <option value="updated">Last Updated ⇩</option>
-                <option value="updated">Last Updated ⇧</option>
-                <option value="name">Name ⇩</option>
-                <option value="name">Name ⇧</option>
-                <option value="cat">Category ⇩</option>
-                <option value="cat">Category ⇧</option>
-                <option value="created">Completed ⇩</option>
-                <option value="created">Completed ⇧</option>
+            <select id="sortBy">
+                <option value="0">Created ⇩</option>
+                <option value="1">Created ⇧</option>
+                <option value="2">Last Updated ⇩</option>
+                <option value="3">Last Updated ⇧</option>
+                <option value="4">Name ⇩</option>
+                <option value="5">Name ⇧</option>
+                <option value="6">Category ⇩</option>
+                <option value="6">Category ⇧</option>
+                <option value="7">Completed ⇩</option>
+                <option value="8">Completed ⇧</option>
             </select>
 
             &nbsp;&nbsp;&nbsp;&nbsp;
 
             Filter Category
-            <select>
+            <select id="filterCategory">
                 <option value="0">All</option>
                 <option value="1">3D Rendering</option>
                 <option value="2">Fan Fiction</option>
@@ -71,7 +71,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
 
             Filter Stage
-            <select>
+            <select id="filterStage">
                 <option value="0">All</option>
                 <option value="1">Idea</option>
                 <option value="2">Work in Progress</option>

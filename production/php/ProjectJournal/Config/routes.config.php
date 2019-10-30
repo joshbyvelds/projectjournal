@@ -59,6 +59,12 @@ return [
         'details' => [],
     ],
 
+    '/getprojects' => [
+        'controller' => 'main',
+        'action' => 'getProjects',
+        'details' => [],
+    ],
+
     '/addproject' => [
         'controller' => 'main',
         'action' => 'addProject',
