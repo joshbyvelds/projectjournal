@@ -6,6 +6,7 @@ new UserLogin();
 var modal_system = new ModalSystem();
 var newprojectform = new NewProjectForm();
 var grid = new ProjectGrid();
+var project_info = new ProjectInfoPanel();
 
 
 function trim(val) {

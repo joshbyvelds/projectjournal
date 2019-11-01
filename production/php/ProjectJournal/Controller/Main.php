@@ -55,6 +55,29 @@ class Main extends BaseController
         return $hours . ":" . $minutes . ":" . $seconds;
     }
 
+    public function getProjectAction()
+    {
+
+        $ds = new DoctrineService();
+        $project_repo = $ds->getEntityManager()->getRepository(Project::class);
+        $project = $project_repo->findOneBy(array('id' => $this->getPostVariables(['project_id'])['project_id']));
+
+
+        $project->setLaststarted($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y");
+
+        $return_project = [
+            'id' => $project->getId(),
+            'title' => $project->getTitle(),
+            'category' => $project->getCategory(),
+            'description' => $project->getDescription(),
+            'image' => $project->getImage(),
+            'laststarted' => date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"),
+            'time' => $this->convertTimeSpent($project->getTime()),
+        ];
+
+        return new PostArray($return_project);
+    }
+
     public function getProjectsAction()
     {
         $sort = 'id';
@@ -89,7 +112,6 @@ class Main extends BaseController
 
         return new PostArray($projects_array);
     }
-
 
     public function addProjectAction($phpspec = false){
         $project = [];

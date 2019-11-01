@@ -65,6 +65,7 @@ function ProjectGrid(){
         var project_id = $project.data("id");
         $(".grid_item").removeClass("selected");
         $project.addClass("selected");
+        project_info.openProject(project_id);
     };
 
     this.filtersort = function(){

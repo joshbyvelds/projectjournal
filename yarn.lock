@@ -8,9 +8,9 @@
   integrity sha512-XiUPoS79r1G7PcpnNtq85TJ7inJWe0v+b5oZJZKb0pGHNIV6+UiNeQWiFGmuQ0aj7GEhnD/v9iqxIsjuRKtEnQ==
 
 chart.js@^2.8.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.0.tgz#ebd700719922ba4963c84a4792f7af88e3a4840c"
-  integrity sha512-qgbY2tObinNst84qlWYiNTvszJSKoyoYiOjqOztUaW88N+Xk7QFJ9PasO+w0G1+NkxJzKzun7kUSZd7oWLCIDQ==
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.1.tgz#e98893a810d40d1c0a016e6872a13fa5faedcdf8"
+  integrity sha512-DA5dFt0Bz79oz56ezmrwmZqj0hXGs+i9VbCFOcHqbwrHIGv7RI4YqninJKNIAC0qa29WBI9qYTN7LzULlOeunA==
   dependencies:
     chartjs-color "^2.1.0"
     moment "^2.10.2"

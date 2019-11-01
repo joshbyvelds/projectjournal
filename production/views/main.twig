@@ -88,30 +88,37 @@
 
         {# Infomation Panel #}
         <div class="info_panel">
-            <div class="thumbnail"style="background:url(images/updates/sample.webp); background-size: cover;"></div>
-            <div class="project_name">Project Name</div>
-            <div class="time_spent">12:34:56</div>
-            <div class="last_updated">November 23rd, 2019</div>
-
-            <div class="action_buttons">
-                <button class="start button"><i class="far fa-play-circle"></i> Start</button>
-                <button class="update button"><i class="fas fa-pen-alt"></i> Update</button>
-                <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
-                <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
+            <div class="no_project">
+                <div class="icon"></div>
+                <h2>Please select a project</h2>
             </div>
 
-            <div class="project_decription">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
+            <div class="project_selected off">
+                <div class="thumbnail"></div>
+                <div class="project_name">Project Name</div>
+                <div class="time_spent">12:34:56</div>
+                <div class="last_updated">November 23rd, 2019</div>
+
+                <div class="action_buttons">
+                    <button class="start button"><i class="far fa-play-circle"></i> Start</button>
+                    <button class="update button"><i class="fas fa-pen-alt"></i> Update</button>
+                    <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
+                </div>
+
+                <div class="project_description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
+                </div>
+
+                {# TO-DO List #}
+                {% include "partials/infomation_panel_sections/todo_list.twig" %}
+
+                {# Updates #}
+                {% include "partials/infomation_panel_sections/updates.twig" %}
+
+                {# Stats #}
+                {% include "partials/infomation_panel_sections/stats.twig" %}
             </div>
-
-            {# TO-DO List #}
-            {% include "partials/infomation_panel_sections/todo_list.twig" %}
-
-            {# Updates #}
-            {% include "partials/infomation_panel_sections/updates.twig" %}
-
-            {# Stats #}
-            {% include "partials/infomation_panel_sections/stats.twig" %}
         </div>
     </div>
 

@@ -698,6 +698,17 @@ header .user .dropdown a {
   border-left: solid 1px #bbb;
   overflow-y: scroll;
 }
+.info_panel .no_project .icon {
+  width: 256px;
+  height: 256px;
+  margin: 0 auto;
+  background: url("images/empty-box.png");
+}
+.info_panel .no_project h2 {
+  padding-top: 10px;
+  font-size: 32px;
+  text-align: center;
+}
 .info_panel::-webkit-scrollbar {
   width: 0px;
   /* Remove scrollbar space */
@@ -756,7 +767,7 @@ header .user .dropdown a {
   border-radius: 28px;
   line-height: 37px;
 }
-.info_panel .project_decription {
+.info_panel .project_description {
   padding-top: 17px;
   padding-left: 6px;
   padding-bottom: 14px;

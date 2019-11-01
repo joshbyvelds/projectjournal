@@ -11,6 +11,21 @@
     border-left: solid 1px #bbb;
     overflow-y: scroll;
 
+    .no_project {
+        .icon{
+            width: 256px;
+            height: 256px;
+            margin: 0 auto;
+            background: url("images/empty-box.png");
+        }
+
+        h2{
+            padding-top: 10px;
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+
     &::-webkit-scrollbar {
         width: 0px;  /* Remove scrollbar space */
         background: transparent;  /* Optional: just make scrollbar invisible */
@@ -74,7 +89,7 @@
         line-height: 37px;
     }
 
-    .project_decription {
+    .project_description{
         padding-top: 17px;
         padding-left: 6px;
         padding-bottom: 14px;
