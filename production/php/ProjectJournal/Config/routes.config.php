@@ -53,6 +53,12 @@ return [
         'details' => [],
     ],
 
+    '/changelog' => [
+        'controller' => 'changelog',
+        'action' => 'index',
+        'details' => [],
+    ],
+
     '/jasmine' => [
         'controller' => 'jasmine',
         'action' => 'index',
