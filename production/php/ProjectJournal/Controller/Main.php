@@ -72,7 +72,7 @@ class Main extends BaseController
             'description' => $project->getDescription(),
             'image' => $project->getImage(),
             'laststarted' => date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"),
-            'time' => $this->convertTimeSpent($project->getTime()),
+            'time' => $project->getTime(),
         ];
 
         return new PostArray($return_project);
@@ -175,6 +175,31 @@ class Main extends BaseController
             $project['status'] = 1;
 
             return new PostArray($project);
+
+        } catch(\Exception $e) {
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function updateProjectTimeAction()
+    {
+        try {
+            if (!isset($this->getPostVariables(['project'])['project'])) {
+                throw new Exception($this->getPostVariables(['project'])['project']);
+            }
+
+            if (!isset($this->getPostVariables(['time'])['time'])) {
+                throw new Exception($this->getPostVariables(['time'])['time']);
+            }
+
+            $ds = new DoctrineService();
+            $project = $ds->getEntityManager()->getRepository(Project::class)->findOneBy(array('id' => $this->getPostVariables(['project'])['project']));
+
+            var_dump($project->getId());
+
+            $project->setTime($this->getPostVariables(['time'])['time']);
+            $ds->getEntityManager()->flush();
+            return new PostArray(['success' => '1']);
 
         } catch(\Exception $e) {
             return new PostArray(['success' => '0', 'message' => $e->getMessage()]);

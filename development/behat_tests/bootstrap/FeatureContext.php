@@ -88,6 +88,45 @@ class FeatureContext extends MinkContext implements Context
         }
     }
 
+    /** See if a element is visible on the page..
+     *
+     * @Then the :selector element should be visible
+     *
+     */
+
+    public function elementIsVisible($selector)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        if (!$element->isVisible()) {
+            throw new \InvalidArgumentException(sprintf('"%s" is not visible and cannot be seen on the page', $selector));
+        }
+    }
+
+    /** See if a element is NOT visible on the page..
+     *
+     * @Then the :selector element should not be visible
+     *
+     */
+
+    public function elementNotVisible($selector)
+    {
+        $element = $this->getSession()->getPage()->find('css', $selector);
+
+        if (null === $element) {
+            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $selector));
+        }
+
+        if ($element->isVisible()) {
+            throw new \InvalidArgumentException(sprintf('"%s" is visible and can be seen on the page', $selector));
+        }
+    }
+
+
     /** See if a element has a certain class..
      *
      * @Then the :selector element should have the class :class

@@ -1,6 +1,18 @@
 function ProjectInfoPanel(){
     var CLASS = this;
     var projectOpen = false;
+    var openProjectId = null;
+    var timerTimeout = null;
+
+    this.setupEventListeners = function(){
+        $("#project_timer_start_button").off().on('click', function(){$("#project_timer_start_button").hide(); $("#project_timer_stop_button").show(); CLASS.startProjectTimer();});
+        $("#project_timer_stop_button").off().on('click', CLASS.stopProjectTimer);
+    };
+
+    this.killEventListeners = function(){
+        $("#project_timer_start_button").off();
+        $("#project_timer_stop_button").off();
+    };
 
     this.openProject = function(project_id){
         $.post("/getproject", {project_id:project_id}, function(json) {
@@ -10,10 +22,12 @@ function ProjectInfoPanel(){
                 CLASS.closeProject();
             }
 
+            openProjectId = project_id;
+
             $(".info_panel .no_project").addClass("off");
             $(".info_panel .thumbnail").attr("style", "background-image: url(\"images/updates/"+ json.image +"\"); background-size: cover;");
             $(".info_panel .project_name").html(json.title);
-            $(".info_panel .time_spent").html(grid.convertTimeSpent(json.time));
+            $(".info_panel .time_spent").html(grid.convertTimeSpent(json.time)).attr("data-seconds", json.time);
             $(".info_panel .last_updated").html(json.laststarted);
             $(".info_panel .project_description").html(json.description);
 
@@ -25,10 +39,38 @@ function ProjectInfoPanel(){
 
 
             $(".info_panel .project_selected").removeClass("off");
+            CLASS.setupEventListeners();
         });
     };
 
-    this.closeProject = function(){
+    this.startProjectTimer = function(){
+        timerTimeout = setTimeout(function(){
+            var $time =  $(".info_panel .time_spent");
+            var time = parseInt($time.attr("data-seconds")) + 1;
+            $time.html(grid.convertTimeSpent(time)).attr("data-seconds", time);
 
+            if(time % 60 === 0){
+                CLASS.updateProjectTime(time);
+            }
+
+            CLASS.startProjectTimer();
+        }, 1000);
+    };
+
+    this.stopProjectTimer = function(){
+        var $pi_time_spent = $(".info_panel .time_spent");
+        clearTimeout(timerTimeout);
+        CLASS.updateProjectTime(parseInt($pi_time_spent.attr("data-seconds")));
+        $('.grid_item[data-id="'+ openProjectId +'"] .time_spent').html(grid.convertTimeSpent(parseInt($pi_time_spent.attr("data-seconds"))));
+        $("#project_timer_start_button").show();
+        $("#project_timer_stop_button").hide();
+    };
+
+    this.updateProjectTime = function(time){
+        $.post("/updateprojecttime", {project:openProjectId, time:time});
+    };
+
+    this.closeProject = function(){
+        CLASS.killEventListeners();
     }
 }
