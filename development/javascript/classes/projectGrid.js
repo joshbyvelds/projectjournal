@@ -14,6 +14,14 @@ function ProjectGrid(){
         });
     }
 
+    this.getGridArray = function(){
+        return gridArray;
+    };
+
+    this.editGridArrayItem = function(index, item){
+        gridArray[index] = item;
+    };
+
     this.resetFilters = function(){
         $("#sortBy, #filterStage, #filterCategory").val(0);
     };
@@ -122,12 +130,13 @@ function ProjectGrid(){
             clearGrid();
 
             json.forEach(function(element){
-                gridArray.push(element);
+                gridArray[element.id] = element;
 
                 if((filterCategory === "0" || filterCategory === element.category.toString()) && (filterStatus === "0" || filterStatus === element.status.toString())) {
-                    console.log("test");
                     CLASS.addGridItem(element);
                 }
+
+
             });
         });
     };

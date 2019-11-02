@@ -81,9 +81,11 @@
 
         {# Project Grid #}
         <div class="grid" id="project_grid">
+        {#
             {% for project in projects %}<!--
                 -->{% include "partials/item.twig" with {id:project.id, title:project.title, date:project.laststarted, category:project.category, image:project.image, time:project.time} %}<!--
          -->{% endfor %}
+         #}
         </div>
 
         {# Infomation Panel #}
@@ -101,9 +103,9 @@
 
                 <div class="action_buttons">
                     <button class="start button" id="project_timer_start_button"><i class="far fa-play-circle"></i> Start</button>
-                    <button class="start button off" id="project_timer_stop_button"><i class="far fa-stop-circle"></i> Stop</button>
+                    <button class="stop button off" id="project_timer_stop_button"><i class="far fa-stop-circle"></i> Stop</button>
                     <button class="update button"><i class="fas fa-pen-alt"></i> Update</button>
-                    <button class="edit button"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="edit button modalBtn" id="project_info_edit_button" data-modal="edit_project"><i class="fas fa-edit"></i> Edit</button>
                     <button class="delete button"><i class="far fa-trash-alt"></i> Delete</button>
                 </div>
 

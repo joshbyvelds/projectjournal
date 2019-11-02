@@ -88,6 +88,12 @@ return [
         'action' => 'addProject',
         'details' => [],
     ],
+
+    '/editproject' => [
+        'controller' => 'main',
+        'action' => 'editProject',
+        'details' => [],
+    ],
 ]
 
 ?>

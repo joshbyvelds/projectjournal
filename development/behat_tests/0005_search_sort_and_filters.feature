@@ -3,14 +3,15 @@ Feature: Main Page - Project Grid Search, Sort & Filters (ssf)
   @javascript @ssf @search
   Scenario: Search the project grid for a project with title
     Given I am logged in
+    And I wait 1 second
     When I fill in "search" with "search"
     And I wait 1 second
     Then I should not see "Behat Project Title"
-    And the ".grid_item" element should have the class "selected"
 
   @javascript @ssf @filter
   Scenario: Filter projects with Web App category
     Given I am logged in
+    And I wait 1 second
     When I select "Web App" from "filterCategory"
     And I wait 1 second
     Then I should see "Behat Project Title"

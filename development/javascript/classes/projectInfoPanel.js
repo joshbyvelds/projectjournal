@@ -14,6 +14,10 @@ function ProjectInfoPanel(){
         $("#project_timer_stop_button").off();
     };
 
+    this.getOpenProjectId = function(){
+        return openProjectId;
+    };
+
     this.openProject = function(project_id){
         $.post("/getproject", {project_id:project_id}, function(json) {
             json = JSON.parse(json);

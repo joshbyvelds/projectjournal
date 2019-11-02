@@ -8,6 +8,7 @@ Feature: Main Page - Project Infomation
   @javascript @project_info
   Scenario: The Project Information panel should show basic project info when project is selected
     Given I am logged in
+    And I wait 1 second
     When I click on the '.grid_item[data-id="1"]' element
     And I wait 1 second
     Then I should see "Behat Project Title" in the ".info_panel .project_name" element
@@ -18,6 +19,7 @@ Feature: Main Page - Project Infomation
   @javascript @project_info @project_timer
   Scenario: The project timer should increase when I click the start button in the Project info panel and stop when I click stop
     Given I am logged in
+    And I wait 1 second
     When I click on the '.grid_item[data-id="1"]' element
     And I wait 1 second
     Then I click on the '#project_timer_start_button' element
@@ -33,6 +35,7 @@ Feature: Main Page - Project Infomation
     And the "#project_timer_stop_button" element should not be visible
 
     Given I am logged in
+    And I wait 1 second
     When I click on the '.grid_item[data-id="1"]' element
     And I wait 1 second
     Then I should see "00:00:05" in the ".grid_item[data-id='1'] .time_spent" element

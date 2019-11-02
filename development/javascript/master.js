@@ -7,6 +7,7 @@ var modal_system = new ModalSystem();
 var newprojectform = new NewProjectForm();
 var grid = new ProjectGrid();
 var project_info = new ProjectInfoPanel();
+var edit_project = new EditProject();
 
 
 function trim(val) {
@@ -18,7 +19,12 @@ function trim(val) {
 function init(){
     modal_system.setupEventListeners();
     newprojectform.setupEventListeners();
-    grid.setupEventListeners();
+    edit_project.setupEventListeners();
+
+    grid.filtersort();
+    setTimeout(function(){
+        grid.setupEventListeners();
+    }, 1000);
 }
 
 $(document).ready(init);

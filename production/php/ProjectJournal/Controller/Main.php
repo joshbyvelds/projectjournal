@@ -105,7 +105,7 @@ class Main extends BaseController
                 'image' => $project->getImage(),
                 'datestarted' => $project->getDateStarted(),
                 'laststarted' => date_format($project->getLaststarted(), "F j\<\s\u\p\>S\<\/\s\u\p\>\, Y"),
-                'time' => $this->convertTimeSpent($project->getTime()),
+                'time' => $project->getTime(),
                 'status' => $project->getStatus(),
             ];
         }
@@ -195,12 +195,40 @@ class Main extends BaseController
             $ds = new DoctrineService();
             $project = $ds->getEntityManager()->getRepository(Project::class)->findOneBy(array('id' => $this->getPostVariables(['project'])['project']));
 
-            var_dump($project->getId());
-
             $project->setTime($this->getPostVariables(['time'])['time']);
             $ds->getEntityManager()->flush();
             return new PostArray(['success' => '1']);
 
+        } catch(\Exception $e) {
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function editProjectAction()
+    {
+        try {
+
+            if (!isset($this->getPostVariables(['project_id'])['project_id'])) {
+                throw new Exception($this->getPostVariables(['project_id'])['project_id']);
+            }
+
+            if (!isset($this->getPostVariables(['title'])['title'])) {
+                throw new Exception($this->getPostVariables(['title'])['title']);
+            }
+
+            if (!isset($this->getPostVariables(['description'])['description'])) {
+                throw new Exception($this->getPostVariables(['description'])['description']);
+            }
+
+            $ds = new DoctrineService();
+            $project = $ds->getEntityManager()->getRepository(Project::class)->findOneBy(array('id' => $this->getPostVariables(['project_id'])['project_id']));
+
+            $project->setTitle($this->getPostVariables(['title'])['title']);
+            $project->setCategory($this->getPostVariables(['category'])['category']);
+            $project->setDescription($this->getPostVariables(['description'])['description']);
+            $ds->getEntityManager()->flush();
+
+            return new PostArray(['success' => '1']);
         } catch(\Exception $e) {
             return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
         }
