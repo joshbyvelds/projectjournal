@@ -7,11 +7,24 @@ function ProjectInfoPanel(){
     this.setupEventListeners = function(){
         $("#project_timer_start_button").off().on('click', function(){$("#project_timer_start_button").hide(); $("#project_timer_stop_button").show(); CLASS.startProjectTimer();});
         $("#project_timer_stop_button").off().on('click', CLASS.stopProjectTimer);
+        $(".open_close_btn").off().on("click", function(){openCloseSection($(this));});
     };
 
     this.killEventListeners = function(){
         $("#project_timer_start_button").off();
         $("#project_timer_stop_button").off();
+    };
+
+    var openCloseSection = function($btn){
+        var $parent = $btn.parent().parent();
+        console.log($btn.parent());
+        if($parent.hasClass("closed")){
+            $parent.removeClass("closed");
+            $btn.find("i").removeClass("fa-folder").addClass("fa-folder-open");
+        }else{
+            $parent.addClass("closed");
+            $btn.find("i").removeClass("fa-folder-open").addClass("fa-folder");
+        }
     };
 
     this.getOpenProjectId = function(){
