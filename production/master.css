@@ -955,6 +955,9 @@ header .user .dropdown a {
   border-radius: 28px;
   line-height: 37px;
 }
+.info_panel .button.third {
+  width: 100px;
+}
 .info_panel .project_description {
   padding-top: 17px;
   padding-left: 6px;

@@ -87,6 +87,10 @@
         font-weight: 300;
         border-radius: 28px;
         line-height: 37px;
+
+        &.third {
+            width: 100px;
+        }
     }
 
     .project_description{
