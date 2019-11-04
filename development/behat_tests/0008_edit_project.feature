@@ -4,7 +4,7 @@ Feature: Main Page - Edit Project Overlay Panel
   Scenario: Open Edit Project Modal
     Given I am logged in
     And I wait 1 second
-    When I click on the '.grid_item[data-id="1"]' element
+    When I click on the '.grid_item[data-id="2"]' element
     And I wait 1 second
     Then I click on the "#project_info_edit_button" element
     And I wait for animations to finish
@@ -14,7 +14,7 @@ Feature: Main Page - Edit Project Overlay Panel
   Scenario: Test Edit Project Empty Project Fields Errors
     Given I am logged in
     And I wait 1 second
-    When I click on the '.grid_item[data-id="1"]' element
+    When I click on the '.grid_item[data-id="2"]' element
     And I wait 1 second
     And I click on the "#project_info_edit_button" element
     And I wait for animations to finish
@@ -30,7 +30,7 @@ Feature: Main Page - Edit Project Overlay Panel
   Scenario: Edit Project with new title,category and description
     Given I am logged in
     And I wait 1 second
-    When I click on the '.grid_item[data-id="1"]' element
+    When I click on the '.grid_item[data-id="2"]' element
     And I wait 1 second
     And I click on the "#project_info_edit_button" element
     And I wait for animations to finish
@@ -46,8 +46,8 @@ Feature: Main Page - Edit Project Overlay Panel
     And I wait for animations to finish
 
     # Check to see that our data has changed on the elements..
-    Then I should see "Behat Edit Project" in the ".grid_item[data-id='1'] .name" element
-    When I click on the '.grid_item[data-id="1"]' element
+    Then I should see "Behat Edit Project" in the ".grid_item[data-id='2'] .name" element
+    When I click on the '.grid_item[data-id="2"]' element
     And I wait 1 second
     Then I should see "Behat Edit Project" in the ".info_panel .project_name" element
     And I should see "Test edit project description here" in the ".info_panel .project_description" element
@@ -55,8 +55,8 @@ Feature: Main Page - Edit Project Overlay Panel
     # Refresh the page and check again..
     Given I am logged in
     And I wait 1 second
-    Then I should see "Behat Edit Project" in the ".grid_item[data-id='1'] .name" element
-    When I click on the '.grid_item[data-id="1"]' element
+    Then I should see "Behat Edit Project" in the ".grid_item[data-id='2'] .name" element
+    When I click on the '.grid_item[data-id="2"]' element
     And I wait 1 second
     Then I should see "Behat Edit Project" in the ".info_panel .project_name" element
     And I should see "Test edit project description here" in the ".info_panel .project_description" element

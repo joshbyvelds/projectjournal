@@ -233,4 +233,24 @@ class Main extends BaseController
             return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
         }
     }
+
+    public function deleteProjectAction()
+    {
+        try {
+            if (!isset($this->getPostVariables(['project_id'])['project_id'])) {
+                throw new Exception($this->getPostVariables(['project_id'])['project_id']);
+            }
+
+            $ds = new DoctrineService();
+            $em = $ds->getEntityManager();
+            $project = $em->getRepository(Project::class)->findOneBy(array('id' => $this->getPostVariables(['project_id'])['project_id']));
+            $em->remove($project);
+            $em->flush();
+
+            return new PostArray(['success' => '1']);
+
+        } catch(\Exception $e) {
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
+        }
+    }
 }

@@ -17,7 +17,6 @@ function ProjectInfoPanel(){
 
     var openCloseSection = function($btn){
         var $parent = $btn.parent().parent();
-        console.log($btn.parent());
         if($parent.hasClass("closed")){
             $parent.removeClass("closed");
             $btn.find("i").removeClass("fa-folder").addClass("fa-folder-open");
@@ -47,6 +46,9 @@ function ProjectInfoPanel(){
             $(".info_panel .time_spent").html(grid.convertTimeSpent(json.time)).attr("data-seconds", json.time);
             $(".info_panel .last_updated").html(json.laststarted);
             $(".info_panel .project_description").html(json.description);
+
+            // Get Title for delete panel..
+            $("#delete_check_name").html(json.title);
 
             // TODO: Get Project TODO List..
 

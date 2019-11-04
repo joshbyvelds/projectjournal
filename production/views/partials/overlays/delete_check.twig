@@ -1,10 +1,17 @@
 <div class="overlay_panel delete_check off">
     <div class="inside">
         <i class="modalclosebtn close_x fas fa-window-close"></i>
-        <h1>Warning!</h1>
-        <h2>Are you sure you want to delete <strong id="delete_check_name">[Project Name]</strong></h2>
-        <button class="main_btn" id="delete_check_yes">Yes</button>
-        <button class="main_btn" id="delete_check_no">no</button>
-        <button class="modalclosebtn close_bottom">Close</button>
+
+        <div id="delete_message">
+            <h1>Warning!</h1>
+            <h2>Are you sure you want to delete Project "<strong id="delete_check_name">[Project Name]</strong>"?</h2>
+            <button class="main_btn" id="delete_check_yes">Yes</button>
+            <button class="main_btn" id="delete_check_no">no</button>
+            <button class="modalclosebtn close_bottom">Close</button>
+        </div>
+
+        <div class="success_panel" id="deleteProjectSuccessPanel">
+            <h1>The Project has been successfully deleted</h1>
+        </div>
     </div>
 </div>

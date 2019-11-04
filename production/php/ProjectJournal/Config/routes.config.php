@@ -94,6 +94,12 @@ return [
         'action' => 'editProject',
         'details' => [],
     ],
+
+    '/deleteproject' => [
+        'controller' => 'main',
+        'action' => 'deleteProject',
+        'details' => [],
+    ],
 ]
 
 ?>

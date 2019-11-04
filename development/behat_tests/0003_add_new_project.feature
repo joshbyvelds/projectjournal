@@ -37,7 +37,7 @@ Feature: Main Page - Add New Project
     And I should see "Please select a category for this new project"
     And I should see "Please write a description for this new project"
 
-  @javascript @add_project @needed
+  @javascript @add_project @needed @delete_project
   Scenario: Add New Project to DB
     Given I am logged in
     And I click on the ".header_nav .add" element

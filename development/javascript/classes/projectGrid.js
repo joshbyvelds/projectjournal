@@ -22,6 +22,10 @@ function ProjectGrid(){
         gridArray[index] = item;
     };
 
+    this.removeGridArrayItem = function(index){
+        gridArray.splice(index,1);
+    };
+
     this.resetFilters = function(){
         $("#sortBy, #filterStage, #filterCategory").val(0);
     };

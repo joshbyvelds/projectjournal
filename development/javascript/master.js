@@ -8,6 +8,7 @@ var newprojectform = new NewProjectForm();
 var grid = new ProjectGrid();
 var project_info = new ProjectInfoPanel();
 var edit_project = new EditProject();
+var delete_project = new DeleteProjectModal();
 
 
 function trim(val) {
@@ -20,6 +21,7 @@ function init(){
     modal_system.setupEventListeners();
     newprojectform.setupEventListeners();
     edit_project.setupEventListeners();
+    delete_project.setupEventListeners();
 
     grid.filtersort();
     setTimeout(function(){
