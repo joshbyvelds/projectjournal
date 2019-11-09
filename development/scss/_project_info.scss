@@ -166,12 +166,61 @@
     }
     .updates{
 
+        .audio{
+            position: relative;
+            display: inline-block;
+            width: 151px;
+            height: 85px;
+            margin: 3px 1%;
+            background: url("images/audio_thumbnail.webp");
+            border: solid 3px #bbb;
+            vertical-align: top;
+
+            &:hover {
+                border-color: #28bf7e;
+                border-radius: 6px;
+            }
+
+            audio{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 24px;
+                opacity: 0.8;
+            }
+        }
+
+        .wc{
+            position: relative;
+            display: inline-block;
+            width: 151px;
+            height: 85px;
+            padding: 4px 0 0 4px;
+            border: solid 3px #bbb;
+            margin: 3px 1%;
+            background: url("images/writing_thumbnail.webp");
+            vertical-align: top;
+
+            &:hover {
+                border-color: #28bf7e;
+                border-radius: 6px;
+            }
+
+            span {
+                font-size: 30px;
+                font-weight: 300;
+            }
+        }
+
         img{
-            width: 48%;
+            display: inline-block;
+            width: 151px;
+            height: 85px;
             border: solid 3px #bbb;
             margin: 3px 1%;
             box-sizing: border-box;
             transition: all 0.3s ease-out;
+            vertical-align: top;
 
             &:hover {
                 border-color: #28bf7e;

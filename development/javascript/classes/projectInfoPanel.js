@@ -3,6 +3,7 @@ function ProjectInfoPanel(){
     var projectOpen = false;
     var openProjectId = null;
     var timerTimeout = null;
+    var openProjectTime = null;
 
     this.setupEventListeners = function(){
         $("#project_timer_start_button").off().on('click', function(){$("#project_timer_start_button").hide(); $("#project_timer_stop_button").show(); CLASS.startProjectTimer();});
@@ -30,6 +31,10 @@ function ProjectInfoPanel(){
         return openProjectId;
     };
 
+    this.getOpenProjectTime = function(){
+        return openProjectTime;
+    };
+
     this.openProject = function(project_id){
         $.post("/getproject", {project_id:project_id}, function(json) {
             json = JSON.parse(json);
@@ -39,6 +44,7 @@ function ProjectInfoPanel(){
             }
 
             openProjectId = project_id;
+            openProjectTime = json.time;
 
             $(".info_panel .no_project").addClass("off");
             $(".info_panel .thumbnail").attr("style", "background-image: url(\"images/updates/"+ json.image +"\"); background-size: cover;");
@@ -52,7 +58,21 @@ function ProjectInfoPanel(){
 
             // TODO: Get Project TODO List..
 
-            // TODO:: Get Project Journal Thumbnails..
+            // Get Project Journal Thumbnails..
+            json.entries.forEach(function(entry){
+                if(entry.type === "image"){
+                    $("#project_info_updates").append("<img class=\"image\" src=\"images/updates/"+ entry.file +"\" title=\""+ entry.title +"\">");
+                }
+
+                if(entry.type === "audio"){
+                    $("#project_info_updates").append("<div class=\"audio\"><audio src=\"audio/updates/"+ entry.file +"\" type=\"audio/mpeg\" controls></audio></div>");
+                }
+
+                if(entry.type === "word_count"){
+                    $("#project_info_updates").append("<div class=\"wc\"><span>" + entry.words + "</span></div>");
+                }
+
+            });
 
             // TODO:: Get Project Stats..
 
@@ -71,6 +91,8 @@ function ProjectInfoPanel(){
             if(time % 60 === 0){
                 CLASS.updateProjectTime(time);
             }
+
+            openProjectTime = time;
 
             CLASS.startProjectTimer();
         }, 1000);

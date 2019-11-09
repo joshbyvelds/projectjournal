@@ -9,6 +9,8 @@ var grid = new ProjectGrid();
 var project_info = new ProjectInfoPanel();
 var edit_project = new EditProject();
 var delete_project = new DeleteProjectModal();
+var add_journal_entry = new AddJournalEntry();
+
 
 
 function trim(val) {
@@ -22,6 +24,7 @@ function init(){
     newprojectform.setupEventListeners();
     edit_project.setupEventListeners();
     delete_project.setupEventListeners();
+    add_journal_entry.setupEventListeners();
 
     grid.filtersort();
     setTimeout(function(){

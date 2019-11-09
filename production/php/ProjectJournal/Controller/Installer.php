@@ -88,13 +88,18 @@ class Installer extends BaseController
              status INT( 2 ) NOT NULL);";
             $db->exec($sql);
 
-            // Create Table for Updates
-            $sql = "CREATE table updates(
+            // Create Table for Journal Updates
+            $sql = "CREATE table journal_entries(
              id INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
              project INT( 11 ) NOT NULL,
              title VARCHAR( 50 ) NOT NULL,
-             details VARCHAR( 5000 ) NOT NULL,
-             image VARCHAR( 100 ) NOT NULL,
+             description VARCHAR( 5000 ) NOT NULL,
+             file VARCHAR( 100 ),
+             type VARCHAR( 100 ),
+             pages INT( 11 ),
+             words INT( 11 ),
+             characters INT( 11 ),
+             spaces INT ( 11 ),
              date DATETIME NOT NULL,
              time VARCHAR( 11 ) NOT NULL);";
             $db->exec($sql);

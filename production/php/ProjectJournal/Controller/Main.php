@@ -4,6 +4,7 @@ namespace ProjectJournal\Controller;
 
 use PDO;
 use ProjectJournal\Entity\Project;
+use ProjectJournal\Entity\JournalEntry;
 use ProjectJournal\Modal\PostArray;
 use ProjectJournal\Modal\TwigArray;
 use ProjectJournal\Controller\BaseController;
@@ -75,6 +76,22 @@ class Main extends BaseController
             'time' => $project->getTime(),
         ];
 
+        $entries_repo = $ds->getEntityManager()->getRepository(JournalEntry::class);
+        $journal_entries = $entries_repo->findBy(array('project' => $return_project['id']));
+
+        $journal_entries_array = [];
+
+        foreach ($journal_entries as $entry) {
+            $journal_entries_array[] = [
+                'id' => $entry->getId(),
+                'title' => $entry->getTitle(),
+                'file' => $entry->getFile(),
+                'type' => $entry->getType(),
+                'words' => $entry->getWords(),
+            ];
+        }
+
+        $return_project['entries'] = $journal_entries_array;
         return new PostArray($return_project);
     }
 
@@ -248,6 +265,167 @@ class Main extends BaseController
             $em->flush();
 
             return new PostArray(['success' => '1']);
+
+        } catch(\Exception $e) {
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function addJournalEntryAction()
+    {
+        try {
+
+            if (!isset($this->getPostVariables(['project_id'])['project_id'])) {
+                throw new Exception($this->getPostVariables(['project_id'])['project_id']);
+            }
+
+            if (!isset($this->getPostVariables(['update_type'])['update_type'])) {
+                throw new Exception($this->getPostVariables(['update_type'])['update_type']);
+            }
+
+            if (!isset($this->getPostVariables(['update_title'])['update_title'])) {
+                throw new Exception($this->getPostVariables(['update_title'])['update_title']);
+            }
+
+            if (!isset($this->getPostVariables(['update_description'])['update_description'])) {
+                throw new Exception($this->getPostVariables(['update_description'])['update_description']);
+            }
+
+            if (!isset($this->getPostVariables(['time'])['time'])) {
+                throw new Exception($this->getPostVariables(['time'])['time']);
+            }
+
+            $post = $this->getPostVariables(['update_type', 'update_title', 'project_id', 'update_description', 'time']);
+
+            $file = null;
+            $pages = null;
+            $words = null;
+            $characters = null;
+            $spaces = null;
+
+
+
+            if ($this->getPostVariables(['update_type'])['update_type'] === "word_count")
+            {
+                if (!isset($this->getPostVariables(['word_count_pages'])['word_count_pages'])) {
+                    throw new Exception($this->getPostVariables(['word_count_pages'])['word_count_pages']);
+                }
+
+                if (!isset($this->getPostVariables(['word_count_words'])['word_count_words'])) {
+                    throw new Exception($this->getPostVariables(['word_count_words'])['word_count_words']);
+                }
+
+                if (!isset($this->getPostVariables(['word_count_characters'])['word_count_characters'])) {
+                    throw new Exception($this->getPostVariables(['word_count_characters'])['word_count_characters']);
+                }
+
+                if (!isset($this->getPostVariables(['word_count_characters_excluding_spaces'])['word_count_characters_excluding_spaces'])) {
+                    throw new Exception($this->getPostVariables(['word_count_characters_excluding_spaces'])['word_count_characters_excluding_spaces']);
+                }
+
+
+                $wc_post = $this->getPostVariables(['word_count_pages', 'word_count_characters_excluding_spaces', 'word_count_words', 'word_count_characters']);
+                $pages = $wc_post['word_count_pages'];
+                $words = $wc_post['word_count_words'];
+                $characters = $wc_post['word_count_characters'];
+                $spaces = $wc_post['word_count_characters_excluding_spaces'];
+            } else {
+
+                // if we are dealing with image/audio, check to make sure the file is good before we store to the database..
+                if ($this->getPostVariables(['update_type'])['update_type'] === "image"){
+                    $target_dir = "images/updates/";
+                    $target_file = $target_dir . basename($_FILES["entry_file"]["name"]);
+                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                    // Check if image file is a actual image or fake image
+                    if(!getimagesize($_FILES["entry_file"]["tmp_name"])) {
+                        throw new Exception("Uploaded file is not a image.");
+                    }
+
+                    // Check if file already exists
+                    if (file_exists($target_file)) {
+                        throw new Exception("Uploaded Image file already exists.");
+                    }
+
+                    // Check file size
+                    if ($_FILES["entry_file"]["size"] > 500000) {
+                        throw new Exception("Sorry, your file is too large.");
+                    }
+
+                    // Allow certain file formats
+                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                        throw new Exception("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                    }
+
+                    $file_name = pathinfo($target_file,PATHINFO_FILENAME);
+                    $file_ext = pathinfo($target_file,PATHINFO_EXTENSION);
+                }
+
+                if ($this->getPostVariables(['update_type'])['update_type'] === "audio"){
+                    $target_dir = "audio/updates/";
+                    $target_file = $target_dir . basename($_FILES["entry_file"]["name"]);
+                    $audioFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                    // Check if file already exists
+                    if (file_exists($target_file)) {
+                        throw new Exception("Uploaded audio file already exists.");
+                    }
+
+                    // Check file size
+                    if ($_FILES["entry_file"]["size"] > 2000000) {
+                        throw new Exception("Sorry, your audio file is too large.");
+                    }
+
+                    // Allow certain file formats
+                    if($audioFileType != "mp3" ) {
+                        throw new Exception("Sorry, only MP3 files are allowed.");
+                    }
+
+                    $file_name = pathinfo($target_file,PATHINFO_FILENAME);
+                    $file_ext = pathinfo($target_file,PATHINFO_EXTENSION);
+                }
+            }
+
+            $date = new \DateTime();
+
+            $ds = new DoctrineService();
+            $em = $ds->getEntityManager();
+
+            $entry = new JournalEntry();
+            $entry->setProject($post['project_id']);
+            $entry->setTitle($post['update_title']);
+            $entry->setDescription($post['update_description']);
+            $entry->setType($post['update_type']);
+            $entry->setFile(null);
+            $entry->setPages($pages);
+            $entry->setWords($words);
+            $entry->setCharacters($characters);
+            $entry->setSpaces($spaces);
+            $entry->setDate($date);
+            $entry->setTime($post['time']);
+
+            $ds->getEntityManager()->persist($entry);
+            $ds->getEntityManager()->flush();
+
+            $id = $entry->getId();
+
+            $em->flush();
+
+            // rename file name to include new id..
+            if (isset($file_name) && isset($file_ext)){
+                $entry->setFile( $id . "." . $file_ext);
+                $em->flush();
+
+                if (!move_uploaded_file($_FILES["entry_file"]["tmp_name"],  $target_dir . $id . "." . $file_ext)) {
+                    throw new Exception("Sorry, there was an error uploading your file.");
+                }
+            }
+
+            if($post['update_type'] === 'word_count') {
+                return new PostArray(['success' => '1', 'wc' => $words, 'id' => $id]);
+            }else{
+                return new PostArray(['success' => '1', 'file' => $entry->getFile(), 'id' => $id]);
+            }
 
         } catch(\Exception $e) {
             return new PostArray(['success' => '0', 'message' => $e->getMessage()]);

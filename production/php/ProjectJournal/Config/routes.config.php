@@ -100,6 +100,12 @@ return [
         'action' => 'deleteProject',
         'details' => [],
     ],
+
+    '/addjournalentry' => [
+        'controller' => 'main',
+        'action' => 'addJournalEntry',
+        'details' => [],
+    ],
 ]
 
 ?>
