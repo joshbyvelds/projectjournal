@@ -59,6 +59,7 @@ function ProjectInfoPanel(){
             // TODO: Get Project TODO List..
 
             // Get Project Journal Thumbnails..
+            $("#project_info_updates").empty();
             json.entries.forEach(function(entry){
                 if(entry.type === "image"){
                     $("#project_info_updates").append("<img class=\"image\" src=\"images/updates/"+ entry.file +"\" title=\""+ entry.title +"\">");
