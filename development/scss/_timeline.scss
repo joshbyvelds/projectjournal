@@ -1,0 +1,127 @@
+.timeline {
+    .inside{
+        overflow: scroll;
+    }
+
+    .chart-wrapper {
+        max-width: 1150px;
+        padding: 0 10px;
+        margin: 0 auto;
+
+        .chart-values {
+            position: relative;
+            display: flex;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .chart-values li {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .chart-values li:not(:last-child) {
+            position: relative;
+        }
+
+        .chart-values li:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            height: 510px;
+            border-right: 1px solid var(--divider);
+        }
+
+        .chart-bars li {
+            position: relative;
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 20px;
+            padding: 10px 20px;
+            width: 0;
+            opacity: 0;
+            transition: all 0.65s linear 0.2s;
+        }
+
+        @media screen and (max-width: 600px) {
+            .chart-bars li {
+                padding: 10px;
+            }
+        }
+    }
+
+    // Tutorial for this found here.. https://webdesign.tutsplus.com/tutorials/solving-problems-with-css-grid-the-gantt-chart--cms-33837
+    .gantt_css_grid {
+        display: grid;
+        grid-template-columns:
+                [sun-morning] 1fr [sun-midday] 1fr
+                [sun-night mon-morning] 1fr [mon-midday] 1fr
+                [mon-night tue-morning] 1fr [tue-midday] 1fr
+                [tue-night wed-morning] 1fr [wed-midday] 1fr
+                [wed-night thu-morning] 1fr [thu-midday] 1fr
+                [thu-night fri-morning] 1fr [fri-midday] 1fr
+                [fri-night sat-morning] 1fr [sat-midday] 1fr
+                [sat-night];
+        grid-gap: 10px 0px;
+        width: 2000px;
+        max-width: 2000px;
+        padding-top: 40px;
+        margin: 0 auto;
+
+
+
+        /* dividers */
+        span {
+            border-left: 1px solid lightgrey;
+            grid-row: 1 / span 10;
+        }
+
+        span.d-1 { grid-column: 3; }
+        span.d-2 { grid-column: 5; }
+        span.d-3 { grid-column: 7; }
+        span.d-4 { grid-column: 9; }
+        span.d-5 { grid-column: 11; }
+        span.d-6 { grid-column: 13; }
+
+        /* days */
+        h3 {
+            text-align: center;
+            grid-row: 1;
+        }
+
+        h3.h-sun { grid-column: 1 / span 2; }
+        h3.h-mon { grid-column: 3 / span 2; }
+        h3.h-tue { grid-column: 5 / span 2; }
+        h3.h-wed { grid-column: 7 / span 2; }
+        h3.h-thu { grid-column: 9 / span 2; }
+        h3.h-fri { grid-column: 11 / span 2; }
+        h3.h-sat { grid-column: 13 / span 2; }
+
+        div {
+            color: white;
+            font-size: 12px;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .t-1 { background: #b03532; grid-row: 2; }
+        .t-2 { background: #33a8a5; grid-row: 3; }
+        .t-3 { background: #30997a; grid-row: 4; }
+        .t-4 { background: #6a478f; grid-row: 5; }
+        .t-5 { background: #da6f2b; grid-row: 6; }
+        .t-6 { background: #3d8bb1; grid-row: 7; }
+        .t-7 { background: #e03f3f; grid-row: 8; }
+        .t-8 { background: #59a627; grid-row: 9; }
+        .t-9 { background: #4464a1; grid-row: 10; }
+
+        @media only screen and (min-width: 600px) {
+            div {
+                font-size: 16px;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,115 @@
+.grid {
+    display: inline-block;
+    width: calc(100% - 373px);
+    max-height: 504px;
+    padding-right: 15px;
+    vertical-align: top;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0px;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+}
+
+
+.grid_item {
+    display: inline-block;
+    width: 240px;
+    height: 114px;
+    padding: 10px;
+    border: solid 2px #fff;
+    margin: 6px;
+    border-radius: 4px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.25);
+    transition: all 0.5s ease-out;
+    cursor: pointer;
+
+    /*
+    &:hover{
+        transform: scale(1.125);
+        background: #fff;
+        box-shadow: 0 0 14px rgba(0,0,0,0.5);
+        z-index: 300;
+    }
+    */
+
+    &:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &.selected {
+        border-color: #28bf7e;
+    }
+
+    .top, .bottom{
+        position: relative;
+    }
+
+    .top{
+        height: 70px;
+        padding-left: 9px;
+        padding-top: 7px;
+    }
+
+    .project_thumbnail {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: url("images/updates/sample.webp") 50% 50% no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        vertical-align: top;
+    }
+
+    .top_text {
+        display: inline-block;
+        padding-left: 9px;
+        vertical-align: top;
+    }
+
+    .name {
+        height: 26px;
+        padding-top: 3px;
+        color: #343434;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .time_spent {
+        color: #8C8C8C;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .bottom{
+        padding-left: 8px;
+    }
+
+    .last_updated {
+        color: #8C8C8C;
+        font-size: 11px;
+        font-weight: 300;
+
+        i{
+            margin-right: 5px;
+        }
+
+        sup {
+            font-size: 68%;
+            position: relative;
+            top: -4px;
+        }
+    }
+
+    .category_icon {
+        position: absolute;
+        top: -6px;
+        right: 5px;
+        width: 27px;
+        height: 27px;
+        background: url("images/categories/webapp.webp");
+        background-size: cover;
+        border-radius: 50%;
+    }
+}

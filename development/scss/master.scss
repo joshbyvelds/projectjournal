@@ -1,0 +1,67 @@
+/*
+    Project Journal - Master SCSS
+    Author: J.Byvelds
+    Copyleft 2019
+ */
+
+@import "_fonts";
+@import "_reset";
+
+html,body{
+    min-height:100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    margin-bottom: -200px;
+    -webkit-font-smoothing: antialiased;
+
+    &:before {
+        position: absolute;
+        top: -200px;
+        left: 59%;
+        content: " ";
+        width: 400px;
+        height: calc(100% + 400px);
+        margin-bottom: -240px;
+        background: #28BE7F;
+        transform: translateX(-50%) rotate(30deg);
+        transform-origin: center center;
+        z-index: 10;
+        overflow: hidden;
+    }
+}
+
+.wrapper {
+    position: relative;
+    max-width:1440px;
+    margin: 135px auto 0;
+    z-index: 20;
+}
+
+main{
+    padding: 10px 20px;
+    background: #ffffff;
+}
+
+
+@import "_changelog";
+@import "_utilities";
+@import "_forms";
+@import "_login";
+@import "_main";
+@import "_modal";
+@import "_header";
+@import "_grid";
+@import "_project_info";
+@import "_todo";
+@import "_updates";
+@import "_delete_check";
+@import "_project_stats";
+@import "_timeline";
+@import "_footer";
+
+
+@import "themes/_light";
+

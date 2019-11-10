@@ -1,0 +1,48 @@
+footer{
+    position: relative;
+    padding: 20px;
+    border-top: solid 1px #bbb;
+    background: #ffffff;
+    text-align: center;
+    font-weight: 300;
+    z-index: 20;
+
+    li{
+        display: inline-block;
+        margin-right: 10px;
+
+        &:after{
+            content: "|";
+            padding-left: 10px;
+        }
+
+        &:last-of-type{
+            &:after{
+                content: "";
+            }
+        }
+    }
+
+    a{
+        color: #000;
+
+        &:hover {
+            color: #28bf7e;
+        }
+
+        img {
+
+        }
+    }
+
+    p{
+        padding-top: 20px;
+
+        a{
+            margin: 0;
+            &:after{
+                content: "";
+            }
+        }
+    }
+}

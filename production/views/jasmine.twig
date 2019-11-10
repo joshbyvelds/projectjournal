@@ -1,0 +1,73 @@
+{% extends "layout.twig" %}
+
+{% block title %}Project Journal - The Ultimate Project Progress Tracking Tool{% endblock %}
+
+{% block header %}
+    <style>
+        .jasmine_html-reporter {
+            display: none;
+        }
+    </style>
+    <div id="jasmine_wrapper">
+
+    </div>
+    <script src="javascript/jasmine.js"></script>
+
+    <script>
+        describe("Grid Project - convertTimeSpent()", function() {
+            it("should return a string", function() {
+                var exp = typeof "00:00:00";
+                var act = typeof grid.convertTimeSpent(0);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 00:00:00 at 0 seconds", function() {
+                var exp = "00:00:00";
+                var act = grid.convertTimeSpent(0);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 00:00:01 at 1 seconds", function() {
+                var exp = "00:00:01";
+                var act = grid.convertTimeSpent(1);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 00:00:10 at 10 seconds", function() {
+                var exp = "00:00:10";
+                var act = grid.convertTimeSpent(10);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 00:01:00 at 60 seconds", function() {
+                var exp = "00:01:00";
+                var act = grid.convertTimeSpent(60);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 01:00:00 at 3,600 seconds", function() {
+                var exp = "01:00:00";
+                var act = grid.convertTimeSpent(3600);
+                expect(act).toBe(exp);
+            });
+
+            it("should return 01:01:00 at 3,660 seconds", function() {
+                var exp = "01:01:00";
+                var act = grid.convertTimeSpent(3660);
+                expect(act).toBe(exp);
+            });
+        });
+
+        myReporter = {
+            jasmineDone: function(result) {
+                setTimeout(function(){
+                    $(".jasmine_html-reporter").detach().appendTo("#jasmine_wrapper");
+                    $(".jasmine_html-reporter").fadeIn(500);
+                }, 50)
+            }
+        };
+
+        jasmine.getEnv().addReporter(myReporter);
+    </script>
+{% endblock %}
+

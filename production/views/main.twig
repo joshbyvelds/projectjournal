@@ -1,0 +1,258 @@
+{% extends "layout.twig" %}
+
+{% block title %}Project Journal - The Ultimate Project Progress Tracking Tool{% endblock %}
+
+{% block header %}
+    <header>
+        {# Left Side #}
+        <div class="half left ib">
+            <div class="header_logo"></div>
+            <div class="input_wrapper searchbar">
+                <input type="text" id="search" class="ib" placeholder="Search through projects" />
+            </div>
+        </div><!--
+
+     --><div class="half right ib">
+            <ul class="ib header_nav">
+                <li class="ib menu_item add modalBtn" data-modal="add">Add <i class="fas fa-plus-square"></i></li>
+                <li class="ib menu_item timeline modalBtn" data-modal="timeline">Timeline <i class="fas fa-stream"></i></li>
+                <li class="ib menu_item stats modalBtn" data-modal="global_stats">Stats <i class="fas fa-poll"></i></li>
+            </ul>
+
+            {# User Profile #}
+            <div class="ib user" id="header_user">
+                <div class="ib username" id="username">{{ username }} &nbsp;<i class="fas fa-chevron-down"></i></div>
+                <div class="ib profile_image" style="background-image:url(images/users/{{ username }}.webp)"></div>
+
+                <div class="dropdown" id="header_username_dropdown">
+                    <a href="#" class="modalBtn" data-modal="settings">Settings</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block page %}
+    <div class="main_inside_wrapper">
+        {# Sort Wrapper #}
+        <div class="sorting_selector">
+            Sort By
+            <select id="sortBy">
+                <option value="0">Created ⇩</option>
+                <option value="1">Created ⇧</option>
+                <option value="2">Last Updated ⇩</option>
+                <option value="3">Last Updated ⇧</option>
+                <option value="4">Name ⇩</option>
+                <option value="5">Name ⇧</option>
+                <option value="6">Category ⇩</option>
+                <option value="6">Category ⇧</option>
+                <option value="7">Completed ⇩</option>
+                <option value="8">Completed ⇧</option>
+            </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Filter Category
+            <select id="filterCategory">
+                <option value="0">All</option>
+                <option value="1">3D Rendering</option>
+                <option value="2">Fan Fiction</option>
+                <option value="3">FL Studio Song</option>
+                <option value="4">Graphic Design</option>
+                <option value="5">HTML 5 Game</option>
+                <option value="6">Photo Manipulation</option>
+                <option value="7">Unreal Engine 4 Game</option>
+                <option value="8">Vector Art</option>
+                <option value="9">Web App</option>
+                <option value="10">Website</option>
+            </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Filter Stage
+            <select id="filterStage">
+                <option value="0">All</option>
+                <option value="1">Idea</option>
+                <option value="2">Work in Progress</option>
+                <option value="3">Complete</option>
+            </select>
+        </div>
+
+        {# Project Grid #}
+        <div class="grid" id="project_grid">
+        {#
+            {% for project in projects %}<!--
+                -->{% include "partials/item.twig" with {id:project.id, title:project.title, date:project.laststarted, category:project.category, image:project.image, time:project.time} %}<!--
+         -->{% endfor %}
+         #}
+        </div>
+
+        {# Infomation Panel #}
+        <div class="info_panel">
+            <div class="no_project">
+                <div class="icon"></div>
+                <h2>Please select a project</h2>
+            </div>
+
+            <div class="project_selected off">
+                <div class="thumbnail"></div>
+                <div class="project_name">Project Name</div>
+                <div class="time_spent">12:34:56</div>
+                <div class="last_updated">November 23rd, 2019</div>
+
+                <div class="action_buttons">
+                    <button class="start button" id="project_timer_start_button"><i class="far fa-play-circle"></i> Start</button>
+                    <button class="stop button off" id="project_timer_stop_button"><i class="far fa-stop-circle"></i> Stop</button>
+                    <button class="update button modalBtn" id="project_info_add_entry_button" data-modal="add_update"><i class="fas fa-pen-alt"></i> Update</button>
+                    <button class="edit button modalBtn" id="project_info_edit_button" data-modal="edit_project"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="delete button modalBtn" id="project_info_delete_button" data-modal="delete_check"><i class="far fa-trash-alt"></i> Delete</button>
+                </div>
+
+                <div class="project_description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta eius error expedita modi quo ratione recusandae reprehenderit vitae! Aperiam consectetur ex facilis labore maiores nisi rem repellat sint. djsf. sal. sdfl . lsdf. sld lsdf . lsd I am a little sentence.
+                </div>
+
+                {# TO-DO List #}
+                {% include "partials/infomation_panel_sections/todo_list.twig" %}
+
+                {# Updates #}
+                {% include "partials/infomation_panel_sections/updates.twig" %}
+
+                {# Stats #}
+                {% include "partials/infomation_panel_sections/stats.twig" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay off" id="overlay">
+        <div class="panel_wrapper">
+
+            {# Add Project Panel #}
+            {% include "partials/overlays/add_project.twig" %}
+
+            {# Edit Project Panel #}
+            {% include "partials/overlays/edit_project.twig" %}
+
+            {# Journal Update Panel #}
+            {% include "partials/overlays/journal_update.twig" %}
+
+            {# Add Journal Update #}
+            {% include "partials/overlays/add_journal_update.twig" %}
+
+            {# Delete Check Panel #}
+            {% include "partials/overlays/delete_check.twig" %}
+
+            {# Add Task Panel #}
+            {% include "partials/overlays/add_task.twig" %}
+
+            {# Timeline Panel  #}
+            {% include "partials/overlays/timeline.twig" %}
+
+            {# Global Stats Panel #}
+            {% include "partials/overlays/global_stats.twig" %}
+
+            {# Project Stats Panel #}
+            {% include "partials/overlays/project_stats.twig" %}
+
+            {# Settings Panel #}
+            {% include "partials/overlays/settings.twig" %}
+
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", function(){
+            $("#username").on("click", function(){
+                $("#header_username_dropdown").slideToggle();
+            });
+        });
+    </script>
+
+    <script>
+        window.addEventListener("load", function(){
+            $(".updates img").on("click", function(){alert("Open Modal with journal entry information here.")});
+        });
+    </script>
+
+    {# TIMELINE SCRIPT #}
+    <script>
+        window.addEventListener("load", createChart);
+        window.addEventListener("resize", createChart);
+
+        function createChart(e) {
+            // 1
+            const days = document.querySelectorAll(".chart-values li");
+            const tasks = document.querySelectorAll(".chart-bars li");
+            // 2
+            const daysArray = [...days];
+            // 3
+            tasks.forEach(el => {
+                // 1
+                const duration = el.dataset.duration.split("-");
+                // 2
+                const startDay = duration[0];
+                const endDay = duration[1];
+                let left = 0,
+                    width = 0;
+
+                // 3
+                if (startDay.endsWith("½")) {
+                    const filteredArray = daysArray.filter(day => day.textContent == startDay.slice(0, -1));
+                    left = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth / 2;
+                } else {
+                    const filteredArray = daysArray.filter(day => day.textContent == startDay);
+                    left = filteredArray[0].offsetLeft;
+                }
+
+                // 4
+                if (endDay.endsWith("½")) {
+                    const filteredArray = daysArray.filter(day => day.textContent == endDay.slice(0, -1));
+                    width = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth / 2 - left;
+                } else {
+                    const filteredArray = daysArray.filter(day => day.textContent == endDay);
+                    width = filteredArray[0].offsetLeft + filteredArray[0].offsetWidth - left;
+                }
+
+                el.style.left = `${left}px`;
+                el.style.width = `${width}px`;
+                // 4
+                if (e.type == "load") {
+                    // 2
+                    el.style.backgroundColor = el.dataset.color;
+                    // 3
+                    el.style.opacity = 1;
+                }
+            });
+        }
+    </script>
+
+    {# STATS SCRIPT #}
+    <script>
+        window.addEventListener("load", createStatsChart);
+
+        function createStatsChart() {
+            var ctx = document.getElementById('myChartStats').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+        }
+
+    </script>
+{% endblock %}
+

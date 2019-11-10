@@ -1,0 +1,58 @@
+<div class="overlay_panel add_update off">
+    <div class="inside">
+        <i class="modalclosebtn close_x fas fa-window-close"></i>
+        <h2>Write Project Update</h2>
+        <form class="form" id="journal_update_form">
+            <input type="hidden" name="project_id" id="update_project_id">
+            <input type="hidden" name="time" id="update_project_time">
+            Update Type:<br />
+            Image: <input class="radio" type="radio" name="update_type" value="image">
+            Audio: <input class="radio" type="radio" name="update_type" value="audio">
+            Word Count: <input class="radio" type="radio" name="update_type" value="word_count">
+            <span id="type_radio_error"></span>
+
+            {# if image or Audio #}
+            <div id="journal_update_file_field" style="display:none;">
+                <input type="file" name="entry_file"><br />
+            </div>
+
+            {# if word count #}
+            <div id="journal_update_word_count_fields" style="display:none;">
+
+                <div class="input_wrapper icon user success-ani-ele">
+                    <input type="number" name="word_count_pages" placeholder="Pages">
+                </div>
+
+                <div class="input_wrapper icon user success-ani-ele">
+                    <input type="number" name="word_count_words" placeholder="Words">
+                </div>
+
+                <div class="input_wrapper icon user success-ani-ele">
+                    <input type="number" name="word_count_characters" placeholder="Characters">
+                </div>
+
+                <div class="input_wrapper icon user success-ani-ele">
+                    <input type="number" name="word_count_characters_excluding_spaces" placeholder="Characters Excluding Spaces">
+                </div>
+            </div>
+
+            <div class="input_wrapper icon user success-ani-ele">
+                <input type="text" name="update_title" placeholder="Update Title" />
+            </div>
+
+            <div class="input_wrapper success-ani-ele">
+                <textarea name="update_description"></textarea>
+            </div>
+
+            <div class="error error_message" id="journal_update_php_error"></div>
+            <button type="button" class="main_btn success-ani-ele ladda-button" id="updateSubmit">Submit</button>
+        </form>
+
+        <div class="success_panel" id="journal_update_success_panel">
+            <h1>Journal Entry Added Successfully</h1>
+        </div>
+
+
+        <button class="modalclosebtn close_bottom">Close</button>
+    </div>
+</div>

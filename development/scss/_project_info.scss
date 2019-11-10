@@ -1,0 +1,244 @@
+.info_panel{
+    position: relative;
+    top: -45px;
+    display: inline-block;
+    width: 360px;
+    height: 554px;
+    padding-top: 43px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    vertical-align: top;
+    border-left: solid 1px #bbb;
+    overflow-y: scroll;
+
+    .no_project {
+        .icon{
+            width: 256px;
+            height: 256px;
+            margin: 0 auto;
+            background: url("images/empty-box.png");
+        }
+
+        h2{
+            padding-top: 10px;
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 0px;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+
+    .thumbnail{
+        position: relative;
+        top: -36px;
+        width: 126px;
+        height: 126px;
+        margin: 0 auto;
+        border: solid 3px white;
+        background: #999;
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 7px rgba(60, 60, 60, 0.25);
+    }
+
+    .project_name{
+        position: relative;
+        top: -21px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    .time_spent{
+        position: relative;
+        top: -9px;
+        height: 22px;
+        color: #919191;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .last_updated {
+        height: 33px;
+        color: #919191;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .action_buttons{
+        padding-bottom: 27px;
+        text-align: center;
+    }
+
+    .button {
+        width: 142px;
+        height: 35px;
+        border: 0;
+        margin: 0 2px 8px;
+        background: #28BE7F;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 300;
+        border-radius: 28px;
+        line-height: 37px;
+
+        &.third {
+            width: 100px;
+        }
+    }
+
+    .project_description{
+        padding-top: 17px;
+        padding-left: 6px;
+        padding-bottom: 14px;
+        border-top: solid 1px #bbb;
+        color: #5D5D5D;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 19px;
+    }
+
+    .section {
+        padding-top: 12px;
+        border-top: solid 1px #bbb;
+        padding-left: 6px;
+
+        &.closed{
+            .inside{
+                display: none;
+            }
+        }
+    }
+
+    .title {
+        color: #8F8F8F;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .open_close_btn {
+        border: 0;
+        background: none;
+        color: #8F8F8F;
+
+        &:hover {
+            color: #28bf7e;
+        }
+    }
+
+    .todo_list {
+        .taskname{
+            font-size: 14px;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+
+        .subtask{
+            display: inline-block;
+            width: 50%;
+            padding-bottom: 9px;
+            color: #707070;
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 17px;
+        }
+
+
+        .icon{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 7px;
+            padding-top: 1px;
+            background: #28bf7e;
+            color: white;
+            font-size: 8px;
+            text-align: center;
+            border-radius: 20px;
+        }
+    }
+    .updates{
+
+        .audio{
+            position: relative;
+            display: inline-block;
+            width: 151px;
+            height: 85px;
+            margin: 3px 1%;
+            background: url("images/audio_thumbnail.webp");
+            border: solid 3px #bbb;
+            vertical-align: top;
+
+            &:hover {
+                border-color: #28bf7e;
+                border-radius: 6px;
+            }
+
+            audio{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 24px;
+                opacity: 0.8;
+            }
+        }
+
+        .wc{
+            position: relative;
+            display: inline-block;
+            width: 151px;
+            height: 85px;
+            padding: 4px 0 0 4px;
+            border: solid 3px #bbb;
+            margin: 3px 1%;
+            background: url("images/writing_thumbnail.webp");
+            vertical-align: top;
+
+            &:hover {
+                border-color: #28bf7e;
+                border-radius: 6px;
+            }
+
+            span {
+                font-size: 30px;
+                font-weight: 300;
+            }
+        }
+
+        img{
+            display: inline-block;
+            width: 151px;
+            height: 85px;
+            border: solid 3px #bbb;
+            margin: 3px 1%;
+            box-sizing: border-box;
+            transition: all 0.3s ease-out;
+            vertical-align: top;
+
+            &:hover {
+                border-color: #28bf7e;
+                border-radius: 6px;
+            }
+        }
+    }
+
+    .stats{
+        h4{
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 300;
+        }
+
+        span{
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+suites:
+  #...
+  default:
+    namespace: ProjectJournal
+    src_path: ../production/php
+
+  extensions:
+    FriendsOfPhpSpec\PhpSpec\CodeCoverage\CodeCoverageExtension: ~

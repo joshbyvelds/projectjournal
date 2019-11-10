@@ -1,0 +1,41 @@
+{% extends "layout.twig" %}
+
+{% block title %}Project Journal - Installer{% endblock %}
+
+{% block page %}
+    <div class="login_logo ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000"><div class="cover"><div class="ladda-label"></div></div></div>
+    <form id="installerForm" class="form">
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_host" placeholder="Database Host">
+        </div>
+
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_name" placeholder="Database Name">
+        </div>
+
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="database_user" placeholder="Database User">
+        </div>
+
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="password" name="database_password" placeholder="Database Password">
+        </div>
+
+        <div class="input_wrapper success-ani-ele">
+            <label for="create_database">Create Database:</label>
+            <input type="checkbox" name="create_database" placeholder="Create Database">
+        </div>
+
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="text" name="admin_username" placeholder="Admin Username">
+        </div>
+
+        <div class="input_wrapper icon user success-ani-ele">
+            <input type="password" name="admin_password" placeholder="Admin Password">
+        </div>
+
+        <div class="error" id="install_php_error" style="display: none;"></div>
+
+        <button type="button" class="main_btn" id="installSubmit">Install</button>
+    </form>
+{% endblock %}

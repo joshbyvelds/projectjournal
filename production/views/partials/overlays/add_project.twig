@@ -1,0 +1,41 @@
+<div class="overlay_panel add off">
+    <div class="inside">
+        <i class="modalclosebtn close_x fas fa-window-close"></i>
+        <h2>Create New Project</h2>
+        <div class="form" id="add_project_form">
+            <div class="input_wrapper icon user success-ani-ele">
+                <input type="text" name="add_project_title" placeholder="Project Title" />
+            </div>
+
+            <div class="input_wrapper icon user success-ani-ele">
+                <select name="add_project_category" id="">
+
+                    <option value="" selected disabled hidden>Please select a Category</option>
+                    <option value="1">3D Rendering</option>
+                    <option value="2">Fan Fiction</option>
+                    <option value="3">FL Studio Song</option>
+                    <option value="4">Graphic Design</option>
+                    <option value="5">HTML 5 Game</option>
+                    <option value="6">Photo Manipulation</option>
+                    <option value="7">Unreal Engine 4 Game</option>
+                    <option value="8">Vector Art</option>
+                    <option value="9">Web App</option>
+                    <option value="10">Website</option>
+                </select>
+            </div>
+
+            <div class="input_wrapper success-ani-ele">
+                <textarea name="add_project_description" id=""></textarea>
+            </div>
+
+            <div class="error error_message" id="add_project_php_error"></div>
+            <button type="button" class="main_btn success-ani-ele ladda-button" data-size="5" data-style="slide-up" data-spinner-color="#000" id="submitNewProject">Submit</button>
+        </div>
+
+        <div class="success_panel" id="add_project_success_panel">
+            <h1>Project Added :)</h1>
+        </div>
+
+        <button class="modalclosebtn close_bottom">Close</button>
+    </div>
+</div>

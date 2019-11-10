@@ -1,0 +1,194 @@
+
+// Font Awesome */
+@font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:normal;font-display:auto;src:url(fonts/fa-brands-400.eot);src:url(fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(fonts/fa-brands-400.woff2) format("woff2"),url(fonts/fa-brands-400.woff) format("woff"),url(fonts/fa-brands-400.ttf) format("truetype"),url(fonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands"}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:auto;src:url(fonts/fa-regular-400.eot);src:url(fonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(fonts/fa-regular-400.woff2) format("woff2"),url(fonts/fa-regular-400.woff) format("woff"),url(fonts/fa-regular-400.ttf) format("truetype"),url(fonts/fa-regular-400.svg#fontawesome) format("svg")}.far{font-family:"Font Awesome 5 Free";font-weight:400}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:auto;src:url(fonts/fa-solid-900.eot);src:url(fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(fonts/fa-solid-900.woff2) format("woff2"),url(fonts/fa-solid-900.woff) format("woff"),url(fonts/fa-solid-900.ttf) format("truetype"),url(fonts/fa-solid-900.svg#fontawesome) format("svg")}.fa,.fas{font-family:"Font Awesome 5 Free";font-weight:900}
+
+// ---- Helvetica Neve Cyr ---- //
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/thin_italic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/ultra_light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/ultra_light_italic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/light_italic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+}
+
+
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/roman.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/medium_italic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/bold_italic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/heavy_italic.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Cyr';
+    src: url('fonts/Helvetica Neve Cyr/black_italic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+// ---- Open Sans ---- //
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/light.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/light_italic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/regular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/regular_italic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/semibold.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/semibold_italic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/bold_italic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/extrabold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open Sans/extrabold_italic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}

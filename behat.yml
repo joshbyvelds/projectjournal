@@ -1,0 +1,29 @@
+default:
+  autoload:
+    '': "%paths.base%/development/behat_tests/bootstrap"
+  suites:
+    default:
+      paths:    [ "%paths.base%/development/behat_tests" ]
+      contexts:
+        - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
+        - FeatureContext
+  extensions:
+    IntegratedExperts\BehatScreenshotExtension:
+      dir: "%paths.base%/development/behat_tests/screenshots"
+      fail: true
+      purge: false
+
+    Behat\MinkExtension:
+      base_url: http://projectjournal2.com/
+      files_path: "%paths.base%/development/behat_tests/dummy_files/"
+      default_session: selenium2
+      browser_name: 'chrome'
+      goutte: ~
+      selenium2:
+        wd_host: "http://127.0.0.1:4444/wd/hub"
+        capabilities:
+          browser: "chrome"
+          version: "*"
+          extra_capabilities:
+            chromeOptions:
+              w3c: false

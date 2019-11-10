@@ -1,0 +1,127 @@
+header{
+    position: relative;
+    padding: 15px 25px 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 8px -7px rgba(50, 50, 50, 0.8);
+    z-index: 30;
+
+    .header_logo {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url("images/header_logo.webp");
+        background-size: contain;
+        vertical-align: top;
+    }
+
+
+    .searchbar{
+        position: relative;
+        color: #C0C2C2;
+
+        &::before {
+            position: absolute;
+            top: 10px;
+            left: 33px;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f002";
+            font-size: 12px;
+        }
+
+        input {
+            width: 235px;
+            height: 27px;
+            padding-left: 31px;
+            margin-left: 20px;
+            border: solid 1px #D7D7D7;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 12px;
+            font-family: "Helvetica Neue Cyr";
+
+            &:focus {
+                border-color: #28bf7e;
+                outline: 0;
+                transition: all 300ms ease-out;
+            }
+        }
+    }
+
+    .menu_item{
+        padding-top: 4px;
+        padding-left: 26px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #6F7070;
+        vertical-align: middle;
+        transition: all 300ms ease-out;
+        cursor: pointer;
+
+        &:hover{
+            color: #28bf7e;
+        }
+
+        &.active {
+            color: #28bf7e;
+
+        }
+
+        i {
+            display: inline-block;
+            padding-left: 6px;
+            font-size: 21px;
+            vertical-align: middle;
+        }
+
+    }
+
+    .user {
+        position: relative;
+        width:151px;
+
+        .username{
+            padding-top: 10px;
+            padding-right: 4px;
+            color: #686868;
+            font-size: 11px;
+            font-weight: 700;
+            cursor:pointer;
+
+            i {
+                font-size: 8px;
+                position: relative;
+                top: -2px;
+            }
+        }
+
+        .profile_image{
+            width: 32px;
+            height: 32px;
+            background: url("images/users/sample.webp") 50% 50% no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 43px;
+            right: -24px;
+            width: 170px;
+            background-color: white;
+            box-shadow: 0 4px 7px -6px rgba(0, 0, 0, 0.5);
+
+            a{
+                display: block;
+                padding: 5px 0;
+                padding-right: 20px;
+                border-bottom: solid #CCC 1px;
+                color: #000;
+                font-size: 13px;
+                font-weight: 400;
+                text-decoration: none;
+            }
+        }
+    }
+}

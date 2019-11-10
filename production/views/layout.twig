@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="{% block htmlclass %}{% endblock %}">
+<head>
+    {% block head %}
+        <link rel="stylesheet" href="master.css"/>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    {% endblock %}
+</head>
+<body class="theme_light">
+<div class="wrapper">
+    {% block header %}{% endblock %}
+    <main id="content" role="main">{% block page %}{% endblock %}</main>
+
+    <footer id="footer">
+        {% block footer %}
+            <ul>
+                <li><a href="//github.com/joshbyvelds/projectjournal" target="_blank"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="/jasmine"><img src="images/jasmine_favicon.png" style="width: 16px; position: relative; top: 2px;" alt=""> Jasmine</a></li>
+                <li><a href="/changelog">Change Log</a></li>
+                <li><a href="#">Link here</a></li>
+                <li><a href="#">Link here</a></li>
+            </ul>
+            <p>
+                Version 0.0.50 - &copy; Copyright 2019 by <a href="//byveldsmultimedia.com">Byvelds Multimedia</a>.
+            </p>
+        {% endblock %}
+    </footer>
+</div>
+
+
+<script data-main="javascript/app" src="javascript/master.js"></script>
+</body>
+</html>
