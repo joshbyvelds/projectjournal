@@ -1,19 +1,21 @@
 <div class="overlay_panel timeline off">
     <div class="inside">
         <i class="modalclosebtn close_x fas fa-window-close"></i>
+        <h2>Project Activity Timeline</h2>
         <div class="chart-wrapper">
             <ul class="chart-values">
-                <li>sun</li>
-                <li>mon</li>
-                <li>tue</li>
-                <li>wed</li>
-                <li>thu</li>
-                <li>fri</li>
-                <li>sat</li>
+                <li>Nov 10th</li>
+                <li>Nov 17th</li>
+                <li>Nov 24th</li>
+                <li>Dec 1st </li>
+                <li>Dec 8th</li>
+                <li>Dec 15th</li>
+                <li>Dec 22nd</li>
             </ul>
             <ul class="chart-bars">
-                <li data-duration="tue-wed" data-color="#b03532">Task</li>
-                <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
+                {# Create a row for each project, then create a span for each duratation bar #}
+                <li data-duration="tue-wed" data-color="#b03532">Project 1 - HH:MM:SS</li>
+                <li data-duration="wed-sat" data-color="#33a8a5">Project 2 - HH:MM:SS</li>
                 ...
             </ul>
         </div>
