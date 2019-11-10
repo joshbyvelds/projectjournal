@@ -54,7 +54,7 @@ Feature: Main Page - Add Journal Entry
     And I should see "Please enter the amount of characters your novel has as of this update"
     And I should see "Please enter the amount of characters not including spaces your novel has as of this update"
 
-  @javascript @journal_entry @test
+  @javascript @journal_entry @add_journal_entry @view_journal_entry @view_journal_image
   Scenario: Add a Image Journal Entry to a Project
     Given I am logged in
     And I wait 1 second
@@ -79,7 +79,7 @@ Feature: Main Page - Add Journal Entry
     Then I should see an "img.image" element
     And "img.image" element should have an "title" attribute with "Behat Image Journal Entry Test Title" value
 
-  @javascript @journal_entry
+  @javascript @journal_entry @add_journal_entry @view_journal_entry @view_journal_audio
   Scenario: Add a Audio Journal Entry to a Project
     Given I am logged in
     And I wait 1 second
@@ -103,7 +103,7 @@ Feature: Main Page - Add Journal Entry
     Then I should see an "div.audio" element
     And I should see an "audio" element
 
-  @javascript @journal_entry
+  @javascript @journal_entry @add_journal_entry @view_journal_entry @view_journal_audio
   Scenario: Add a Word Count Journal Entry to a Project
     Given I am logged in
     And I wait 1 second

@@ -106,6 +106,12 @@ return [
         'action' => 'addJournalEntry',
         'details' => [],
     ],
+
+    '/journalentry' => [
+        'controller' => 'main',
+        'action' => 'journalEntry',
+        'details' => [],
+    ],
 ]
 
 ?>

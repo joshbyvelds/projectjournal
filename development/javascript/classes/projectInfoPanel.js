@@ -9,6 +9,7 @@ function ProjectInfoPanel(){
         $("#project_timer_start_button").off().on('click', function(){$("#project_timer_start_button").hide(); $("#project_timer_stop_button").show(); CLASS.startProjectTimer();});
         $("#project_timer_stop_button").off().on('click', CLASS.stopProjectTimer);
         $(".open_close_btn").off().on("click", function(){openCloseSection($(this));});
+        $(".journal_thumbnail").off().on("click", function(){});
     };
 
     this.killEventListeners = function(){
@@ -62,17 +63,16 @@ function ProjectInfoPanel(){
             $("#project_info_updates").empty();
             json.entries.forEach(function(entry){
                 if(entry.type === "image"){
-                    $("#project_info_updates").append("<img class=\"image\" src=\"images/updates/"+ entry.file +"\" title=\""+ entry.title +"\">");
+                    $("#project_info_updates").append("<img class=\"image journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\"" + entry.id + "\" src=\"images/updates/"+ entry.file +"\" title=\""+ entry.title +"\">");
                 }
 
                 if(entry.type === "audio"){
-                    $("#project_info_updates").append("<div class=\"audio\"><audio src=\"audio/updates/"+ entry.file +"\" type=\"audio/mpeg\" controls></audio></div>");
+                    $("#project_info_updates").append("<div class=\"audio journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\"" + entry.id + "\"><audio src=\"audio/updates/"+ entry.file +"\" type=\"audio/mpeg\" controls></audio></div>");
                 }
 
                 if(entry.type === "word_count"){
-                    $("#project_info_updates").append("<div class=\"wc\"><span>" + entry.words + "</span></div>");
+                    $("#project_info_updates").append("<div class=\"wc journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\"" + entry.id + "\"><span>" + entry.words + "</span></div>");
                 }
-
             });
 
             // TODO:: Get Project Stats..
@@ -80,6 +80,7 @@ function ProjectInfoPanel(){
 
             $(".info_panel .project_selected").removeClass("off");
             CLASS.setupEventListeners();
+            resetAllEventListeners();
         });
     };
 

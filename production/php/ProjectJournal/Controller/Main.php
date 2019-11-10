@@ -431,4 +431,31 @@ class Main extends BaseController
             return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
         }
     }
+
+    public function journalEntryAction() {
+        try {
+            if (!isset($this->getPostVariables(['entry_id'])['entry_id'])) {
+                throw new Exception($this->getPostVariables(['entry_id'])['entry_id']);
+            }
+
+
+            $ds = new DoctrineService();
+            $journal_entry_entity = $ds->getEntityManager()->getRepository(JournalEntry::class)->findOneBy(array('id' => $this->getPostVariables(['entry_id'])['entry_id']));
+
+            $journal_entry = [
+                'success' => '1',
+                'title' => $journal_entry_entity->getTitle(),
+                'description' => $journal_entry_entity->getDescription(),
+                'type' => $journal_entry_entity->getType(),
+                'file' => $journal_entry_entity->getFile(),
+                'date' => date_format($journal_entry_entity->getDate(), "F jS, Y - g:h A"),
+                'time' => $journal_entry_entity->getTime(),
+            ];
+
+            return new PostArray($journal_entry);
+
+        } catch(\Exception $e) {
+            return new PostArray(['success' => '0', 'message' => $e->getMessage()]);
+        }
+    }
 }

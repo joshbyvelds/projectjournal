@@ -42,4 +42,22 @@
         left: 0;
         width: 100%;
     }
+
+    .media{
+        width: 1300px;
+        height: 740px;
+        margin: 0 auto;
+        overflow: auto;
+
+        &.audio{
+            position: relative;
+            background-image: url("images/entry_overlay_audio.webp");
+
+            audio{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+        }
+    }
 }

@@ -4,8 +4,8 @@ function ModalSystem(){
     var currentModal = false;
 
     this.setupEventListeners = function(){
-        $(".modalBtn").on("click", function(){CLASS.openModal($(this))});
-        $(".modalclosebtn").on("click", CLASS.closeOverlay);
+        $(".modalBtn").off().on("click", function(){CLASS.openModal($(this))});
+        $(".modalclosebtn").off().on("click", CLASS.closeOverlay);
     };
 
     this.openModal = function($btn){

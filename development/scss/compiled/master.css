@@ -500,6 +500,21 @@ main {
   left: 0;
   width: 100%;
 }
+.overlay_panel .media {
+  width: 1300px;
+  height: 740px;
+  margin: 0 auto;
+  overflow: auto;
+}
+.overlay_panel .media.audio {
+  position: relative;
+  background-image: url("images/entry_overlay_audio.webp");
+}
+.overlay_panel .media.audio audio {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
 header {
   position: relative;

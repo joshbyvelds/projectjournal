@@ -97,19 +97,22 @@ function AddJournalEntry() {
             if (json.success === '1'){
 
                 if ($type.val() === "image"){
-                    $("#project_info_updates").append("<img class=\"image\" src=\"images/updates/"+ json.file +"\" title=\""+ $title.val() +"\">");
+                    $("#project_info_updates").append("<img class=\"image journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\""+ json.id +"\" src=\"images/updates/"+ json.file +"\" title=\""+ $title.val() +"\">");
                 }
 
                 if ($type.val() === "audio"){
-                    $("#project_info_updates").append("<div class=\"audio\"><audio src=\"audio/updates/"+ json.file +"\" type=\"audio/mpeg\" controls></audio></div>");
+                    $("#project_info_updates").append("<div class=\"audio journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\""+ json.id +"\"><audio src=\"audio/updates/"+ json.file +"\" type=\"audio/mpeg\" controls></audio></div>");
                 }
 
                 if ($type.val() === "word_count"){
-                    $("#project_info_updates").append("<div class=\"wc\"><span>" + json.wc + "</span></div>");
+                    $("#project_info_updates").append("<div class=\"wc journal_thumbnail modalBtn\" data-modal=\"journal_update\" data-id=\""+ json.id +"\"><span>" + json.wc + "</span></div>");
                 }
 
                 $("#journal_update_form").hide();
                 $("#journal_update_success_panel").velocity("fadeIn", {duration:400});
+
+
+                resetAllEventListeners();
             }else{
                 $("#journal_update_php_error").html(json.message).show();
             }
