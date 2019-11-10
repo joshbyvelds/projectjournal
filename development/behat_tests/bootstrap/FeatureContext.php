@@ -32,6 +32,11 @@ class FeatureContext extends MinkContext implements Context
             if(is_file($file))
                 unlink($file); // delete file
         }
+
+        if(is_file(getCWD() . "/production/php/ProjectJournal/Config/database.config.php")) {
+            copy(getCWD() . "/production/php/ProjectJournal/Config/database.config.php", getCWD() . "/production/php/ProjectJournal/Config/database.config.php.bck");
+            unlink(getCWD() . "/production/php/ProjectJournal/Config/database.config.php");
+        }
     }
 
     /**

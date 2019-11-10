@@ -14,7 +14,7 @@ default:
       purge: false
 
     Behat\MinkExtension:
-      base_url: http://projectjournal2.com/
+      base_url: http://projectjournal.com/
       files_path: "%paths.base%/development/behat_tests/dummy_files/"
       default_session: selenium2
       browser_name: 'chrome'
