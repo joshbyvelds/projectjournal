@@ -39,7 +39,6 @@ function resetAllEventListeners(){
     newprojectform.setupEventListeners();
     edit_project.setupEventListeners();
     delete_project.setupEventListeners();
-    add_journal_entry.setupEventListeners();
     journal_entry_modal.setupEventListeners();
 
     grid.filtersort();

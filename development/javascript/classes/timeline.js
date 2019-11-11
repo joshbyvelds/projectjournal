@@ -12,7 +12,7 @@ function Timeline() {
 
         // TODO: Add time worked sequences for each project.
 
-        // NOTE: when a project was not been worked on for at least a week.. that is when a sequence ends.
+        // NOTE: when a project was not been worked on for at least a week.. that is when a sequence ends. to check this, for each journal entry, check if the next one is from within the last 7 days.
 
     };
 }
