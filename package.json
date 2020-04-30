@@ -10,7 +10,7 @@
   "dependencies": {
     "chart.js": "^2.8.0",
     "jasmine-core": "^3.5.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ladda": "1.0.0",
     "velocity-animate": "^1.5.2"
   },
