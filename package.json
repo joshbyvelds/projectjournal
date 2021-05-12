@@ -8,7 +8,7 @@
   "license": "GNU General Public License v3.0",
   "private": true,
   "dependencies": {
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "jasmine-core": "^3.5.0",
     "jquery": "^3.4.1",
     "ladda": "1.0.0",
